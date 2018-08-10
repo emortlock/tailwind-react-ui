@@ -1,0 +1,29 @@
+{
+  "presets": [
+    "stage-3",
+    "react",
+    [
+      "env",
+      {
+        "modules": false,
+        "loose": true,
+        "targets": { "browsers": [">2%"] }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {
+              "modules": "commonjs",
+              "targets": { "node": "8.11.3" }
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "name": "tailwind-react",
+  "version": "0.0.1",
+  "description": "React components for use with the Tailwind CSS framework",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emortlock/tailwind-react.git"
+  },
+  "main": "./dist",
+  "scripts": {
+    "build": "rimraf dist && npm run build:es && npm run build:cjs",
+    "build:cjs": "cross-env MODULE_FORMAT=cjs rollup -c",
+    "build:es": "cross-env MODULE_FORMAT=es rollup -c",
+    "docs": "styleguidist build",
+    "start": "styleguidist server",
+    "test": "cross-env BABEL_ENV=test jest",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "engines": {
+    "node": "^8.11.3",
+    "npm": ">=5.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "src/**/*.jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "setupFiles": [
+      "./build/jest/setup/enzyme.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(svg)$": "<rootDir>/build/jest/mocks/svg.jsx",
+      "^.+\\.(s?css)$": "<rootDir>/build/jest/mocks/file.js",
+      "^.+\\.(jpg|jpeg|png|gif|bmp)$": "<rootDir>/build/jest/mocks/file.js",
+      "^.+\\.(eot|otf|webp|ttf|woff|woff2)$": "<rootDir>/build/jest/mocks/file.js"
+    },
+    "resetModules": true,
+    "testPathIgnorePatterns": [
+      "<rootDir>/.next/",
+      "<rootDir>/node_modules/"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.4.1",
+    "prettier": "^1.13.7",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-styleguidist": "^7.2.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "style-loader": "^0.22.1",
+    "tailwindcss": "^0.6.4",
+    "webpack": "^4.16.5"
+  },
+  "author": "Ed Mortlock",
+  "license": "MIT"
+}
