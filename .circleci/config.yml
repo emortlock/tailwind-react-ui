@@ -1,0 +1,108 @@
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+version: 2
+
+defaults: &defaults
+  working_directory: ~/next-boilerplate
+  docker:
+    - image: circleci/node:stretch
+
+setupGit: &setupGit
+  run: |
+    git config user.email "$GIT_EMAIL" &&
+    git config user.name "$GIT_USERNAME"
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Lint code
+          command: npm run lint
+
+      - run:
+          name: Run unit tests
+          command: npm test
+
+      - run:
+          name: Run build
+          command: npm run build
+
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - .next
+
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - attach_workspace:
+          at: ./
+
+      - run:
+          name: Deploy to GitHub
+          command:
+            - ./circleci/deploy.sh styleguide
+
+  greenkeeperUpdateLockFile:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+
+      - run:
+          name: Update package-lock.json
+          command: npm install
+
+      - <<: *setupGit
+
+      - run:
+          name: Commit lockfile if changed
+          command: |
+            if ! git diff-index --quiet HEAD --; then
+              git add package-lock.json &&
+              git commit -m "chore(package): update lockfile [skip ci]" &&
+              export URL=$(echo $CIRCLE_REPOSITORY_URL | cut -c 4- | tr : /) &&
+              git push https://${GH_TOKEN}${URL} $CIRCLE_BRANCH --quiet
+            fi
+
+workflows:
+  version: 2
+
+  build-and-deploy:
+    jobs:
+      - build
+      - greenkeeperUpdateLockFile:
+          filters:
+            branches:
+              only: /^greenkeeper\/.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
