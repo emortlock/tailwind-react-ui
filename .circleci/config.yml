@@ -54,6 +54,7 @@ jobs:
           root: ./
           paths:
             - styleguide
+            - node_modules
 
   deploy:
     <<: *defaults
