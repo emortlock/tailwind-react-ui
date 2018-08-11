@@ -65,8 +65,7 @@ jobs:
 
       - run:
           name: Deploy to GitHub
-          command:
-            - ./circleci/deploy.sh styleguide
+          command: ./circleci/deploy.sh styleguide
 
   greenkeeperUpdateLockFile:
     <<: *defaults
