@@ -63,9 +63,11 @@ jobs:
       - attach_workspace:
           at: ./
 
+      - <<: *setupGit
+
       - run:
           name: Deploy to GitHub
-          command: ./.circleci/deploy.sh styleguide
+          command: npm run docs:deploy
 
   greenkeeperUpdateLockFile:
     <<: *defaults
