@@ -12,5 +12,8 @@
         "extensions": [".js", ".jsx"]
       }
     }
+  },
+  "rules": {
+    "import/prefer-default-export": "off"
   }
 }
