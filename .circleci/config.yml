@@ -9,8 +9,8 @@ defaults: &defaults
 
 setupGit: &setupGit
   run: |
-    git config user.email "$GIT_EMAIL" &&
-    git config user.name "$GIT_USERNAME"
+    git config user.email "$GH_EMAIL" &&
+    git config user.name "$GH_USERNAME"
 
 jobs:
   build:
