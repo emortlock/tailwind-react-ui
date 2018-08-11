@@ -55,4 +55,4 @@ export const defaultVars = {
   },
 }
 
-export default React.createContext(defaultVars)
+export const TailwindContext = React.createContext(defaultVars)

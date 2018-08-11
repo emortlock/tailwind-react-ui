@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import ThemeContext from '../theme-context'
+import { TailwindContext } from '../context'
 
 const Button = ({
   is,
@@ -34,7 +34,7 @@ const Button = ({
   }
 
   return (
-    <ThemeContext.Consumer>
+    <TailwindContext.Consumer>
       {theme => (
         <Component
           {...rest}
@@ -48,7 +48,7 @@ const Button = ({
             !link &&
               small &&
               `px-${theme.spacing.sm} py-${theme.spacing.sm / 2}`,
-            `${theme.radius}`,
+            theme.radius,
             'border border-transparent select-none',
             `text-${theme.textColors.emphasis}`,
             fill && [
@@ -82,11 +82,11 @@ const Button = ({
           {children}
         </Component>
       )}
-    </ThemeContext.Consumer>
+    </TailwindContext.Consumer>
   )
 }
 Button.propTypes = {
-  is: PropTypes.oneOf([PropTypes.string, PropTypes.func, PropTypes.object]),
+  is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
   color: PropTypes.string,

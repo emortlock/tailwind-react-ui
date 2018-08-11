@@ -1,5 +1,10 @@
 module.exports = {
-  components: 'src/**/*.jsx',
+  sections: [
+    {
+      name: 'Components',
+      components: ['src/**/*.jsx'],
+    },
+  ],
   require: ['babel-polyfill', 'tailwindcss/dist/tailwind.min.css'],
   webpackConfig: {
     module: {
