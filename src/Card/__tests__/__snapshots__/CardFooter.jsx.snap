@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardFooter renders matching snapshot 1`] = `
+<div
+  className="flex flex-row-reverse items-end"
+>
+  Hello World!
+</div>
+`;

@@ -14,13 +14,14 @@
   "env": {
     "test": {
       "presets": [
+        "stage-3",
+        "react",
         [
-          "next/babel",
+          "env",
           {
-            "preset-env": {
-              "modules": "commonjs",
-              "targets": { "node": "8.11.3" }
-            }
+            "modules": "commonjs",
+            "loose": true,
+            "targets": { "browsers": [">2%"] }
           }
         ]
       ]
