@@ -3,7 +3,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/next-boilerplate
+  working_directory: ~/tailwind-react
   docker:
     - image: circleci/node:stretch
 
@@ -46,10 +46,14 @@ jobs:
           name: Run build
           command: npm run build
 
+      - run:
+          name: Run styleguide generation
+          command: npm run docs
+
       - persist_to_workspace:
           root: ./
           paths:
-            - .next
+            - styleguide
 
   deploy:
     <<: *defaults
