@@ -6,6 +6,6 @@ ghpages.publish('styleguide', {
     'git+https://',
     '',
   )}`,
-  silent: true,
+  // silent: true,
   message: 'Deploy to GitHub pages [ci skip]',
 })
