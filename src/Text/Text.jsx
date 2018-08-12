@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { TailwindContext } from '../context'
+import withConfig from '../withConfig'
 
 const Text = ({
+  config,
   children,
   className,
   is,
@@ -18,33 +19,30 @@ const Text = ({
   const Component = is === 'span' && p ? 'p' : is
 
   return (
-    <TailwindContext.Consumer>
-      {theme => (
-        <Component
-          {...rest}
-          className={classnames(
-            'leading-normal',
-            `font-${theme.text.family.body}`,
-            `text-${
-              theme.text.size.body[
-                (lead ? theme.text.size.body.length : size) - 1
-              ]
-            }`,
-            `text-${theme.textColors.body}`,
-            p && `mb-${theme.spacing.md}`,
-            bold && 'font-bold',
-            italic && 'italic',
-            className,
-          )}
-        >
-          {children}
-        </Component>
+    <Component
+      {...rest}
+      className={classnames(
+        'leading-normal',
+        `font-${config.text.family.body}`,
+        `text-${
+          config.text.size.body[
+            (lead ? config.text.size.body.length : size) - 1
+          ]
+        }`,
+        `text-${config.textColors.body}`,
+        p && `mb-${config.spacing.md}`,
+        bold && 'font-bold',
+        italic && 'italic',
+        className,
       )}
-    </TailwindContext.Consumer>
+    >
+      {children}
+    </Component>
   )
 }
 
 Text.propTypes = {
+  config: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
@@ -66,4 +64,5 @@ Text.defaultProps = {
   italic: false,
 }
 
-export default Text
+export { Text as component }
+export default withConfig(Text)

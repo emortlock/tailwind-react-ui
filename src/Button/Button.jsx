@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { TailwindContext } from '../context'
+import withConfig from '../withConfig'
 
 const Button = ({
+  config,
   is,
   children,
   className,
@@ -34,58 +35,53 @@ const Button = ({
   }
 
   return (
-    <TailwindContext.Consumer>
-      {theme => (
-        <Component
-          {...rest}
-          {...props}
-          className={classnames(
-            !link &&
-              !large &&
-              !small &&
-              `px-${theme.spacing.md} py-${theme.spacing.sm}`,
-            !link && large && `px-${theme.spacing.lg} py-${theme.spacing.md}`,
-            !link &&
-              small &&
-              `px-${theme.spacing.sm} py-${theme.spacing.sm / 2}`,
-            theme.radius,
-            'border border-transparent select-none',
-            `text-${theme.textColors.emphasis}`,
-            fill && [
-              `bg-${theme.baseColors[color]}`,
-              `text-${theme.textColors.on[color]}`,
-              `hover:bg-${theme.baseColors[`${color}Dark`]}`,
-              `hover:text-${theme.textColors.on[`${color}Dark`]}`,
-            ],
-            outline && [
-              `border-${theme.baseColors[color]}`,
-              `text-${theme.baseColors[color]}`,
-              `hover:bg-${theme.baseColors[`${color}`]}`,
-              `hover:text-${theme.textColors.on[`${color}`]}`,
-            ],
-            text && [
-              `text-${theme.baseColors[color]}`,
-              `hover:bg-${theme.baseColors[`${color}Light`]}`,
-              `hover:text-${theme.textColors.on[`${color}Light`]}`,
-            ],
-            link && [
-              'p-0 underline',
-              `text-${theme.baseColors[color]}`,
-              `hover:text-${theme.baseColors[`${color}Dark`]}`,
-            ],
-            disabled && 'opacity-50 pointer-events-none',
-            fullWidth && 'w-full',
-            className,
-          )}
-          aria-disabled={disabled || undefined}
-        >
-          {children}
-        </Component>
+    <Component
+      {...rest}
+      {...props}
+      className={classnames(
+        !link &&
+          !large &&
+          !small &&
+          `px-${config.spacing.md} py-${config.spacing.sm}`,
+        !link && large && `px-${config.spacing.lg} py-${config.spacing.md}`,
+        !link && small && `px-${config.spacing.sm} py-${config.spacing.sm / 2}`,
+        config.radius,
+        'border border-transparent select-none',
+        `text-${config.textColors.emphasis}`,
+        fill && [
+          `bg-${config.baseColors[color]}`,
+          `text-${config.textColors.on[color]}`,
+          `hover:bg-${config.baseColors[`${color}Dark`]}`,
+          `hover:text-${config.textColors.on[`${color}Dark`]}`,
+        ],
+        outline && [
+          `border-${config.baseColors[color]}`,
+          `text-${config.baseColors[color]}`,
+          `hover:bg-${config.baseColors[`${color}`]}`,
+          `hover:text-${config.textColors.on[`${color}`]}`,
+        ],
+        text && [
+          `text-${config.baseColors[color]}`,
+          `hover:bg-${config.baseColors[`${color}Light`]}`,
+          `hover:text-${config.textColors.on[`${color}Light`]}`,
+        ],
+        link && [
+          'p-0 underline',
+          `text-${config.baseColors[color]}`,
+          `hover:text-${config.baseColors[`${color}Dark`]}`,
+        ],
+        disabled && 'opacity-50 pointer-events-none',
+        fullWidth && 'w-full',
+        className,
       )}
-    </TailwindContext.Consumer>
+      aria-disabled={disabled || undefined}
+    >
+      {children}
+    </Component>
   )
 }
 Button.propTypes = {
+  config: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
@@ -117,4 +113,5 @@ Button.defaultProps = {
   fullWidth: false,
 }
 
-export default Button
+export { Button as component }
+export default withConfig(Button)

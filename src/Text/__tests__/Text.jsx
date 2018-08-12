@@ -1,10 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Text } from '..'
+import { component as Text } from '../Text'
+import { defaultConfig } from '../../config'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign({}, testProps)
+  const props = Object.assign({ config: defaultConfig }, testProps)
 
   const wrapper = shallow(<Text {...props}>Lorem ipsum dolor sit amet</Text>)
 

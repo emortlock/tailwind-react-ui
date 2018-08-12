@@ -1,10 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Button } from '..'
+import { component as Button } from '../Button'
+
+import { defaultConfig } from '../../config'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign(testProps)
+  const props = Object.assign({ config: defaultConfig }, testProps)
 
   const wrapper = shallow(<Button {...props}>Submit</Button>)
 

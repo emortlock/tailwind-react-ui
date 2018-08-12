@@ -1,10 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Card } from '..'
+import { component as Card } from '../Card'
+import { defaultConfig } from '../../config'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign(testProps)
+  const props = Object.assign({ config: defaultConfig }, testProps)
 
   const wrapper = shallow(<Card {...props}>Hello World!</Card>)
 

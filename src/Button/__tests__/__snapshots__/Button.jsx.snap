@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders matching snapshot 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<button
+  className="px-4 py-2 rounded border border-transparent select-none text-black bg-blue text-white hover:bg-blue-dark hover:text-white"
+  role="button"
+>
+  Submit
+</button>
 `;

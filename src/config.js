@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const defaultVars = {
+export const defaultConfig = {
   radius: 'rounded',
   spacing: {
     sm: 2,
@@ -66,4 +66,4 @@ export const defaultVars = {
   },
 }
 
-export const TailwindContext = React.createContext(defaultVars)
+export const TailwindConfig = React.createContext(defaultConfig)

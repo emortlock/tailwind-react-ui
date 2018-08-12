@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card renders matching snapshot 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<div
+  className="overflow-hidden rounded"
+>
+  Hello World!
+</div>
 `;
