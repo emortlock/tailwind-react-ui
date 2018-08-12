@@ -5,7 +5,7 @@ const { GH_USERNAME, GH_EMAIL, GH_TOKEN } = process.env
 
 ghpages.publish('styleguide', {
   repo: `https://${GH_TOKEN}@${repository.replace('git+https://', '')}`,
-  // silent: true,
+  silent: true,
   message: 'Deploy to GitHub pages [ci skip]',
   user: {
     name: GH_USERNAME,
