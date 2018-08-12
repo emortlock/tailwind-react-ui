@@ -39,7 +39,7 @@ export const defaultVars = {
     infoDark: 'teal',
   },
   textColors: {
-    body: 'grey-darker',
+    body: 'grey-darkest',
     link: 'blue-dark',
     linkDark: 'blue-darker',
     emphasis: 'black',
