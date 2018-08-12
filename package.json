@@ -12,7 +12,7 @@
     "build:cjs": "cross-env MODULE_FORMAT=cjs rollup -c",
     "build:es": "cross-env MODULE_FORMAT=es rollup -c",
     "docs": "styleguidist build",
-    "docs:deploy": "NODE_DEBUG=gh-pages node ./build/deploy",
+    "docs:deploy": "node ./build/deploy",
     "start": "styleguidist server",
     "test": "cross-env BABEL_ENV=test jest",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
