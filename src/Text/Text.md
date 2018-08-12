@@ -1,10 +1,10 @@
-Standard inline or body copy:
+Standard inline body copy:
 
 ```jsx
 <Text>Hello World</Text>
 ```
 
-Lead text:
+Lead text as a `<p />` element:
 
 ```jsx
 <Text p lead>
@@ -17,7 +17,7 @@ Lead text:
 </Text>
 ```
 
-Font styles:
+Inline font styles:
 
 ```jsx
 <Text p>
