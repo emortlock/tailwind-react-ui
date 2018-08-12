@@ -64,7 +64,8 @@
       "",
       "    expect(wrapper).toMatchSnapshot()",
       "  })",
-      "})"
+      "})",
+      ""
     ],
     "description": "Tailwind React stateless component"
   }
