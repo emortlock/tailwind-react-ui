@@ -64,8 +64,6 @@ jobs:
       - attach_workspace:
           at: ./
 
-      - <<: *setupGit
-
       - run:
           name: Deploy to GitHub
           command: npm run docs:deploy
