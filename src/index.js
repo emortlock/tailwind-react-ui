@@ -1,5 +1,8 @@
-export * from './Button'
-export * from './Card'
-export * from './Text'
+export * from './button'
+export * from './card'
+export * from './grid'
+export * from './text'
 
-export * from './context'
+export * from './config'
+
+export { default as withConfig } from './withConfig'

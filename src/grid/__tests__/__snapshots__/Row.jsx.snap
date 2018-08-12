@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row renders matching snapshot 1`] = `
+<div
+  className="flex flex-wrap -ml-4 -mb-4"
+/>
+`;
