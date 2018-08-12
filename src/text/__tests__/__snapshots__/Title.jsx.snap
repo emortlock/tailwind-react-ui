@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Title renders matching snapshot 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<h4
+  className="font-sans leading-tight text-2xl text-black font-bold mb-4"
+>
+  Title
+</h4>
 `;

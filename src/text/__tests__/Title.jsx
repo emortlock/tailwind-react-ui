@@ -1,10 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Title } from '..'
+import { component as Title } from '../Title'
+import { defaultConfig } from '../../config'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign({}, testProps)
+  const props = Object.assign({ config: defaultConfig }, testProps)
 
   const wrapper = shallow(<Title {...props}>Title</Title>)
 

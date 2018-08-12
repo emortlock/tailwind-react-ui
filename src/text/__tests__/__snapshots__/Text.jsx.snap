@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders matching snapshot 1`] = `
+<p
+  className="leading-normal font-sans text-base text-grey-darkest mb-4"
+>
+  Lorem ipsum dolor sit amet
+</p>
+`;

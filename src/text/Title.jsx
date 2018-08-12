@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { TailwindContext } from '../context'
+import withConfig from '../withConfig'
 
 const Title = ({
+  config,
   children,
   className,
   is,
@@ -25,29 +26,26 @@ const Title = ({
     }
   }
   return (
-    <TailwindContext.Consumer>
-      {theme => (
-        <Component
-          {...rest}
-          {...ariaProps}
-          className={classnames(
-            `font-${theme.text.family[subtitle ? 'subtitle' : 'title']}`,
-            'leading-tight',
-            `text-${theme.text.size.title[size - 1]}`,
-            !subtitle && `text-${theme.textColors.emphasis} font-bold`,
-            subtitle && `text-${theme.textColors.body} font-medium`,
-            !flush && `mb-${theme.spacing.md}`,
-            className,
-          )}
-        >
-          {children}
-        </Component>
+    <Component
+      {...rest}
+      {...ariaProps}
+      className={classnames(
+        `font-${config.text.family[subtitle ? 'subtitle' : 'title']}`,
+        'leading-tight',
+        `text-${config.text.size.title[size - 1]}`,
+        !subtitle && `text-${config.textColors.emphasis} font-bold`,
+        subtitle && `text-${config.textColors.body} font-medium`,
+        !flush && `mb-${config.spacing.md}`,
+        className,
       )}
-    </TailwindContext.Consumer>
+    >
+      {children}
+    </Component>
   )
 }
 
 Title.propTypes = {
+  config: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
@@ -67,4 +65,5 @@ Title.defaultProps = {
   h: undefined,
 }
 
-export default Title
+export { Title as component }
+export default withConfig(Title)
