@@ -1,7 +1,6 @@
-import { compose, setDisplayName, withProps } from 'recompose'
+import React from 'react'
 import Title from './Title'
 
-export default compose(
-  setDisplayName('Subtitle'),
-  withProps({ subtitle: true }),
-)(Title)
+const Subtitle = props => <Title {...props} subtitle />
+
+export default Subtitle
