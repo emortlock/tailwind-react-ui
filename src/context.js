@@ -7,6 +7,17 @@ export const defaultVars = {
     md: 4,
     lg: 8,
   },
+  text: {
+    size: {
+      body: ['base', 'lg'],
+      title: ['lg', 'xl', '2xl', '3xl', '4xl', '5xl'],
+    },
+    family: {
+      body: 'sans',
+      subtitle: 'sans',
+      title: 'sans',
+    },
+  },
   baseColors: {
     primaryLight: 'blue-light',
     primary: 'blue',
