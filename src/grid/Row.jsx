@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import withConfig from '../withConfig'
+import { withConfig } from '../config'
 
 const Row = ({ is, children, className, nowrap, gutter, config, ...rest }) => {
   const Component = is

@@ -1,6 +1,40 @@
 {
-  "TWR_Stateless_Component": {
+  "TWR_Stateless": {
     "prefix": "twr-stateless",
+    "body": [
+      "import React from 'react'",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'classnames'",
+      "",
+      "const ${1:NewComponent} = ({ is, children, className, ...rest }) => {",
+      "  const Component = is",
+      "",
+      "  return (",
+      "    <Component {...rest} className={classnames(className)}>",
+      "      {children}",
+      "    </Component>",
+      "  )",
+      "}",
+      "",
+      "$1.propTypes = {",
+      "  is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),",
+      "  children: PropTypes.node,",
+      "  className: PropTypes.string,",
+      "}",
+      "",
+      "$1.defaultProps = {",
+      "  is: '${2:div}',",
+      "  children: undefined,",
+      "  className: undefined,",
+      "}",
+      "",
+      "export default $1",
+      ""
+    ],
+    "description": "Tailwind React stateless component"
+  },
+  "TWR_Stateless_With_Config": {
+    "prefix": "twr-stateless-with-config",
     "body": [
       "import React from 'react'",
       "import PropTypes from 'prop-types'",
@@ -30,7 +64,6 @@
       "  children: undefined,",
       "  className: undefined,",
       "}",
-      "",
       "export { $1 as component }",
       "export default withConfig($1)",
       ""
