@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TailwindConfig } from '../config'
+import TailwindConfig from './TailwindConfig'
 
 const withConfig = Component => props => (
   <TailwindConfig.Consumer>
