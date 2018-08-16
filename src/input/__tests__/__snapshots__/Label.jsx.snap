@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders matching snapshot 1`] = `
+<label
+  className="mb-2 inline-block"
+  htmlFor="input"
+>
+  Username
+</label>
+`;

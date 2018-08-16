@@ -14,6 +14,7 @@ const Text = ({
   lead,
   bold,
   italic,
+  brand,
   ...rest
 }) => {
   const Component = is === 'span' && p ? 'p' : is
@@ -29,7 +30,7 @@ const Text = ({
             (lead ? config.text.size.body.length : size) - 1
           ]
         }`,
-        `text-${config.textColors.body}`,
+        !brand && `text-${config.textColors.body}`,
         p && `mb-${config.spacing.md}`,
         bold && 'font-bold',
         italic && 'italic',
@@ -51,17 +52,19 @@ Text.propTypes = {
   lead: PropTypes.bool,
   bold: PropTypes.bool,
   italic: PropTypes.bool,
+  brand: PropTypes.bool,
 }
 
 Text.defaultProps = {
   children: undefined,
   className: undefined,
   is: 'span',
-  size: 1,
+  size: 2,
   p: false,
   lead: false,
   bold: false,
   italic: false,
+  brand: false,
 }
 
 export { Text as component }

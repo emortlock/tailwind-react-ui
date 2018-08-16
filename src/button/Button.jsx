@@ -72,6 +72,7 @@ const Button = ({
         ],
         disabled && 'opacity-50 pointer-events-none',
         fullWidth && 'w-full',
+        !link && 'leading-tight',
         className,
       )}
       aria-disabled={disabled || undefined}
