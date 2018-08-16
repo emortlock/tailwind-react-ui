@@ -7,17 +7,25 @@ import getUniqueID from '../utils/getUniqueID'
 
 import Label from './Label'
 import TextInput from './TextInput'
+import InfoText from '../typography/InfoText'
 import DangerText from '../typography/DangerText'
 
 const Field = ({ config, is, children, className, ...rest }) => {
   const Component = is
-  const id = getUniqueID('field-')
+  const id = {
+    input: getUniqueID('field-'),
+  }
 
   let disabled = false
   let invalid = false
 
   React.Children.forEach(children, child => {
+    if (child.type === InfoText) {
+      id.info = getUniqueID('field-info-')
+    }
+
     if (child.type === DangerText) {
+      id.error = getUniqueID('field-error-')
       invalid = true
     }
 
@@ -32,13 +40,36 @@ const Field = ({ config, is, children, className, ...rest }) => {
       className={classnames('max-w-sm', `mb-${config.spacing.md}`, className)}
     >
       {React.Children.map(children, child => {
+        if (child.type === InfoText) {
+          return React.cloneElement(child, {
+            id: id.info,
+          })
+        }
+
+        if (child.type === DangerText) {
+          return React.cloneElement(child, {
+            id: id.error,
+          })
+        }
+
         if (child.type === Label) {
-          console.log(id, invalid, disabled)
-          return React.cloneElement(child, { htmlFor: id, invalid, disabled })
+          return React.cloneElement(child, {
+            htmlFor: id.input,
+            invalid,
+            disabled,
+          })
         }
 
         if (child.type === TextInput) {
-          return React.cloneElement(child, { id, invalid, disabled })
+          const describedBy = [id.error, id.info].filter(by => by)
+          return React.cloneElement(child, {
+            id: id.input,
+            invalid,
+            disabled,
+            'aria-describedby': describedBy.length
+              ? describedBy.join(' ')
+              : undefined,
+          })
         }
 
         return child
