@@ -2,10 +2,15 @@ module.exports = {
   sections: [
     {
       name: 'Components',
-      components: ['src/**/*.jsx'],
+      components: ['src/**/index.js'],
     },
   ],
-  require: ['babel-polyfill', 'tailwindcss/dist/tailwind.min.css'],
+  skipComponentsWithoutExample: true,
+  require: [
+    'babel-polyfill',
+    'tailwindcss/dist/tailwind.min.css',
+    './build/styleguide.js',
+  ],
   webpackConfig: {
     module: {
       rules: [

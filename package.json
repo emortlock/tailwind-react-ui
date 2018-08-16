@@ -63,6 +63,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.6.2"
   },
   "devDependencies": {

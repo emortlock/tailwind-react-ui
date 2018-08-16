@@ -40,7 +40,7 @@
       "import PropTypes from 'prop-types'",
       "import classnames from 'classnames'",
       "",
-      "import withConfig from '../withConfig'",
+      "import { withConfig } from '../config'",
       "",
       "const ${1:NewComponent} = ({ config, is, children, className, ...rest }) => {",
       "  const Component = is",
@@ -64,6 +64,7 @@
       "  children: undefined,",
       "  className: undefined,",
       "}",
+      "",
       "export { $1 as component }",
       "export default withConfig($1)",
       ""

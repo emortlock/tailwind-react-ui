@@ -8,7 +8,7 @@ export default {
   },
   text: {
     size: {
-      body: ['base', 'lg'],
+      body: ['sm', 'base', 'lg'],
       title: ['lg', 'xl', '2xl', '3xl', '4xl', '5xl'],
     },
     family: {
