@@ -11,6 +11,7 @@ const Container = ({
   className,
   leftAlign,
   padding,
+  max,
   ...rest
 }) => {
   const Component = is
@@ -23,6 +24,7 @@ const Container = ({
         !leftAlign && 'mx-auto',
         padding &&
           `px-${config.spacing[typeof padding === 'string' ? padding : 'md']}`,
+        max && `max-w-${config.container[max]}`,
         className,
       )}
     >
@@ -38,6 +40,7 @@ Container.propTypes = {
   className: PropTypes.string,
   leftAlign: PropTypes.bool,
   padding: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  max: PropTypes.string,
 }
 
 Container.defaultProps = {
@@ -46,6 +49,7 @@ Container.defaultProps = {
   className: undefined,
   leftAlign: false,
   padding: false,
+  max: undefined,
 }
 
 export { Container as component }

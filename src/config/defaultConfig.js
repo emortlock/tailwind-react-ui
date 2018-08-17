@@ -6,6 +6,11 @@ export default {
     md: 4,
     lg: 8,
   },
+  container: {
+    sm: 'xl',
+    md: '3xl',
+    lg: '4xl',
+  },
   text: {
     size: {
       body: ['sm', 'base', 'lg'],
