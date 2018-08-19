@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem renders matching snapshot 1`] = `
+<is
+  className="text-white hover:bg-white hover:text-blue p-2 rounded block lg:inline-block mt-2 lg:mt-0 no-underline"
+>
+  Link
+</is>
+`;

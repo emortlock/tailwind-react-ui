@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavToggle renders matching snapshot 1`] = `
+<button
+  className="w-12 h-12 block lg:hidden"
+  onClick={[Function]}
+>
+  <span
+    className="flex flex-col items-stretch justify-around h-full p-3"
+  >
+    <span
+      className="border-white border-b inline-block"
+    />
+    <span
+      className="border-white border-b inline-block"
+    />
+    <span
+      className="border-white border-b inline-block"
+    />
+  </span>
+</button>
+`;
