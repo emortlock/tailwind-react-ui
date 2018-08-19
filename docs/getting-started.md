@@ -14,7 +14,7 @@ Tailwind React leverages these utility classes to provide base level components 
 To install the npm package run the following within your project.
 
 ```bash
-npm install tailwind-react
+npm i @eddm/tailwind-react
 ```
 
 ### Usage
