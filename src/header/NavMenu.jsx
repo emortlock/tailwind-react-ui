@@ -12,7 +12,7 @@ const NavMenu = ({
   is,
   children,
   className,
-  header: { open },
+  header: { open, collapsable },
   ...rest
 }) => {
   const Component = is
@@ -30,13 +30,18 @@ const NavMenu = ({
           className={classnames(
             !open && 'overflow-hidden',
             'w-full flex-grow lg:flex lg:items-center lg:w-auto',
+            !collapsable && 'h-12',
             className,
           )}
-          style={{
-            transition: 'max-height 500ms',
-            maxHeight: '0',
-            ...transitionStyles[state],
-          }}
+          style={
+            collapsable
+              ? {
+                  transition: 'max-height 500ms',
+                  maxHeight: '0',
+                  ...transitionStyles[state],
+                }
+              : undefined
+          }
           aria-label="main navigation"
         >
           <ul
@@ -67,6 +72,7 @@ NavMenu.propTypes = {
   className: PropTypes.string,
   header: PropTypes.shape({
     open: PropTypes.bool.isRequired,
+    collapsable: PropTypes.bool.isRequired,
   }).isRequired,
 }
 

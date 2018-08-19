@@ -7,7 +7,7 @@ import { defaultConfig } from '../../config'
 
 const setup = (testProps = {}) => {
   const props = Object.assign(
-    { header: { open: true }, config: defaultConfig },
+    { header: { open: true, collapsable: true }, config: defaultConfig },
     testProps,
   )
 

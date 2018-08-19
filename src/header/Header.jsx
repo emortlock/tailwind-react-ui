@@ -12,6 +12,7 @@ class Header extends React.Component {
 
     this.state = {
       open: false,
+      collapsable: true,
     }
 
     this.mql = null
@@ -45,17 +46,18 @@ class Header extends React.Component {
   }
 
   handleMatch(mql) {
-    this.handleToggle(!!mql.matches)
+    this.setState({ collapsable: !mql.matches })
   }
 
   render() {
-    const { open } = this.state
+    const { open, collapsable } = this.state
     const { config, is, children, className, ...rest } = this.props
 
     const Component = is
 
     const headerProps = {
       open,
+      collapsable,
       onToggle: this.handleToggle,
     }
 

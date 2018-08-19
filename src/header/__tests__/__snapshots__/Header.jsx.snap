@@ -12,6 +12,7 @@ exports[`Header renders matching snapshot 1`] = `
     <Component
       header={
         Object {
+          "collapsable": true,
           "onToggle": [Function],
           "open": false,
         }

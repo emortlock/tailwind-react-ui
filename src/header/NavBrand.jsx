@@ -13,7 +13,8 @@ const NavBrand = ({ config, is, children, className, ...rest }) => {
       {...filterProps(rest, ['header'])}
       className={classnames(
         `text-${config.textColors.on.primary}`,
-        'flex items-center flex-no-shrink mr-6',
+        `mr-${config.spacing.lg}`,
+        'flex items-center flex-no-shrink h-12',
         className,
       )}
     >

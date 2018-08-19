@@ -2,7 +2,7 @@
 
 exports[`NavBrand renders matching snapshot 1`] = `
 <div
-  className="text-white flex items-center flex-no-shrink mr-6"
+  className="text-white mr-8 flex items-center flex-no-shrink h-12"
 >
   Tailwind React
 </div>
