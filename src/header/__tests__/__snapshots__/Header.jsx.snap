@@ -6,7 +6,6 @@ exports[`Header renders matching snapshot 1`] = `
 >
   <WithConfig(Container)
     className="flex items-center justify-between flex-wrap"
-    max="md"
     padding={true}
   >
     <Component
