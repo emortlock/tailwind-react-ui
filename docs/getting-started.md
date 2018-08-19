@@ -1,5 +1,3 @@
-### About
-
 Tailwind React provides ready built components that make use of the [Tailwind CSS](https://tailwindcss.com/) framework.
 
 From https://tailwindcss.com/docs/what-is-tailwind:
