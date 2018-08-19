@@ -4,6 +4,8 @@ import classnames from 'classnames'
 
 import { withConfig } from '../config'
 
+import { filterProps } from '../utils'
+
 const Label = ({
   config,
   is,
@@ -17,7 +19,7 @@ const Label = ({
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, ['invalid'])}
       className={classnames(
         `mb-${config.spacing.sm}`,
         'inline-block',
