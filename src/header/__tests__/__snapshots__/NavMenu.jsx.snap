@@ -6,7 +6,7 @@ exports[`NavMenu renders matching snapshot 1`] = `
   className="block w-full flex-grow lg:flex lg:items-center lg:w-auto"
 >
   <ul
-    className="list-reset flex-grow lg:flex mb-2"
+    className="list-reset flex-grow lg:flex mb-2 lg:mb-0"
   >
     <li
       key=".0"
