@@ -3,17 +3,23 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withConfig } from '../config'
-import { filterProps } from '../utils'
 
-const NavBrand = ({ config, is, children, className, ...rest }) => {
+const NavItem = ({ config, is, children, className, ...rest }) => {
   const Component = is
+
+  console.log(Component)
 
   return (
     <Component
-      {...filterProps(rest, ['header'])}
+      {...rest}
       className={classnames(
         `text-${config.textColors.on.primary}`,
-        'flex items-center flex-no-shrink mr-6',
+        `hover:bg-${config.textColors.on.primary} hover:text-${
+          config.baseColors.primary
+        }`,
+        `p-${config.spacing.sm}`,
+        config.radius,
+        'block lg:inline-block mt-2 lg:mt-0 no-underline',
         className,
       )}
     >
@@ -22,18 +28,18 @@ const NavBrand = ({ config, is, children, className, ...rest }) => {
   )
 }
 
-NavBrand.propTypes = {
+NavItem.propTypes = {
   config: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
 }
 
-NavBrand.defaultProps = {
-  is: 'div',
+NavItem.defaultProps = {
+  is: 'a',
   children: undefined,
   className: undefined,
 }
 
-export { NavBrand as component }
-export default withConfig(NavBrand)
+export { NavItem as component }
+export default withConfig(NavItem)

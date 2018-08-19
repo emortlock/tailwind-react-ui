@@ -6,27 +6,57 @@ import { withConfig } from '../config'
 
 import Container from '../container/Container'
 
-const Header = ({ config, is, children, className, ...rest }) => {
-  const Component = is
+class Header extends React.Component {
+  constructor(props) {
+    super(props)
 
-  return (
-    <Component
-      {...rest}
-      className={classnames(
-        `bg-${config.baseColors.primary}`,
-        'py-6',
-        className,
-      )}
-    >
-      <Container
-        max="md"
-        className="flex items-center justify-between flex-wrap"
-        padding
+    this.state = {
+      open: false,
+    }
+
+    this.handleToggle = this.handleToggle.bind(this)
+  }
+
+  handleToggle(forceState) {
+    const { open } = this.state
+
+    this.setState({
+      open: forceState || !open,
+    })
+  }
+
+  render() {
+    const { open } = this.state
+    const { config, is, children, className, ...rest } = this.props
+
+    const Component = is
+
+    const headerProps = {
+      open,
+      onToggle: this.handleToggle,
+    }
+
+    return (
+      <Component
+        {...rest}
+        className={classnames(
+          `bg-${config.baseColors.primary}`,
+          'py-6',
+          className,
+        )}
       >
-        {children}
-      </Container>
-    </Component>
-  )
+        <Container
+          max="md"
+          className="flex items-center justify-between flex-wrap"
+          padding
+        >
+          {React.Children.map(children, child =>
+            React.cloneElement(child, { header: headerProps }),
+          )}
+        </Container>
+      </Component>
+    )
+  }
 }
 
 Header.propTypes = {
