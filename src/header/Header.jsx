@@ -71,7 +71,6 @@ class Header extends React.Component {
         )}
       >
         <Container
-          max="md"
           className="flex items-center justify-between flex-wrap"
           padding
         >
