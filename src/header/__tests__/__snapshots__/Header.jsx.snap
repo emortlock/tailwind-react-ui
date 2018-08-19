@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders matching snapshot 1`] = `
+<header
+  className="bg-blue py-6"
+>
+  <Component
+    className="flex items-center justify-between flex-wrap"
+    max="md"
+    padding={true}
+  >
+    <Component
+      header={
+        Object {
+          "onToggle": [Function],
+          "open": false,
+        }
+      }
+      key=".0"
+    />
+  </Component>
+</header>
+`;

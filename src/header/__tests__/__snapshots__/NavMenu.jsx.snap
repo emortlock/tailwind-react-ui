@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu renders matching snapshot 1`] = `
+<nav
+  aria-label="main navigation"
+  className="block w-full flex-grow lg:flex lg:items-center lg:w-auto"
+>
+  <ul
+    className="list-reset flex-grow lg:flex mb-2"
+  >
+    <li
+      key=".0"
+    >
+      <Component>
+        About
+      </Component>
+    </li>
+    <li
+      key=".1"
+    >
+      <Component>
+        Blog
+      </Component>
+    </li>
+  </ul>
+  <button
+    key=".2"
+    type="button"
+  >
+    Download
+  </button>
+</nav>
+`;

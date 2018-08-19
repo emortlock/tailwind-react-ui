@@ -2,6 +2,7 @@ export * from './button'
 export * from './card'
 export * from './container'
 export * from './grid'
+export * from './header'
 export * from './input'
 export * from './typography'
 

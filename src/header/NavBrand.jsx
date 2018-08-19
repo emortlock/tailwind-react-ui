@@ -3,51 +3,37 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withConfig } from '../config'
-
 import { filterProps } from '../utils'
 
-const Label = ({
-  config,
-  is,
-  children,
-  className,
-  htmlFor,
-  disabled,
-  ...rest
-}) => {
+const NavBrand = ({ config, is, children, className, ...rest }) => {
   const Component = is
 
   return (
     <Component
-      {...filterProps(rest, ['invalid'])}
+      {...filterProps(rest, ['header'])}
       className={classnames(
-        `mb-${config.spacing.sm}`,
-        'inline-block',
+        `text-${config.textColors.on.primary}`,
+        'flex items-center flex-no-shrink mr-6',
         className,
-        disabled && 'opacity-50',
       )}
-      htmlFor={htmlFor}
     >
       {children}
     </Component>
   )
 }
 
-Label.propTypes = {
+NavBrand.propTypes = {
   config: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
-  htmlFor: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
 }
 
-Label.defaultProps = {
-  is: 'label',
+NavBrand.defaultProps = {
+  is: 'div',
   children: undefined,
   className: undefined,
-  disabled: false,
 }
 
-export { Label as component }
-export default withConfig(Label)
+export { NavBrand as component }
+export default withConfig(NavBrand)
