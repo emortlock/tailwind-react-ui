@@ -14,7 +14,26 @@ class Header extends React.Component {
       open: false,
     }
 
+    this.mql = null
+
+    this.handleMatch = this.handleMatch.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
+  }
+
+  componentDidMount() {
+    const { config } = this.props
+    if (window.matchMedia) {
+      this.mql = window.matchMedia(`(min-width: ${config.breakpoints.lg})`)
+      this.mql.addListener(this.handleMatch)
+
+      if (this.mql.matches) {
+        this.handleMatch(this.mql)
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.mql) this.mql.removeListener(this.onMatch)
   }
 
   handleToggle(forceState) {
@@ -23,6 +42,10 @@ class Header extends React.Component {
     this.setState({
       open: forceState || !open,
     })
+  }
+
+  handleMatch(mql) {
+    this.handleToggle(!!mql.matches)
   }
 
   render() {

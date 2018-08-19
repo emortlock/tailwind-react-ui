@@ -65,7 +65,8 @@
     "classnames": "^2.2.6",
     "lodash.includes": "^4.3.0",
     "lodash.uniqueid": "^4.0.1",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "react-transition-group": "^2.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
