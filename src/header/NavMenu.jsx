@@ -29,7 +29,7 @@ const NavMenu = ({
       <ul
         className={classnames(
           'list-reset flex-grow lg:flex',
-          `mb-${config.spacing.sm}`,
+          `mb-${config.spacing.sm} lg:mb-0`,
         )}
       >
         {React.Children.map(
