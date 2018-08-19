@@ -6,7 +6,8 @@
     "type": "git",
     "url": "git+https://github.com/emortlock/tailwind-react.git"
   },
-  "main": "./dist",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.js",
   "scripts": {
     "build": "rimraf dist && npm run build:es && npm run build:cjs",
     "build:cjs": "cross-env MODULE_FORMAT=cjs rollup -c",
@@ -65,6 +66,7 @@
     "classnames": "^2.2.6",
     "lodash.get": "^4.4.2",
     "lodash.includes": "^4.3.0",
+    "lodash.merge": "^4.6.1",
     "lodash.uniqueid": "^4.0.1",
     "prop-types": "^15.6.2",
     "react-transition-group": "^2.4.0"
