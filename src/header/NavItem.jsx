@@ -7,8 +7,6 @@ import { withConfig } from '../config'
 const NavItem = ({ config, is, children, className, ...rest }) => {
   const Component = is
 
-  console.log(Component)
-
   return (
     <Component
       {...rest}
