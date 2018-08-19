@@ -1,21 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavMenu renders matching snapshot 1`] = `
-<Transition
-  appear={false}
-  enter={true}
-  exit={true}
-  in={true}
-  mountOnEnter={false}
-  onEnter={[Function]}
-  onEntered={[Function]}
-  onEntering={[Function]}
-  onExit={[Function]}
-  onExited={[Function]}
-  onExiting={[Function]}
-  timeout={0}
-  unmountOnExit={false}
+<nav
+  aria-label="main navigation"
+  className="overflow-hidden w-full flex-grow lg:flex lg:items-center lg:w-auto"
+  style={
+    Object {
+      "maxHeight": "100vh",
+      "transition": "max-height 500ms",
+    }
+  }
 >
-  <Component />
-</Transition>
+  <ul
+    className="list-reset flex-grow lg:flex mb-2 lg:mb-0"
+  >
+    <li
+      key=".0"
+    >
+      <WithConfig(NavItem)>
+        About
+      </WithConfig(NavItem)>
+    </li>
+    <li
+      key=".1"
+    >
+      <WithConfig(NavItem)>
+        Blog
+      </WithConfig(NavItem)>
+    </li>
+  </ul>
+  <button
+    key=".2"
+    type="button"
+  >
+    Download
+  </button>
+</nav>
 `;
