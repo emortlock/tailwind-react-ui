@@ -17,6 +17,22 @@ To install the npm package run the following within your project.
 npm i @eddm/tailwind-react
 ```
 
+#### Webpack Alias
+
+In order to simplify your import calls it would be worthwhile making use of the `alias` functionality in Webpack to avoid needing to use the scope within your component files:
+
+You can do this by adding the following to your `webpack.config.js`
+
+```js static
+{
+  resolve: {
+    alias: {
+      'tailwind-react': '@eddm/tailwind-react'
+    }
+  }
+}
+```
+
 ### Usage
 
 Once installed you can import the components and use them as you would any other.
