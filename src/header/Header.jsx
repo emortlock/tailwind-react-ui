@@ -12,9 +12,29 @@ class Header extends React.Component {
 
     this.state = {
       open: false,
+      collapsable: true,
     }
 
+    this.mql = null
+
+    this.handleMatch = this.handleMatch.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
+  }
+
+  componentDidMount() {
+    const { config } = this.props
+    if (window.matchMedia) {
+      this.mql = window.matchMedia(`(min-width: ${config.breakpoints.lg})`)
+      this.mql.addListener(this.handleMatch)
+
+      if (this.mql.matches) {
+        this.handleMatch(this.mql)
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.mql) this.mql.removeListener(this.onMatch)
   }
 
   handleToggle(forceState) {
@@ -25,14 +45,19 @@ class Header extends React.Component {
     })
   }
 
+  handleMatch(mql) {
+    this.setState({ collapsable: !mql.matches })
+  }
+
   render() {
-    const { open } = this.state
+    const { open, collapsable } = this.state
     const { config, is, children, className, ...rest } = this.props
 
     const Component = is
 
     const headerProps = {
       open,
+      collapsable,
       onToggle: this.handleToggle,
     }
 

@@ -4,7 +4,7 @@ exports[`Header renders matching snapshot 1`] = `
 <header
   className="bg-blue py-6"
 >
-  <Component
+  <WithConfig(Container)
     className="flex items-center justify-between flex-wrap"
     max="md"
     padding={true}
@@ -12,12 +12,13 @@ exports[`Header renders matching snapshot 1`] = `
     <Component
       header={
         Object {
+          "collapsable": true,
           "onToggle": [Function],
           "open": false,
         }
       }
       key=".0"
     />
-  </Component>
+  </WithConfig(Container)>
 </header>
 `;

@@ -3,7 +3,13 @@
 exports[`NavMenu renders matching snapshot 1`] = `
 <nav
   aria-label="main navigation"
-  className="block w-full flex-grow lg:flex lg:items-center lg:w-auto"
+  className="overflow-hidden w-full flex-grow lg:flex lg:items-center lg:w-auto"
+  style={
+    Object {
+      "maxHeight": "100vh",
+      "transition": "max-height 500ms",
+    }
+  }
 >
   <ul
     className="list-reset flex-grow lg:flex mb-2 lg:mb-0"
@@ -11,16 +17,16 @@ exports[`NavMenu renders matching snapshot 1`] = `
     <li
       key=".0"
     >
-      <Component>
+      <WithConfig(NavItem)>
         About
-      </Component>
+      </WithConfig(NavItem)>
     </li>
     <li
       key=".1"
     >
-      <Component>
+      <WithConfig(NavItem)>
         Blog
-      </Component>
+      </WithConfig(NavItem)>
     </li>
   </ul>
   <button
