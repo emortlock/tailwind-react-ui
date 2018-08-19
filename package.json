@@ -17,7 +17,8 @@
     "start": "styleguidist server",
     "test": "cross-env BABEL_ENV=test jest",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "prepublish": "npm run build"
   },
   "engines": {
     "node": "^8.11.3",
