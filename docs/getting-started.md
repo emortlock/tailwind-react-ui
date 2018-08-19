@@ -31,6 +31,10 @@ You can do this by adding the following to your `webpack.config.js`
 }
 ```
 
+Note that this may also require changes to your eslint `import/resolver` & jest `moduleNameMapper` settings values depending on your set up.
+
+If you'd prefer not to do this step, be sure to change any import calls taken from the docs so they follow `import { } from '@eddm/tailwind-react'` when applying them to your project.
+
 ### Usage
 
 Once installed you can import the components and use them as you would any other.
