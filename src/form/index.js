@@ -1,3 +1,5 @@
+export { default as ErrorText } from './ErrorText'
 export { default as Field } from './Field'
+export { default as HelpText } from './HelpText'
 export { default as Label } from './Label'
 export { default as TextInput } from './TextInput'

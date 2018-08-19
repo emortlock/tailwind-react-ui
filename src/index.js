@@ -1,9 +1,9 @@
 export * from './button'
 export * from './card'
 export * from './container'
+export * from './form'
 export * from './grid'
 export * from './header'
-export * from './input'
 export * from './typography'
 
 export * from './utils'

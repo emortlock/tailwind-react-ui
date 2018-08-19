@@ -6,21 +6,24 @@ import { defaultConfig } from '../../config'
 
 import Label from '../Label'
 import TextInput from '../TextInput'
-import InfoText from '../../typography/InfoText'
-import DangerText from '../../typography/DangerText'
+import HelpText from '../HelpText'
+import ErrorText from '../ErrorText'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign({ config: defaultConfig }, testProps)
+  const props = Object.assign(
+    { config: defaultConfig, hasError: true, hasHelp: true },
+    testProps,
+  )
 
   const wrapper = shallow(
     <Field {...props}>
       <Label>Password</Label>
-      <InfoText>
+      <HelpText>
         Your password must be 8-20 characters long, contain letters and numbers,
         and must not contain spaces, special characters, or emoji.
-      </InfoText>
+      </HelpText>
       <TextInput name="password" type="password" />
-      <DangerText alert>Please complete</DangerText>
+      <ErrorText alert>Please complete</ErrorText>
     </Field>,
   )
 
