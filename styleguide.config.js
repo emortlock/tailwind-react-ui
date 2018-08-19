@@ -1,4 +1,7 @@
+const { version } = require('./package.json')
+
 module.exports = {
+  title: `Tailwind React v${version}`,
   sections: [
     {
       name: 'Documentation',
