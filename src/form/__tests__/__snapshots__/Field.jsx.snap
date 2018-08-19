@@ -5,34 +5,61 @@ exports[`Field renders matching snapshot 1`] = `
   className="max-w-sm mb-4"
 >
   <Component
-    disabled={false}
-    htmlFor="field-1"
-    invalid={true}
+    field={
+      Object {
+        "disabled": false,
+        "errorId": "field-error-3",
+        "helpId": "field-info-2",
+        "inputId": "field-1",
+        "invalid": true,
+      }
+    }
     key=".0"
   >
     Password
   </Component>
-  <Component
-    id="field-info-2"
+  <HelpText
+    field={
+      Object {
+        "disabled": false,
+        "errorId": "field-error-3",
+        "helpId": "field-info-2",
+        "inputId": "field-1",
+        "invalid": true,
+      }
+    }
     key=".1"
   >
     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-  </Component>
+  </HelpText>
   <Component
-    aria-describedby="field-error-3 field-info-2"
-    disabled={false}
-    id="field-1"
-    invalid={true}
+    field={
+      Object {
+        "disabled": false,
+        "errorId": "field-error-3",
+        "helpId": "field-info-2",
+        "inputId": "field-1",
+        "invalid": true,
+      }
+    }
     key=".2"
     name="password"
     type="password"
   />
-  <Component
+  <ErrorText
     alert={true}
-    id="field-error-3"
+    field={
+      Object {
+        "disabled": false,
+        "errorId": "field-error-3",
+        "helpId": "field-info-2",
+        "inputId": "field-1",
+        "invalid": true,
+      }
+    }
     key=".3"
   >
     Please complete
-  </Component>
+  </ErrorText>
 </div>
 `;
