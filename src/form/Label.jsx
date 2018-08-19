@@ -9,10 +9,10 @@ import { filterProps } from '../utils'
 const Label = ({
   config,
   is,
+  field: { inputId, disabled },
   children,
   className,
   htmlFor,
-  disabled,
   ...rest
 }) => {
   const Component = is
@@ -26,7 +26,7 @@ const Label = ({
         className,
         disabled && 'opacity-50',
       )}
-      htmlFor={htmlFor}
+      htmlFor={inputId || htmlFor}
     >
       {children}
     </Component>
@@ -36,17 +36,23 @@ const Label = ({
 Label.propTypes = {
   config: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+  field: PropTypes.shape({
+    inputId: PropTypes.string,
+    disabled: PropTypes.bool,
+  }),
   children: PropTypes.node,
   className: PropTypes.string,
-  htmlFor: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
+  htmlFor: PropTypes.string,
 }
 
 Label.defaultProps = {
   is: 'label',
+  field: {
+    disabled: false,
+  },
   children: undefined,
   className: undefined,
-  disabled: false,
+  htmlFor: undefined,
 }
 
 export { Label as component }

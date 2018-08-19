@@ -7,6 +7,7 @@ import { withConfig } from '../config'
 const TextInput = ({
   config,
   is,
+  field,
   children,
   className,
   id,
@@ -18,6 +19,7 @@ const TextInput = ({
   ...rest
 }) => {
   const Component = is
+  const describedBy = [field.errorId, field.helpId].filter(by => by)
 
   return (
     <Component
@@ -33,12 +35,13 @@ const TextInput = ({
         invalid && `border-${config.baseColors.danger}`,
         className,
       )}
-      id={id || name}
+      id={field.inputId || id || name}
       name={name}
       type={type}
-      disabled={disabled}
+      disabled={field.disabled || disabled}
       readOnly={readOnly}
-      aria-invalid={invalid}
+      aria-invalid={field.invalid || invalid}
+      aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
     />
   )
 }
@@ -46,6 +49,11 @@ const TextInput = ({
 TextInput.propTypes = {
   config: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+  field: PropTypes.shape({
+    inputId: PropTypes.string,
+    invalid: PropTypes.bool,
+    disabled: PropTypes.bool,
+  }),
   children: PropTypes.node,
   className: PropTypes.string,
   id: PropTypes.string,
@@ -58,6 +66,7 @@ TextInput.propTypes = {
 
 TextInput.defaultProps = {
   is: 'input',
+  field: {},
   children: undefined,
   className: undefined,
   id: undefined,

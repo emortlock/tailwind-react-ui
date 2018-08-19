@@ -3,12 +3,12 @@
 Example:
 
 ```jsx
-<Field>
+<Field hasHelp>
   <Label>Password</Label>
-  <InfoText>
+  <HelpText>
     Your password must be 8-20 characters long, contain letters and numbers, and
     must not contain spaces, special characters, or emoji.
-  </InfoText>
+  </HelpText>
   <TextInput name="password" type="password" />
 </Field>
 ```
@@ -16,18 +16,18 @@ Example:
 Disabled example:
 
 ```jsx
-<Field>
+<Field disabled>
   <Label>Username</Label>
-  <TextInput name="disabled" placeholder="Username" disabled />
+  <TextInput name="disabled" placeholder="Username" />
 </Field>
 ```
 
 Validation error example:
 
 ```jsx
-<Field>
+<Field hasError>
   <Label>Username</Label>
-  <TextInput name="invalid" placeholder="Username2" />
-  <DangerText alert>Please complete</DangerText>
+  <TextInput name="invalid" placeholder="Username" />
+  <ErrorText alert>Please complete</ErrorText>
 </Field>
 ```
