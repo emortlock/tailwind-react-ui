@@ -52,21 +52,25 @@ jobs:
 
       - persist_to_workspace:
           root: ./
-          paths:
-            - styleguide
-            - node_modules
+          paths: .
 
-  deploy:
+  deploy-and-publish:
     <<: *defaults
     steps:
-      - checkout
-
       - attach_workspace:
           at: ./
 
       - run:
           name: Deploy to GitHub
           command: npm run docs:deploy
+
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
+
+      - run:
+          name: Publish package
+          command: npm publish
 
   greenkeeperUpdateLockFile:
     <<: *defaults
@@ -99,14 +103,19 @@ workflows:
 
   build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
       - greenkeeperUpdateLockFile:
           filters:
             branches:
               only: /^greenkeeper\/.*/
-      - deploy:
+      - deploy-and-publish:
           requires:
             - build
           filters:
+            tags:
+              only: /^v.*/
             branches:
-              only: master
+              ignore: /.*/

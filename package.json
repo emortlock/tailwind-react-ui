@@ -1,6 +1,6 @@
 {
   "name": "@eddm/tailwind-react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React components for use with the Tailwind CSS framework",
   "repository": {
     "type": "git",
