@@ -4,11 +4,18 @@ module.exports = {
   title: `Tailwind React v${version}`,
   sections: [
     {
+      content: 'README.md',
+    },
+    {
       name: 'Documentation',
       sections: [
         {
-          name: 'Getting Started',
-          content: 'docs/getting-started.md',
+          name: 'Installation',
+          content: 'docs/installation.md',
+        },
+        {
+          name: 'Usage',
+          content: 'docs/usage.md',
         },
         {
           name: 'Theming',
