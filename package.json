@@ -113,5 +113,10 @@
     "webpack": "^4.16.5"
   },
   "author": "Ed Mortlock",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "tailwindcss",
+    "react",
+    "react-component"
+  ]
 }
