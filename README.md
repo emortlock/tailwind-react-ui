@@ -1,6 +1,6 @@
 # Tailwind React Component Library
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/emortlock/tailwind-react.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/emortlock/tailwind-react.svg?style=svg)](https://circleci.com/gh/emortlock/tailwind-react) [![Greenkeeper badge](https://badges.greenkeeper.io/emortlock/tailwind-react.svg)](https://greenkeeper.io/)
 
 Tailwind React provides ready built components that make use of the [Tailwind CSS](https://tailwindcss.com/) framework.
 
