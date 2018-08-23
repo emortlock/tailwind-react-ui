@@ -2,7 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropToClassName,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 import Container from '../container/Container'
 
@@ -22,9 +29,9 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    const { config } = this.props
+    const { theme } = this.props
     if (window.matchMedia) {
-      this.mql = window.matchMedia(`(min-width: ${config.breakpoints.lg})`)
+      this.mql = window.matchMedia(`(min-width: ${theme.breakpoints.lg})`)
       this.mql.addListener(this.handleMatch)
 
       if (this.mql.matches) {
@@ -34,7 +41,7 @@ class Header extends React.Component {
   }
 
   componentWillUnmount() {
-    if (this.mql) this.mql.removeListener(this.onMatch)
+    if (this.mql) this.mql.removeListener(this.handleMatch)
   }
 
   handleToggle(forceState) {
@@ -51,11 +58,12 @@ class Header extends React.Component {
 
   render() {
     const { open, collapsable } = this.state
-    const { config, is, children, className, ...rest } = this.props
+    const { theme, is, children, className, bg, text, ...rest } = this.props
 
     const Component = is
 
     const headerProps = {
+      style: { bg, text },
       open,
       collapsable,
       onToggle: this.handleToggle,
@@ -63,9 +71,11 @@ class Header extends React.Component {
 
     return (
       <Component
-        {...rest}
+        {...filterProps(rest, tailwindProps)}
         className={classnames(
-          `bg-${config.baseColors.primary}`,
+          getTailwindClassNames(rest),
+          tailwindPropToClassName('bg', bg),
+          tailwindPropToClassName('text', text),
           'py-6',
           className,
         )}
@@ -84,10 +94,11 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
+  ...tailwindPropTypes,
 }
 
 Header.defaultProps = {
@@ -97,4 +108,4 @@ Header.defaultProps = {
 }
 
 export { Header as component }
-export default withConfig(Header)
+export default withTheme(Header)

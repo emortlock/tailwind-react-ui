@@ -4,7 +4,7 @@ exports[`Field renders matching snapshot 1`] = `
 <div
   className="max-w-sm mb-4"
 >
-  <WithConfig(Label)
+  <WithTheme(Label)
     field={
       Object {
         "disabled": false,
@@ -17,7 +17,7 @@ exports[`Field renders matching snapshot 1`] = `
     key=".0"
   >
     Password
-  </WithConfig(Label)>
+  </WithTheme(Label)>
   <HelpText
     field={
       Object {
@@ -32,7 +32,7 @@ exports[`Field renders matching snapshot 1`] = `
   >
     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
   </HelpText>
-  <WithConfig(TextInput)
+  <WithTheme(TextInput)
     field={
       Object {
         "disabled": false,

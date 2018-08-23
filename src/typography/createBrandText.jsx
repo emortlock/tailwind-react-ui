@@ -2,31 +2,31 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
 
 import Text from './Text'
 
 export default type => {
-  const BrandText = ({ config, className, alert, ...rest }) => (
+  const BrandText = ({ theme, className, alert, ...rest }) => (
     <Text
       {...rest}
       brand
       className={classnames(
-        config.radius,
+        theme.radius,
         alert && [
-          `bg-${config.baseColors[type]}`,
-          `px-${config.spacing.md} py-${config.spacing.sm}`,
-          `text-${config.textColors.on[type]}`,
+          `bg-${theme.baseColors[type]}`,
+          `px-${theme.spacing.md} py-${theme.spacing.sm}`,
+          `text-${theme.textColors.on[type]}`,
         ],
-        !alert && [`text-${config.baseColors[`${type}Dark`]}`],
-        `mb-${config.spacing.sm}`,
+        !alert && [`text-${theme.baseColors[`${type}Dark`]}`],
+        `mb-${theme.spacing.sm}`,
         className,
       )}
     />
   )
 
   BrandText.propTypes = {
-    config: PropTypes.shape({}).isRequired,
+    theme: PropTypes.shape({}).isRequired,
     is: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.func,
@@ -48,5 +48,5 @@ export default type => {
     1,
   )}Text`
 
-  return withConfig(BrandText)
+  return withTheme(BrandText)
 }

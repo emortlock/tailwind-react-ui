@@ -2,10 +2,10 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { component as Header } from '../Header'
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign({ config: defaultConfig }, testProps)
+  const props = Object.assign({ theme: defaultTheme }, testProps)
 
   const wrapper = shallow(<Header {...props}>Content</Header>)
 
@@ -17,7 +17,7 @@ const setup = (testProps = {}) => {
 
 describe('Header', () => {
   it('renders matching snapshot', () => {
-    const { wrapper } = setup()
+    const { wrapper } = setup({ bg: 'blue', text: 'white' })
 
     expect(wrapper).toMatchSnapshot()
   })

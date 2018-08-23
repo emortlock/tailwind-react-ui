@@ -2,6 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
+
 const getSizeClassNames = size => {
   if (typeof size === 'object') {
     return Object.keys(size).map(
@@ -17,11 +24,12 @@ const getSizeClassNames = size => {
 
 const Col = ({ is, children, className, size, ...rest }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
 
   return (
     <Component
-      {...rest}
-      className={classnames(getSizeClassNames(size), className)}
+      {...filterProps(rest, tailwindProps)}
+      className={classnames(getSizeClassNames(size), userClassNames)}
     >
       {children}
     </Component>
@@ -33,6 +41,7 @@ Col.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  ...tailwindPropTypes,
 }
 
 Col.defaultProps = {

@@ -1,5 +1,5 @@
 import merge from 'lodash.merge'
-import defaultConfig from './defaultConfig'
+import defaultTheme from './defaultTheme'
 
 const mapObject = (obj, prefix) =>
   Object.keys(obj).map(key => `${prefix}-${obj[key]}`)
@@ -15,12 +15,12 @@ const reduceMultiplePrefixes = (obj, prefixes) =>
     [],
   )
 
-export default (projectConfig = {}) => {
-  const config = merge(defaultConfig, projectConfig)
+export default (projectTheme = {}) => {
+  const theme = merge(defaultTheme, projectTheme)
 
   return [
-    config.radius,
-    ...reduceMultiplePrefixes(config.spacing, [
+    theme.radius,
+    ...reduceMultiplePrefixes(theme.spacing, [
       'mb',
       'mr',
       '-ml',
@@ -30,16 +30,16 @@ export default (projectConfig = {}) => {
       'px-',
       'py-',
     ]),
-    ...mapObject(config.container, 'max-w'),
-    ...mapArray(config.text.size.body, 'text'),
-    ...mapArray(config.text.size.title, 'text'),
-    ...mapObject(config.text.family, 'font'),
-    ...reduceMultiplePrefixes(config.baseColors, [
+    ...mapObject(theme.container, 'max-w'),
+    ...mapArray(theme.text.size.body, 'text'),
+    ...mapArray(theme.text.size.title, 'text'),
+    ...mapObject(theme.text.family, 'font'),
+    ...reduceMultiplePrefixes(theme.baseColors, [
       'background-color',
       'border-color',
       'text',
     ]),
-    ...reduceMultiplePrefixes(config.textColors, [
+    ...reduceMultiplePrefixes(theme.textColors, [
       'background-color',
       'border-color',
       'text',

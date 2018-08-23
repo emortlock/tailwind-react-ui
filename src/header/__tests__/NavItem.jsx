@@ -2,10 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { component as NavItem } from '../NavItem'
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign({ config: defaultConfig }, testProps)
+  const props = Object.assign(
+    { theme: defaultTheme, header: { style: { bg: 'blue', text: 'white' } } },
+    testProps,
+  )
 
   const wrapper = shallow(<NavItem {...props}>Link</NavItem>)
 

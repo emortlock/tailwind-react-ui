@@ -17,16 +17,30 @@ exports[`NavMenu renders matching snapshot 1`] = `
     <li
       key=".0"
     >
-      <WithConfig(NavItem)>
+      <WithTheme(NavItem)
+        header={
+          Object {
+            "collapsable": true,
+            "open": true,
+          }
+        }
+      >
         About
-      </WithConfig(NavItem)>
+      </WithTheme(NavItem)>
     </li>
     <li
       key=".1"
     >
-      <WithConfig(NavItem)>
+      <WithTheme(NavItem)
+        header={
+          Object {
+            "collapsable": true,
+            "open": true,
+          }
+        }
+      >
         Blog
-      </WithConfig(NavItem)>
+      </WithTheme(NavItem)>
     </li>
   </ul>
   <button

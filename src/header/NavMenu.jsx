@@ -2,18 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
 import { withTransition } from '../utils'
 
 import NavItem from './NavItem'
 
 const NavMenu = ({
-  config,
+  theme,
   transition,
   is,
   children,
   className,
-  header: { collapsable },
+  header,
   ...rest
 }) => {
   const Component = is
@@ -29,11 +29,11 @@ const NavMenu = ({
       className={classnames(
         'overflow-hidden',
         'w-full flex-grow lg:flex lg:items-center lg:w-auto',
-        !collapsable && 'h-12',
+        !header.collapsable && 'h-12',
         className,
       )}
       style={
-        collapsable
+        header.collapsable
           ? {
               transition: 'max-height 500ms',
               maxHeight: '0',
@@ -46,12 +46,15 @@ const NavMenu = ({
       <ul
         className={classnames(
           'list-reset flex-grow lg:flex',
-          `mb-${config.spacing.sm} lg:mb-0`,
+          `mb-${theme.spacing.sm} lg:mb-0`,
         )}
       >
         {React.Children.map(
           children,
-          child => child.type === NavItem && <li>{child}</li>,
+          child =>
+            child.type === NavItem && (
+              <li>{React.cloneElement(child, { header })}</li>
+            ),
         )}
       </ul>
       {React.Children.map(children, child => child.type !== NavItem && child)}
@@ -60,7 +63,7 @@ const NavMenu = ({
 }
 
 NavMenu.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   transition: PropTypes.string.isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
@@ -78,4 +81,4 @@ NavMenu.defaultProps = {
 }
 
 export { NavMenu as component }
-export default withConfig(withTransition(NavMenu, { inState: 'header.open' }))
+export default withTheme(withTransition(NavMenu, { inState: 'header.open' }))

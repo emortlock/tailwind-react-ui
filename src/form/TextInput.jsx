@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 const TextInput = ({
-  config,
+  theme,
   is,
   field,
   children,
@@ -19,21 +25,23 @@ const TextInput = ({
   ...rest
 }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
+
   const describedBy = [field.errorId, field.helpId].filter(by => by)
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       className={classnames(
-        config.radius,
-        config.textColors.body,
-        `px-${config.spacing.md} py-${config.spacing.sm}`,
-        `mb-${config.spacing.sm}`,
+        theme.radius,
+        theme.textColors.body,
+        `px-${theme.spacing.md} py-${theme.spacing.sm}`,
+        `mb-${theme.spacing.sm}`,
         'appearance-none border w-full leading-tight',
         'focus:outline-none focus:shadow-outline',
         (readOnly || disabled) && 'opacity-50 pointer-events-none',
-        invalid && `border-${config.baseColors.danger}`,
-        className,
+        invalid && `border-${theme.baseColors.danger}`,
+        userClassNames,
       )}
       id={field.inputId || id || name}
       name={name}
@@ -47,7 +55,7 @@ const TextInput = ({
 }
 
 TextInput.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   field: PropTypes.shape({
     inputId: PropTypes.string,
@@ -62,6 +70,7 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   invalid: PropTypes.bool,
+  ...tailwindPropTypes,
 }
 
 TextInput.defaultProps = {
@@ -77,4 +86,4 @@ TextInput.defaultProps = {
 }
 
 export { TextInput as component }
-export default withConfig(TextInput)
+export default withTheme(TextInput)

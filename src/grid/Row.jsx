@@ -2,27 +2,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
-const Row = ({ is, children, className, nowrap, gutter, config, ...rest }) => {
+const Row = ({ is, children, className, nowrap, gutter, theme, ...rest }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       className={classnames(
         'flex',
         !nowrap && 'flex-wrap',
         gutter &&
           (gutter === true
-            ? `-ml-${config.spacing.md}`
-            : `-ml-${config.spacing[gutter]}`),
+            ? `-ml-${theme.spacing.md}`
+            : `-ml-${theme.spacing[gutter]}`),
         !nowrap &&
           gutter &&
           (gutter === true
-            ? `-mb-${config.spacing.md}`
-            : `-mb-${config.spacing[gutter]}`),
-        className,
+            ? `-mb-${theme.spacing.md}`
+            : `-mb-${theme.spacing[gutter]}`),
+        userClassNames,
       )}
     >
       {gutter
@@ -30,12 +37,12 @@ const Row = ({ is, children, className, nowrap, gutter, config, ...rest }) => {
             React.cloneElement(child, {
               className: classnames(
                 gutter === true
-                  ? `pl-${config.spacing.md}`
-                  : `pl-${config.spacing[gutter]}`,
+                  ? `pl-${theme.spacing.md}`
+                  : `pl-${theme.spacing[gutter]}`,
                 !nowrap &&
                   (gutter === true
-                    ? `mb-${config.spacing.md}`
-                    : `mb-${config.spacing[gutter]}`),
+                    ? `mb-${theme.spacing.md}`
+                    : `mb-${theme.spacing[gutter]}`),
               ),
             }),
           )
@@ -45,12 +52,13 @@ const Row = ({ is, children, className, nowrap, gutter, config, ...rest }) => {
 }
 
 Row.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
   nowrap: PropTypes.bool,
   gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  ...tailwindPropTypes,
 }
 
 Row.defaultProps = {
@@ -62,4 +70,4 @@ Row.defaultProps = {
 }
 
 export { Row as component }
-export default withConfig(Row)
+export default withTheme(Row)

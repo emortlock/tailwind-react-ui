@@ -2,37 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme, useThemeValue } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
-const Card = ({ children, className, border, shadow, config, ...rest }) => (
-  <div
-    {...rest}
-    className={classnames(
-      'overflow-hidden',
-      border && 'border',
-      shadow && (typeof shadow === 'string' ? `shadow-${shadow}` : 'shadow'),
-      config.radius,
-      className,
-    )}
-  >
-    {children}
-  </div>
-)
+const Card = ({ is, children, className, theme, ...rest }) => {
+  const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
+
+  return (
+    <Component
+      {...filterProps(rest, tailwindProps)}
+      className={classnames(
+        'overflow-hidden',
+        useThemeValue('rounded', theme.radius, userClassNames),
+        userClassNames,
+      )}
+    >
+      {children}
+    </Component>
+  )
+}
 
 Card.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
+  theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
-  border: PropTypes.bool,
-  shadow: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  ...tailwindPropTypes,
 }
 
 Card.defaultProps = {
+  is: 'div',
   children: undefined,
   className: undefined,
-  border: false,
-  shadow: false,
 }
 
 export { Card as component }
-export default withConfig(Card)
+export default withTheme(Card)

@@ -3,14 +3,14 @@ import { shallow } from 'enzyme'
 
 import { component as NavMenu } from '../NavMenu'
 import NavItem from '../NavItem'
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
   const props = Object.assign(
     {
       header: { open: true, collapsable: true },
       transition: 'entered',
-      config: defaultConfig,
+      theme: defaultTheme,
     },
     testProps,
   )

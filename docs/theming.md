@@ -19,12 +19,12 @@ const MyApp = () => (
 
 Which would change the default blue colouring on the button to instead use the `.bg-red` class.
 
-### Default config
+### Default theme
 
-Obviously there's a fair bit more customisation on offer than just a button colour, but by using the `TailwindConfigProvider` wrapper around the React context provider you can override as much or as little as you need.
+Obviously there's a fair bit more customisation on offer than just a button colour, but by using the `TailwindThemeProvider` wrapper around the React context provider you can override as much or as little as you need.
 
 See below for the default values used by components:
 
 ```js noeditor
-<pre>{JSON.stringify(defaultConfig, null, 1)}</pre>
+<pre>{JSON.stringify(defaultTheme, null, 1)}</pre>
 ```

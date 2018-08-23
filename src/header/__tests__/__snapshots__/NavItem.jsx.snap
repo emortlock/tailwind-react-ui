@@ -2,7 +2,7 @@
 
 exports[`NavItem renders matching snapshot 1`] = `
 <is
-  className="text-white hover:bg-white hover:text-blue p-2 rounded block lg:inline-block mt-2 lg:mt-0 no-underline"
+  className="text-white hover:bg-white hover:text-blue px-4 py-2 rounded block mt-2 no-underline lg:inline-block lg:mt-0 lg:mr-2"
 >
   Link
 </is>

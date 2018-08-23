@@ -1,8 +1,8 @@
 Example:
 
 ```jsx
-<Header>
-  <NavBrand>
+<Header bg="blue" text="white">
+  <NavBrand font="semibold" text="xl">
     <svg
       className="fill-current h-8 w-8 mr-2"
       width="54"
@@ -12,16 +12,16 @@ Example:
     >
       <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
     </svg>
-    <span className="inline-block font-semibold text-xl">Tailwind React</span>
+    <span className="inline-block">Tailwind React</span>
   </NavBrand>
   <NavToggle />
   <NavMenu>
     <NavItem is={props => <a {...props} href="#header" />}>Docs</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Examples</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Blog</NavItem>
-    <Button fill color="success">
+    <OutlineButton border="white" text="white" text-hover="blue">
       Download
-    </Button>
+    </OutlineButton>
   </NavMenu>
 </Header>
 ```

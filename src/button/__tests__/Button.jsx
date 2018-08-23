@@ -3,10 +3,10 @@ import { shallow } from 'enzyme'
 
 import { component as Button } from '../Button'
 
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign({ config: defaultConfig }, testProps)
+  const props = Object.assign({ theme: defaultTheme }, testProps)
 
   const wrapper = shallow(<Button {...props}>Submit</Button>)
 
@@ -18,7 +18,11 @@ const setup = (testProps = {}) => {
 
 describe('Button', () => {
   it('renders matching snapshot', () => {
-    const { wrapper } = setup({ fill: true })
+    const { wrapper } = setup({
+      buttonStyle: 'fill',
+      bg: 'blue',
+      text: 'white',
+    })
 
     expect(wrapper).toMatchSnapshot()
   })

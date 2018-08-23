@@ -2,11 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { component as TextInput } from '../TextInput'
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
   const props = Object.assign(
-    { config: defaultConfig, name: 'username' },
+    { theme: defaultTheme, name: 'username' },
     testProps,
   )
 

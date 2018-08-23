@@ -2,26 +2,38 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme, useThemeValue } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropToClassName,
+  tailwindPropTypes,
+  getColorHighlight,
+  getBaseColor,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 const Button = ({
-  config,
+  theme,
   is,
   children,
   className,
   color,
   type,
-  fill,
-  outline,
-  text,
-  link,
+  buttonStyle,
   disabled,
   large,
   small,
   fullWidth,
+  bg,
+  text,
+  border,
   ...rest
 }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
+
+  const isLink = buttonStyle === 'link'
   let props = {}
 
   if (is !== 'button') {
@@ -36,44 +48,51 @@ const Button = ({
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       {...props}
       className={classnames(
-        !link &&
+        !isLink &&
           !large &&
-          !small &&
-          `px-${config.spacing.md} py-${config.spacing.sm}`,
-        !link && large && `px-${config.spacing.lg} py-${config.spacing.md}`,
-        !link && small && `px-${config.spacing.sm} py-${config.spacing.sm / 2}`,
-        config.radius,
+          !small && [
+            useThemeValue('px', theme.spacing.md, userClassNames),
+            useThemeValue('py', theme.spacing.sm, userClassNames),
+          ],
+        !isLink &&
+          large && [
+            useThemeValue('px', theme.spacing.lg, userClassNames),
+            useThemeValue('py', theme.spacing.md, userClassNames),
+          ],
+        !isLink &&
+          small && [
+            useThemeValue('px', theme.spacing.sm, userClassNames),
+            useThemeValue('py', theme.spacing.sm / 2, userClassNames),
+          ],
+        useThemeValue('rounded', theme.radius, userClassNames),
         'border border-transparent select-none',
-        `text-${config.textColors.emphasis}`,
-        fill && [
-          `bg-${config.baseColors[color]}`,
-          `text-${config.textColors.on[color]}`,
-          `hover:bg-${config.baseColors[`${color}Dark`]}`,
-          `hover:text-${config.textColors.on[`${color}Dark`]}`,
+        buttonStyle === 'fill' && [
+          tailwindPropToClassName('bg', bg),
+          tailwindPropToClassName('text', text),
+          tailwindPropToClassName('hover:bg', getColorHighlight(bg)),
         ],
-        outline && [
-          `border-${config.baseColors[color]}`,
-          `text-${config.baseColors[color]}`,
-          `hover:bg-${config.baseColors[`${color}`]}`,
-          `hover:text-${config.textColors.on[`${color}`]}`,
+        buttonStyle === 'outline' && [
+          tailwindPropToClassName('border', border),
+          tailwindPropToClassName('text', border),
+          tailwindPropToClassName('hover:bg', border),
+          tailwindPropToClassName('hover:text', text),
         ],
-        text && [
-          `text-${config.baseColors[color]}`,
-          `hover:bg-${config.baseColors[`${color}Light`]}`,
-          `hover:text-${config.textColors.on[`${color}Light`]}`,
+        buttonStyle === 'text' && [
+          tailwindPropToClassName('text', text),
+          tailwindPropToClassName('hover:bg', `${getBaseColor(text)}-lightest`),
         ],
-        link && [
+        isLink && [
           'p-0 underline',
-          `text-${config.baseColors[color]}`,
-          `hover:text-${config.baseColors[`${color}Dark`]}`,
+          `text-${text}`,
+          `hover:text-${getColorHighlight(text)}`,
         ],
         disabled && 'opacity-50 pointer-events-none',
         fullWidth && 'w-full',
-        !link && 'leading-tight',
-        className,
+        !isLink && 'leading-tight',
+        userClassNames,
       )}
       aria-disabled={disabled || undefined}
     >
@@ -82,20 +101,18 @@ const Button = ({
   )
 }
 Button.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
   color: PropTypes.string,
   type: PropTypes.string,
-  fill: PropTypes.bool,
-  outline: PropTypes.bool,
-  text: PropTypes.bool,
-  link: PropTypes.bool,
+  buttonStyle: PropTypes.oneOf(['fill', 'outline', 'text', 'link']),
   disabled: PropTypes.bool,
   large: PropTypes.bool,
   small: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  ...tailwindPropTypes,
 }
 
 Button.defaultProps = {
@@ -104,10 +121,7 @@ Button.defaultProps = {
   className: undefined,
   color: 'primary',
   type: 'button',
-  fill: false,
-  outline: false,
-  text: false,
-  link: false,
+  buttonStyle: 'fill',
   disabled: false,
   large: false,
   small: false,
@@ -115,4 +129,4 @@ Button.defaultProps = {
 }
 
 export { Button as component }
-export default withConfig(Button)
+export default withTheme(Button)

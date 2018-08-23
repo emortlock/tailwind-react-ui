@@ -2,11 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
-import getUniqueID from '../utils/getUniqueID'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps, getUniqueID } from '../utils'
 
 const Field = ({
-  config,
+  theme,
   is,
   children,
   className,
@@ -16,6 +21,7 @@ const Field = ({
   ...rest
 }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
 
   const fieldProps = {
     inputId: getUniqueID('field-'),
@@ -27,8 +33,12 @@ const Field = ({
 
   return (
     <Component
-      {...rest}
-      className={classnames('max-w-sm', `mb-${config.spacing.md}`, className)}
+      {...filterProps(rest, tailwindProps)}
+      className={classnames(
+        'max-w-sm',
+        `mb-${theme.spacing.md}`,
+        userClassNames,
+      )}
     >
       {React.Children.map(children, child =>
         React.cloneElement(child, { field: fieldProps }),
@@ -38,13 +48,14 @@ const Field = ({
 }
 
 Field.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
   hasHelp: PropTypes.bool,
   hasError: PropTypes.bool,
   disabled: PropTypes.bool,
+  ...tailwindPropTypes,
 }
 
 Field.defaultProps = {
@@ -57,4 +68,4 @@ Field.defaultProps = {
 }
 
 export { Field as component }
-export default withConfig(Field)
+export default withTheme(Field)
