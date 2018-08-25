@@ -2,7 +2,7 @@
 import tailwindPropToClassName from './tailwindPropToClassName'
 import tailwindProps, { variants as tailwindVariants } from './tailwindProps'
 
-const getTailwindClassNames = (props, { ignore = [] } = {}) =>
+export default (props, { ignore = [] } = {}) =>
   !!props &&
   Object.keys(props).reduce((twClasses, key) => {
     if (ignore.includes(key)) return twClasses
@@ -22,5 +22,3 @@ const getTailwindClassNames = (props, { ignore = [] } = {}) =>
 
     return [...twClasses, tailwindPropToClassName(type, props[key])]
   }, [])
-
-export default getTailwindClassNames
