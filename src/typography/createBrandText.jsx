@@ -1,29 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
+import { getColorShade } from '../tailwind'
 import { withTheme } from '../theme'
 
 import Text from './Text'
 
 export default type => {
-  const BrandText = ({ theme, className, alert, ...rest }) => (
-    <Text
-      {...rest}
-      brand
-      className={classnames(
-        theme.radius,
-        alert && [
-          `bg-${theme.baseColors[type]}`,
-          `px-${theme.spacing.md} py-${theme.spacing.sm}`,
-          `text-${theme.textColors.on[type]}`,
-        ],
-        !alert && [`text-${theme.baseColors[`${type}Dark`]}`],
-        `mb-${theme.spacing.sm}`,
-        className,
-      )}
-    />
-  )
+  const BrandText = ({ theme, textOnly, ...rest }) => {
+    const alertProps = !textOnly
+      ? {
+          bg: getColorShade(theme.brandColors[type], 'lightest'),
+          border: [`l-${theme.accentSize}`, theme.brandColors[type]],
+          p: { x: theme.spacing.md, y: theme.spacing.sm },
+          text: theme.textColors.body,
+          rounded: 'r',
+        }
+      : {}
+
+    return (
+      <Text
+        {...rest}
+        brand
+        rounded={theme.radius}
+        text={getColorShade(theme.brandColors[type], 1)}
+        m={{ b: theme.spacing.sm }}
+        {...alertProps}
+      />
+    )
+  }
 
   BrandText.propTypes = {
     theme: PropTypes.shape({}).isRequired,
@@ -32,16 +37,14 @@ export default type => {
       PropTypes.func,
       PropTypes.object,
     ]),
-    className: PropTypes.string,
     size: PropTypes.number,
-    alert: PropTypes.bool,
+    textOnly: PropTypes.bool,
   }
 
   BrandText.defaultProps = {
     is: 'p',
-    className: undefined,
     size: 1,
-    alert: false,
+    textOnly: false,
   }
 
   BrandText.displayName = `${type.charAt(0).toUpperCase()}${type.substring(
