@@ -2,7 +2,7 @@ import React from 'react'
 import { Transition } from 'react-transition-group'
 import get from 'lodash.get'
 
-const withConfig = (Component, { inState, ...rest }) => {
+const withTheme = (Component, { inState, ...rest }) => {
   const WithTransition = componentProps => (
     <Transition in={get(componentProps, inState)} timeout={0} {...rest}>
       {state => <Component {...componentProps} transition={state} />}
@@ -14,4 +14,4 @@ const withConfig = (Component, { inState, ...rest }) => {
   return WithTransition
 }
 
-export default withConfig
+export default withTheme

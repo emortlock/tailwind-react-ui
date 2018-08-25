@@ -2,11 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { component as NavToggle } from '../NavToggle'
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
   const props = Object.assign(
-    { header: { onToggle: jest.fn() }, config: defaultConfig },
+    {
+      header: { onToggle: jest.fn(), style: { text: 'white' } },
+      theme: defaultTheme,
+    },
     testProps,
   )
 

@@ -6,5 +6,6 @@ export * from './grid'
 export * from './header'
 export * from './typography'
 
+export * from './tailwind'
+export * from './theme'
 export * from './utils'
-export * from './config'

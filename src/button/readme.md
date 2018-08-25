@@ -1,54 +1,103 @@
 Fill button:
 
 ```jsx
-<Button fill>Primary</Button>
-<Button fill color="secondary">Secondary</Button>
-<Button fill color="danger">Danger</Button>
-<Button fill color="warning">Warning</Button>
-<Button fill color="info">Info</Button>
+<ul className="list-reset flex justify-around">
+  <li>
+    <FillButton brand="primary">Primary</FillButton>
+  </li>
+  <li>
+    <FillButton brand="secondary">Secondary</FillButton>
+  </li>
+  <li>
+    <FillButton brand="danger">Danger</FillButton>
+  </li>
+  <li>
+    <FillButton brand="warning">Warning</FillButton>
+  </li>
+  <li>
+    <FillButton brand="info">Info</FillButton>
+  </li>
+  <li>
+    <FillButton bg="purple" text="white">
+      Custom
+    </FillButton>
+  </li>
+</ul>
 ```
 
 Outline button:
 
 ```jsx
-<Button outline>Primary</Button>
-<Button outline color="secondary">Secondary</Button>
-<Button outline color="danger">Danger</Button>
-<Button outline color="warning">Warning</Button>
-<Button outline color="info">Info</Button>
+<ul className="list-reset flex justify-around">
+  <li>
+    <OutlineButton brand="primary">Primary</OutlineButton>
+  </li>
+  <li>
+    <OutlineButton brand="secondary">Secondary</OutlineButton>
+  </li>
+  <li>
+    <OutlineButton brand="danger">Danger</OutlineButton>
+  </li>
+  <li>
+    <OutlineButton brand="warning">Warning</OutlineButton>
+  </li>
+  <li>
+    <OutlineButton brand="info">Info</OutlineButton>
+  </li>
+  <li>
+    <OutlineButton border="purple" text="white">
+      Custom
+    </OutlineButton>
+  </li>
+</ul>
 ```
 
 Text button:
 
 ```jsx
-<Button text>Primary</Button>
-<Button text color="secondary">Secondary</Button>
-<Button text color="danger">Danger</Button>
-<Button text color="warning">Warning</Button>
-<Button text color="info">Info</Button>
+<ul className="list-reset flex justify-around">
+  <li>
+    <TextButton brand="primary">Primary</TextButton>
+  </li>
+  <li>
+    <TextButton brand="secondary">Secondary</TextButton>
+  </li>
+  <li>
+    <TextButton brand="danger">Danger</TextButton>
+  </li>
+  <li>
+    <TextButton brand="warning">Warning</TextButton>
+  </li>
+  <li>
+    <TextButton brand="info">Info</TextButton>
+  </li>
+  <li>
+    <TextButton text="purple">Custom</TextButton>
+  </li>
+</ul>
 ```
 
 Link button:
 
 ```jsx
-<Button link>Primary</Button>
-<Button link color="secondary">Secondary</Button>
-<Button link color="danger">Danger</Button>
-<Button link color="warning">Warning</Button>
-<Button link color="info">Info</Button>
-```
-
-Sizes:
-
-```jsx
-<Button large fill>Large</Button>
-<Button small fill>Small</Button>
-```
-
-Full width:
-
-```jsx
-<Button fill fullWidth>
-  Full width
-</Button>
+<ul className="list-reset flex justify-around">
+  <li>
+    <LinkButton brand="primary">Primary</LinkButton>
+  </li>
+  <li>
+    <LinkButton brand="secondary">Secondary</LinkButton>
+  </li>
+  <li>
+    <LinkButton brand="danger">Danger</LinkButton>
+  </li>
+  <li>
+    <LinkButton brand="warning">Warning</LinkButton>
+  </li>
+  <li>
+    <LinkButton brand="info">Info</LinkButton>
+  </li>
+  <li>
+    <LinkButton text="purple">Custom</LinkButton>
+  </li>
+</ul>
 ```

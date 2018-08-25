@@ -2,22 +2,37 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropToClassName,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
-const NavItem = ({ config, is, children, className, ...rest }) => {
+const NavItem = ({
+  theme,
+  is,
+  children,
+  className,
+  header: { style },
+  text,
+  ...rest
+}) => {
   const Component = is
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       className={classnames(
-        `text-${config.textColors.on.primary}`,
-        `hover:bg-${config.textColors.on.primary} hover:text-${
-          config.baseColors.primary
-        }`,
-        `p-${config.spacing.sm}`,
-        config.radius,
-        'block lg:inline-block mt-2 lg:mt-0 no-underline',
+        getTailwindClassNames(...rest),
+        text ? tailwindPropToClassName('text', text) : `text-${style.text}`,
+        `hover:bg-${style.text} hover:text-${style.bg}`,
+        `px-${theme.spacing.md} py-${theme.spacing.sm}`,
+        theme.radius,
+        'block mt-2 no-underline',
+        `lg:inline-block lg:mt-0 lg:mr-${theme.spacing.sm}`,
         className,
       )}
     >
@@ -27,17 +42,22 @@ const NavItem = ({ config, is, children, className, ...rest }) => {
 }
 
 NavItem.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
+  header: PropTypes.shape({
+    style: PropTypes.object.isRequired,
+  }),
+  ...tailwindPropTypes,
 }
 
 NavItem.defaultProps = {
   is: 'a',
   children: undefined,
   className: undefined,
+  header: {},
 }
 
 export { NavItem as component }
-export default withConfig(NavItem)
+export default withTheme(NavItem)

@@ -28,6 +28,6 @@ Validation error example:
 <Field hasError>
   <Label>Username</Label>
   <TextInput name="invalid" placeholder="Username" />
-  <ErrorText alert>Please complete</ErrorText>
+  <ErrorText>Please enter a valid username</ErrorText>
 </Field>
 ```

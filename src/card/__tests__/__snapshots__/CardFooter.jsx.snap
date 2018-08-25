@@ -4,6 +4,9 @@ exports[`CardFooter renders matching snapshot 1`] = `
 <div
   className="flex flex-row-reverse items-end"
 >
-  Hello World!
+  <Component
+    className="rounded-none"
+    key=".0"
+  />
 </div>
 `;

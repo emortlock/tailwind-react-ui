@@ -11,7 +11,7 @@ Simple card:
 Full example:
 
 ```jsx
-<Card border shadow>
+<Card border shadow-hover>
   <img
     className="block"
     src="https://placekitten.com/1280/960"
@@ -19,10 +19,12 @@ Full example:
   />
   <CardBody>Hello World</CardBody>
   <CardFooter>
-    <button className="px-4 py-2 bg-blue text-white border border-transparent">
+    <FillButton bg="blue" text="white">
       Read
-    </button>
-    <button className="px-4 py-2 border border-blue text-blue">Bookmark</button>
+    </FillButton>
+    <OutlineButton border="blue" text="white">
+      Bookmark
+    </OutlineButton>
   </CardFooter>
 </Card>
 ```

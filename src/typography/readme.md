@@ -31,7 +31,7 @@ Standard inline body copy:
 Lead text as a `<p />` element:
 
 ```jsx
-<Text p lead>
+<Text is="p" lead>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -44,7 +44,7 @@ Lead text as a `<p />` element:
 Inline font styles:
 
 ```jsx
-<Text p>
+<Text is="p">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua.{' '}
   <Text bold>Ut enim ad minim veniam</Text>, quis nostrud exercitation ullamco
@@ -62,15 +62,23 @@ Brand colour variants of `<Text />`
 Info:
 
 ```jsx
-<InfoText p>Simple info text</InfoText>
-
 <InfoText alert>Simple info text</InfoText>
+
+<InfoText is="p" textOnly>Simple info text</InfoText>
+```
+
+Warning
+
+```jsx
+<WarningText>Simple warning text</WarningText>
+
+<WarningText textOnly>Simple warning text</WarningText>
 ```
 
 Danger
 
 ```jsx
-<DangerText p>Simple danger text</DangerText>
+<DangerText>Simple danger text</DangerText>
 
-<DangerText alert>Simple danger text</DangerText>
+<DangerText textOnly>Simple danger text</DangerText>
 ```

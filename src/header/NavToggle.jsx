@@ -2,20 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropToClassName,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 const NavToggle = ({
-  config,
+  theme,
   is,
   children,
   className,
   onClick,
-  header: { onToggle },
+  border,
+  header: { onToggle, style },
   ...rest
 }) => {
   const Component = is
   const barsClassNames = classnames(
-    `border-${config.textColors.on.primary}`,
+    getTailwindClassNames(rest),
+    border ? tailwindPropToClassName('border', border) : `border-${style.text}`,
     'border-b inline-block',
   )
 
@@ -26,9 +35,10 @@ const NavToggle = ({
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       className={classnames('w-12 h-12 block lg:hidden', className)}
       onClick={handleClick}
+      aria-label="Open menu"
     >
       {children || (
         <span className="flex flex-col items-stretch justify-around h-full p-3">
@@ -42,7 +52,7 @@ const NavToggle = ({
 }
 
 NavToggle.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
@@ -50,6 +60,11 @@ NavToggle.propTypes = {
     onToggle: PropTypes.func.isRequired,
   }).isRequired,
   onClick: PropTypes.func,
+  border: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+  ...tailwindPropTypes,
 }
 
 NavToggle.defaultProps = {
@@ -57,7 +72,8 @@ NavToggle.defaultProps = {
   children: undefined,
   className: undefined,
   onClick: undefined,
+  border: undefined,
 }
 
 export { NavToggle as component }
-export default withConfig(NavToggle)
+export default withTheme(NavToggle)

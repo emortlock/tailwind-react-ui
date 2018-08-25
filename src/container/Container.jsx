@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 const Container = ({
-  config,
+  theme,
   is,
   children,
   className,
@@ -15,17 +21,18 @@ const Container = ({
   ...rest
 }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       className={classnames(
         'container',
         !leftAlign && 'mx-auto',
         padding &&
-          `px-${config.spacing[typeof padding === 'string' ? padding : 'md']}`,
-        max && `max-w-${config.container[max]}`,
-        className,
+          `px-${theme.spacing[typeof padding === 'string' ? padding : 'md']}`,
+        max && `max-w-${theme.container[max]}`,
+        userClassNames,
       )}
     >
       {children}
@@ -34,13 +41,14 @@ const Container = ({
 }
 
 Container.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
   leftAlign: PropTypes.bool,
   padding: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   max: PropTypes.string,
+  ...tailwindPropTypes,
 }
 
 Container.defaultProps = {
@@ -53,4 +61,4 @@ Container.defaultProps = {
 }
 
 export { Container as component }
-export default withConfig(Container)
+export default withTheme(Container)

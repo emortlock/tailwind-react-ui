@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 const Title = ({
-  config,
+  theme,
   children,
   className,
   is,
@@ -17,6 +23,8 @@ const Title = ({
 }) => {
   const level = h || Math.max(7 - size, 1)
   const Component = is || `h${level}`
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
+
   let ariaProps = {}
 
   if (!subtitle && Component !== 'string' && !/h[1-6]/i.test(Component)) {
@@ -27,16 +35,16 @@ const Title = ({
   }
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       {...ariaProps}
       className={classnames(
-        `font-${config.text.family[subtitle ? 'subtitle' : 'title']}`,
+        `font-${theme.text.family[subtitle ? 'subtitle' : 'title']}`,
         'leading-tight',
-        `text-${config.text.size.title[size - 1]}`,
-        !subtitle && `text-${config.textColors.emphasis} font-bold`,
-        subtitle && `text-${config.textColors.body} font-medium`,
-        !flush && `mb-${config.spacing.md}`,
-        className,
+        `text-${theme.text.size.title[size - 1]}`,
+        !subtitle && `text-${theme.textColors.emphasis} font-bold`,
+        subtitle && `text-${theme.textColors.body} font-medium`,
+        !flush && `mb-${theme.spacing.md}`,
+        userClassNames,
       )}
     >
       {children}
@@ -45,7 +53,7 @@ const Title = ({
 }
 
 Title.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
@@ -53,6 +61,7 @@ Title.propTypes = {
   subtitle: PropTypes.bool,
   flush: PropTypes.bool,
   h: PropTypes.number,
+  ...tailwindPropTypes,
 }
 
 Title.defaultProps = {
@@ -66,4 +75,4 @@ Title.defaultProps = {
 }
 
 export { Title as component }
-export default withConfig(Title)
+export default withTheme(Title)

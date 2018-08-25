@@ -2,39 +2,46 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
+import { filterProps } from '../utils'
 
 const Text = ({
-  config,
+  theme,
   children,
   className,
   is,
   size,
-  p,
   lead,
   bold,
   italic,
   brand,
+  paragraph,
   ...rest
 }) => {
-  const Component = is === 'span' && p ? 'p' : is
+  const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
+
+  const isParagraph = is === 'p' || paragraph
 
   return (
     <Component
-      {...rest}
+      {...filterProps(rest, tailwindProps)}
       className={classnames(
         'leading-normal',
-        `font-${config.text.family.body}`,
+        `font-${theme.text.family.body}`,
         `text-${
-          config.text.size.body[
-            (lead ? config.text.size.body.length : size) - 1
-          ]
+          theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1]
         }`,
-        !brand && `text-${config.textColors.body}`,
-        p && `mb-${config.spacing.md}`,
+        !brand && `text-${theme.textColors.body}`,
+        isParagraph && `mb-${theme.spacing.md}`,
         bold && 'font-bold',
         italic && 'italic',
-        className,
+        userClassNames,
       )}
     >
       {children}
@@ -43,16 +50,17 @@ const Text = ({
 }
 
 Text.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   size: PropTypes.number,
-  p: PropTypes.bool,
   lead: PropTypes.bool,
   bold: PropTypes.bool,
   italic: PropTypes.bool,
   brand: PropTypes.bool,
+  paragraph: PropTypes.bool,
+  ...tailwindPropTypes,
 }
 
 Text.defaultProps = {
@@ -60,7 +68,7 @@ Text.defaultProps = {
   className: undefined,
   is: 'span',
   size: 2,
-  p: false,
+  paragraph: false,
   lead: false,
   bold: false,
   italic: false,
@@ -68,4 +76,4 @@ Text.defaultProps = {
 }
 
 export { Text as component }
-export default withConfig(Text)
+export default withTheme(Text)

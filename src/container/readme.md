@@ -4,6 +4,6 @@ Example:
 
 ```jsx
 <Container padding>
-  <div className="bg-grey p-4 h-12" />
+  <Card bg="grey" h={12} />
 </Container>
 ```

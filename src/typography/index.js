@@ -4,3 +4,4 @@ export { default as Title } from './Title'
 
 export { default as DangerText } from './DangerText'
 export { default as InfoText } from './InfoText'
+export { default as WarningText } from './WarningText'

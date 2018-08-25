@@ -1,52 +1,55 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
-import { withConfig } from '../config'
+import { getColorShade } from '../tailwind'
+import { withTheme } from '../theme'
 
 import Text from './Text'
 
 export default type => {
-  const BrandText = ({ config, className, alert, ...rest }) => (
-    <Text
-      {...rest}
-      brand
-      className={classnames(
-        config.radius,
-        alert && [
-          `bg-${config.baseColors[type]}`,
-          `px-${config.spacing.md} py-${config.spacing.sm}`,
-          `text-${config.textColors.on[type]}`,
-        ],
-        !alert && [`text-${config.baseColors[`${type}Dark`]}`],
-        `mb-${config.spacing.sm}`,
-        className,
-      )}
-    />
-  )
+  const BrandText = ({ theme, textOnly, ...rest }) => {
+    const alertProps = !textOnly
+      ? {
+          bg: getColorShade(theme.brandColors[type], 'lightest'),
+          border: [`l-${theme.accentSize}`, theme.brandColors[type]],
+          p: { x: theme.spacing.md, y: theme.spacing.sm },
+          text: theme.textColors.body,
+          rounded: 'r',
+        }
+      : {}
+
+    return (
+      <Text
+        {...rest}
+        brand
+        rounded={theme.radius}
+        text={getColorShade(theme.brandColors[type], 1)}
+        m={{ b: theme.spacing.sm }}
+        {...alertProps}
+      />
+    )
+  }
 
   BrandText.propTypes = {
-    config: PropTypes.shape({}).isRequired,
+    theme: PropTypes.shape({}).isRequired,
     is: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.func,
       PropTypes.object,
     ]),
-    className: PropTypes.string,
     size: PropTypes.number,
-    alert: PropTypes.bool,
+    textOnly: PropTypes.bool,
   }
 
   BrandText.defaultProps = {
     is: 'p',
-    className: undefined,
     size: 1,
-    alert: false,
+    textOnly: false,
   }
 
   BrandText.displayName = `${type.charAt(0).toUpperCase()}${type.substring(
     1,
   )}Text`
 
-  return withConfig(BrandText)
+  return withTheme(BrandText)
 }

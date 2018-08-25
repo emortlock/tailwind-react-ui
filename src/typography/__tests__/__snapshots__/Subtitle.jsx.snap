@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Subtitle renders matching snapshot 1`] = `
-<WithConfig(Title)
+<WithTheme(Title)
   size={3}
   subtitle={true}
 >
   Subtitle
-</WithConfig(Title)>
+</WithTheme(Title)>
 `;

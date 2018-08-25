@@ -2,12 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { withConfig } from '../config'
-
+import { withTheme } from '../theme'
+import {
+  getTailwindClassNames,
+  tailwindProps,
+  tailwindPropTypes,
+} from '../tailwind'
 import { filterProps } from '../utils'
 
 const Label = ({
-  config,
+  theme,
   is,
   field: { inputId, disabled },
   children,
@@ -16,15 +20,16 @@ const Label = ({
   ...rest
 }) => {
   const Component = is
+  const userClassNames = classnames(getTailwindClassNames(rest), className)
 
   return (
     <Component
-      {...filterProps(rest, ['invalid'])}
+      {...filterProps(rest, [...tailwindProps, 'invalid'])}
       className={classnames(
-        `mb-${config.spacing.sm}`,
+        `mb-${theme.spacing.sm}`,
         'inline-block',
-        className,
         disabled && 'opacity-50',
+        userClassNames,
       )}
       htmlFor={inputId || htmlFor}
     >
@@ -34,7 +39,7 @@ const Label = ({
 }
 
 Label.propTypes = {
-  config: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   field: PropTypes.shape({
     inputId: PropTypes.string,
@@ -43,6 +48,7 @@ Label.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   htmlFor: PropTypes.string,
+  ...tailwindPropTypes,
 }
 
 Label.defaultProps = {
@@ -56,4 +62,4 @@ Label.defaultProps = {
 }
 
 export { Label as component }
-export default withConfig(Label)
+export default withTheme(Label)

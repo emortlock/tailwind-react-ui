@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { component as Field } from '../Field'
-import { defaultConfig } from '../../config'
+import { defaultTheme } from '../../theme'
 
 import Label from '../Label'
 import TextInput from '../TextInput'
@@ -11,7 +11,7 @@ import ErrorText from '../ErrorText'
 
 const setup = (testProps = {}) => {
   const props = Object.assign(
-    { config: defaultConfig, hasError: true, hasHelp: true },
+    { theme: defaultTheme, hasError: true, hasHelp: true },
     testProps,
   )
 
