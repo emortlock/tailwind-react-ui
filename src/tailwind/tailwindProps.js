@@ -1,21 +1,36 @@
 /* eslint-disable react/destructuring-assignment */
+/* TODO:
+ *   .truncate
+ *   .inline-flex
+ *   style & decoration
+ *   shape option for rounded?
+ *   min/max support for height/width
+ */
 export const propDetails = {
+  align: {},
   bg: {},
-  text: {},
+  border: { allowBool: true },
+  break: {},
+  content: {},
+  flex: { allowBool: true },
   font: {},
-  border: {
-    allowBool: true,
-  },
-  shadow: {
-    allowBool: true,
-  },
-  rounded: {
-    allowBool: true,
-  },
-  p: { allowNumber: true, spacing: true },
+  h: { allowNumber: true },
+  items: {},
+  justify: {},
+  leading: {},
   m: { allowNumber: true, spacing: true },
   nm: { allowNumber: true, spacing: true },
-  h: { allowNumber: true },
+  opacity: { allowNumber: true },
+  p: { allowNumber: true, spacing: true },
+  resize: { allowBool: true },
+  rounded: { allowBool: true },
+  select: {},
+  self: {},
+  shadow: { allowBool: true },
+  text: {},
+  tracking: {},
+  w: { allowNumber: true },
+  whitespace: {},
 }
 
 export const variants = ['hover']
