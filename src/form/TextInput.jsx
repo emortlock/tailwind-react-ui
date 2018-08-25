@@ -40,7 +40,7 @@ const TextInput = ({
         'appearance-none border w-full leading-tight',
         'focus:outline-none focus:shadow-outline',
         (readOnly || disabled) && 'opacity-50 pointer-events-none',
-        invalid && `border-${theme.baseColors.danger}`,
+        invalid && `border-${theme.brandColors.danger}`,
         userClassNames,
       )}
       id={field.inputId || id || name}
