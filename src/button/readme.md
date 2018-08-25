@@ -3,28 +3,23 @@ Fill button:
 ```jsx
 <ul className="list-reset flex justify-around">
   <li>
-    <FillButton bg="blue" text="white">
-      Primary
-    </FillButton>
+    <FillButton brand="primary">Primary</FillButton>
   </li>
   <li>
-    <FillButton bg="grey-dark" text="white">
-      Secondary
-    </FillButton>
+    <FillButton brand="secondary">Secondary</FillButton>
   </li>
   <li>
-    <FillButton bg="red" text="white">
-      Danger
-    </FillButton>
+    <FillButton brand="danger">Danger</FillButton>
   </li>
   <li>
-    <FillButton bg="orange-light" text="black">
-      Warning
-    </FillButton>
+    <FillButton brand="warning">Warning</FillButton>
   </li>
   <li>
-    <FillButton bg="teal-light" text="black">
-      Info
+    <FillButton brand="info">Info</FillButton>
+  </li>
+  <li>
+    <FillButton bg="purple" text="white">
+      Custom
     </FillButton>
   </li>
 </ul>
@@ -35,28 +30,23 @@ Outline button:
 ```jsx
 <ul className="list-reset flex justify-around">
   <li>
-    <OutlineButton border="blue" text="white">
-      Primary
-    </OutlineButton>
+    <OutlineButton brand="primary">Primary</OutlineButton>
   </li>
   <li>
-    <OutlineButton border="grey-dark" text="white">
-      Secondary
-    </OutlineButton>
+    <OutlineButton brand="secondary">Secondary</OutlineButton>
   </li>
   <li>
-    <OutlineButton border="red" text="white">
-      Danger
-    </OutlineButton>
+    <OutlineButton brand="danger">Danger</OutlineButton>
   </li>
   <li>
-    <OutlineButton border="orange-light" text="black">
-      Warning
-    </OutlineButton>
+    <OutlineButton brand="warning">Warning</OutlineButton>
   </li>
   <li>
-    <OutlineButton border="teal-light" text="black">
-      Info
+    <OutlineButton brand="info">Info</OutlineButton>
+  </li>
+  <li>
+    <OutlineButton border="purple" text="white">
+      Custom
     </OutlineButton>
   </li>
 </ul>
@@ -67,19 +57,22 @@ Text button:
 ```jsx
 <ul className="list-reset flex justify-around">
   <li>
-    <TextButton text="blue">Primary</TextButton>
+    <TextButton brand="primary">Primary</TextButton>
   </li>
   <li>
-    <TextButton text="grey-dark">Secondary</TextButton>
+    <TextButton brand="secondary">Secondary</TextButton>
   </li>
   <li>
-    <TextButton text="red">Danger</TextButton>
+    <TextButton brand="danger">Danger</TextButton>
   </li>
   <li>
-    <TextButton text="orange-light">Warning</TextButton>
+    <TextButton brand="warning">Warning</TextButton>
   </li>
   <li>
-    <TextButton text="teal-light">Info</TextButton>
+    <TextButton brand="info">Info</TextButton>
+  </li>
+  <li>
+    <TextButton text="purple">Custom</TextButton>
   </li>
 </ul>
 ```
@@ -89,19 +82,22 @@ Link button:
 ```jsx
 <ul className="list-reset flex justify-around">
   <li>
-    <LinkButton text="blue">Primary</LinkButton>
+    <LinkButton brand="primary">Primary</LinkButton>
   </li>
   <li>
-    <LinkButton text="grey-dark">Secondary</LinkButton>
+    <LinkButton brand="secondary">Secondary</LinkButton>
   </li>
   <li>
-    <LinkButton text="red">Danger</LinkButton>
+    <LinkButton brand="danger">Danger</LinkButton>
   </li>
   <li>
-    <LinkButton text="orange-light">Warning</LinkButton>
+    <LinkButton brand="warning">Warning</LinkButton>
   </li>
   <li>
-    <LinkButton text="teal-light">Info</LinkButton>
+    <LinkButton brand="info">Info</LinkButton>
+  </li>
+  <li>
+    <LinkButton text="purple">Custom</LinkButton>
   </li>
 </ul>
 ```

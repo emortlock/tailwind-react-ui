@@ -8,8 +8,7 @@ import {
   tailwindProps,
   tailwindPropToClassName,
   tailwindPropTypes,
-  getColorHighlight,
-  getBaseColor,
+  getColorShade,
 } from '../tailwind'
 import { filterProps } from '../utils'
 
@@ -28,6 +27,7 @@ const Button = ({
   bg,
   text,
   border,
+  brand,
   ...rest
 }) => {
   const Component = is
@@ -70,24 +70,57 @@ const Button = ({
         useThemeValue('rounded', theme.radius, userClassNames),
         'border border-transparent select-none',
         buttonStyle === 'fill' && [
-          tailwindPropToClassName('bg', bg),
-          tailwindPropToClassName('text', text),
-          tailwindPropToClassName('hover:bg', getColorHighlight(bg)),
+          tailwindPropToClassName('bg', brand ? theme.brandColors[brand] : bg),
+          tailwindPropToClassName(
+            'text',
+            brand ? theme.textColors.on[brand] : text,
+          ),
+          tailwindPropToClassName(
+            'hover:bg',
+            getColorShade(
+              brand ? theme.brandColors[brand] : bg,
+              theme.highlightOffset,
+            ),
+          ),
         ],
         buttonStyle === 'outline' && [
-          tailwindPropToClassName('border', border),
-          tailwindPropToClassName('text', border),
-          tailwindPropToClassName('hover:bg', border),
-          tailwindPropToClassName('hover:text', text),
+          tailwindPropToClassName(
+            'border',
+            brand ? theme.brandColors[brand] : border,
+          ),
+          tailwindPropToClassName(
+            'text',
+            brand ? theme.brandColors[brand] : border,
+          ),
+          tailwindPropToClassName(
+            'hover:bg',
+            brand ? theme.brandColors[brand] : border,
+          ),
+          tailwindPropToClassName(
+            'hover:text',
+            brand ? theme.textColors.on[brand] : text,
+          ),
         ],
         buttonStyle === 'text' && [
-          tailwindPropToClassName('text', text),
-          tailwindPropToClassName('hover:bg', `${getBaseColor(text)}-lightest`),
+          tailwindPropToClassName(
+            'text',
+            brand ? theme.brandColors[brand] : text,
+          ),
+          tailwindPropToClassName(
+            'hover:bg',
+            `${getColorShade(
+              brand ? theme.brandColors[brand] : text,
+              'lightest',
+            )}`,
+          ),
         ],
         isLink && [
           'p-0 underline',
-          `text-${text}`,
-          `hover:text-${getColorHighlight(text)}`,
+          `text-${brand ? theme.brandColors[brand] : text}`,
+          `hover:text-${getColorShade(
+            brand ? theme.brandColors[brand] : text,
+            theme.highlightOffset,
+          )}`,
         ],
         disabled && 'opacity-50 pointer-events-none',
         fullWidth && 'w-full',
@@ -112,6 +145,7 @@ Button.propTypes = {
   large: PropTypes.bool,
   small: PropTypes.bool,
   fullWidth: PropTypes.bool,
+  brand: PropTypes.string,
   ...tailwindPropTypes,
 }
 
@@ -126,6 +160,7 @@ Button.defaultProps = {
   large: false,
   small: false,
   fullWidth: false,
+  brand: undefined,
 }
 
 export { Button as component }
