@@ -63,7 +63,10 @@ class Header extends React.Component {
     const Component = is
 
     const headerProps = {
-      style: { bg, text },
+      style: {
+        bg: bg || theme.brandColors.primary,
+        text: text || theme.textColors.on.primary,
+      },
       open,
       collapsable,
       onToggle: this.handleToggle,
@@ -74,8 +77,8 @@ class Header extends React.Component {
         {...filterProps(rest, tailwindProps)}
         className={classnames(
           getTailwindClassNames(rest),
-          tailwindPropToClassName('bg', bg),
-          tailwindPropToClassName('text', text),
+          tailwindPropToClassName('bg', headerProps.style.bg),
+          tailwindPropToClassName('text', headerProps.style.text),
           'py-6',
           className,
         )}
