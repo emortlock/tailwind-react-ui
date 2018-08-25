@@ -12,9 +12,9 @@ export const propDetails = {
   rounded: {
     allowBool: true,
   },
-  p: { allowNumber: true },
-  m: { allowNumber: true },
-  nm: { allowNumber: true },
+  p: { allowNumber: true, spacing: true },
+  m: { allowNumber: true, spacing: true },
+  nm: { allowNumber: true, spacing: true },
   h: { allowNumber: true },
 }
 

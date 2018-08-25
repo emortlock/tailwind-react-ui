@@ -2,32 +2,41 @@ import PropTypes from 'prop-types'
 
 import tailwindProps, { propDetails } from './tailwindProps'
 
-const isBoolValid = prop => {
+const getPropInfo = prop => {
   const propInfo =
     prop.indexOf('-') === -1
       ? propDetails[prop]
       : propDetails[prop.substring(0, prop.indexOf('-'))]
 
-  return propInfo && propInfo.allowBool
+  return propInfo
 }
 
-const isNumberValid = prop => {
-  const propInfo =
-    prop.indexOf('-') === -1
-      ? propDetails[prop]
-      : propDetails[prop.substring(0, prop.indexOf('-'))]
-
-  return propInfo && propInfo.allowNumber
-}
+const spacingObjectPropType = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number,
+])
+const spacingObjectKeys = ['t', 'r', 'b', 'l', 'x', 'y']
 
 export default tailwindProps.reduce((propTypes, prop) => {
-  const allowBool = isBoolValid(prop)
-  const allowNumber = isNumberValid(prop)
+  const propInfo = getPropInfo(prop)
+
+  if (!propInfo) return propTypes
 
   const validPropTypes = [PropTypes.string]
-  if (!allowNumber) validPropTypes.push(PropTypes.arrayOf(PropTypes.string))
-  if (allowBool) validPropTypes.push(PropTypes.bool)
-  if (allowNumber) validPropTypes.push(PropTypes.number)
+  if (!propInfo.allowNumber)
+    validPropTypes.push(PropTypes.arrayOf(PropTypes.string))
+  if (propInfo.allowBool) validPropTypes.push(PropTypes.bool)
+  if (propInfo.allowNumber) validPropTypes.push(PropTypes.number)
+  if (propInfo.spacing) {
+    validPropTypes.push(
+      PropTypes.shape(
+        spacingObjectKeys.reduce(
+          (shape, key) => ({ ...shape, [key]: spacingObjectPropType }),
+          {},
+        ),
+      ),
+    )
+  }
 
   return {
     ...propTypes,
