@@ -34,7 +34,7 @@ export default (projectTheme = {}) => {
     ...mapArray(theme.text.size.body, 'text'),
     ...mapArray(theme.text.size.title, 'text'),
     ...mapObject(theme.text.family, 'font'),
-    ...reduceMultiplePrefixes(theme.baseColors, [
+    ...reduceMultiplePrefixes(theme.brandColors, [
       'background-color',
       'border-color',
       'text',
