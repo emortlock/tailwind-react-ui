@@ -13,7 +13,14 @@ const BaseComponent = ({ is, children, className, ...rest }) => {
   return (
     <Component
       {...filterProps(rest, tailwindProps)}
-      className={classnames(getTailwindClassNames(rest), className)}
+      className={classnames(
+        getTailwindClassNames({
+          'outline-focus': 'none',
+          'shadow-focus': 'outline',
+          ...rest,
+        }),
+        className,
+      )}
     >
       {children}
     </Component>

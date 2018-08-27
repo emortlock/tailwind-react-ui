@@ -39,7 +39,7 @@ const Button = ({
     case 'fill':
       props.bg = brand ? theme.brandColors[brand] : bg
       props.text = brand ? theme.textColors.on[brand] : text
-      props['bg-hover'] = getColorShade(
+      props['bg-hocus'] = getColorShade(
         brand ? theme.brandColors[brand] : bg,
         theme.highlightOffset,
       )
@@ -48,22 +48,23 @@ const Button = ({
       // eslint-disable-next-line react/prop-types
       props.border.push(brand ? theme.brandColors[brand] : border)
       props.text = brand ? theme.brandColors[brand] : border
-      props['bg-hover'] = brand ? theme.brandColors[brand] : border
-      props['text-hover'] = brand ? theme.textColors.on[brand] : text
+      props['bg-hocus'] = brand ? theme.brandColors[brand] : border
+      props['text-hocus'] = brand ? theme.textColors.on[brand] : text
       break
     case 'text':
       props.text = brand ? theme.brandColors[brand] : text
-      props['bg-hover'] = `${getColorShade(
+      props['bg-hocus'] = `${getColorShade(
         brand ? theme.brandColors[brand] : text,
         'lightest',
       )}`
       break
     case 'link':
-      props.leading = undefined
+      props.rounded = undefined
+      props.leading = 'normal'
       props.p = 0
       props.underline = true
       props.text = brand ? theme.brandColors[brand] : text
-      props['text-hover'] = getColorShade(
+      props['text-hocus'] = getColorShade(
         brand ? theme.brandColors[brand] : text,
         theme.highlightOffset,
       )

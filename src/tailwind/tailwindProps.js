@@ -71,7 +71,7 @@ export const propTypes = {
   whitespace: PropTypes.string,
 }
 
-export const variants = ['hover', 'focus', 'sm', 'md', 'lg', 'xl']
+export const variants = ['hover', 'focus', 'hocus', 'sm', 'md', 'lg', 'xl']
 
 export default [
   ...Object.keys(propTypes),
