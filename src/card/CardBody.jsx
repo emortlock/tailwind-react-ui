@@ -21,4 +21,5 @@ CardBody.defaultProps = {
   children: undefined,
 }
 
+export { CardBody as component }
 export default withTheme(CardBody)

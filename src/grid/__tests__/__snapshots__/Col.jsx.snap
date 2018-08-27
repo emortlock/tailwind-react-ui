@@ -1,9 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Col renders matching snapshot 1`] = `
-<div
-  className="w-full sm:w-1/2 md:w-1/4"
+<BaseComponent
+  is="div"
+  size={
+    Object {
+      "def": "full",
+      "md": "1/4",
+      "sm": "1/2",
+    }
+  }
+  w="full"
 >
   Content
-</div>
+</BaseComponent>
 `;

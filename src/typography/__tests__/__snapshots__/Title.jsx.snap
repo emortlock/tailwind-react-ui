@@ -1,9 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Title renders matching snapshot 1`] = `
-<h4
-  className="font-sans leading-tight text-2xl text-black font-bold mb-4"
+<BaseComponent
+  font={
+    Array [
+      "sans",
+      "bold",
+    ]
+  }
+  is="h4"
+  leading="tight"
+  text={
+    Array [
+      "2xl",
+      "black",
+    ]
+  }
 >
   Title
-</h4>
+</BaseComponent>
 `;

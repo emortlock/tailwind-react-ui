@@ -1,9 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Text renders matching snapshot 1`] = `
-<p
-  className="leading-normal font-sans text-base text-grey-darkest mb-4"
+<BaseComponent
+  className=""
+  font={
+    Array [
+      "sans",
+      false,
+    ]
+  }
+  is="p"
+  leading="normal"
+  m={
+    Object {
+      "b": 4,
+    }
+  }
+  text={
+    Array [
+      "base",
+      "text-grey-darkest",
+    ]
+  }
 >
   Lorem ipsum dolor sit amet
-</p>
+</BaseComponent>
 `;

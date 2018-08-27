@@ -1,8 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Field renders matching snapshot 1`] = `
-<div
-  className="max-w-sm mb-4"
+<BaseComponent
+  className="max-w-sm"
+  is="div"
+  m={
+    Object {
+      "b": 4,
+    }
+  }
 >
   <WithTheme(Label)
     field={
@@ -47,7 +53,6 @@ exports[`Field renders matching snapshot 1`] = `
     type="password"
   />
   <ErrorText
-    alert={true}
     field={
       Object {
         "disabled": false,
@@ -61,5 +66,5 @@ exports[`Field renders matching snapshot 1`] = `
   >
     Please complete
   </ErrorText>
-</div>
+</BaseComponent>
 `;

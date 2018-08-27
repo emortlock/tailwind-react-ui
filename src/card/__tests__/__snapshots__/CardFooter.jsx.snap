@@ -1,12 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardFooter renders matching snapshot 1`] = `
-<div
-  className="flex flex-row-reverse items-end"
+<BaseComponent
+  flex={
+    Array [
+      true,
+      "row-reverse",
+    ]
+  }
+  is="div"
+  items="end"
 >
   <Component
-    className="rounded-none"
     key=".0"
+    rounded="none"
   />
-</div>
+</BaseComponent>
 `;

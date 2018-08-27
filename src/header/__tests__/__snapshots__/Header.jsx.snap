@@ -1,11 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders matching snapshot 1`] = `
-<header
-  className="bg-blue text-white py-6"
+<BaseComponent
+  bg="blue"
+  is="header"
+  p={
+    Object {
+      "y": 4,
+    }
+  }
+  text="white"
 >
   <WithTheme(Container)
-    className="flex items-center justify-between flex-wrap"
+    flex={
+      Array [
+        true,
+        "wrap",
+      ]
+    }
+    items="center"
+    justify="between"
     padding={true}
   >
     <Component
@@ -23,5 +37,5 @@ exports[`Header renders matching snapshot 1`] = `
       key=".0"
     />
   </WithTheme(Container)>
-</header>
+</BaseComponent>
 `;

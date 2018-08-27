@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Label renders matching snapshot 1`] = `
-<label
-  className="mb-2 inline-block"
+<BaseComponent
+  className="inline-block"
   htmlFor="input"
+  is="div"
+  m={
+    Object {
+      "b": 2,
+    }
+  }
 >
   Username
-</label>
+</BaseComponent>
 `;
