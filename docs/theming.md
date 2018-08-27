@@ -6,7 +6,7 @@ import { TailwindThemeProvider, Button } from 'tailwind-react'
 const MyApp = () => (
   <TailwindThemeProvider
     config={{
-      baseColors: {
+      brandColors: {
         primary: 'red',
       },
     }}
