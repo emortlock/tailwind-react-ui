@@ -15,7 +15,6 @@ exports[`TextInput renders matching snapshot 1`] = `
     }
   }
   name="username"
-  outline-focus="none"
   p={
     Object {
       "x": 4,
@@ -24,7 +23,6 @@ exports[`TextInput renders matching snapshot 1`] = `
   }
   readOnly={false}
   rounded="rounded"
-  shadow-focus="outline"
   text="grey-darkest"
   type="text"
   w="full"

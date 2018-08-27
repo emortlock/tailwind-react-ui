@@ -3,7 +3,7 @@
 exports[`Button renders matching snapshot 1`] = `
 <BaseComponent
   bg="blue"
-  bg-hover="blue-dark"
+  bg-hocus="blue-dark"
   border={
     Array [
       true,

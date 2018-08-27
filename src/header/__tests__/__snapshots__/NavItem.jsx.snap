@@ -2,7 +2,7 @@
 
 exports[`NavItem renders matching snapshot 1`] = `
 <BaseComponent
-  bg-hover="white"
+  bg-hocus="white"
   className="block no-underline"
   is={[Function]}
   m={
@@ -24,7 +24,7 @@ exports[`NavItem renders matching snapshot 1`] = `
   }
   rounded="rounded"
   text="white"
-  text-hover="blue"
+  text-hocus="blue"
 >
   Link
 </BaseComponent>
