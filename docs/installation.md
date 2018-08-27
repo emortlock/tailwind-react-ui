@@ -4,6 +4,8 @@ To install the [npm package](https://www.npmjs.com/package/@eddm/tailwind-react)
 npm i @eddm/tailwind-react
 ```
 
+Note that the library doesn't provide any styling out of the box, `tailwindcss` is a peer dependency so it's necessary to also follow the instructions at https://tailwindcss.com/docs/installation.
+
 ### Webpack Alias
 
 In order to simplify your import calls it would be worthwhile making use of the `alias` functionality in Webpack to avoid needing to use the scope within your component files:

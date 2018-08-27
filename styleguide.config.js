@@ -27,7 +27,12 @@ module.exports = {
     },
     {
       name: 'Components',
+      content: 'docs/styleguide.md',
       components: ['src/**/index.js'],
+    },
+    {
+      name: 'Contributing',
+      content: 'docs/contributing.md',
     },
   ],
   skipComponentsWithoutExample: true,
