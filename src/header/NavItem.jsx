@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropToClassName,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent } from '../tailwind'
 
 const NavItem = ({
   theme,
@@ -17,29 +11,23 @@ const NavItem = ({
   children,
   className,
   header: { style },
-  text,
   ...rest
-}) => {
-  const Component = is
-
-  return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames(
-        getTailwindClassNames(...rest),
-        text ? tailwindPropToClassName('text', text) : `text-${style.text}`,
-        `hover:bg-${style.text} hover:text-${style.bg}`,
-        `px-${theme.spacing.md} py-${theme.spacing.sm}`,
-        theme.radius,
-        'block mt-2 no-underline',
-        `lg:inline-block lg:mt-0 lg:mr-${theme.spacing.sm}`,
-        className,
-      )}
-    >
-      {children}
-    </Component>
-  )
-}
+}) => (
+  <BaseComponent
+    {...rest}
+    is={is}
+    text={style.text}
+    bg-hover={style.text}
+    text-hover={style.bg}
+    p={{ x: theme.spacing.md, y: theme.spacing.sm }}
+    m={{ t: theme.spacing.sm }}
+    m-lg={{ t: 0, r: theme.spacing.sm }}
+    rounded={theme.radius}
+    className={classnames('block no-underline', className)}
+  >
+    {children}
+  </BaseComponent>
+)
 
 NavItem.propTypes = {
   theme: PropTypes.shape({}).isRequired,
@@ -49,7 +37,6 @@ NavItem.propTypes = {
   header: PropTypes.shape({
     style: PropTypes.object.isRequired,
   }),
-  ...tailwindPropTypes,
 }
 
 NavItem.defaultProps = {

@@ -1,53 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent } from '../tailwind'
 
-const Row = ({ is, children, className, nowrap, gutter, theme, ...rest }) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
+const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
+  const gutterSpacing =
+    gutter && (gutter === true ? theme.spacing.md : theme.spacing[gutter])
 
   return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames(
-        'flex',
-        !nowrap && 'flex-wrap',
-        gutter &&
-          (gutter === true
-            ? `-ml-${theme.spacing.md}`
-            : `-ml-${theme.spacing[gutter]}`),
-        !nowrap &&
-          gutter &&
-          (gutter === true
-            ? `-mb-${theme.spacing.md}`
-            : `-mb-${theme.spacing[gutter]}`),
-        userClassNames,
-      )}
+    <BaseComponent
+      {...rest}
+      is={is}
+      flex={nowrap || [true, 'wrap']}
+      nm={
+        gutter
+          ? { l: gutterSpacing, b: !nowrap ? gutterSpacing : undefined }
+          : undefined
+      }
     >
       {gutter
         ? React.Children.map(children, child =>
             React.cloneElement(child, {
-              className: classnames(
-                gutter === true
-                  ? `pl-${theme.spacing.md}`
-                  : `pl-${theme.spacing[gutter]}`,
-                !nowrap &&
-                  (gutter === true
-                    ? `mb-${theme.spacing.md}`
-                    : `mb-${theme.spacing[gutter]}`),
-              ),
+              p: { l: gutterSpacing },
+              m: { b: gutterSpacing },
             }),
           )
         : children}
-    </Component>
+    </BaseComponent>
   )
 }
 
@@ -55,16 +35,13 @@ Row.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
   nowrap: PropTypes.bool,
   gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  ...tailwindPropTypes,
 }
 
 Row.defaultProps = {
   is: 'div',
   children: undefined,
-  className: undefined,
   nowrap: false,
   gutter: false,
 }

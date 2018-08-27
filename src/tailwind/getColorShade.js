@@ -9,6 +9,9 @@ const shades = [
 ]
 
 export default (color, offset = 1) => {
+  if (!color) {
+    return false
+  }
   if (offset === 0) return color
 
   let currentColor = color === 'white' ? ['grey', 'lightest'] : color.split('-')

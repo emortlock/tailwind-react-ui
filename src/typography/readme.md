@@ -62,7 +62,7 @@ Brand colour variants of `<Text />`
 Info:
 
 ```jsx
-<InfoText alert>Simple info text</InfoText>
+<InfoText>Simple info text</InfoText>
 
 <InfoText is="p" textOnly>Simple info text</InfoText>
 ```

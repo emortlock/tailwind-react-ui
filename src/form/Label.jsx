@@ -1,13 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
+import { BaseComponent } from '../tailwind'
 import { filterProps } from '../utils'
 
 const Label = ({
@@ -18,25 +13,17 @@ const Label = ({
   className,
   htmlFor,
   ...rest
-}) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
-
-  return (
-    <Component
-      {...filterProps(rest, [...tailwindProps, 'invalid'])}
-      className={classnames(
-        `mb-${theme.spacing.sm}`,
-        'inline-block',
-        disabled && 'opacity-50',
-        userClassNames,
-      )}
-      htmlFor={inputId || htmlFor}
-    >
-      {children}
-    </Component>
-  )
-}
+}) => (
+  <BaseComponent
+    {...filterProps(rest, ['invalid'])}
+    className="inline-block"
+    htmlFor={inputId || htmlFor}
+    m={{ b: theme.spacing.sm }}
+    opacity={disabled ? 50 : undefined}
+  >
+    {children}
+  </BaseComponent>
+)
 
 Label.propTypes = {
   theme: PropTypes.shape({}).isRequired,
@@ -48,7 +35,6 @@ Label.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   htmlFor: PropTypes.string,
-  ...tailwindPropTypes,
 }
 
 Label.defaultProps = {

@@ -23,7 +23,7 @@ const setup = (testProps = {}) => {
         and must not contain spaces, special characters, or emoji.
       </HelpText>
       <TextInput name="password" type="password" />
-      <ErrorText alert>Please complete</ErrorText>
+      <ErrorText>Please complete</ErrorText>
     </Field>,
   )
 

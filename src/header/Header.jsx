@@ -1,15 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropToClassName,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent } from '../tailwind'
 
 import Container from '../container/Container'
 
@@ -58,9 +51,7 @@ class Header extends React.Component {
 
   render() {
     const { open, collapsable } = this.state
-    const { theme, is, children, className, bg, text, ...rest } = this.props
-
-    const Component = is
+    const { theme, is, children, bg, text, ...rest } = this.props
 
     const headerProps = {
       style: {
@@ -73,25 +64,24 @@ class Header extends React.Component {
     }
 
     return (
-      <Component
-        {...filterProps(rest, tailwindProps)}
-        className={classnames(
-          getTailwindClassNames(rest),
-          tailwindPropToClassName('bg', headerProps.style.bg),
-          tailwindPropToClassName('text', headerProps.style.text),
-          'py-6',
-          className,
-        )}
+      <BaseComponent
+        {...rest}
+        is={is}
+        bg={headerProps.style.bg}
+        text={headerProps.style.text}
+        p={{ y: theme.spacing.md }}
       >
         <Container
-          className="flex items-center justify-between flex-wrap"
+          flex={[true, 'wrap']}
+          items="center"
+          justify="between"
           padding
         >
           {React.Children.map(children, child =>
             React.cloneElement(child, { header: headerProps }),
           )}
         </Container>
-      </Component>
+      </BaseComponent>
     )
   }
 }
@@ -100,14 +90,15 @@ Header.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
-  ...tailwindPropTypes,
+  bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 }
 
 Header.defaultProps = {
   is: 'header',
   children: undefined,
-  className: undefined,
+  bg: undefined,
+  text: undefined,
 }
 
 export { Header as component }

@@ -15,7 +15,9 @@ export default (prop, values) => {
         ? prop.substring(prop.indexOf(':') + 1)
         : prop
 
-      return `${prop}${type !== value ? `-${value}` : ''}`
+      return `${prop}${
+        type !== value && typeof value !== 'boolean' ? `-${value}` : ''
+      }`
     })
     .join(' ')
 }

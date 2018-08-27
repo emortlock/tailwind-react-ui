@@ -5,13 +5,13 @@ import tailwindProps, { variants as tailwindVariants } from './tailwindProps'
 export default (props, { ignore = [] } = {}) =>
   !!props &&
   Object.keys(props).reduce((twClasses, key) => {
-    if (ignore.includes(key)) return twClasses
+    if (ignore.includes(key) || !props[key]) return twClasses
 
     const type = key.indexOf('-') > 0 ? key.substring(0, key.indexOf('-')) : key
     const variant =
       key.indexOf('-') > 0 ? key.substring(key.indexOf('-') + 1) : key
 
-    if (!tailwindProps.includes(type)) return false
+    if (!tailwindProps.includes(type)) return twClasses
 
     if (tailwindVariants.includes(variant)) {
       return [
