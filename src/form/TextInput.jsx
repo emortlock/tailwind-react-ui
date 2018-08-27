@@ -24,7 +24,6 @@ const TextInput = ({
 
   return (
     <BaseComponent
-      {...rest}
       is={is}
       className={classnames(disabled && 'pointer-events-none', className)}
       rounded={theme.radius}
@@ -45,6 +44,7 @@ const TextInput = ({
       readOnly={readOnly}
       aria-invalid={isInvalid || undefined}
       aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
+      {...rest}
     />
   )
 }

@@ -6,10 +6,10 @@ import { BaseComponent } from '../tailwind'
 
 const Container = ({ theme, is, children, leftAlign, padding, ...rest }) => (
   <BaseComponent
-    {...rest}
     is={is}
     m={!leftAlign ? { x: 'auto' } : undefined}
     p={padding ? { x: theme.spacing.md } : undefined}
+    {...rest}
   >
     {children}
   </BaseComponent>

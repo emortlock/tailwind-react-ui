@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { InfoText } from '../typography'
 
 const HelpText = ({ field: { helpId }, ...rest }) => (
-  <InfoText {...rest} id={helpId} />
+  <InfoText id={helpId} {...rest} />
 )
 
 HelpText.propTypes = {

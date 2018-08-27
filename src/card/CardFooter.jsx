@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { BaseComponent } from '../tailwind'
 
 const CardFooter = ({ is, children, ...rest }) => (
-  <BaseComponent {...rest} is={is} flex={[true, 'row-reverse']} items="end">
+  <BaseComponent is={is} flex={[true, 'row-reverse']} items="end" {...rest}>
     {React.Children.map(children, child =>
       React.cloneElement(child, {
         rounded: 'none',

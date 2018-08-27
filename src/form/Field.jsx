@@ -25,10 +25,10 @@ const Field = ({
 
   return (
     <BaseComponent
-      {...rest}
       is={is}
       m={{ b: theme.spacing.md }}
       className="max-w-sm"
+      {...rest}
     >
       {React.Children.map(children, child =>
         React.cloneElement(child, { field: fieldProps }),

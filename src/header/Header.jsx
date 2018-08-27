@@ -65,11 +65,11 @@ class Header extends React.Component {
 
     return (
       <BaseComponent
-        {...rest}
         is={is}
         bg={headerProps.style.bg}
         text={headerProps.style.text}
         p={{ y: theme.spacing.md }}
+        {...rest}
       >
         <Container
           flex={[true, 'wrap']}

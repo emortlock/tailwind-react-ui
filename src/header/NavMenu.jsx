@@ -16,7 +16,6 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
 
   return (
     <BaseComponent
-      {...rest}
       is={is}
       overflow="hidden"
       w="full"
@@ -35,6 +34,7 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
           : undefined
       }
       aria-label="main navigation"
+      {...rest}
     >
       <ul
         className={classnames(

@@ -14,7 +14,6 @@ const NavItem = ({
   ...rest
 }) => (
   <BaseComponent
-    {...rest}
     is={is}
     text={style.text}
     bg-hover={style.text}
@@ -24,6 +23,7 @@ const NavItem = ({
     m-lg={{ t: 0, r: theme.spacing.sm }}
     rounded={theme.radius}
     className={classnames('block no-underline', className)}
+    {...rest}
   >
     {children}
   </BaseComponent>

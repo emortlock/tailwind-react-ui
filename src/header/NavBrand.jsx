@@ -7,12 +7,12 @@ import { filterProps } from '../utils'
 
 const NavBrand = ({ theme, is, children, ...rest }) => (
   <BaseComponent
-    {...filterProps(rest, ['header'])}
     flex={[true, 'no-shrink']}
     items="center"
     h={12}
     is={is}
     m={{ r: theme.spacing.lg }}
+    {...filterProps(rest, ['header'])}
   >
     {children}
   </BaseComponent>

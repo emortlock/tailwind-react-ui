@@ -19,7 +19,6 @@ const Title = ({ theme, children, is, size, subtitle, flush, h, ...rest }) => {
 
   return (
     <BaseComponent
-      {...rest}
       is={element}
       {...ariaProps}
       leading="tight"
@@ -32,6 +31,7 @@ const Title = ({ theme, children, is, size, subtitle, flush, h, ...rest }) => {
         subtitle ? theme.textColors.body : theme.textColors.emphasis,
       ]}
       m={flush ? { b: theme.spacing.md } : undefined}
+      {...rest}
     >
       {children}
     </BaseComponent>

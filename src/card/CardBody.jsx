@@ -5,7 +5,7 @@ import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
 
 const CardBody = ({ theme, is, children, ...rest }) => (
-  <BaseComponent {...rest} p={theme.spacing.md}>
+  <BaseComponent p={theme.spacing.md} {...rest}>
     {children}
   </BaseComponent>
 )

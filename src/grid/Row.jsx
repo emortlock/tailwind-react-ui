@@ -10,7 +10,6 @@ const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
 
   return (
     <BaseComponent
-      {...rest}
       is={is}
       flex={nowrap || [true, 'wrap']}
       nm={
@@ -18,6 +17,7 @@ const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
           ? { l: gutterSpacing, b: !nowrap ? gutterSpacing : undefined }
           : undefined
       }
+      {...rest}
     >
       {gutter
         ? React.Children.map(children, child =>

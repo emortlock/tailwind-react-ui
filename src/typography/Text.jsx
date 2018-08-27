@@ -22,7 +22,6 @@ const Text = ({
 
   return (
     <BaseComponent
-      {...rest}
       is={is}
       leading="normal"
       font={[theme.text.family.body, bold && 'bold']}
@@ -32,6 +31,7 @@ const Text = ({
       ]}
       m={isParagraph ? { b: theme.spacing.md } : undefined}
       className={classnames(italic && 'italic', className)}
+      {...rest}
     >
       {children}
     </BaseComponent>

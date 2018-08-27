@@ -27,13 +27,13 @@ const NavToggle = ({
 
   return (
     <BaseComponent
-      {...rest}
       is={is}
       w={12}
       h={12}
       className={classnames('block lg:hidden', className)}
       onClick={handleClick}
       aria-label="Open menu"
+      {...rest}
     >
       {children || (
         <span className="flex flex-col items-stretch justify-around h-full p-3">

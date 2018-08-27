@@ -5,7 +5,7 @@ import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
 
 const Card = ({ is, children, theme, ...rest }) => (
-  <BaseComponent {...rest} is={is} overflow="hidden" rounded={theme.radius}>
+  <BaseComponent is={is} overflow="hidden" rounded={theme.radius} {...rest}>
     {children}
   </BaseComponent>
 )

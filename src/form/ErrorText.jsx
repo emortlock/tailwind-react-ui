@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { DangerText } from '../typography'
 
 const ErrorText = ({ field: { errorId }, ...rest }) => (
-  <DangerText {...rest} id={errorId} />
+  <DangerText id={errorId} {...rest} />
 )
 
 ErrorText.propTypes = {

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
-import { filterProps } from '../utils'
 
 const Label = ({
   theme,
@@ -15,11 +14,11 @@ const Label = ({
   ...rest
 }) => (
   <BaseComponent
-    {...filterProps(rest, ['invalid'])}
     className="inline-block"
     htmlFor={inputId || htmlFor}
     m={{ b: theme.spacing.sm }}
     opacity={disabled ? 50 : undefined}
+    {...rest}
   >
     {children}
   </BaseComponent>

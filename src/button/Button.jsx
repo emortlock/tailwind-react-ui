@@ -90,10 +90,10 @@ const Button = ({
   return (
     <BaseComponent
       is={is}
-      {...rest}
       {...props}
       disabled={disabled}
       aria-disabled={disabled || undefined}
+      {...rest}
     >
       {children}
     </BaseComponent>

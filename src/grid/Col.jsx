@@ -18,7 +18,7 @@ const getWidthProps = width => {
 }
 
 const Col = ({ is, children, w, ...rest }) => (
-  <BaseComponent {...rest} is={is} {...getWidthProps(w)}>
+  <BaseComponent is={is} {...getWidthProps(w)} {...rest}>
     {children}
   </BaseComponent>
 )
