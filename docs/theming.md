@@ -11,7 +11,7 @@ const MyApp = () => (
       },
     }}
   >
-    <Button fill>Red button</Button>
+    <FillButton brand="primary">Red button</FillButton>
   </TailwindThemeProvider>
 )
 ```
