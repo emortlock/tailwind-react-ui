@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/emortlock/tailwind-react.svg?style=svg)](https://circleci.com/gh/emortlock/tailwind-react) [![Greenkeeper badge](https://badges.greenkeeper.io/emortlock/tailwind-react.svg)](https://greenkeeper.io/)
 
+**NB:** As the 0.#.# version number suggests this is still very much work in progress, so semantic versioning will not be followed until a v1 release is solidified. Expect breaking changes to occur on minor version jumps.
+
 Tailwind React provides ready built components that make use of the [Tailwind CSS](https://tailwindcss.com/) framework.
 
 If you're unfamiliar with the concepts behind Tailwind you can get an overview at https://tailwindcss.com/docs/what-is-tailwind:
