@@ -6,8 +6,10 @@ Example:
 <Field hasHelp>
   <Label>Password</Label>
   <HelpText>
-    Your password must be 8-20 characters long, contain letters and numbers, and
-    must not contain spaces, special characters, or emoji.
+    <InfoText>
+      Your password must be 8-20 characters long, contain letters and numbers,
+      and must not contain spaces, special characters, or emoji.
+    </InfoText>
   </HelpText>
   <TextInput name="password" type="password" />
 </Field>
@@ -28,6 +30,8 @@ Validation error example:
 <Field hasError>
   <Label>Username</Label>
   <TextInput name="invalid" placeholder="Username" />
-  <ErrorText>Please enter a valid username</ErrorText>
+  <ErrorText>
+    <DangerText>Please enter a valid username</DangerText>
+  </ErrorText>
 </Field>
 ```
