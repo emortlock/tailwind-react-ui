@@ -16,6 +16,7 @@ exports[`NavBrand renders matching snapshot 1`] = `
       "r": 8,
     }
   }
+  text="white"
 >
   Tailwind React
 </BaseComponent>
