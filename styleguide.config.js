@@ -31,6 +31,13 @@ module.exports = {
     },
   ],
   skipComponentsWithoutExample: true,
+  styles: {
+    Pre: {
+      pre: {
+        overflow: 'scroll',
+      },
+    },
+  },
   require: [
     'babel-polyfill',
     'tailwindcss/dist/tailwind.min.css',

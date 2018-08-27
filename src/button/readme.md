@@ -1,7 +1,7 @@
 Fill button:
 
 ```jsx
-<ul className="list-reset flex justify-around">
+<ul className="list-reset flex justify-around flex-wrap">
   <li>
     <FillButton brand="primary">Primary</FillButton>
   </li>
@@ -28,7 +28,7 @@ Fill button:
 Outline button:
 
 ```jsx
-<ul className="list-reset flex justify-around">
+<ul className="list-reset flex justify-around flex-wrap">
   <li>
     <OutlineButton brand="primary">Primary</OutlineButton>
   </li>
@@ -55,7 +55,7 @@ Outline button:
 Text button:
 
 ```jsx
-<ul className="list-reset flex justify-around">
+<ul className="list-reset flex justify-around flex-wrap">
   <li>
     <TextButton brand="primary">Primary</TextButton>
   </li>
@@ -80,7 +80,7 @@ Text button:
 Link button:
 
 ```jsx
-<ul className="list-reset flex justify-around">
+<ul className="list-reset flex justify-around flex-wrap">
   <li>
     <LinkButton brand="primary">Primary</LinkButton>
   </li>

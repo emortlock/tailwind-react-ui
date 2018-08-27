@@ -24,6 +24,8 @@ Obviously there's a fair bit more customisation on offer than just a button colo
 
 See below for the default values used by components:
 
-```js noeditor
-<pre>{JSON.stringify(defaultTheme, null, 1)}</pre>
+```jsx noeditor
+<pre className="h-64 overflow-scroll">
+  {JSON.stringify(defaultTheme, null, 1)}
+</pre>
 ```
