@@ -14,6 +14,14 @@ export default (props, { ignore = [] } = {}) =>
     if (!tailwindProps.includes(type)) return twClasses
 
     if (tailwindVariants.includes(variant)) {
+      if (variant === 'hocus') {
+        return [
+          ...twClasses,
+          tailwindPropToClassName(`hover:${type}`, props[key]),
+          tailwindPropToClassName(`focus:${type}`, props[key]),
+        ]
+      }
+
       return [
         ...twClasses,
         tailwindPropToClassName(`${variant}:${type}`, props[key]),

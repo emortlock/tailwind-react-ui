@@ -19,7 +19,7 @@ Example:
     <NavItem is={props => <a {...props} href="#header" />}>Docs</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Examples</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Blog</NavItem>
-    <OutlineButton border="white" text="white" text-hover="blue">
+    <OutlineButton border="white" text="white" text-hocus="blue">
       Download
     </OutlineButton>
   </NavMenu>
@@ -47,7 +47,7 @@ Custom branding example:
     <NavItem is={props => <a {...props} href="#header" />}>Docs</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Examples</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Blog</NavItem>
-    <OutlineButton border="white" text="white" text-hover="purple">
+    <OutlineButton border="white" text="white" text-hocus="purple">
       Download
     </OutlineButton>
   </NavMenu>

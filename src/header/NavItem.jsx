@@ -16,8 +16,8 @@ const NavItem = ({
   <BaseComponent
     is={is}
     text={style.text}
-    bg-hover={style.text}
-    text-hover={style.bg}
+    bg-hocus={style.text}
+    text-hocus={style.bg}
     p={{ x: theme.spacing.md, y: theme.spacing.sm }}
     m={{ t: theme.spacing.sm }}
     m-lg={{ t: 0, r: theme.spacing.sm }}
