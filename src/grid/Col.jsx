@@ -1,54 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent } from '../tailwind'
 
-const getSizeClassNames = size => {
-  if (typeof size === 'object') {
-    return Object.keys(size).map(
-      breakpoint =>
-        breakpoint === 'def'
-          ? getSizeClassNames(size[breakpoint])
-          : `${breakpoint}:${getSizeClassNames(size[breakpoint])}`,
-    )
+const getWidthProps = width => {
+  if (typeof width === 'object') {
+    return Object.keys(width).reduce((props, breakpoint) => {
+      const breakpointSuffix = breakpoint === 'def' ? '' : `-${breakpoint}`
+      if (width === 'auto') {
+        return { ...props, [`flex${breakpointSuffix}`]: 1 }
+      }
+      return { ...props, [`w${breakpointSuffix}`]: width[breakpoint] }
+    }, {})
   }
 
-  return size === 'auto' ? 'flex-1' : `w-${size}`
+  return width === 'auto' ? { flex: 1 } : { w: width }
 }
 
-const Col = ({ is, children, className, size, ...rest }) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
-
-  return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames(getSizeClassNames(size), userClassNames)}
-    >
-      {children}
-    </Component>
-  )
-}
+const Col = ({ is, children, w, ...rest }) => (
+  <BaseComponent is={is} {...getWidthProps(w)} {...rest}>
+    {children}
+  </BaseComponent>
+)
 
 Col.propTypes = {
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  ...tailwindPropTypes,
+  w: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 }
 
 Col.defaultProps = {
   is: 'div',
   children: undefined,
-  className: undefined,
-  size: 'full',
+  w: 'full',
 }
 
 export default Col

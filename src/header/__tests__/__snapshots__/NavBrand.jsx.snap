@@ -1,9 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavBrand renders matching snapshot 1`] = `
-<div
-  className="mr-8 flex items-center flex-no-shrink h-12"
+<BaseComponent
+  flex={
+    Array [
+      true,
+      "no-shrink",
+    ]
+  }
+  h={12}
+  is="div"
+  items="center"
+  m={
+    Object {
+      "r": 8,
+    }
+  }
 >
   Tailwind React
-</div>
+</BaseComponent>
 `;

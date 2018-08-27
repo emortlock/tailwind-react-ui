@@ -1,10 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { CardBody } from '..'
+import { component as CardBody } from '../CardBody'
+import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign(testProps)
+  const props = Object.assign({ theme: defaultTheme }, testProps)
 
   const wrapper = shallow(<CardBody {...props}>Hello World!</CardBody>)
 

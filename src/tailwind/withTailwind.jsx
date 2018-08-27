@@ -4,8 +4,7 @@ import classnames from 'classnames'
 
 import { filterProps } from '../utils'
 
-import tailwindProps from './tailwindProps'
-import tailwindPropTypes from './tailwindPropTypes'
+import tailwindProps, { propTypes } from './tailwindProps'
 import getTailwindClassNames from './getTailwindClassNames'
 
 const withTailwind = (Component, { ignore = [] } = {}) => {
@@ -26,7 +25,7 @@ const withTailwind = (Component, { ignore = [] } = {}) => {
 
   WithTailwind.propTypes = {
     className: PropTypes.string,
-    ...tailwindPropTypes,
+    ...propTypes,
   }
 
   WithTailwind.defaultProps = {

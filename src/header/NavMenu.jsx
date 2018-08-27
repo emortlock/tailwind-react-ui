@@ -3,35 +3,27 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
+import { BaseComponent } from '../tailwind'
 import { withTransition } from '../utils'
 
 import NavItem from './NavItem'
 
-const NavMenu = ({
-  theme,
-  transition,
-  is,
-  children,
-  className,
-  header,
-  ...rest
-}) => {
-  const Component = is
-
+const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
   const transitionStyles = {
     entering: { maxHeight: '0' },
     entered: { maxHeight: '100vh' },
   }
 
   return (
-    <Component
-      {...rest}
-      className={classnames(
-        'overflow-hidden',
-        'w-full flex-grow lg:flex lg:items-center lg:w-auto',
-        !header.collapsable && 'h-12',
-        className,
-      )}
+    <BaseComponent
+      is={is}
+      overflow="hidden"
+      w="full"
+      w-lg="auto"
+      flex="grow"
+      flex-lg
+      items="center"
+      h={!header.collapsable ? 12 : undefined}
       style={
         header.collapsable
           ? {
@@ -42,6 +34,7 @@ const NavMenu = ({
           : undefined
       }
       aria-label="main navigation"
+      {...rest}
     >
       <ul
         className={classnames(
@@ -58,7 +51,7 @@ const NavMenu = ({
         )}
       </ul>
       {React.Children.map(children, child => child.type !== NavItem && child)}
-    </Component>
+    </BaseComponent>
   )
 }
 
@@ -67,7 +60,6 @@ NavMenu.propTypes = {
   transition: PropTypes.string.isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
   header: PropTypes.shape({
     open: PropTypes.bool.isRequired,
     collapsable: PropTypes.bool.isRequired,
@@ -77,7 +69,6 @@ NavMenu.propTypes = {
 NavMenu.defaultProps = {
   is: 'nav',
   children: undefined,
-  className: undefined,
 }
 
 export { NavMenu as component }

@@ -1,9 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavItem renders matching snapshot 1`] = `
-<is
-  className="text-white hover:bg-white hover:text-blue px-4 py-2 rounded block mt-2 no-underline lg:inline-block lg:mt-0 lg:mr-2"
+<BaseComponent
+  bg-hover="white"
+  className="block no-underline"
+  is={[Function]}
+  m={
+    Object {
+      "t": 2,
+    }
+  }
+  m-lg={
+    Object {
+      "r": 2,
+      "t": 0,
+    }
+  }
+  p={
+    Object {
+      "x": 4,
+      "y": 2,
+    }
+  }
+  rounded="rounded"
+  text="white"
+  text-hover="blue"
 >
   Link
-</is>
+</BaseComponent>
 `;

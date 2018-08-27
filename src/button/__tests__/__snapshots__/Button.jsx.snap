@@ -1,10 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button renders matching snapshot 1`] = `
-<button
-  className="px-4 py-2 rounded border border-transparent select-none bg-blue text-white hover:bg-blue-dark leading-tight"
+<BaseComponent
+  bg="blue"
+  bg-hover="blue-dark"
+  border={
+    Array [
+      true,
+      "transparent",
+    ]
+  }
+  disabled={false}
+  is="button"
+  leading="tight"
+  p={
+    Object {
+      "x": 4,
+      "y": 2,
+    }
+  }
   role="button"
+  rounded="rounded"
+  select="none"
+  text="white"
 >
   Submit
-</button>
+</BaseComponent>
 `;

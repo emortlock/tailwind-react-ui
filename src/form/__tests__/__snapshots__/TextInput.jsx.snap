@@ -1,13 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextInput renders matching snapshot 1`] = `
-<input
-  aria-invalid={false}
-  className="rounded grey-darkest px-4 py-2 mb-2 appearance-none border w-full leading-tight focus:outline-none focus:shadow-outline"
+<BaseComponent
+  appearance="none"
+  border={true}
+  className=""
   disabled={false}
   id="username"
+  is="input"
+  leading="tight"
+  m={
+    Object {
+      "b": 2,
+    }
+  }
   name="username"
+  outline-focus="none"
+  p={
+    Object {
+      "x": 4,
+      "y": 2,
+    }
+  }
   readOnly={false}
+  rounded="rounded"
+  shadow-focus="outline"
+  text="grey-darkest"
   type="text"
+  w="full"
 />
 `;

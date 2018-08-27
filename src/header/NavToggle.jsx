@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropToClassName,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent, tailwindPropToClassName } from '../tailwind'
 
 const NavToggle = ({
   theme,
@@ -21,10 +15,8 @@ const NavToggle = ({
   header: { onToggle, style },
   ...rest
 }) => {
-  const Component = is
   const barsClassNames = classnames(
-    getTailwindClassNames(rest),
-    border ? tailwindPropToClassName('border', border) : `border-${style.text}`,
+    tailwindPropToClassName('border', border || style.text),
     'border-b inline-block',
   )
 
@@ -34,11 +26,14 @@ const NavToggle = ({
   }
 
   return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames('w-12 h-12 block lg:hidden', className)}
+    <BaseComponent
+      is={is}
+      w={12}
+      h={12}
+      className={classnames('block lg:hidden', className)}
       onClick={handleClick}
       aria-label="Open menu"
+      {...rest}
     >
       {children || (
         <span className="flex flex-col items-stretch justify-around h-full p-3">
@@ -47,7 +42,7 @@ const NavToggle = ({
           <span className={barsClassNames} />
         </span>
       )}
-    </Component>
+    </BaseComponent>
   )
 }
 
@@ -64,7 +59,6 @@ NavToggle.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
-  ...tailwindPropTypes,
 }
 
 NavToggle.defaultProps = {

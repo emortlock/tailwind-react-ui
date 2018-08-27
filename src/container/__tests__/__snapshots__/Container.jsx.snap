@@ -1,9 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container renders matching snapshot 1`] = `
-<div
-  className="container mx-auto px-8"
+<BaseComponent
+  is="div"
+  m={
+    Object {
+      "x": "auto",
+    }
+  }
+  p={
+    Object {
+      "x": 4,
+    }
+  }
 >
   Content
-</div>
+</BaseComponent>
 `;

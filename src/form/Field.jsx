@@ -1,14 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps, getUniqueID } from '../utils'
+import { BaseComponent } from '../tailwind'
+import { getUniqueID } from '../utils'
 
 const Field = ({
   theme,
@@ -20,9 +15,6 @@ const Field = ({
   disabled,
   ...rest
 }) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
-
   const fieldProps = {
     inputId: getUniqueID('field-'),
     helpId: hasHelp ? getUniqueID('field-info-') : undefined,
@@ -32,18 +24,16 @@ const Field = ({
   }
 
   return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames(
-        'max-w-sm',
-        `mb-${theme.spacing.md}`,
-        userClassNames,
-      )}
+    <BaseComponent
+      is={is}
+      m={{ b: theme.spacing.md }}
+      className="max-w-sm"
+      {...rest}
     >
       {React.Children.map(children, child =>
         React.cloneElement(child, { field: fieldProps }),
       )}
-    </Component>
+    </BaseComponent>
   )
 }
 
@@ -55,7 +45,6 @@ Field.propTypes = {
   hasHelp: PropTypes.bool,
   hasError: PropTypes.bool,
   disabled: PropTypes.bool,
-  ...tailwindPropTypes,
 }
 
 Field.defaultProps = {

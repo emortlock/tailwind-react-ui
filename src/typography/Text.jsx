@@ -3,12 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent } from '../tailwind'
 
 const Text = ({
   theme,
@@ -23,29 +18,23 @@ const Text = ({
   paragraph,
   ...rest
 }) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
-
   const isParagraph = is === 'p' || paragraph
 
   return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames(
-        'leading-normal',
-        `font-${theme.text.family.body}`,
-        `text-${
-          theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1]
-        }`,
+    <BaseComponent
+      is={is}
+      leading="normal"
+      font={[theme.text.family.body, bold && 'bold']}
+      text={[
+        theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
         !brand && `text-${theme.textColors.body}`,
-        isParagraph && `mb-${theme.spacing.md}`,
-        bold && 'font-bold',
-        italic && 'italic',
-        userClassNames,
-      )}
+      ]}
+      m={isParagraph ? { b: theme.spacing.md } : undefined}
+      className={classnames(italic && 'italic', className)}
+      {...rest}
     >
       {children}
-    </Component>
+    </BaseComponent>
   )
 }
 
@@ -60,7 +49,6 @@ Text.propTypes = {
   italic: PropTypes.bool,
   brand: PropTypes.bool,
   paragraph: PropTypes.bool,
-  ...tailwindPropTypes,
 }
 
 Text.defaultProps = {

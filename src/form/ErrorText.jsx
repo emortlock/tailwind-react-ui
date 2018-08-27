@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { DangerText } from '../typography'
-
 const ErrorText = ({ field: { errorId }, ...rest }) => (
-  <DangerText {...rest} id={errorId} />
+  <div id={errorId} {...rest} />
 )
 
 ErrorText.propTypes = {

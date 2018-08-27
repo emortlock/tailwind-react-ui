@@ -3,12 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { BaseComponent } from '../tailwind'
 
 const TextInput = ({
   theme,
@@ -24,32 +19,32 @@ const TextInput = ({
   invalid,
   ...rest
 }) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
-
   const describedBy = [field.errorId, field.helpId].filter(by => by)
+  const isInvalid = field.invalid || invalid
 
   return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames(
-        theme.radius,
-        theme.textColors.body,
-        `px-${theme.spacing.md} py-${theme.spacing.sm}`,
-        `mb-${theme.spacing.sm}`,
-        'appearance-none border w-full leading-tight',
-        'focus:outline-none focus:shadow-outline',
-        (readOnly || disabled) && 'opacity-50 pointer-events-none',
-        invalid && `border-${theme.brandColors.danger}`,
-        userClassNames,
-      )}
+    <BaseComponent
+      is={is}
+      className={classnames(disabled && 'pointer-events-none', className)}
+      rounded={theme.radius}
+      text={theme.textColors.body}
+      p={{ x: theme.spacing.md, y: theme.spacing.sm }}
+      m={{ b: theme.spacing.sm }}
+      appearance="none"
+      border={!isInvalid ? true : [true, theme.brandColors.danger]}
+      w="full"
+      leading="tight"
+      outline-focus="none"
+      shadow-focus="outline"
+      opacity={disabled ? 50 : undefined}
       id={field.inputId || id || name}
       name={name}
       type={type}
       disabled={field.disabled || disabled}
       readOnly={readOnly}
-      aria-invalid={field.invalid || invalid}
+      aria-invalid={isInvalid || undefined}
       aria-describedby={describedBy.length ? describedBy.join(' ') : undefined}
+      {...rest}
     />
   )
 }
@@ -70,7 +65,6 @@ TextInput.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   invalid: PropTypes.bool,
-  ...tailwindPropTypes,
 }
 
 TextInput.defaultProps = {

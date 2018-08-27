@@ -1,19 +1,18 @@
-Tailwind React uses [React context](https://reactjs.org/docs/context.html) in order to determine what class names to use when applying cosmetic styles to components. Using `TailwindConfigProvider` you can set your desired styling which will be used by all Tailwind React components nested within.
+Tailwind React uses [React context](https://reactjs.org/docs/context.html) in order to determine what class names to use when applying cosmetic styles to components. Using `TailwindThemeProvider` you can set your desired styling which will be used by all Tailwind React components nested within.
 
 ```jsx static
-import { TailwindConfigProvider, Button } from 'tailwind-react'
+import { TailwindThemeProvider, Button } from 'tailwind-react'
 
 const MyApp = () => (
-  <TailwindConfigProvider
+  <TailwindThemeProvider
     config={{
-      baseColors: {
-        primaryDark: 'red-dark',
+      brandColors: {
         primary: 'red',
       },
     }}
   >
     <Button fill>Red button</Button>
-  </TailwindConfigProvider>
+  </TailwindThemeProvider>
 )
 ```
 
@@ -25,6 +24,8 @@ Obviously there's a fair bit more customisation on offer than just a button colo
 
 See below for the default values used by components:
 
-```js noeditor
-<pre>{JSON.stringify(defaultTheme, null, 1)}</pre>
+```jsx noeditor
+<pre className="h-64 overflow-scroll">
+  {JSON.stringify(defaultTheme, null, 1)}
+</pre>
 ```

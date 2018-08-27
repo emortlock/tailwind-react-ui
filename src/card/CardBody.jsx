@@ -1,39 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
-import {
-  getTailwindClassNames,
-  tailwindProps,
-  tailwindPropTypes,
-} from '../tailwind'
-import { filterProps } from '../utils'
+import { withTheme } from '../theme'
+import { BaseComponent } from '../tailwind'
 
-const CardBody = ({ is, children, className, ...rest }) => {
-  const Component = is
-  const userClassNames = classnames(getTailwindClassNames(rest), className)
-
-  return (
-    <Component
-      {...filterProps(rest, tailwindProps)}
-      className={classnames('p-4', userClassNames)}
-    >
-      {children}
-    </Component>
-  )
-}
+const CardBody = ({ theme, is, children, ...rest }) => (
+  <BaseComponent p={theme.spacing.md} {...rest}>
+    {children}
+  </BaseComponent>
+)
 
 CardBody.propTypes = {
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
-  ...tailwindPropTypes,
 }
 
 CardBody.defaultProps = {
   is: 'div',
   children: undefined,
-  className: undefined,
 }
 
-export default CardBody
+export { CardBody as component }
+export default withTheme(CardBody)
