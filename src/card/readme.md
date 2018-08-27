@@ -19,12 +19,8 @@ Full example:
   />
   <CardBody>Hello World</CardBody>
   <CardFooter>
-    <FillButton bg="blue" text="white">
-      Read
-    </FillButton>
-    <OutlineButton border="blue" text="white">
-      Bookmark
-    </OutlineButton>
+    <FillButton brand="primary">Read</FillButton>
+    <OutlineButton brand="primary">Bookmark</OutlineButton>
   </CardFooter>
 </Card>
 ```
