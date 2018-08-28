@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Aside renders matching snapshot 1`] = `
+<WithTheme(undefined)
+  is="aside"
+>
+  Lorem ipsum...
+</WithTheme(undefined)>
+`;

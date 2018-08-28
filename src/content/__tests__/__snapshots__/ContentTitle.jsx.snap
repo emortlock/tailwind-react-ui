@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBlock renders matching snapshot 1`] = `
+<BaseComponent
+  aria-labelledby="content-1"
+  is="section"
+  p={4}
+>
+  <Component
+    key=".0"
+    m={
+      Object {
+        "b": 0,
+      }
+    }
+  />
+</BaseComponent>
+`;

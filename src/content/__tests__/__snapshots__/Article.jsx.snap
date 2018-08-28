@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article renders matching snapshot 1`] = `
+<WithTheme(undefined)
+  is="article"
+>
+  Lorem ipsum...
+</WithTheme(undefined)>
+`;
