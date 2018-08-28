@@ -4,16 +4,25 @@ import PropTypes from 'prop-types'
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
 
-const Title = ({ theme, children, is, size, subtitle, flush, h, ...rest }) => {
-  const level = h || Math.max(7 - size, 1)
-  const element = is || `h${level}`
+const Title = ({
+  theme,
+  children,
+  is,
+  size,
+  subtitle,
+  flush,
+  level,
+  ...rest
+}) => {
+  const hLevel = level || Math.max(7 - size, 1)
+  const element = is || `h${hLevel}`
 
   let ariaProps = {}
 
   if (!subtitle && element !== 'string' && !/h[1-6]/i.test(element)) {
     ariaProps = {
       role: 'heading',
-      'aria-level': level,
+      'aria-level': hLevel,
     }
   }
 
@@ -30,7 +39,7 @@ const Title = ({ theme, children, is, size, subtitle, flush, h, ...rest }) => {
         theme.text.size.title[size - 1],
         subtitle ? theme.textColors.body : theme.textColors.emphasis,
       ]}
-      m={flush ? { b: theme.spacing.md } : undefined}
+      m={!flush ? { b: theme.spacing.md } : undefined}
       {...rest}
     >
       {children}
@@ -45,7 +54,7 @@ Title.propTypes = {
   size: PropTypes.number,
   subtitle: PropTypes.bool,
   flush: PropTypes.bool,
-  h: PropTypes.number,
+  level: PropTypes.number,
 }
 
 Title.defaultProps = {
@@ -54,7 +63,7 @@ Title.defaultProps = {
   size: 4,
   subtitle: false,
   flush: false,
-  h: undefined,
+  level: undefined,
 }
 
 export { Title as component }
