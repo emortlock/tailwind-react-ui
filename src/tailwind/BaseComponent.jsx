@@ -7,16 +7,23 @@ import { filterProps } from '../utils'
 import getTailwindClassNames from './getTailwindClassNames'
 import tailwindProps, { propTypes } from './tailwindProps'
 
-const BaseComponent = ({ is, children, className, ...rest }) => {
+const focusableElements = ['input', 'select', 'textarea', 'button', 'a']
+
+const BaseComponent = ({ is, children, className, focusable, ...rest }) => {
   const Component = is
+  const isFocusable = focusable || focusableElements.includes(is)
 
   return (
     <Component
       {...filterProps(rest, tailwindProps)}
       className={classnames(
         getTailwindClassNames({
-          'outline-focus': 'none',
-          'shadow-focus': 'outline',
+          ...(isFocusable
+            ? {
+                'outline-focus': 'none',
+                'shadow-focus': 'outline',
+              }
+            : {}),
           ...rest,
         }),
         className,
