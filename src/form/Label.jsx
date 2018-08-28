@@ -14,6 +14,7 @@ const Label = ({
   ...rest
 }) => (
   <BaseComponent
+    is={is}
     className="inline-block"
     htmlFor={inputId || htmlFor}
     m={{ b: theme.spacing.sm }}
