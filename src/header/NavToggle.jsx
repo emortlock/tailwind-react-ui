@@ -2,71 +2,69 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+import { Button } from '../button'
 import { withTheme } from '../theme'
-import { BaseComponent, tailwindPropToClassName } from '../tailwind'
+
+const Bar = () => (
+  <span
+    className="border-b inline-block"
+    style={{ borderColor: 'currentColor' }}
+  />
+)
 
 const NavToggle = ({
   theme,
-  is,
   children,
   className,
   onClick,
-  border,
-  header: { onToggle, style },
+  header: { onToggle, style, id },
   ...rest
 }) => {
-  const barsClassNames = classnames(
-    tailwindPropToClassName('border', border || style.text),
-    'border-b inline-block',
-  )
-
   const handleClick = e => {
     onToggle()
     if (onClick) onClick(e)
   }
 
   return (
-    <BaseComponent
-      is={is}
+    <Button
       w={12}
       h={12}
+      p={0}
       className={classnames('block lg:hidden', className)}
       onClick={handleClick}
       aria-label="Open menu"
+      aria-haspopup="true"
+      aria-controls={`${id}-nav`}
+      text={style.text}
+      bg-hocus={style.text}
+      text-hocus={style.bg}
       {...rest}
     >
       {children || (
         <span className="flex flex-col items-stretch justify-around h-full p-3">
-          <span className={barsClassNames} />
-          <span className={barsClassNames} />
-          <span className={barsClassNames} />
+          <Bar />
+          <Bar />
+          <Bar />
         </span>
       )}
-    </BaseComponent>
+    </Button>
   )
 }
 
 NavToggle.propTypes = {
   theme: PropTypes.shape({}).isRequired,
-  is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
   header: PropTypes.shape({
     onToggle: PropTypes.func.isRequired,
   }).isRequired,
   onClick: PropTypes.func,
-  border: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
 }
 
 NavToggle.defaultProps = {
-  is: 'button',
   children: undefined,
   className: undefined,
   onClick: undefined,
-  border: undefined,
 }
 
 export { NavToggle as component }

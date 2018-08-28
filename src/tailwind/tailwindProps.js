@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
  *   min/max support for height/width
  */
 export const propTypes = {
+  absolute: PropTypes.bool,
   align: PropTypes.string,
   appearance: PropTypes.oneOf(['none']),
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
@@ -18,7 +19,7 @@ export const propTypes = {
     PropTypes.array,
   ]),
   break: PropTypes.oneOf(['words', 'normal']),
-  content: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  content: PropTypes.string,
   flex: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
@@ -27,8 +28,8 @@ export const propTypes = {
   ]),
   font: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   h: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  items: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  justify: PropTypes.oneOfType([PropTypes.string]),
+  items: PropTypes.string,
+  justify: PropTypes.string,
   leading: PropTypes.string,
   m: PropTypes.oneOfType([
     PropTypes.string,
@@ -42,12 +43,13 @@ export const propTypes = {
   ]),
   opacity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   outline: PropTypes.oneOf(['none']),
-  overflow: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  overflow: PropTypes.string,
   p: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.object,
   ]),
+  pin: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   resize: PropTypes.oneOfType([
     PropTypes.oneOf(['none', 'y', 'x']),
     PropTypes.bool,

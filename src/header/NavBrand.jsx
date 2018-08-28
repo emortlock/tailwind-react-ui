@@ -3,21 +3,35 @@ import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
-import { filterProps } from '../utils'
 
-const NavBrand = ({ theme, header: { style }, is, children, ...rest }) => (
-  <BaseComponent
-    flex={[true, 'no-shrink']}
-    items="center"
-    h={12}
-    is={is}
-    m={{ r: theme.spacing.lg }}
-    text={style.text}
-    {...filterProps(rest, ['header'])}
-  >
-    {children}
-  </BaseComponent>
-)
+const NavBrand = ({ theme, header: { style }, is, children, ...rest }) => {
+  const styleProps = {
+    flex: [true, 'no-shrink'],
+    items: 'center',
+    h: 12,
+    m: { r: theme.spacing.lg },
+    text: style.text,
+  }
+
+  const ariaProps = !(typeof is === 'string' && is.startsWith('h'))
+    ? {
+        role: 'heading',
+        'aria-level': 1,
+      }
+    : {}
+
+  return (
+    <BaseComponent
+      is={is}
+      className="no-underline"
+      {...styleProps}
+      {...ariaProps}
+      {...rest}
+    >
+      {children}
+    </BaseComponent>
+  )
+}
 
 NavBrand.propTypes = {
   theme: PropTypes.shape({}).isRequired,

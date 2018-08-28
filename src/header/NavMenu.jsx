@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
 import { withTransition } from '../utils'
+import { VisuallyHidden } from '../visuallyHidden'
 
 import NavItem from './NavItem'
 
@@ -13,6 +14,7 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
     entering: { maxHeight: '0' },
     entered: { maxHeight: '100vh' },
   }
+  const headingId = `${header.id}-menu`
 
   return (
     <BaseComponent
@@ -33,20 +35,29 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
             }
           : undefined
       }
-      aria-label="main navigation"
+      id={`${header.id}-nav`}
+      aria-labelledby={headingId}
+      aria-expanded={header.collapsable ? header.open : undefined}
+      role="navigation"
       {...rest}
     >
+      <VisuallyHidden is="h2" id={headingId}>
+        Site menu
+      </VisuallyHidden>
       <ul
         className={classnames(
           'list-reset flex-grow lg:flex',
           `mb-${theme.spacing.sm} lg:mb-0`,
         )}
+        role="menu"
       >
         {React.Children.map(
           children,
           child =>
             child.type === NavItem && (
-              <li>{React.cloneElement(child, { header })}</li>
+              <li role="none">
+                {React.cloneElement(child, { header, role: 'menuitem' })}
+              </li>
             ),
         )}
       </ul>

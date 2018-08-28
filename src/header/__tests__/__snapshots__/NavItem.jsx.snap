@@ -4,6 +4,7 @@ exports[`NavItem renders matching snapshot 1`] = `
 <BaseComponent
   bg-hocus="white"
   className="block no-underline"
+  focusable={true}
   is={[Function]}
   m={
     Object {

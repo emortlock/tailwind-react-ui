@@ -73,7 +73,7 @@ const Button = ({
       break
   }
 
-  if (is !== 'button') {
+  if (is === 'button') {
     props.type = type
   } else {
     props.role = 'button'
@@ -91,6 +91,7 @@ const Button = ({
   return (
     <BaseComponent
       is={is}
+      focusable
       {...props}
       disabled={disabled}
       aria-disabled={disabled || undefined}

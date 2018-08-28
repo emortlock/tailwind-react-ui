@@ -46,6 +46,7 @@ module.exports = {
   require: [
     'babel-polyfill',
     'tailwindcss/dist/tailwind.min.css',
+    './css/visually-hidden.css',
     './build/styleguide.js',
   ],
   webpackConfig: {

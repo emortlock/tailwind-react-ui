@@ -11,6 +11,7 @@ exports[`Button renders matching snapshot 1`] = `
     ]
   }
   disabled={false}
+  focusable={true}
   is="button"
   leading="tight"
   p={
@@ -19,10 +20,10 @@ exports[`Button renders matching snapshot 1`] = `
       "y": 2,
     }
   }
-  role="button"
   rounded="rounded"
   select="none"
   text="white"
+  type="button"
 >
   Submit
 </BaseComponent>

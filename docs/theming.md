@@ -5,7 +5,7 @@ import { TailwindThemeProvider, Button } from 'tailwind-react'
 
 const MyApp = () => (
   <TailwindThemeProvider
-    config={{
+    theme={{
       brandColors: {
         primary: 'red',
       },
@@ -18,6 +18,24 @@ const MyApp = () => (
 
 Which would change the default blue colouring on the button to instead use the `.bg-red` class.
 
+```jsx
+<TailwindThemeProvider
+  theme={{
+    brandColors: {
+      primary: 'red',
+    },
+  }}
+>
+  <FillButton brand="primary">Red button</FillButton>
+</TailwindThemeProvider>
+```
+
+<!-- Reset theme -->
+
+```jsx noeditor
+<TailwindThemeProvider theme={{ brandColors: { primary: 'blue' } }} />
+```
+
 ### Default theme
 
 Obviously there's a fair bit more customisation on offer than just a button colour, but by using the `TailwindThemeProvider` wrapper around the React context provider you can override as much or as little as you need.
@@ -25,7 +43,7 @@ Obviously there's a fair bit more customisation on offer than just a button colo
 See below for the default values used by components:
 
 ```jsx noeditor
-<pre className="h-64 overflow-scroll">
-  {JSON.stringify(defaultTheme, null, 1)}
-</pre>
+<Card is="code" border h={64} overflow="scroll" className="block">
+  <CardBody is="pre">{JSON.stringify(defaultTheme, null, 1)}</CardBody>
+</Card>
 ```

@@ -1,4 +1,8 @@
-Simple card:
+Standard card functionality made up of:
+
+- `<Card />` &mdash; wrapping component with overflow hidden to allow for full size image headers
+- `<CardBody />` &mdash; padded element for main content of the card
+- `<CardFooter />` &mdash; right aligns, reverses order & squares corners of elements to have CTAs in priority tab order
 
 ```jsx
 <Card>

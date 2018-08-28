@@ -2,7 +2,7 @@
 
 exports[`Col renders matching snapshot 1`] = `
 <BaseComponent
-  is="div"
+  is="li"
   size={
     Object {
       "def": "full",

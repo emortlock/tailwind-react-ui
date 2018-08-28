@@ -10,6 +10,11 @@ exports[`Title renders matching snapshot 1`] = `
   }
   is="h4"
   leading="tight"
+  m={
+    Object {
+      "b": 4,
+    }
+  }
   text={
     Array [
       "2xl",

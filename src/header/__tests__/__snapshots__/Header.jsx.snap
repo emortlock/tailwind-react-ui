@@ -3,12 +3,14 @@
 exports[`Header renders matching snapshot 1`] = `
 <BaseComponent
   bg="blue"
+  id="header-1"
   is="header"
   p={
     Object {
       "y": 4,
     }
   }
+  role="banner"
   text="white"
 >
   <WithTheme(Container)
@@ -26,6 +28,7 @@ exports[`Header renders matching snapshot 1`] = `
       header={
         Object {
           "collapsable": true,
+          "id": "header-1",
           "onToggle": [Function],
           "open": false,
           "style": Object {

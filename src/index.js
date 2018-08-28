@@ -1,10 +1,13 @@
 export * from './button'
 export * from './card'
 export * from './container'
+export * from './content'
 export * from './form'
 export * from './grid'
 export * from './header'
+export * from './main'
 export * from './typography'
+export * from './visuallyHidden'
 
 export * from './tailwind'
 export * from './theme'
