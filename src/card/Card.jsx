@@ -17,7 +17,7 @@ Card.propTypes = {
 }
 
 Card.defaultProps = {
-  is: 'div',
+  is: 'section',
   children: undefined,
 }
 
