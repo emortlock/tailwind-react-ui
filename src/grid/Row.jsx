@@ -17,6 +17,7 @@ const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
           ? { l: gutterSpacing, b: !nowrap ? gutterSpacing : undefined }
           : undefined
       }
+      className="list-reset"
       {...rest}
     >
       {gutter
@@ -40,7 +41,7 @@ Row.propTypes = {
 }
 
 Row.defaultProps = {
-  is: 'div',
+  is: 'ul',
   children: undefined,
   nowrap: false,
   gutter: false,

@@ -30,7 +30,7 @@ Col.propTypes = {
 }
 
 Col.defaultProps = {
-  is: 'div',
+  is: 'li',
   children: undefined,
   w: 'full',
 }
