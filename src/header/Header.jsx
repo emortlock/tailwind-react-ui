@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
+import { getUniqueID } from '../utils'
+import { Container } from '../container'
 
-import Container from '../container/Container'
-
-class Header extends React.Component {
+class Header extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -16,6 +16,7 @@ class Header extends React.Component {
     }
 
     this.mql = null
+    this.id = getUniqueID('header')
 
     this.handleMatch = this.handleMatch.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
@@ -54,6 +55,7 @@ class Header extends React.Component {
     const { theme, is, children, bg, text, ...rest } = this.props
 
     const headerProps = {
+      id: this.id,
       style: {
         bg: bg || theme.brandColors.primary,
         text: text || theme.textColors.on.primary,
@@ -66,9 +68,11 @@ class Header extends React.Component {
     return (
       <BaseComponent
         is={is}
+        id={headerProps.id}
         bg={headerProps.style.bg}
         text={headerProps.style.text}
         p={{ y: theme.spacing.md }}
+        role="banner"
         {...rest}
       >
         <Container

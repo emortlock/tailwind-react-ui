@@ -11,11 +11,14 @@ const NavItem = ({
   children,
   className,
   header: { style },
+  active,
   ...rest
 }) => (
   <BaseComponent
     is={is}
-    text={style.text}
+    focusable
+    text={!active ? style.text : style.bg}
+    bg={active ? style.text : undefined}
     bg-hocus={style.text}
     text-hocus={style.bg}
     p={{ x: theme.spacing.md, y: theme.spacing.sm }}
@@ -23,6 +26,7 @@ const NavItem = ({
     m-lg={{ t: 0, r: theme.spacing.sm }}
     rounded={theme.radius}
     className={classnames('block no-underline', className)}
+    aria-current={active ? 'page' : undefined}
     {...rest}
   >
     {children}
@@ -37,6 +41,7 @@ NavItem.propTypes = {
   header: PropTypes.shape({
     style: PropTypes.object.isRequired,
   }),
+  active: PropTypes.bool,
 }
 
 NavItem.defaultProps = {
@@ -44,6 +49,7 @@ NavItem.defaultProps = {
   children: undefined,
   className: undefined,
   header: {},
+  active: false,
 }
 
 export { NavItem as component }

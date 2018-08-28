@@ -2,7 +2,11 @@ Example:
 
 ```jsx
 <Header>
-  <NavBrand font="semibold" text="xl">
+  <NavBrand
+    is={props => <a href="#header" {...props} />}
+    font="semibold"
+    text={['white', 'xl']}
+  >
     <svg
       className="fill-current h-8 w-8 mr-2"
       width="54"
@@ -16,7 +20,9 @@ Example:
   </NavBrand>
   <NavToggle />
   <NavMenu>
-    <NavItem is={props => <a {...props} href="#header" />}>Docs</NavItem>
+    <NavItem is={props => <a {...props} href="#header" />} active>
+      Docs
+    </NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Examples</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Blog</NavItem>
     <OutlineButton border="white" text="white" text-hocus="blue">
@@ -30,7 +36,11 @@ Custom branding example:
 
 ```jsx
 <Header bg="purple" text="white">
-  <NavBrand font="semibold" text="xl">
+  <NavBrand
+    font="semibold"
+    text={['white', 'xl']}
+    is={props => <a href="#header" {...props} />}
+  >
     <svg
       className="fill-current h-8 w-8 mr-2"
       width="54"
@@ -44,7 +54,9 @@ Custom branding example:
   </NavBrand>
   <NavToggle />
   <NavMenu>
-    <NavItem is={props => <a {...props} href="#header" />}>Docs</NavItem>
+    <NavItem is={props => <a {...props} href="#header" />} active>
+      Docs
+    </NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Examples</NavItem>
     <NavItem is={props => <a {...props} href="#header" />}>Blog</NavItem>
     <OutlineButton border="white" text="white" text-hocus="purple">
