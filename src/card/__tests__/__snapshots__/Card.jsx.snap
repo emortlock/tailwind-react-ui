@@ -2,7 +2,7 @@
 
 exports[`Card renders matching snapshot 1`] = `
 <BaseComponent
-  is="div"
+  is="section"
   overflow="hidden"
   rounded="rounded"
 >

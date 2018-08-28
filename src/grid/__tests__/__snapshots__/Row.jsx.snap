@@ -2,13 +2,14 @@
 
 exports[`Row renders matching snapshot 1`] = `
 <BaseComponent
+  className="list-reset"
   flex={
     Array [
       true,
       "wrap",
     ]
   }
-  is="div"
+  is="ul"
   nm={
     Object {
       "b": 4,

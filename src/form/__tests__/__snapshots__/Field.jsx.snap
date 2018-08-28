@@ -3,6 +3,7 @@
 exports[`Field renders matching snapshot 1`] = `
 <BaseComponent
   className="max-w-sm"
+  id="field-1"
   is="div"
   m={
     Object {
@@ -14,9 +15,9 @@ exports[`Field renders matching snapshot 1`] = `
     field={
       Object {
         "disabled": false,
-        "errorId": "field-error-3",
-        "helpId": "field-info-2",
-        "inputId": "field-1",
+        "errorId": "field-1-error",
+        "helpId": "field-1-help",
+        "inputId": "field-1-input",
         "invalid": true,
       }
     }
@@ -28,9 +29,9 @@ exports[`Field renders matching snapshot 1`] = `
     field={
       Object {
         "disabled": false,
-        "errorId": "field-error-3",
-        "helpId": "field-info-2",
-        "inputId": "field-1",
+        "errorId": "field-1-error",
+        "helpId": "field-1-help",
+        "inputId": "field-1-input",
         "invalid": true,
       }
     }
@@ -42,9 +43,9 @@ exports[`Field renders matching snapshot 1`] = `
     field={
       Object {
         "disabled": false,
-        "errorId": "field-error-3",
-        "helpId": "field-info-2",
-        "inputId": "field-1",
+        "errorId": "field-1-error",
+        "helpId": "field-1-help",
+        "inputId": "field-1-input",
         "invalid": true,
       }
     }
@@ -56,9 +57,9 @@ exports[`Field renders matching snapshot 1`] = `
     field={
       Object {
         "disabled": false,
-        "errorId": "field-error-3",
-        "helpId": "field-info-2",
-        "inputId": "field-1",
+        "errorId": "field-1-error",
+        "helpId": "field-1-help",
+        "inputId": "field-1-input",
         "invalid": true,
       }
     }

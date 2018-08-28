@@ -1,26 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavToggle renders matching snapshot 1`] = `
-<BaseComponent
+<WithTheme(Button)
+  aria-controls="undefined-nav"
+  aria-haspopup="true"
   aria-label="Open menu"
+  bg-hocus="white"
   className="block lg:hidden"
   h={12}
-  is="button"
   onClick={[Function]}
+  p={0}
+  text="white"
   w={12}
 >
   <span
     className="flex flex-col items-stretch justify-around h-full p-3"
   >
-    <span
-      className="border-white border-b inline-block"
-    />
-    <span
-      className="border-white border-b inline-block"
-    />
-    <span
-      className="border-white border-b inline-block"
-    />
+    <Bar />
+    <Bar />
+    <Bar />
   </span>
-</BaseComponent>
+</WithTheme(Button)>
 `;

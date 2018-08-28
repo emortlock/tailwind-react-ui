@@ -2,12 +2,15 @@
 
 exports[`NavMenu renders matching snapshot 1`] = `
 <BaseComponent
-  aria-label="main navigation"
+  aria-expanded={true}
+  aria-labelledby="undefined-menu"
   flex="grow"
   flex-lg={true}
+  id="undefined-nav"
   is="nav"
   items="center"
   overflow="hidden"
+  role="navigation"
   style={
     Object {
       "maxHeight": "100vh",
@@ -17,11 +20,20 @@ exports[`NavMenu renders matching snapshot 1`] = `
   w="full"
   w-lg="auto"
 >
+  <VisuallyHidden
+    focusable={false}
+    id="undefined-menu"
+    is="h2"
+  >
+    Site menu
+  </VisuallyHidden>
   <ul
     className="list-reset flex-grow lg:flex mb-2 lg:mb-0"
+    role="menu"
   >
     <li
       key=".0"
+      role="none"
     >
       <WithTheme(NavItem)
         header={
@@ -30,12 +42,14 @@ exports[`NavMenu renders matching snapshot 1`] = `
             "open": true,
           }
         }
+        role="menuitem"
       >
         About
       </WithTheme(NavItem)>
     </li>
     <li
       key=".1"
+      role="none"
     >
       <WithTheme(NavItem)
         header={
@@ -44,6 +58,7 @@ exports[`NavMenu renders matching snapshot 1`] = `
             "open": true,
           }
         }
+        role="menuitem"
       >
         Blog
       </WithTheme(NavItem)>
