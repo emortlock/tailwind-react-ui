@@ -1,4 +1,4 @@
-const { version } = require('./package.json')
+const { version } = require('../package.json')
 
 module.exports = {
   title: `Tailwind React`,
@@ -6,33 +6,33 @@ module.exports = {
   sections: [
     {
       name: '',
-      content: 'README.md',
+      content: './README.md',
     },
     {
       name: 'Documentation',
       sections: [
         {
           name: 'Installation',
-          content: 'docs/installation.md',
+          content: './site/docs/installation.md',
         },
         {
           name: 'Usage',
-          content: 'docs/usage.md',
+          content: './site/docs/usage.md',
         },
         {
           name: 'Theming',
-          content: 'docs/theming.md',
+          content: './site/docs/theming.md',
         },
       ],
     },
     {
       name: 'Components',
-      content: 'docs/styleguide.md',
-      components: ['src/**/index.js'],
+      content: './site/docs/styleguide.md',
+      components: ['./src/components/**/index.js'],
     },
     {
       name: 'Contributing',
-      content: 'docs/contributing.md',
+      content: './site/docs/contributing.md',
     },
   ],
   skipComponentsWithoutExample: true,
@@ -45,9 +45,8 @@ module.exports = {
   },
   require: [
     '@babel/polyfill',
-    'tailwindcss/dist/tailwind.min.css',
-    './css/visually-hidden.css',
-    './build/styleguide.js',
+    './site/style/main.css',
+    './site/addComponents.js',
   ],
   webpackConfig: {
     module: {
@@ -59,7 +58,7 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          use: ['style-loader', 'postcss-loader'],
         },
         {
           test: /\.md$/,
