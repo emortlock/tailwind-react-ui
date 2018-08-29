@@ -63,8 +63,10 @@ typings/
 # webpack bundle analyzer directory
 stats
 
-# build directory
-dist
+# build directories
+/dist
+/components
+/plugins
 
 # Idea directory
 .idea

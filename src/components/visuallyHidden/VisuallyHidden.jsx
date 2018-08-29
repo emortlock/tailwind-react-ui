@@ -8,8 +8,7 @@ const VisuallyHidden = ({ is, focusable, className, ...rest }) => (
   <BaseComponent
     is={is}
     className={classnames(
-      'visually-hidden',
-      focusable && 'visually-hidden-focusable',
+      focusable ? 'visually-hidden-focusable' : 'visually-hidden',
       className,
     )}
     {...rest}

@@ -26,6 +26,22 @@ Note that this may also require changes to your eslint `import/resolver` & jest 
 
 If you'd prefer not to do this step, be sure to change any import calls taken from the docs so they follow `import { } from '@eddm/tailwind-react'` when applying them to your project.
 
+### TailwindCSS Plugins
+
+React Tailwind makes use of plugins to add additional functionality within components (e.g. a `.visually-hidden` utility class to render content for screen readers only).
+
+```js static
+const plugins = require('tailwind-react/plugins')
+
+module.exports = {
+  // ...project config
+  plugins: [
+    require('tailwindcss/plugins/container')({}),
+    ...Object.keys(plugins).map(name => plugins[name]()),
+  ],
+}
+```
+
 ### PurgeCSS
 
 If you are using [PurgeCSS](https://github.com/FullHuman/purgecss) and have issues with it stripping out class names used by Tailwind React you can use the `createClassList` method as part of your `whitelist` setting:
