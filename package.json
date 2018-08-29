@@ -9,10 +9,10 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "scripts": {
-    "build": "rimraf dist && npm run build:es && npm run build:cjs && npm run build:compiled",
+    "build": "rimraf dist components plugins && npm run build:es && npm run build:cjs && npm run build:compiled",
     "build:cjs": "cross-env MODULE_FORMAT=cjs rollup -c",
     "build:es": "cross-env MODULE_FORMAT=es rollup -c",
-    "build:compiled": "babel src -d . --ignore __tests__,./**/index.js",
+    "build:compiled": "babel src -d . --ignore ./**/__tests__/*,./**/index.js",
     "docs": "styleguidist --config ./site build",
     "docs:deploy": "node ./build/deploy",
     "start": "styleguidist --config ./site server",
