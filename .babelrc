@@ -1,9 +1,8 @@
 {
   "presets": [
-    "stage-3",
-    "react",
+    "@babel/react",
     [
-      "env",
+      "@babel/env",
       {
         "modules": false,
         "loose": true,
@@ -15,10 +14,9 @@
   "env": {
     "test": {
       "presets": [
-        "stage-3",
-        "react",
+        "@babel/react",
         [
-          "env",
+          "@babel/env",
           {
             "modules": "commonjs",
             "loose": true,
