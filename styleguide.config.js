@@ -44,7 +44,7 @@ module.exports = {
     },
   },
   require: [
-    'babel-polyfill',
+    '@babel/polyfill',
     'tailwindcss/dist/tailwind.min.css',
     './css/visually-hidden.css',
     './build/styleguide.js',
