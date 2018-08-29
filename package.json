@@ -6,6 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/emortlock/tailwind-react.git"
   },
+  "homepage": "https://emortlock.github.io/tailwind-react/",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "scripts": {
