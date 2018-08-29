@@ -1,103 +1,75 @@
 Fill button:
 
 ```jsx
-<ul className="list-reset flex justify-around flex-wrap">
-  <li>
-    <FillButton brand="primary">Primary</FillButton>
-  </li>
-  <li>
-    <FillButton brand="secondary">Secondary</FillButton>
-  </li>
-  <li>
-    <FillButton brand="danger">Danger</FillButton>
-  </li>
-  <li>
-    <FillButton brand="warning">Warning</FillButton>
-  </li>
-  <li>
-    <FillButton brand="info">Info</FillButton>
-  </li>
-  <li>
-    <FillButton bg="purple" text="white">
-      Custom
-    </FillButton>
-  </li>
-</ul>
+<List inline padding>
+  <FillButton brand="primary">Primary</FillButton>
+
+  <FillButton brand="secondary">Secondary</FillButton>
+
+  <FillButton brand="danger">Danger</FillButton>
+
+  <FillButton brand="warning">Warning</FillButton>
+
+  <FillButton brand="info">Info</FillButton>
+
+  <FillButton bg="purple" text="white">
+    Custom
+  </FillButton>
+</List>
 ```
 
 Outline button:
 
 ```jsx
-<ul className="list-reset flex justify-around flex-wrap">
-  <li>
-    <OutlineButton brand="primary">Primary</OutlineButton>
-  </li>
-  <li>
-    <OutlineButton brand="secondary">Secondary</OutlineButton>
-  </li>
-  <li>
-    <OutlineButton brand="danger">Danger</OutlineButton>
-  </li>
-  <li>
-    <OutlineButton brand="warning">Warning</OutlineButton>
-  </li>
-  <li>
-    <OutlineButton brand="info">Info</OutlineButton>
-  </li>
-  <li>
-    <OutlineButton border="purple" text="white">
-      Custom
-    </OutlineButton>
-  </li>
-</ul>
+<List inline padding>
+  <OutlineButton brand="primary">Primary</OutlineButton>
+
+  <OutlineButton brand="secondary">Secondary</OutlineButton>
+
+  <OutlineButton brand="danger">Danger</OutlineButton>
+
+  <OutlineButton brand="warning">Warning</OutlineButton>
+
+  <OutlineButton brand="info">Info</OutlineButton>
+
+  <OutlineButton border="purple" text="white">
+    Custom
+  </OutlineButton>
+</List>
 ```
 
 Text button:
 
 ```jsx
-<ul className="list-reset flex justify-around flex-wrap">
-  <li>
-    <TextButton brand="primary">Primary</TextButton>
-  </li>
-  <li>
-    <TextButton brand="secondary">Secondary</TextButton>
-  </li>
-  <li>
-    <TextButton brand="danger">Danger</TextButton>
-  </li>
-  <li>
-    <TextButton brand="warning">Warning</TextButton>
-  </li>
-  <li>
-    <TextButton brand="info">Info</TextButton>
-  </li>
-  <li>
-    <TextButton text="purple">Custom</TextButton>
-  </li>
-</ul>
+<List inline padding>
+  <TextButton brand="primary">Primary</TextButton>
+
+  <TextButton brand="secondary">Secondary</TextButton>
+
+  <TextButton brand="danger">Danger</TextButton>
+
+  <TextButton brand="warning">Warning</TextButton>
+
+  <TextButton brand="info">Info</TextButton>
+
+  <TextButton text="purple">Custom</TextButton>
+</List>
 ```
 
 Link button:
 
 ```jsx
-<ul className="list-reset flex justify-around flex-wrap">
-  <li>
-    <LinkButton brand="primary">Primary</LinkButton>
-  </li>
-  <li>
-    <LinkButton brand="secondary">Secondary</LinkButton>
-  </li>
-  <li>
-    <LinkButton brand="danger">Danger</LinkButton>
-  </li>
-  <li>
-    <LinkButton brand="warning">Warning</LinkButton>
-  </li>
-  <li>
-    <LinkButton brand="info">Info</LinkButton>
-  </li>
-  <li>
-    <LinkButton text="purple">Custom</LinkButton>
-  </li>
-</ul>
+<List inline padding>
+  <LinkButton brand="primary">Primary</LinkButton>
+
+  <LinkButton brand="secondary">Secondary</LinkButton>
+
+  <LinkButton brand="danger">Danger</LinkButton>
+
+  <LinkButton brand="warning">Warning</LinkButton>
+
+  <LinkButton brand="info">Info</LinkButton>
+
+  <LinkButton text="purple">Custom</LinkButton>
+</List>
 ```

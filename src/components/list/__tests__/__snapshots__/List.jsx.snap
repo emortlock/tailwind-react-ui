@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List renders matching snapshot 1`] = `
+<BaseComponent
+  className="list-reset"
+  flex={
+    Array [
+      true,
+      "wrap",
+    ]
+  }
+  is="ul"
+  m={
+    Object {
+      "b": 4,
+    }
+  }
+>
+  <li
+    className="mr-2"
+    key=".0"
+  >
+    <span>
+      One
+    </span>
+  </li>
+  <li
+    className="mr-2"
+    key=".1"
+  >
+    <span>
+      Two
+    </span>
+  </li>
+  <li
+    className="mr-2"
+    key=".2"
+  >
+    <span>
+      Three
+    </span>
+  </li>
+</BaseComponent>
+`;

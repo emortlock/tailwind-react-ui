@@ -12,6 +12,7 @@ export const propTypes = {
   absolute: PropTypes.bool,
   align: PropTypes.string,
   appearance: PropTypes.oneOf(['none']),
+  block: PropTypes.bool,
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   border: PropTypes.oneOfType([
     PropTypes.string,
