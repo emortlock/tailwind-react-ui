@@ -5,11 +5,9 @@ Example:
 ```jsx
 <Field hasHelp>
   <Label>Password</Label>
-  <HelpText>
-    <InfoText>
-      Your password must be 8-20 characters long, contain letters and numbers,
-      and must not contain spaces, special characters, or emoji.
-    </InfoText>
+  <HelpText is={InfoText}>
+    Your password must be 8-20 characters long, contain letters and numbers, and
+    must not contain spaces, special characters, or emoji.
   </HelpText>
   <TextInput name="password" type="password" />
 </Field>
@@ -30,8 +28,6 @@ Validation error example:
 <Field hasError>
   <Label>Username</Label>
   <TextInput name="invalid" placeholder="Username" />
-  <ErrorText>
-    <DangerText>Please enter a valid username</DangerText>
-  </ErrorText>
+  <ErrorText is={DangerText}>Please enter a valid username</ErrorText>
 </Field>
 ```

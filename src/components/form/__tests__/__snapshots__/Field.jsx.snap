@@ -35,6 +35,7 @@ exports[`Field renders matching snapshot 1`] = `
         "invalid": true,
       }
     }
+    is="div"
     key=".1"
   >
     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
@@ -63,6 +64,7 @@ exports[`Field renders matching snapshot 1`] = `
         "invalid": true,
       }
     }
+    is="div"
     key=".3"
   >
     Please complete
