@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { BaseComponent, propTypes } from '../tailwind'
+import { getAsArray } from '../utils'
 
 const Text = ({
   theme,
@@ -14,10 +15,10 @@ const Text = ({
   italic,
   brand,
   paragraph,
+  text,
   ...rest
 }) => {
   const isParagraph = is === 'p' || paragraph
-
   return (
     <BaseComponent
       is={is}
@@ -26,6 +27,7 @@ const Text = ({
       text={[
         theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
         !brand && `text-${theme.textColors.body}`,
+        ...getAsArray(text),
       ]}
       m={isParagraph ? { b: theme.spacing.md } : undefined}
       italic={italic || undefined}
@@ -46,6 +48,7 @@ Text.propTypes = {
   italic: PropTypes.bool,
   brand: PropTypes.bool,
   paragraph: PropTypes.bool,
+  text: propTypes.text,
 }
 
 Text.defaultProps = {
@@ -57,6 +60,7 @@ Text.defaultProps = {
   bold: false,
   italic: false,
   brand: false,
+  text: undefined,
 }
 
 export { Text as component }
