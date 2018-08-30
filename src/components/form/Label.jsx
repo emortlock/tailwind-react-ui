@@ -9,13 +9,12 @@ const Label = ({
   is,
   field: { inputId, disabled },
   children,
-  className,
   htmlFor,
   ...rest
 }) => (
   <BaseComponent
     is={is}
-    className="inline-block"
+    inlineBlock
     htmlFor={inputId || htmlFor}
     m={{ b: theme.spacing.sm }}
     opacity={disabled ? 50 : undefined}
@@ -33,7 +32,6 @@ Label.propTypes = {
     disabled: PropTypes.bool,
   }),
   children: PropTypes.node,
-  className: PropTypes.string,
   htmlFor: PropTypes.string,
 }
 
@@ -43,7 +41,6 @@ Label.defaultProps = {
     disabled: false,
   },
   children: undefined,
-  className: undefined,
   htmlFor: undefined,
 }
 

@@ -4,8 +4,8 @@ import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
+import { Title } from '../typography'
 import { withTransition } from '../utils'
-import { VisuallyHidden } from '../visuallyHidden'
 
 import NavItem from './NavItem'
 
@@ -41,9 +41,9 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
       role="navigation"
       {...rest}
     >
-      <VisuallyHidden is="h2" id={headingId}>
+      <Title level={2} id={headingId} visuallyHidden>
         Site menu
-      </VisuallyHidden>
+      </Title>
       <ul
         className={classnames(
           'list-reset flex-grow lg:flex',

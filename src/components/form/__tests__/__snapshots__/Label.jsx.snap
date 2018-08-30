@@ -2,8 +2,8 @@
 
 exports[`Label renders matching snapshot 1`] = `
 <BaseComponent
-  className="inline-block"
   htmlFor="input"
+  inlineBlock={true}
   is="label"
   m={
     Object {

@@ -27,6 +27,7 @@ const Button = ({
     p: { x: theme.spacing.md, y: theme.spacing.sm },
     rounded: theme.radius,
     select: 'none',
+    noUnderline: true,
   }
 
   if (large) {
@@ -60,6 +61,7 @@ const Button = ({
       break
     case 'link':
       props.rounded = undefined
+      props.noUnderline = undefined
       props.leading = 'normal'
       props.p = 0
       props.underline = true

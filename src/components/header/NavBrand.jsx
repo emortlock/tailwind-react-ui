@@ -21,13 +21,7 @@ const NavBrand = ({ theme, header: { style }, is, children, ...rest }) => {
     : {}
 
   return (
-    <BaseComponent
-      is={is}
-      className="no-underline"
-      {...styleProps}
-      {...ariaProps}
-      {...rest}
-    >
+    <BaseComponent is={is} noUnderline {...styleProps} {...ariaProps} {...rest}>
       {children}
     </BaseComponent>
   )

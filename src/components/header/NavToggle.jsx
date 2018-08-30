@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { Button } from '../button'
 import { withTheme } from '../theme'
@@ -15,7 +14,6 @@ const Bar = () => (
 const NavToggle = ({
   theme,
   children,
-  className,
   onClick,
   header: { onToggle, style, id },
   ...rest
@@ -30,7 +28,8 @@ const NavToggle = ({
       w={12}
       h={12}
       p={0}
-      className={classnames('block lg:hidden', className)}
+      block
+      hidden-lg
       onClick={handleClick}
       aria-label="Open menu"
       aria-haspopup="true"
@@ -54,7 +53,6 @@ const NavToggle = ({
 NavToggle.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
-  className: PropTypes.string,
   header: PropTypes.shape({
     onToggle: PropTypes.func.isRequired,
   }).isRequired,
@@ -63,7 +61,6 @@ NavToggle.propTypes = {
 
 NavToggle.defaultProps = {
   children: undefined,
-  className: undefined,
   onClick: undefined,
 }
 

@@ -2,7 +2,6 @@
 
 exports[`Text renders matching snapshot 1`] = `
 <BaseComponent
-  className=""
   font={
     Array [
       "sans",

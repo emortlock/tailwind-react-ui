@@ -43,13 +43,11 @@ ContentBlock.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
 }
 
 ContentBlock.defaultProps = {
   is: 'section',
   children: undefined,
-  className: undefined,
 }
 
 export { ContentBlock as component }

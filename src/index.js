@@ -9,7 +9,6 @@ export * from './components/header'
 export * from './components/list'
 export * from './components/main'
 export * from './components/typography'
-export * from './components/visuallyHidden'
 
 export * from './components/tailwind'
 export * from './components/theme'

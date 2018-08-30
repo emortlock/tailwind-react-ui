@@ -2,7 +2,6 @@
 
 exports[`Field renders matching snapshot 1`] = `
 <BaseComponent
-  className="max-w-sm"
   id="field-1"
   is="div"
   m={
@@ -10,6 +9,7 @@ exports[`Field renders matching snapshot 1`] = `
       "b": 4,
     }
   }
+  maxW="sm"
 >
   <WithTheme(Label)
     field={

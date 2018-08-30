@@ -14,6 +14,7 @@ exports[`Button renders matching snapshot 1`] = `
   focusable={true}
   is="button"
   leading="tight"
+  noUnderline={true}
   p={
     Object {
       "x": 4,

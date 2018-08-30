@@ -11,7 +11,7 @@ const Footer = ({ theme, is, children, ...rest }) => (
     role="contentinfo"
     p={{ t: theme.spacing.lg, b: theme.spacing.xl }}
     bg={theme.brandColors.secondary}
-    text={[theme.textColors.on.secondary, theme.text.size.body[0]]}
+    text={theme.textColors.on.secondary}
     {...rest}
   >
     <Container padding>{children}</Container>

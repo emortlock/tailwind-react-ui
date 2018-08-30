@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
@@ -8,7 +7,6 @@ import { BaseComponent } from '../tailwind'
 const Text = ({
   theme,
   children,
-  className,
   is,
   size,
   lead,
@@ -30,7 +28,7 @@ const Text = ({
         !brand && `text-${theme.textColors.body}`,
       ]}
       m={isParagraph ? { b: theme.spacing.md } : undefined}
-      className={classnames(italic && 'italic', className)}
+      italic={italic || undefined}
       {...rest}
     >
       {children}
@@ -41,7 +39,6 @@ const Text = ({
 Text.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
-  className: PropTypes.string,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   size: PropTypes.number,
   lead: PropTypes.bool,
@@ -53,7 +50,6 @@ Text.propTypes = {
 
 Text.defaultProps = {
   children: undefined,
-  className: undefined,
   is: 'span',
   size: 2,
   paragraph: false,

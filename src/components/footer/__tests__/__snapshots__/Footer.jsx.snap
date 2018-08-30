@@ -11,12 +11,7 @@ exports[`Footer renders matching snapshot 1`] = `
     }
   }
   role="contentinfo"
-  text={
-    Array [
-      "white",
-      "sm",
-    ]
-  }
+  text="white"
 >
   <WithTheme(Container)
     padding={true}
