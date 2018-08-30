@@ -25,12 +25,15 @@ const TextInput = ({
   return (
     <BaseComponent
       is={is}
-      className={classnames(disabled && 'pointer-events-none', className)}
+      className={classnames(
+        'appearance-none',
+        disabled && 'pointer-events-none',
+        className,
+      )}
       rounded={theme.radius}
       text={theme.textColors.body}
       p={{ x: theme.spacing.md, y: theme.spacing.sm }}
       m={{ b: theme.spacing.sm }}
-      appearance="none"
       border={!isInvalid ? true : [true, theme.brandColors.danger]}
       w="full"
       leading="tight"

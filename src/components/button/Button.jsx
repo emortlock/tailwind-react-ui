@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { BaseComponent, getColorShade } from '../tailwind'
@@ -19,6 +20,7 @@ const Button = ({
   text,
   border,
   brand,
+  className,
   ...rest
 }) => {
   const props = {
@@ -26,7 +28,6 @@ const Button = ({
     leading: 'tight',
     p: { x: theme.spacing.md, y: theme.spacing.sm },
     rounded: theme.radius,
-    select: 'none',
     noUnderline: true,
   }
 
@@ -82,7 +83,6 @@ const Button = ({
   }
 
   if (disabled) {
-    // TODO: pointer-events-none
     props.opacity = 50
   }
 
@@ -97,6 +97,11 @@ const Button = ({
       {...props}
       disabled={disabled}
       aria-disabled={disabled || undefined}
+      className={classnames(
+        'select-none',
+        disabled && 'pointer-events-none',
+        className,
+      )}
       {...rest}
     >
       {children}
@@ -119,6 +124,7 @@ Button.propTypes = {
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   border: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  className: PropTypes.string,
 }
 
 Button.defaultProps = {
@@ -135,6 +141,7 @@ Button.defaultProps = {
   bg: undefined,
   text: undefined,
   border: undefined,
+  className: undefined,
 }
 
 export { Button as component }
