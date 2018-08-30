@@ -88,7 +88,7 @@
     "babel-loader": "^8.0.0",
     "babel-plugin-add-react-displayname": "0.0.5",
     "cross-env": "^5.2.0",
-    "enzyme": "^3.4.4",
+    "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "enzyme-to-json": "^3.2.2",
     "eslint": "4.19.1",
