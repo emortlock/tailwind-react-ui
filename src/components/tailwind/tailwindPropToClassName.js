@@ -3,6 +3,8 @@ const getArray = value => (Array.isArray(value) ? value : [value])
 export default (prop, values) => {
   const propType = typeof values
 
+  if (!propType) return ''
+
   if (propType === 'boolean') return `${prop}`
 
   if (propType === 'object' && !Array.isArray(values)) {
@@ -15,9 +17,13 @@ export default (prop, values) => {
         ? prop.substring(prop.indexOf(':') + 1)
         : prop
 
-      return `${prop}${
-        type !== value && typeof value !== 'boolean' ? `-${value}` : ''
-      }`
+      return (
+        !!value &&
+        `${prop}${
+          type !== value && typeof value !== 'boolean' ? `-${value}` : ''
+        }`
+      )
     })
+    .filter(value => !!value)
     .join(' ')
 }

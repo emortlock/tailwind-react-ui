@@ -8,6 +8,7 @@ import Text from './Text'
 
 export default type => {
   const BrandText = ({ theme, textOnly, ...rest }) => {
+    console.log(rest.size)
     const alertProps = !textOnly
       ? {
           bg: getColorShade(theme.brandColors[type], 'lightest'),
@@ -37,13 +38,11 @@ export default type => {
       PropTypes.func,
       PropTypes.object,
     ]),
-    size: PropTypes.number,
     textOnly: PropTypes.bool,
   }
 
   BrandText.defaultProps = {
     is: 'p',
-    size: 1,
     textOnly: false,
   }
 

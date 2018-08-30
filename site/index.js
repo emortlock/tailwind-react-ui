@@ -1,4 +1,10 @@
+const fs = require('fs')
+const path = require('path')
 const { version } = require('../package.json')
+
+const components = fs.readdirSync(
+  path.resolve(__dirname, '..', 'src/components'),
+)
 
 module.exports = {
   title: `Tailwind React`,
@@ -26,9 +32,18 @@ module.exports = {
       ],
     },
     {
-      name: 'Components',
+      name: 'Component Demos',
       content: './site/docs/styleguide.md',
       components: ['./src/components/**/index.js'],
+      usageMode: 'hide',
+    },
+    {
+      name: 'Component APIs',
+      sections: components.map(component => ({
+        name: `${component.charAt(0).toUpperCase()}${component.substring(1)}`,
+        components: [`./src/components/${component}/[A-Z]*.jsx`],
+        usageMode: 'expand',
+      })),
     },
     {
       name: 'Contributing',
@@ -36,6 +51,18 @@ module.exports = {
     },
   ],
   skipComponentsWithoutExample: true,
+  getExampleFilename(componentPath) {
+    return componentPath.endsWith('.jsx')
+      ? path.resolve(__dirname, 'defaultReadme.md')
+      : path.resolve(path.dirname(componentPath), 'readme.md')
+  },
+  getComponentPathLine(componentPath) {
+    if (!componentPath.endsWith('.jsx')) {
+      return componentPath
+    }
+    const name = path.basename(componentPath, '.jsx')
+    return `import { ${name} } from 'tailwind-react'`
+  },
   styles: {
     Pre: {
       pre: {
