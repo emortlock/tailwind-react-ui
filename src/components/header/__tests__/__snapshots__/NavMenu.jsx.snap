@@ -20,13 +20,13 @@ exports[`NavMenu renders matching snapshot 1`] = `
   w="full"
   w-lg="auto"
 >
-  <VisuallyHidden
-    focusable={false}
+  <WithTheme(Title)
     id="undefined-menu"
-    is="h2"
+    level={2}
+    visuallyHidden={true}
   >
     Site menu
-  </VisuallyHidden>
+  </WithTheme(Title)>
   <ul
     className="list-reset flex-grow lg:flex mb-2 lg:mb-0"
     role="menu"

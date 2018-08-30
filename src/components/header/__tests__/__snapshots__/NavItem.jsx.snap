@@ -3,7 +3,7 @@
 exports[`NavItem renders matching snapshot 1`] = `
 <BaseComponent
   bg-hocus="white"
-  className="block no-underline"
+  block={true}
   focusable={true}
   is={[Function]}
   m={
@@ -17,6 +17,7 @@ exports[`NavItem renders matching snapshot 1`] = `
       "t": 0,
     }
   }
+  noUnderline={true}
   p={
     Object {
       "x": 4,

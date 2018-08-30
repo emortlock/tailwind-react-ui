@@ -2,16 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Title } from '../typography'
-import { VisuallyHidden } from '../visuallyHidden'
 
-const ContentTitle = ({ content: { id }, visuallyHidden, ...rest }) =>
-  !visuallyHidden ? (
-    <Title id={id} {...rest} />
-  ) : (
-    <VisuallyHidden>
-      <Title id={id} {...rest} />
-    </VisuallyHidden>
-  )
+const ContentTitle = ({ content: { id }, visuallyHidden, ...rest }) => (
+  <Title id={id} visuallyHidden={visuallyHidden} {...rest} />
+)
 
 ContentTitle.propTypes = {
   content: PropTypes.shape({

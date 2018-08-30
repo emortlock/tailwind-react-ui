@@ -37,7 +37,7 @@ class Field extends PureComponent {
         is={is}
         id={this.id}
         m={{ b: theme.spacing.md }}
-        className="max-w-sm"
+        maxW="sm"
         {...rest}
       >
         {React.Children.map(children, child =>

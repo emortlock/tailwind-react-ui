@@ -3,7 +3,6 @@
 exports[`NavBrand renders matching snapshot 1`] = `
 <BaseComponent
   aria-level={1}
-  className="no-underline"
   flex={
     Array [
       true,
@@ -18,6 +17,7 @@ exports[`NavBrand renders matching snapshot 1`] = `
       "r": 8,
     }
   }
+  noUnderline={true}
   role="heading"
   text="white"
 >

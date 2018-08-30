@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
@@ -9,7 +8,6 @@ const NavItem = ({
   theme,
   is,
   children,
-  className,
   header: { style },
   active,
   ...rest
@@ -25,7 +23,8 @@ const NavItem = ({
     m={{ t: theme.spacing.sm }}
     m-lg={{ t: 0, r: theme.spacing.sm }}
     rounded={theme.radius}
-    className={classnames('block no-underline', className)}
+    noUnderline
+    block
     aria-current={active ? 'page' : undefined}
     {...rest}
   >
@@ -37,7 +36,6 @@ NavItem.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
   header: PropTypes.shape({
     style: PropTypes.object.isRequired,
   }),
@@ -47,7 +45,6 @@ NavItem.propTypes = {
 NavItem.defaultProps = {
   is: 'a',
   children: undefined,
-  className: undefined,
   header: {},
   active: false,
 }
