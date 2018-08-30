@@ -1,6 +1,9 @@
-import createBrandText from './createBrandText'
+import React from 'react'
+import BrandText from './BrandText'
 
 /**
- * @see See [Text](#text) for full prop type definitions.
+ * @see See [BrandText](#brandtext) for API. Sets `type` prop to `info`.
  */
-export default createBrandText('info')
+const InfoText = props => <BrandText {...props} type="info" />
+
+export default InfoText
