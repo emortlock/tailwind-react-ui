@@ -10,6 +10,7 @@ exports[`Button renders matching snapshot 1`] = `
       "transparent",
     ]
   }
+  className="select-none"
   disabled={false}
   focusable={true}
   is="button"
@@ -22,7 +23,6 @@ exports[`Button renders matching snapshot 1`] = `
     }
   }
   rounded="rounded"
-  select="none"
   text="white"
   type="button"
 >

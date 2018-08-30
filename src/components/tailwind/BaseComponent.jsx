@@ -17,15 +17,8 @@ const BaseComponent = ({ is, children, className, focusable, ...rest }) => {
     <Component
       {...filterProps(rest, tailwindProps)}
       className={classnames(
-        getTailwindClassNames({
-          ...(isFocusable
-            ? {
-                'outline-focus': 'none',
-                'shadow-focus': 'outline',
-              }
-            : {}),
-          ...rest,
-        }),
+        isFocusable && 'focus:outline-none focus:shadow-outline',
+        getTailwindClassNames(rest),
         className,
       )}
     >
