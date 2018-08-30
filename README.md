@@ -23,4 +23,6 @@ Tailwind React leverages these utility classes to provide base level components 
 
 - [Documentation](https://emortlock.github.io/tailwind-react/#documentation)
 
-- [Component demos](https://emortlock.github.io/tailwind-react/#components)
+- [Component demos](https://emortlock.github.io/tailwind-react/#component-demos)
+
+- [Component APIs](https://emortlock.github.io/tailwind-react/#component-apis)
