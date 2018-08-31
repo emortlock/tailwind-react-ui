@@ -1,4 +1,4 @@
-By default will fill the full screen size regardless of child content lenght to create a sticky footer.
+By default will fill the full screen size regardless of child content lenght to create a sticky footer. Also applies baseline body text styling.
 
 ```jsx
 <SiteWrap minH={0} h={64}>

@@ -26,7 +26,7 @@ const Text = ({
       font={[theme.text.family.body, bold && 'bold']}
       text={[
         theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
-        !brand && `text-${theme.textColors.body}`,
+        !brand && theme.textColors.body,
         ...getAsArray(text),
       ]}
       m={isParagraph ? { b: theme.spacing.md } : undefined}

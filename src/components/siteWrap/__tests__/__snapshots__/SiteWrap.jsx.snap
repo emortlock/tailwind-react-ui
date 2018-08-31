@@ -8,8 +8,16 @@ exports[`SiteWrap renders matching snapshot 1`] = `
       "col",
     ]
   }
+  font="sans"
   is="div"
+  leading="normal"
   minH="screen"
+  text={
+    Array [
+      "base",
+      "grey-darkest",
+    ]
+  }
 >
   <div
     className="flex-auto	flex-no-shrink"

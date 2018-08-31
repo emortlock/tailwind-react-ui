@@ -1,12 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import SiteWrap from '../SiteWrap'
+import { defaultTheme } from '../../theme'
+import { component as SiteWrap } from '../SiteWrap'
 import { Header } from '../../header'
 import { Footer } from '../../footer'
 
 const setup = (testProps = {}) => {
-  const props = Object.assign(testProps)
+  const props = Object.assign({ theme: defaultTheme }, testProps)
 
   const wrapper = shallow(
     <SiteWrap {...props}>

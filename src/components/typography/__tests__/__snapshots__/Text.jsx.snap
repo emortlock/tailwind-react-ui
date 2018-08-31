@@ -18,7 +18,7 @@ exports[`Text renders matching snapshot 1`] = `
   text={
     Array [
       "base",
-      "text-grey-darkest",
+      "grey-darkest",
     ]
   }
 >
