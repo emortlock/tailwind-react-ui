@@ -31,7 +31,7 @@ If you'd prefer not to do this step, be sure to change any import calls taken fr
 React Tailwind makes use of plugins to add additional functionality within components (e.g. a `.visually-hidden` utility class to render content for screen readers only).
 
 ```js static
-const plugins = require('tailwind-react/plugins')
+const plugins = require('@eddm/tailwind-react/plugins')
 
 module.exports = {
   // ...project config
