@@ -2,15 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { BaseComponent } from '../tailwind'
-import { Footer } from '../footer'
+import Footer, { component as FooterComponent } from '../footer/Footer'
 import { withTheme } from '../theme'
 
-const Layout = ({ is, theme, children, ...rest }) => {
+const SiteWrap = ({ is, theme, children, ...rest }) => {
   let footer
 
   React.Children.forEach(children, child => {
     const { type } = child
-    if (type && (type === Footer || type.displayName === Footer.displayName)) {
+    if (
+      type &&
+      (type === Footer || type.displayName === FooterComponent.displayName)
+    ) {
       footer = child
     }
   })
@@ -36,16 +39,16 @@ const Layout = ({ is, theme, children, ...rest }) => {
   )
 }
 
-Layout.propTypes = {
+SiteWrap.propTypes = {
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
 }
 
-Layout.defaultProps = {
+SiteWrap.defaultProps = {
   is: 'div',
   children: undefined,
 }
 
-export { Layout as component }
-export default withTheme(Layout)
+export { SiteWrap as component }
+export default withTheme(SiteWrap)
