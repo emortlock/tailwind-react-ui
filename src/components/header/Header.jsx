@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
-import { getUniqueID } from '../utils'
+import { getUniqueID, filterProps } from '../utils'
 import { Container } from '../container'
 
 class Header extends PureComponent {
@@ -75,7 +75,7 @@ class Header extends PureComponent {
         text={headerProps.style.text}
         p={{ y: theme.spacing.md }}
         role="banner"
-        {...rest}
+        {...filterProps(rest, ['id'])}
       >
         <Container
           flex={[true, 'wrap']}

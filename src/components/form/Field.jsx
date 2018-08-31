@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
-import { getUniqueID } from '../utils'
+import { getUniqueID, filterProps } from '../utils'
 
 class Field extends PureComponent {
   constructor(props) {
@@ -40,7 +40,7 @@ class Field extends PureComponent {
         id={this.id}
         m={{ b: theme.spacing.md }}
         maxW="sm"
-        {...rest}
+        {...filterProps(rest, ['id'])}
       >
         {React.Children.map(children, child =>
           React.cloneElement(child, { field: fieldProps }),
