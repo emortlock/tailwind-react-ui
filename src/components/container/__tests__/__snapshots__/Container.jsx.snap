@@ -2,6 +2,7 @@
 
 exports[`Container renders matching snapshot 1`] = `
 <BaseComponent
+  className="container"
   is="div"
   m={
     Object {
