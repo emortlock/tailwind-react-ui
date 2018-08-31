@@ -11,26 +11,23 @@ const Text = ({
   is,
   size,
   lead,
-  bold,
-  italic,
   brand,
   paragraph,
   text,
+  bold,
   ...rest
 }) => {
   const isParagraph = is === 'p' || paragraph
   return (
     <BaseComponent
       is={is}
-      leading="normal"
-      font={[theme.text.family.body, bold && 'bold']}
+      font={bold ? 'bold' : undefined}
       text={[
-        theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
-        !brand && theme.textColors.body,
+        (size || lead) &&
+          theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
         ...getAsArray(text),
       ]}
       m={isParagraph ? { b: theme.spacing.md } : undefined}
-      italic={italic || undefined}
       {...rest}
     >
       {children}
@@ -44,23 +41,21 @@ Text.propTypes = {
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   size: PropTypes.number,
   lead: PropTypes.bool,
-  bold: PropTypes.bool,
-  italic: PropTypes.bool,
   brand: PropTypes.bool,
   paragraph: PropTypes.bool,
   text: propTypes.text,
+  bold: PropTypes.bool,
 }
 
 Text.defaultProps = {
   children: undefined,
   is: 'span',
-  size: 2,
+  size: undefined,
   paragraph: false,
   lead: false,
-  bold: false,
-  italic: false,
   brand: false,
   text: undefined,
+  bold: false,
 }
 
 export { Text as component }

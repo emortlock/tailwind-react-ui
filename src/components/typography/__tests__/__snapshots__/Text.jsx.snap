@@ -2,14 +2,7 @@
 
 exports[`Text renders matching snapshot 1`] = `
 <BaseComponent
-  font={
-    Array [
-      "sans",
-      false,
-    ]
-  }
   is="p"
-  leading="normal"
   m={
     Object {
       "b": 4,
@@ -17,8 +10,7 @@ exports[`Text renders matching snapshot 1`] = `
   }
   text={
     Array [
-      "base",
-      "grey-darkest",
+      false,
     ]
   }
 >
