@@ -8,6 +8,7 @@ export * from './components/grid'
 export * from './components/header'
 export * from './components/list'
 export * from './components/main'
+export * from './components/siteWrap'
 export * from './components/typography'
 
 export * from './components/tailwind'

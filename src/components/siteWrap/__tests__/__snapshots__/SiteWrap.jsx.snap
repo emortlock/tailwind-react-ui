@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SiteWrap renders matching snapshot 1`] = `
+<BaseComponent
+  flex={
+    Array [
+      true,
+      "col",
+    ]
+  }
+  font="sans"
+  is="div"
+  leading="normal"
+  minH="screen"
+  text={
+    Array [
+      "base",
+      "grey-darkest",
+    ]
+  }
+>
+  <div
+    className="flex-auto	flex-no-shrink"
+  >
+    <WithTheme(Header)
+      key=".0"
+    >
+      Header
+    </WithTheme(Header)>
+    <p
+      key=".1"
+    >
+      Body
+    </p>
+  </div>
+  <div
+    className="flex-auto	flex-no-shrink flex-no-grow"
+  >
+    <WithTheme(Footer)>
+      Footer
+    </WithTheme(Footer)>
+  </div>
+</BaseComponent>
+`;
