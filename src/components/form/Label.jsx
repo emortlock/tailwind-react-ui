@@ -18,6 +18,7 @@ const Label = ({
     htmlFor={inputId || htmlFor}
     m={{ b: theme.spacing.sm }}
     opacity={disabled ? 50 : undefined}
+    font="semibold"
     {...rest}
   >
     {children}

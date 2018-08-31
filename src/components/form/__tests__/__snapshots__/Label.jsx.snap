@@ -2,6 +2,7 @@
 
 exports[`Label renders matching snapshot 1`] = `
 <BaseComponent
+  font="semibold"
   htmlFor="input"
   inlineBlock={true}
   is="label"
