@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
 import { BaseComponent } from '../tailwind'
 import Footer, { component as FooterComponent } from '../footer/Footer'
@@ -28,13 +29,20 @@ const SiteWrap = ({ is, theme, children, ...rest }) => {
       text={[theme.text.size.body[1], theme.textColors.body]}
       {...rest}
     >
-      <div className="flex-auto	flex-no-shrink">
+      <div className="flex-auto flex-no-shrink">
         {React.Children.map(children, child => {
           if (child === footer) return false
           return child
         })}
       </div>
-      <div className="flex-auto	flex-no-shrink flex-no-grow">{footer}</div>
+      <div
+        className={classnames(
+          'flex-auto flex-no-shrink flex-no-grow',
+          `mt-${theme.spacing.lg}`,
+        )}
+      >
+        {footer}
+      </div>
     </BaseComponent>
   )
 }
