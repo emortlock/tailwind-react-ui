@@ -7,9 +7,11 @@ import { getUniqueID } from '../utils'
 
 class Field extends PureComponent {
   constructor(props) {
+    const { id } = props
+
     super(props)
 
-    this.id = getUniqueID('field')
+    this.id = id || getUniqueID('field')
   }
 
   render() {
@@ -56,6 +58,7 @@ Field.propTypes = {
   hasHelp: PropTypes.bool,
   hasError: PropTypes.bool,
   disabled: PropTypes.bool,
+  id: PropTypes.string,
 }
 
 Field.defaultProps = {
@@ -65,6 +68,7 @@ Field.defaultProps = {
   hasHelp: false,
   hasError: false,
   disabled: false,
+  id: undefined,
 }
 
 export { Field as component }

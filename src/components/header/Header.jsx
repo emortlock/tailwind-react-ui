@@ -8,6 +8,8 @@ import { Container } from '../container'
 
 class Header extends PureComponent {
   constructor(props) {
+    const { id } = props
+
     super(props)
 
     this.state = {
@@ -16,7 +18,7 @@ class Header extends PureComponent {
     }
 
     this.mql = null
-    this.id = getUniqueID('header')
+    this.id = id || getUniqueID('header')
 
     this.handleMatch = this.handleMatch.bind(this)
     this.handleToggle = this.handleToggle.bind(this)
@@ -96,6 +98,7 @@ Header.propTypes = {
   children: PropTypes.node,
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  id: PropTypes.string,
 }
 
 Header.defaultProps = {
@@ -103,6 +106,7 @@ Header.defaultProps = {
   children: undefined,
   bg: undefined,
   text: undefined,
+  id: undefined,
 }
 
 export { Header as component }
