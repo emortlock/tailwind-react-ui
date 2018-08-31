@@ -42,6 +42,7 @@ module.exports = {
       sections: components.map(component => ({
         name: `${component.charAt(0).toUpperCase()}${component.substring(1)}`,
         components: [`./src/components/${component}/[A-Z]*.jsx`],
+        ignore: ['**/tailwind/*'],
         usageMode: 'expand',
       })),
     },
