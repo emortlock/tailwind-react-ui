@@ -60,7 +60,16 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
       <Button fullWidth bg="blue" bg-hocus="blue-dark" text="white">Foo</Button>
     </Col>
     <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
-      <Button fullWidth buttonStyle="outline" border="blue" text="blue" text-hocus="white" bg-hocus="blue">Bar</Button>
+      <Button
+        fullWidth
+        buttonStyle="outline"
+        border="blue"
+        text="blue"
+        text-hocus="white"
+        bg-hocus="blue"
+      >
+        Bar
+      </Button>
     </Col>
   </Row>
 </Card>
