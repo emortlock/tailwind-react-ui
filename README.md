@@ -49,6 +49,23 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 
 [PurgeCSS](https://github.com/FullHuman/purgecss) is a key tool when using TailwindCSS to strip out any of the unused utilities and to avoid any complications with this the library provides a whitelist of classes your theme will generate from components as well as a custom extractor that parses the utility class props API used by the components.
 
+
+## Example
+
+```jsx
+<Card border p={4}>
+  <Title is="h1" size={6} text={['blue','xxl']}>Hello World</Title>
+  <Row gutter>
+    <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
+      <Button fullWidth bg="blue" bg-hocus="blue-dark" text="white">Foo</Button>
+    </Col>
+    <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
+      <Button fullWidth buttonStyle="outline" border="blue" text="blue" text-hocus="white" bg-hocus="blue">Bar</Button>
+    </Col>
+  </Row>
+</Card>
+```
+
 ## Useful Links
 
 - [GitHub repository](https://github.com/emortlock/tailwind-react)
