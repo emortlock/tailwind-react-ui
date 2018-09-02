@@ -10,7 +10,7 @@ const NavBrand = ({ theme, header: { style }, is, children, ...rest }) => {
     items: 'center',
     h: 12,
     m: { r: theme.spacing.lg },
-    text: style.text,
+    text: style.text || theme.textColors.on.primary,
   }
 
   const ariaProps = !(typeof is === 'string' && is.startsWith('h'))
@@ -39,7 +39,7 @@ NavBrand.propTypes = {
 NavBrand.defaultProps = {
   is: 'div',
   children: undefined,
-  header: {},
+  header: { style: {} },
 }
 
 export { NavBrand as component }

@@ -34,9 +34,9 @@ const NavToggle = ({
       aria-label="Open menu"
       aria-haspopup="true"
       aria-controls={`${id}-nav`}
-      text={style.text}
-      bg-hocus={style.text}
-      text-hocus={style.bg}
+      text={style.text || theme.textColors.on.primary}
+      bg-hocus={style.text || theme.textColors.on.primary}
+      text-hocus={style.bg || theme.brandColors.primary}
       {...rest}
     >
       {children || (
@@ -55,13 +55,16 @@ NavToggle.propTypes = {
   children: PropTypes.node,
   header: PropTypes.shape({
     onToggle: PropTypes.func.isRequired,
-  }).isRequired,
+  }),
   onClick: PropTypes.func,
 }
 
 NavToggle.defaultProps = {
   children: undefined,
   onClick: undefined,
+  header: {
+    style: {},
+  },
 }
 
 export { NavToggle as component }

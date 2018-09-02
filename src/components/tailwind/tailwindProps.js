@@ -183,11 +183,11 @@ export const propTypes = {
   ...plugins,
 }
 
-export const variants = ['hover', 'focus', 'hocus', 'sm', 'md', 'lg', 'xl']
+export const propVariants = ['hover', 'focus', 'hocus', 'sm', 'md', 'lg', 'xl']
 
 export default [
   ...Object.keys(propTypes),
-  ...variants.reduce(
+  ...propVariants.reduce(
     (variantProps, variant) => [
       ...variantProps,
       ...Object.keys(propTypes).map(prop => `${prop}-${variant}`),

@@ -11,26 +11,31 @@ const NavItem = ({
   header: { style },
   active,
   ...rest
-}) => (
-  <BaseComponent
-    is={is}
-    focusable
-    text={!active ? style.text : style.bg}
-    bg={active ? style.text : undefined}
-    bg-hocus={style.text}
-    text-hocus={style.bg}
-    p={{ x: theme.spacing.md, y: theme.spacing.sm }}
-    m={{ t: theme.spacing.sm }}
-    m-lg={{ t: 0, r: theme.spacing.sm }}
-    rounded={theme.radius}
-    noUnderline
-    block
-    aria-current={active ? 'page' : undefined}
-    {...rest}
-  >
-    {children}
-  </BaseComponent>
-)
+}) => {
+  const textColor = style.text || theme.textColors.on.primary
+  const bgColor = style.bg || theme.brandColors.primary
+
+  return (
+    <BaseComponent
+      is={is}
+      focusable
+      text={!active ? style.text : style.bg}
+      bg={active ? textColor : undefined}
+      bg-hocus={textColor}
+      text-hocus={bgColor}
+      p={{ x: theme.spacing.md, y: theme.spacing.sm }}
+      m={{ t: theme.spacing.sm }}
+      m-lg={{ t: 0, r: theme.spacing.sm }}
+      rounded={theme.radius}
+      noUnderline
+      block
+      aria-current={active ? 'page' : undefined}
+      {...rest}
+    >
+      {children}
+    </BaseComponent>
+  )
+}
 
 NavItem.propTypes = {
   theme: PropTypes.shape({}).isRequired,
@@ -45,7 +50,7 @@ NavItem.propTypes = {
 NavItem.defaultProps = {
   is: 'a',
   children: undefined,
-  header: {},
+  header: { style: {} },
   active: false,
 }
 
