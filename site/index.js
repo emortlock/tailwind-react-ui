@@ -13,7 +13,7 @@ const components = fs.readdirSync(
 )
 
 module.exports = {
-  title: `Tailwind React`,
+  title: `Tailwind React UI`,
   version,
   sections: [
     {
@@ -68,7 +68,7 @@ module.exports = {
       return componentPath
     }
     const name = path.basename(componentPath, '.jsx')
-    return `import { ${name} } from 'tailwind-react'`
+    return `import { ${name} } from 'tailwind-react-ui'`
   },
   styles: {
     Pre: {

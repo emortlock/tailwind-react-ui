@@ -3,7 +3,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/tailwind-react
+  working_directory: ~/tailwind-react-ui
   docker:
     - image: circleci/node:stretch
 

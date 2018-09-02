@@ -2,7 +2,7 @@ Once installed you can import the components and use them as you would any other
 
 ```jsx static
 import React from 'react'
-import { FillButton } from 'tailwind-react'
+import { FillButton } from 'tailwind-react-ui'
 
 const MyButton = () => <FillButton brand="primary">Submit</FillButton>
 ```
