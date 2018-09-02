@@ -1,4 +1,4 @@
-To install the [npm package](https://www.npmjs.com/package/@eddm/tailwind-react) run the following within your project directory.
+To install the [npm package](https://www.npmjs.com/package/tailwind-react-ui) run the following within your project directory.
 
 ```bash
 npm i tailwind-react-ui
