@@ -68,18 +68,23 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
 
 NavMenu.propTypes = {
   theme: PropTypes.shape({}).isRequired,
-  transition: PropTypes.string.isRequired,
+  transition: PropTypes.string,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   header: PropTypes.shape({
-    open: PropTypes.bool.isRequired,
-    collapsable: PropTypes.bool.isRequired,
-  }).isRequired,
+    open: PropTypes.bool,
+    collapsable: PropTypes.bool,
+  }),
 }
 
 NavMenu.defaultProps = {
   is: 'nav',
   children: undefined,
+  header: {
+    open: false,
+    collapsable: false,
+  },
+  transition: 'entering',
 }
 
 export { NavMenu as component }

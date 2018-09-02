@@ -2,7 +2,7 @@
 import paramCase from 'param-case'
 
 import tailwindPropToClassName from './tailwindPropToClassName'
-import tailwindProps, { variants as tailwindVariants } from './tailwindProps'
+import tailwindProps, { propVariants } from './tailwindProps'
 
 const hasUpperCase = str => str.toLowerCase() !== str
 
@@ -21,7 +21,7 @@ export default (props, { ignore = [] } = {}) =>
       type = paramCase(type)
     }
 
-    if (tailwindVariants.includes(variant)) {
+    if (propVariants.includes(variant)) {
       if (variant === 'hocus') {
         return [
           ...twClasses,

@@ -42,7 +42,7 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-const plugins = require('../../src/plugins')
+const plugins = require('../../plugins')
 
 let colors = {
   transparent: 'transparent',

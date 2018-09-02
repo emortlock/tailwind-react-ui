@@ -1,7 +1,13 @@
 const fs = require('fs')
 const path = require('path')
-const { version } = require('../package.json')
+const glob = require('glob-all')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const { version } = require('../package.json')
+const { getWhitelist, TailwindReactExtractor } = require('../tools')
+
+const isDev = process.env.NODE_ENV === 'development'
 const components = fs.readdirSync(
   path.resolve(__dirname, '..', 'src/components'),
 )
@@ -86,7 +92,18 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'postcss-loader'],
+          use: isDev
+            ? ['style-loader', 'postcss-loader']
+            : [
+                {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {
+                    publicPath: '../',
+                  },
+                },
+                'css-loader',
+                'postcss-loader',
+              ],
         },
         {
           test: /\.md$/,
@@ -94,5 +111,25 @@ module.exports = {
         },
       ],
     },
+    plugins: isDev
+      ? []
+      : [
+          new PurgecssPlugin({
+            whitelist: getWhitelist({}, []),
+            paths: glob.sync([
+              path.join(__dirname, 'docs/*.md'),
+              path.join(__dirname, '../', '/src/components/**/*.md'),
+            ]),
+            extractors: [
+              {
+                extractor: TailwindReactExtractor,
+                extensions: ['md'],
+              },
+            ],
+          }),
+          new MiniCssExtractPlugin({
+            filename: 'main.[contenthash].css',
+          }),
+        ],
   },
 }

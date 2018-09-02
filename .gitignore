@@ -67,6 +67,7 @@ stats
 /dist
 /components
 /plugins
+/tools
 
 # Idea directory
 .idea

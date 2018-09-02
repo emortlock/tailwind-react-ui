@@ -1,5 +1,1 @@
-const visuallyHidden = require('./visuallyHidden')
-
-module.exports = {
-  visuallyHidden,
-}
+export { default as visuallyHidden } from './visuallyHidden'
