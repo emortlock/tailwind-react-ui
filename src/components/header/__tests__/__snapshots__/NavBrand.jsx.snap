@@ -21,6 +21,6 @@ exports[`NavBrand renders matching snapshot 1`] = `
   role="heading"
   text="white"
 >
-  Tailwind React
+  Tailwind React UI
 </BaseComponent>
 `;

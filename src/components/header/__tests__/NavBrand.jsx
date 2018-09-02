@@ -10,7 +10,7 @@ const setup = (testProps = {}) => {
     testProps,
   )
 
-  const wrapper = shallow(<NavBrand {...props}>Tailwind React</NavBrand>)
+  const wrapper = shallow(<NavBrand {...props}>Tailwind React UI</NavBrand>)
 
   return {
     props,

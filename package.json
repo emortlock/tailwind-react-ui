@@ -1,12 +1,12 @@
 {
-  "name": "@eddm/tailwind-react",
+  "name": "tailwind-react-ui",
   "version": "0.6.0",
   "description": "React components for use with the Tailwind CSS framework",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emortlock/tailwind-react.git"
+    "url": "git+https://github.com/emortlock/tailwind-react-ui.git"
   },
-  "homepage": "https://emortlock.github.io/tailwind-react/",
+  "homepage": "https://emortlock.github.io/tailwind-react-ui/",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "scripts": {
