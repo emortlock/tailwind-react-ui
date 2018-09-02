@@ -1,7 +1,7 @@
 {
   "name": "tailwind-react-ui",
   "version": "0.6.0",
-  "description": "React components for use with the Tailwind CSS framework",
+  "description": "React component library & UI framework for use with Tailwind CSS ",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emortlock/tailwind-react-ui.git"

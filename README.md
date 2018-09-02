@@ -8,7 +8,7 @@
 
 ---
 
-Tailwind React UI provides ready built components that make use of the [Tailwind CSS](https://tailwindcss.com/) framework.
+Tailwind React UI provides ready built components that make use of [Tailwind CSS](https://tailwindcss.com/) utility framework.
 
 If you're unfamiliar with the concepts behind Tailwind you can get an overview at https://tailwindcss.com/docs/what-is-tailwind:
 
