@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { MdExpandMore } from 'react-icons/md'
+import ExpandMore from 'react-icons/lib/md/expand-more'
 
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
@@ -115,7 +115,7 @@ TextInput.defaultProps = {
   readOnly: false,
   invalid: false,
   placeholder: 'Please select',
-  icon: MdExpandMore,
+  icon: ExpandMore,
   options: [],
 }
 
