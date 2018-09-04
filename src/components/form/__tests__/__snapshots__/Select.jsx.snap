@@ -15,6 +15,18 @@ exports[`TextInput renders matching snapshot 1`] = `
     }
   }
   name="username"
+  options={
+    Array [
+      Object {
+        "label": "single",
+        "value": "one",
+      },
+      Object {
+        "label": "double",
+        "value": "two",
+      },
+    ]
+  }
   p={
     Object {
       "x": 4,
