@@ -1,7 +1,5 @@
 ### Text Inputs
 
-Example:
-
 ```jsx
 <Field hasHelp>
   <Label>Password</Label>
@@ -29,5 +27,22 @@ Validation error example:
   <Label>Username</Label>
   <TextInput name="invalid" placeholder="Username" />
   <ErrorText>Please enter a valid username</ErrorText>
+</Field>
+```
+
+### Select
+
+```jsx
+<Field>
+  <Label>Favourite Ninja Turtle</Label>
+  <Select
+    name="select"
+    options={[
+      { value: 'leo', label: 'Leonardo' },
+      { value: 'mike', label: 'Michelangelo' },
+      { value: 'don', label: 'Donatello' },
+      { value: 'raph', label: 'Raphael' },
+    ]}
+  />
 </Field>
 ```

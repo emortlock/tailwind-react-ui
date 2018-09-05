@@ -30,6 +30,7 @@ const TextInput = ({
         disabled && 'pointer-events-none',
         className,
       )}
+      bg="white"
       rounded={theme.radius}
       text={theme.textColors.body}
       p={{ x: theme.spacing.md, y: theme.spacing.sm }}
