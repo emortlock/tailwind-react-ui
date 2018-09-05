@@ -1,9 +1,16 @@
 import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
 
+import { dependencies, peerDependencies } from './package.json'
+
 const { MODULE_FORMAT } = process.env
 
 const suffix = MODULE_FORMAT === 'cjs' ? '.cjs' : ''
+
+const externalDeps = [
+  ...Object.keys(dependencies),
+  ...Object.keys(peerDependencies),
+]
 
 const createConfig = (input, outputFile) => ({
   input,
@@ -11,7 +18,19 @@ const createConfig = (input, outputFile) => ({
     file: outputFile,
     format: MODULE_FORMAT,
   },
-  external: module => /node_module/.test(module),
+  external: module => {
+    let isExternal = /node_module/.test(module)
+
+    if (!isExternal) {
+      externalDeps.forEach(dep => {
+        if (new RegExp(`^${dep}`).test(module)) {
+          isExternal = true
+        }
+      })
+    }
+
+    return isExternal
+  },
   plugins: [
     resolve({
       extensions: ['.js', '.jsx'],
