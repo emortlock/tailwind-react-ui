@@ -73,7 +73,6 @@
     "lodash.uniqueid": "^4.0.1",
     "param-case": "^2.1.1",
     "prop-types": "^15.6.2",
-    "react-icons": "^3.0.5",
     "react-transition-group": "^2.4.0"
   },
   "devDependencies": {
