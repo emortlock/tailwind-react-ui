@@ -19,7 +19,7 @@ const ExpandMore = props => (
   </svg>
 )
 
-const TextInput = ({
+const Select = ({
   theme,
   is,
   field,
@@ -91,7 +91,7 @@ const TextInput = ({
   )
 }
 
-TextInput.propTypes = {
+Select.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   field: PropTypes.shape({
@@ -108,7 +108,11 @@ TextInput.propTypes = {
   readOnly: PropTypes.bool,
   invalid: PropTypes.bool,
   placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  icon: PropTypes.node,
+  icon: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
@@ -117,7 +121,7 @@ TextInput.propTypes = {
   ),
 }
 
-TextInput.defaultProps = {
+Select.defaultProps = {
   is: 'select',
   field: {},
   children: undefined,
@@ -132,5 +136,5 @@ TextInput.defaultProps = {
   options: [],
 }
 
-export { TextInput as component }
-export default withTheme(TextInput)
+export { Select as component }
+export default withTheme(Select)
