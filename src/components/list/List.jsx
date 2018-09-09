@@ -16,32 +16,41 @@ const List = ({
   justified,
   fullWidth,
   ordered,
+  listItemIs,
   ...rest
-}) => (
-  <BaseComponent
-    is={ordered ? 'ol' : is}
-    m={{ b: theme.spacing.md }}
-    flex={justified || fullWidth || (inline ? [true, 'wrap'] : undefined)}
-    justify={justified ? 'between' : undefined}
-    className={classnames(
-      (reset || inline || justified || fullWidth) && 'list-reset',
-      className,
-    )}
-    {...rest}
-  >
-    {React.Children.map(children, child => (
-      <li
-        className={classnames(
-          padding && !justified && !fullWidth && `mb-${theme.spacing.sm}`,
-          inline && `mr-${theme.spacing.sm}`,
-          fullWidth && 'flex-1',
-        )}
-      >
-        {child}
-      </li>
-    ))}
-  </BaseComponent>
-)
+}) => {
+  const ListItem = listItemIs
+
+  return (
+    <BaseComponent
+      is={ordered ? 'ol' : is}
+      m={{ b: theme.spacing.md }}
+      flex={justified || fullWidth || (inline ? [true, 'wrap'] : undefined)}
+      justify={justified ? 'between' : undefined}
+      className={classnames(
+        (reset || inline || justified || fullWidth) && 'list-reset',
+        className,
+      )}
+      {...rest}
+    >
+      {React.Children.map(
+        children,
+        child =>
+          child && (
+            <ListItem
+              className={classnames(
+                padding && !justified && !fullWidth && `mb-${theme.spacing.sm}`,
+                inline && `mr-${theme.spacing.sm}`,
+                fullWidth && 'flex-grow',
+              )}
+            >
+              {child}
+            </ListItem>
+          ),
+      )}
+    </BaseComponent>
+  )
+}
 
 List.propTypes = {
   theme: PropTypes.shape({}).isRequired,
@@ -54,6 +63,11 @@ List.propTypes = {
   justified: PropTypes.bool,
   fullWidth: PropTypes.bool,
   ordered: PropTypes.bool,
+  listItemIs: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+    PropTypes.object,
+  ]),
 }
 
 List.defaultProps = {
@@ -66,6 +80,7 @@ List.defaultProps = {
   justified: false,
   fullWidth: false,
   ordered: false,
+  listItemIs: 'li',
 }
 
 export { List as component }
