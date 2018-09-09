@@ -15,9 +15,11 @@ const NavItem = ({
   const textColor = style.text || theme.textColors.on.primary
   const bgColor = style.bg || theme.brandColors.primary
 
-  const responsive = {
-    [`m-${screen}`]: { t: 0, r: theme.spacing.sm },
-  }
+  const responsive = screen
+    ? {
+        [`m-${screen}`]: { t: 0, r: theme.spacing.sm },
+      }
+    : {}
 
   return (
     <BaseComponent
@@ -47,7 +49,7 @@ NavItem.propTypes = {
   children: PropTypes.node,
   header: PropTypes.shape({
     style: PropTypes.object,
-    screen: PropTypes.string,
+    screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   }),
   active: PropTypes.bool,
 }

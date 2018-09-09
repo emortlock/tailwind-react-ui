@@ -11,15 +11,13 @@ const NavBrand = ({
   children,
   ...rest
 }) => {
-  const styleProps = {
-    flex: [true, 'no-shrink'],
-    items: 'center',
-    h: 12,
-    [`m-${screen}`]: { r: theme.spacing.lg },
-    text: style.text || theme.textColors.on.primary,
-  }
+  const responsive = screen
+    ? {
+        [`m-${screen}`]: { r: theme.spacing.lg },
+      }
+    : {}
 
-  const ariaProps = !(typeof is === 'string' && is.startsWith('h'))
+  const aria = !(typeof is === 'string' && is.startsWith('h'))
     ? {
         role: 'heading',
         'aria-level': 1,
@@ -31,8 +29,12 @@ const NavBrand = ({
       is={is}
       inlineBlock
       noUnderline
-      {...styleProps}
-      {...ariaProps}
+      flex={[true, 'no-shrink']}
+      items="center"
+      h={12}
+      text={style.text || theme.textColors.on.primary}
+      {...responsive}
+      {...aria}
       {...rest}
     >
       {children}
@@ -46,7 +48,7 @@ NavBrand.propTypes = {
   children: PropTypes.node,
   header: PropTypes.shape({
     style: PropTypes.object,
-    screen: PropTypes.string,
+    screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   }),
 }
 

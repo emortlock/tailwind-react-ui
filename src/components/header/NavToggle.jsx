@@ -19,14 +19,15 @@ const NavToggle = ({
   ...rest
 }) => {
   const handleClick = e => {
-    console.log('click')
     onToggle()
     if (onClick) onClick(e)
   }
 
-  const responsive = {
-    [`hidden-${screen}`]: true,
-  }
+  const responsive = screen
+    ? {
+        [`hidden-${screen}`]: true,
+      }
+    : {}
 
   return (
     <Button
@@ -60,7 +61,7 @@ NavToggle.propTypes = {
   children: PropTypes.node,
   header: PropTypes.shape({
     onToggle: PropTypes.func.isRequired,
-    screen: PropTypes.string,
+    screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
     style: PropTypes.object,
   }),
   onClick: PropTypes.func,

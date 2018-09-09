@@ -8,13 +8,13 @@ import { Container } from '../container'
 
 class Header extends PureComponent {
   constructor(props) {
-    const { id } = props
+    const { id, screen } = props
 
     super(props)
 
     this.state = {
       open: false,
-      collapsable: true,
+      collapsable: !!screen,
     }
 
     this.mql = null
@@ -27,7 +27,7 @@ class Header extends PureComponent {
   componentDidMount() {
     const { theme, screen } = this.props
 
-    if (window.matchMedia) {
+    if (screen && window.matchMedia) {
       this.mql = window.matchMedia(`(min-width: ${theme.breakpoints[screen]})`)
       this.mql.addListener(this.handleMatch)
 
@@ -101,7 +101,7 @@ Header.propTypes = {
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   id: PropTypes.string,
-  screen: PropTypes.string,
+  screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 }
 
 Header.defaultProps = {
