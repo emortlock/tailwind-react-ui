@@ -4,12 +4,18 @@ import PropTypes from 'prop-types'
 import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
 
-const NavBrand = ({ theme, header: { style }, is, children, ...rest }) => {
+const NavBrand = ({
+  theme,
+  header: { style, screen },
+  is,
+  children,
+  ...rest
+}) => {
   const styleProps = {
     flex: [true, 'no-shrink'],
     items: 'center',
     h: 12,
-    m: { r: theme.spacing.lg },
+    [`m-${screen}`]: { r: theme.spacing.lg },
     text: style.text || theme.textColors.on.primary,
   }
 
@@ -21,7 +27,14 @@ const NavBrand = ({ theme, header: { style }, is, children, ...rest }) => {
     : {}
 
   return (
-    <BaseComponent is={is} noUnderline {...styleProps} {...ariaProps} {...rest}>
+    <BaseComponent
+      is={is}
+      inlineBlock
+      noUnderline
+      {...styleProps}
+      {...ariaProps}
+      {...rest}
+    >
       {children}
     </BaseComponent>
   )
@@ -32,14 +45,15 @@ NavBrand.propTypes = {
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   header: PropTypes.shape({
-    style: PropTypes.object.isRequired,
+    style: PropTypes.object,
+    screen: PropTypes.string,
   }),
 }
 
 NavBrand.defaultProps = {
   is: 'div',
   children: undefined,
-  header: { style: {} },
+  header: { style: {}, screen: 'lg' },
 }
 
 export { NavBrand as component }

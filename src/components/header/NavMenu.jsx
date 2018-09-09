@@ -16,14 +16,17 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
   }
   const headingId = `${header.id}-menu`
 
+  const responsive = {
+    [`w-${header.screen}`]: 'auto',
+    [`flex-${header.screen}`]: true,
+  }
+
   return (
     <BaseComponent
       is={is}
       overflow="hidden"
       w="full"
-      w-lg="auto"
       flex="grow"
-      flex-lg
       items="center"
       h={!header.collapsable ? 12 : undefined}
       style={
@@ -39,6 +42,7 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
       aria-labelledby={headingId}
       aria-expanded={header.collapsable ? header.open : undefined}
       role="navigation"
+      {...responsive}
       {...rest}
     >
       <Title level={2} id={headingId} visuallyHidden>
@@ -46,8 +50,9 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
       </Title>
       <ul
         className={classnames(
-          'list-reset flex-grow lg:flex',
-          `mb-${theme.spacing.sm} lg:mb-0`,
+          'list-reset flex-grow',
+          `mb-${theme.spacing.sm}`,
+          `${header.screen}:flex ${header.screen}:mb-0`,
         )}
         role="menu"
       >
@@ -74,6 +79,7 @@ NavMenu.propTypes = {
   header: PropTypes.shape({
     open: PropTypes.bool,
     collapsable: PropTypes.bool,
+    screen: PropTypes.string,
   }),
 }
 
@@ -83,6 +89,7 @@ NavMenu.defaultProps = {
   header: {
     open: false,
     collapsable: false,
+    screen: 'lg',
   },
   transition: 'entering',
 }
