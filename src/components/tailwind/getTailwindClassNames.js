@@ -9,7 +9,12 @@ const hasUpperCase = str => str.toLowerCase() !== str
 export default (props, { ignore = [] } = {}) =>
   !!props &&
   Object.keys(props).reduce((twClasses, key) => {
-    if (ignore.includes(key) || props[key] === false) return twClasses
+    if (
+      ignore.includes(key) ||
+      props[key] === false ||
+      typeof props[key] === 'undefined'
+    )
+      return twClasses
 
     let type = key.indexOf('-') > 0 ? key.substring(0, key.indexOf('-')) : key
     const variant =
