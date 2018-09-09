@@ -18,7 +18,7 @@ export default (prop, values) => {
         : prop
 
       return (
-        !!value &&
+        value !== false &&
         `${prop}${
           type !== value && typeof value !== 'boolean' ? `-${value}` : ''
         }`
