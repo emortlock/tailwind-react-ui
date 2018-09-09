@@ -11,12 +11,6 @@ exports[`NavItem renders matching snapshot 1`] = `
       "t": 2,
     }
   }
-  m-lg={
-    Object {
-      "r": 2,
-      "t": 0,
-    }
-  }
   noUnderline={true}
   p={
     Object {

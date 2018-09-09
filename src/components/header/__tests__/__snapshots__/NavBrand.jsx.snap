@@ -10,13 +10,9 @@ exports[`NavBrand renders matching snapshot 1`] = `
     ]
   }
   h={12}
+  inlineBlock={true}
   is="div"
   items="center"
-  m={
-    Object {
-      "r": 8,
-    }
-  }
   noUnderline={true}
   role="heading"
   text="white"

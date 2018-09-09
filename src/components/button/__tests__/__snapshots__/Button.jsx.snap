@@ -13,6 +13,7 @@ exports[`Button renders matching snapshot 1`] = `
   className="select-none"
   disabled={false}
   focusable={true}
+  inlineBlock={true}
   is="button"
   leading="tight"
   noUnderline={true}

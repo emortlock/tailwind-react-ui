@@ -31,6 +31,7 @@ exports[`Header renders matching snapshot 1`] = `
           "id": "header-1",
           "onToggle": [Function],
           "open": false,
+          "screen": "lg",
           "style": Object {
             "bg": "blue",
             "text": "white",

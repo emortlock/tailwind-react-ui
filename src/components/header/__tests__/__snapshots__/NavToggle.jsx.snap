@@ -8,7 +8,6 @@ exports[`NavToggle renders matching snapshot 1`] = `
   bg-hocus="white"
   block={true}
   h={12}
-  hidden-lg={true}
   onClick={[Function]}
   p={0}
   text="white"
