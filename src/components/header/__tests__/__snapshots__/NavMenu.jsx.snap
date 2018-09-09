@@ -5,7 +5,6 @@ exports[`NavMenu renders matching snapshot 1`] = `
   aria-expanded={true}
   aria-labelledby="undefined-menu"
   flex="grow"
-  flex-lg={true}
   id="undefined-nav"
   is="nav"
   items="center"
@@ -18,7 +17,6 @@ exports[`NavMenu renders matching snapshot 1`] = `
     }
   }
   w="full"
-  w-lg="auto"
 >
   <WithTheme(Title)
     id="undefined-menu"
@@ -27,43 +25,36 @@ exports[`NavMenu renders matching snapshot 1`] = `
   >
     Site menu
   </WithTheme(Title)>
-  <ul
-    className="list-reset flex-grow lg:flex mb-2 lg:mb-0"
+  <WithTheme(List)
+    className="flex-grow"
+    listItemIs={[Function]}
     role="menu"
   >
-    <li
+    <WithTheme(NavItem)
+      header={
+        Object {
+          "collapsable": true,
+          "open": true,
+        }
+      }
       key=".0"
-      role="none"
+      role="menuitem"
     >
-      <WithTheme(NavItem)
-        header={
-          Object {
-            "collapsable": true,
-            "open": true,
-          }
+      About
+    </WithTheme(NavItem)>
+    <WithTheme(NavItem)
+      header={
+        Object {
+          "collapsable": true,
+          "open": true,
         }
-        role="menuitem"
-      >
-        About
-      </WithTheme(NavItem)>
-    </li>
-    <li
+      }
       key=".1"
-      role="none"
+      role="menuitem"
     >
-      <WithTheme(NavItem)
-        header={
-          Object {
-            "collapsable": true,
-            "open": true,
-          }
-        }
-        role="menuitem"
-      >
-        Blog
-      </WithTheme(NavItem)>
-    </li>
-  </ul>
+      Blog
+    </WithTheme(NavItem)>
+  </WithTheme(List)>
   <button
     key=".2"
     type="button"

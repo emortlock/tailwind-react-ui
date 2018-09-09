@@ -8,12 +8,18 @@ const NavItem = ({
   theme,
   is,
   children,
-  header: { style },
+  header: { style, screen },
   active,
   ...rest
 }) => {
   const textColor = style.text || theme.textColors.on.primary
   const bgColor = style.bg || theme.brandColors.primary
+
+  const responsive = screen
+    ? {
+        [`m-${screen}`]: { t: 0, r: theme.spacing.sm },
+      }
+    : {}
 
   return (
     <BaseComponent
@@ -25,11 +31,11 @@ const NavItem = ({
       text-hocus={bgColor}
       p={{ x: theme.spacing.md, y: theme.spacing.sm }}
       m={{ t: theme.spacing.sm }}
-      m-lg={{ t: 0, r: theme.spacing.sm }}
       rounded={theme.radius}
       noUnderline
       block
       aria-current={active ? 'page' : undefined}
+      {...responsive}
       {...rest}
     >
       {children}
@@ -42,7 +48,8 @@ NavItem.propTypes = {
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   header: PropTypes.shape({
-    style: PropTypes.object.isRequired,
+    style: PropTypes.object,
+    screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   }),
   active: PropTypes.bool,
 }
@@ -50,7 +57,7 @@ NavItem.propTypes = {
 NavItem.defaultProps = {
   is: 'a',
   children: undefined,
-  header: { style: {} },
+  header: { style: {}, screen: 'lg' },
   active: false,
 }
 

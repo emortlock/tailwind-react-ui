@@ -94,6 +94,7 @@ const Button = ({
     <BaseComponent
       is={is}
       focusable
+      inlineBlock
       {...props}
       disabled={disabled}
       aria-disabled={disabled || undefined}

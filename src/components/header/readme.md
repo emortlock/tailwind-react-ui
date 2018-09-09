@@ -35,7 +35,7 @@ Example:
 Custom branding example:
 
 ```jsx
-<Header bg="purple" text="white">
+<Header bg="purple" text="white" screen="md">
   <NavBrand is="a" href="#header" font="semibold" text={['white', 'xl']}>
     <svg
       className="fill-current h-8 w-8 mr-2"

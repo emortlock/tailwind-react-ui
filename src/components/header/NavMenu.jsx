@@ -6,24 +6,40 @@ import { withTheme } from '../theme'
 import { BaseComponent } from '../tailwind'
 import { Title } from '../typography'
 import { withTransition } from '../utils'
+import { List } from '../list'
 
 import NavItem from './NavItem'
 
-const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
+const NavItemWrapper = props => <li role="none" {...props} />
+
+const NavMenu = ({
+  theme,
+  transition,
+  is,
+  children,
+  header,
+  list,
+  ...rest
+}) => {
   const transitionStyles = {
-    entering: { maxHeight: '0' },
+    entering: { maxHeight: '0', position: 'absolute' },
     entered: { maxHeight: '100vh' },
   }
   const headingId = `${header.id}-menu`
+
+  const responsive = header.screen
+    ? {
+        [`w-${header.screen}`]: 'auto',
+        [`flex-${header.screen}`]: true,
+      }
+    : {}
 
   return (
     <BaseComponent
       is={is}
       overflow="hidden"
       w="full"
-      w-lg="auto"
       flex="grow"
-      flex-lg
       items="center"
       h={!header.collapsable ? 12 : undefined}
       style={
@@ -39,28 +55,28 @@ const NavMenu = ({ theme, transition, is, children, header, ...rest }) => {
       aria-labelledby={headingId}
       aria-expanded={header.collapsable ? header.open : undefined}
       role="navigation"
+      {...responsive}
       {...rest}
     >
       <Title level={2} id={headingId} visuallyHidden>
         Site menu
       </Title>
-      <ul
+      <List
         className={classnames(
-          'list-reset flex-grow lg:flex',
-          `mb-${theme.spacing.sm} lg:mb-0`,
+          'flex-grow',
+          header.screen && `${header.screen}:flex ${header.screen}:mb-0`,
         )}
         role="menu"
+        listItemIs={NavItemWrapper}
+        {...list}
       >
         {React.Children.map(
           children,
           child =>
-            child.type === NavItem && (
-              <li role="none">
-                {React.cloneElement(child, { header, role: 'menuitem' })}
-              </li>
-            ),
+            child.type === NavItem &&
+            React.cloneElement(child, { header, role: 'menuitem' }),
         )}
-      </ul>
+      </List>
       {React.Children.map(children, child => child.type !== NavItem && child)}
     </BaseComponent>
   )
@@ -74,7 +90,9 @@ NavMenu.propTypes = {
   header: PropTypes.shape({
     open: PropTypes.bool,
     collapsable: PropTypes.bool,
+    screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   }),
+  list: PropTypes.shape({}),
 }
 
 NavMenu.defaultProps = {
@@ -83,8 +101,10 @@ NavMenu.defaultProps = {
   header: {
     open: false,
     collapsable: false,
+    screen: 'lg',
   },
   transition: 'entering',
+  list: {},
 }
 
 export { NavMenu as component }

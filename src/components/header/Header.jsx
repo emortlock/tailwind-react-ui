@@ -8,13 +8,13 @@ import { Container } from '../container'
 
 class Header extends PureComponent {
   constructor(props) {
-    const { id } = props
+    const { id, screen } = props
 
     super(props)
 
     this.state = {
       open: false,
-      collapsable: true,
+      collapsable: !!screen,
     }
 
     this.mql = null
@@ -25,9 +25,10 @@ class Header extends PureComponent {
   }
 
   componentDidMount() {
-    const { theme } = this.props
-    if (window.matchMedia) {
-      this.mql = window.matchMedia(`(min-width: ${theme.breakpoints.lg})`)
+    const { theme, screen } = this.props
+
+    if (screen && window.matchMedia) {
+      this.mql = window.matchMedia(`(min-width: ${theme.breakpoints[screen]})`)
       this.mql.addListener(this.handleMatch)
 
       if (this.mql.matches) {
@@ -54,7 +55,7 @@ class Header extends PureComponent {
 
   render() {
     const { open, collapsable } = this.state
-    const { theme, is, children, bg, text, ...rest } = this.props
+    const { theme, is, children, bg, text, screen, ...rest } = this.props
 
     const headerProps = {
       id: this.id,
@@ -65,6 +66,7 @@ class Header extends PureComponent {
       open,
       collapsable,
       onToggle: this.handleToggle,
+      screen,
     }
 
     return (
@@ -99,6 +101,7 @@ Header.propTypes = {
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   id: PropTypes.string,
+  screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 }
 
 Header.defaultProps = {
@@ -107,6 +110,7 @@ Header.defaultProps = {
   bg: undefined,
   text: undefined,
   id: undefined,
+  screen: 'lg',
 }
 
 export { Header as component }

@@ -15,7 +15,7 @@ const NavToggle = ({
   theme,
   children,
   onClick,
-  header: { onToggle, style, id },
+  header: { onToggle, style, id, screen },
   ...rest
 }) => {
   const handleClick = e => {
@@ -23,13 +23,18 @@ const NavToggle = ({
     if (onClick) onClick(e)
   }
 
+  const responsive = screen
+    ? {
+        [`hidden-${screen}`]: true,
+      }
+    : {}
+
   return (
     <Button
       w={12}
       h={12}
       p={0}
       block
-      hidden-lg
       onClick={handleClick}
       aria-label="Open menu"
       aria-haspopup="true"
@@ -37,6 +42,7 @@ const NavToggle = ({
       text={style.text || theme.textColors.on.primary}
       bg-hocus={style.text || theme.textColors.on.primary}
       text-hocus={style.bg || theme.brandColors.primary}
+      {...responsive}
       {...rest}
     >
       {children || (
@@ -55,6 +61,8 @@ NavToggle.propTypes = {
   children: PropTypes.node,
   header: PropTypes.shape({
     onToggle: PropTypes.func.isRequired,
+    screen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+    style: PropTypes.object,
   }),
   onClick: PropTypes.func,
 }
@@ -64,6 +72,7 @@ NavToggle.defaultProps = {
   onClick: undefined,
   header: {
     style: {},
+    screen: 'lg',
   },
 }
 
