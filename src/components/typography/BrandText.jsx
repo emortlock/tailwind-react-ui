@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { getColorShade } from '../tailwind'
 import { withTheme } from '../theme'
 
-import Text from './Text'
+import Paragraph from './Paragraph'
 
 const BrandText = ({ theme, textOnly, type, ...rest }) => {
   const alertProps = !textOnly
@@ -18,7 +18,7 @@ const BrandText = ({ theme, textOnly, type, ...rest }) => {
     : {}
 
   return (
-    <Text
+    <Paragraph
       {...rest}
       brand
       rounded={theme.radius}

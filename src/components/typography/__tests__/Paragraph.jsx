@@ -1,13 +1,15 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { component as Text } from '../Text'
+import { component as Paragraph } from '../Paragraph'
 import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
   const props = Object.assign({ theme: defaultTheme }, testProps)
 
-  const wrapper = shallow(<Text {...props}>Lorem ipsum dolor sit amet</Text>)
+  const wrapper = shallow(
+    <Paragraph {...props}>Lorem ipsum dolor sit amet</Paragraph>,
+  )
 
   return {
     props,
@@ -15,7 +17,7 @@ const setup = (testProps = {}) => {
   }
 }
 
-describe('Text', () => {
+describe('Paragraph', () => {
   it('renders matching snapshot', () => {
     const { wrapper } = setup({ is: 'p' })
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 import { InfoText } from '../typography'
 
 /**
  * @see Renders as [InfoText](#infotext) component by default
  */
 const HelpText = ({ is, field: { helpId }, ...rest }) => (
-  <Base is={is} id={helpId} {...rest} />
+  <Box is={is} id={helpId} {...rest} />
 )
 
 HelpText.propTypes = {

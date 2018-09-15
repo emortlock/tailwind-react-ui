@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Text } from '../primitives'
 import { propTypes } from '../tailwind'
 import { getAsArray } from '../utils'
 
-const Text = ({
+const Paragraph = ({
   theme,
   children,
   is,
@@ -15,28 +15,23 @@ const Text = ({
   brand,
   paragraph,
   text,
-  bold,
   ...rest
-}) => {
-  const isParagraph = is === 'p' || paragraph
-  return (
-    <Base
-      is={is}
-      font={bold ? 'bold' : undefined}
-      text={[
-        (size || lead) &&
-          theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
-        ...getAsArray(text),
-      ]}
-      m={isParagraph ? { b: theme.spacing.md } : undefined}
-      {...rest}
-    >
-      {children}
-    </Base>
-  )
-}
+}) => (
+  <Text
+    is={is}
+    text={[
+      (size || lead) &&
+        theme.text.size.body[(lead ? theme.text.size.body.length : size) - 1],
+      ...getAsArray(text),
+    ]}
+    m={{ b: theme.spacing.md }}
+    {...rest}
+  >
+    {children}
+  </Text>
+)
 
-Text.propTypes = {
+Paragraph.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   children: PropTypes.node,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
@@ -45,19 +40,17 @@ Text.propTypes = {
   brand: PropTypes.bool,
   paragraph: PropTypes.bool,
   text: propTypes.text,
-  bold: PropTypes.bool,
 }
 
-Text.defaultProps = {
+Paragraph.defaultProps = {
   children: undefined,
-  is: 'span',
+  is: 'p',
   size: undefined,
   paragraph: false,
   lead: false,
   brand: false,
   text: undefined,
-  bold: false,
 }
 
-export { Text as component }
-export default withTheme(Text)
+export { Paragraph as component }
+export default withTheme(Paragraph)

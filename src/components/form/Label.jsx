@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Text } from '../primitives'
 
 const Label = ({
   theme,
@@ -12,17 +12,17 @@ const Label = ({
   htmlFor,
   ...rest
 }) => (
-  <Base
+  <Text
     is={is}
     inlineBlock
     htmlFor={inputId || htmlFor}
     m={{ b: theme.spacing.sm }}
     opacity={disabled ? 50 : undefined}
-    font="semibold"
+    weight="semibold"
     {...rest}
   >
     {children}
-  </Base>
+  </Text>
 )
 
 Label.propTypes = {

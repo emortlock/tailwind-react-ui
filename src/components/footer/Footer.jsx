@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 import { withTheme } from '../theme'
 import { Container } from '../container'
 
 const Footer = ({ theme, is, children, ...rest }) => (
-  <Base
+  <Box
     is={is}
     role="contentinfo"
     p={{ t: theme.spacing.lg, b: theme.spacing.xl }}
@@ -15,7 +15,7 @@ const Footer = ({ theme, is, children, ...rest }) => (
     {...rest}
   >
     <Container padding>{children}</Container>
-  </Base>
+  </Box>
 )
 
 Footer.propTypes = {

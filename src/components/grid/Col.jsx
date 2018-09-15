@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 
 const getWidthProps = width => {
   if (typeof width === 'object') {
@@ -18,9 +18,9 @@ const getWidthProps = width => {
 }
 
 const Col = ({ is, children, w, ...rest }) => (
-  <Base is={is} {...getWidthProps(w)} {...rest}>
+  <Box is={is} {...getWidthProps(w)} {...rest}>
     {children}
-  </Base>
+  </Box>
 )
 
 Col.propTypes = {

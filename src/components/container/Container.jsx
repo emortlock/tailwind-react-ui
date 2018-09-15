@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 
 const Container = ({
   theme,
@@ -14,7 +14,7 @@ const Container = ({
   padding,
   ...rest
 }) => (
-  <Base
+  <Box
     is={is}
     m={!leftAlign ? { x: 'auto' } : undefined}
     p={padding ? { x: theme.spacing.md } : undefined}
@@ -22,7 +22,7 @@ const Container = ({
     {...rest}
   >
     {children}
-  </Base>
+  </Box>
 )
 
 Container.propTypes = {
