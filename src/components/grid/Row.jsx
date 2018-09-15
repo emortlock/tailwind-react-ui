@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
   const gutterSpacing =
     gutter && (gutter === true ? theme.spacing.md : theme.spacing[gutter])
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       flex={nowrap || [true, 'wrap']}
       nm={
@@ -28,7 +28,7 @@ const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
             }),
           )
         : children}
-    </BaseComponent>
+    </Base>
   )
 }
 

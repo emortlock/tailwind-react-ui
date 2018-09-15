@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders matching snapshot 1`] = `
+<Box
+  inline={false}
+  inlineBlock={false}
+  is="div"
+  relative={true}
+  w="full"
+>
+  <Box
+    bg="grey-light"
+    inline={false}
+    inlineBlock={false}
+    is="div"
+    style={
+      Object {
+        "paddingBottom": "100%",
+      }
+    }
+  />
+  <Base
+    absolute={true}
+    is="img"
+    pin={true}
+    src="/static/assets/tubgirl.gif"
+    w="full"
+  />
+</Box>
+`;

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 import { withTheme } from '../theme'
 
 const List = ({
@@ -22,7 +22,7 @@ const List = ({
   const ListItem = listItemIs
 
   return (
-    <BaseComponent
+    <Base
       is={ordered ? 'ol' : is}
       m={{ b: theme.spacing.md }}
       flex={justified || fullWidth || (inline ? [true, 'wrap'] : undefined)}
@@ -48,7 +48,7 @@ const List = ({
             </ListItem>
           ),
       )}
-    </BaseComponent>
+    </Base>
   )
 }
 

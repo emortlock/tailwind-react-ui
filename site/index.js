@@ -38,19 +38,37 @@ module.exports = {
       ],
     },
     {
-      name: 'Component Demos',
-      content: './site/docs/styleguide.md',
-      components: ['./src/components/**/index.js'],
-      usageMode: 'hide',
+      name: 'Utility Components',
+      components: ['./src/components/primitives/*.jsx'],
     },
     {
-      name: 'Component APIs',
-      sections: components.map(component => ({
-        name: `${component.charAt(0).toUpperCase()}${component.substring(1)}`,
-        components: [`./src/components/${component}/[A-Z]*.jsx`],
-        ignore: ['**/tailwind/*'],
-        usageMode: 'expand',
-      })),
+      name: 'UI Components',
+      sections: components
+        .map(component => {
+          const readme = path.resolve(
+            __dirname,
+            '../src/components',
+            component,
+            'readme.md',
+          )
+
+          return (
+            fs.existsSync(readme) && {
+              name: `${component.charAt(0).toUpperCase()}${component.substring(
+                1,
+              )}`,
+              content: path.resolve(
+                __dirname,
+                '../src/components',
+                component,
+                'readme.md',
+              ),
+              components: [`./src/components/${component}/[A-Z]*.jsx`],
+              usageMode: 'expand',
+            }
+          )
+        })
+        .filter(section => !!section),
     },
     {
       name: 'Contributing',
@@ -59,9 +77,13 @@ module.exports = {
   ],
   skipComponentsWithoutExample: true,
   getExampleFilename(componentPath) {
-    return componentPath.endsWith('.jsx')
-      ? path.resolve(__dirname, 'defaultReadme.md')
-      : path.resolve(path.dirname(componentPath), 'readme.md')
+    if (path.extname(componentPath) === '.jsx') {
+      const componentMdPath = componentPath.replace('.jsx', '.md')
+      if (fs.existsSync(componentMdPath)) return componentMdPath
+      return path.resolve(__dirname, 'defaultReadme.md')
+    }
+
+    return path.resolve(path.dirname(componentPath), 'readme.md')
   },
   getComponentPathLine(componentPath) {
     if (!componentPath.endsWith('.jsx')) {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Field renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   id="field-1"
   is="div"
   m={
@@ -71,5 +71,5 @@ exports[`Field renders matching snapshot 1`] = `
   >
     Please complete
   </ErrorText>
-</BaseComponent>
+</Base>
 `;

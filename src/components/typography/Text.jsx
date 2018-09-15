@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent, propTypes } from '../tailwind'
+import { Base } from '../primitives'
+import { propTypes } from '../tailwind'
 import { getAsArray } from '../utils'
 
 const Text = ({
@@ -19,7 +20,7 @@ const Text = ({
 }) => {
   const isParagraph = is === 'p' || paragraph
   return (
-    <BaseComponent
+    <Base
       is={is}
       font={bold ? 'bold' : undefined}
       text={[
@@ -31,7 +32,7 @@ const Text = ({
       {...rest}
     >
       {children}
-    </BaseComponent>
+    </Base>
   )
 }
 

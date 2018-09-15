@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Title renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   font={
     Array [
       "sans",
@@ -23,5 +23,5 @@ exports[`Title renders matching snapshot 1`] = `
   }
 >
   Title
-</BaseComponent>
+</Base>
 `;

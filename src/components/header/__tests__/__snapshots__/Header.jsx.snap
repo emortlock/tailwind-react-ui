@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   bg="blue"
   id="header-1"
   is="header"
@@ -41,5 +41,5 @@ exports[`Header renders matching snapshot 1`] = `
       key=".0"
     />
   </WithTheme(Container)>
-</BaseComponent>
+</Base>
 `;

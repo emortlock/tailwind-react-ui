@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const Title = ({
   theme,
@@ -27,7 +27,7 @@ const Title = ({
   }
 
   return (
-    <BaseComponent
+    <Base
       is={element}
       {...ariaProps}
       leading="tight"
@@ -43,7 +43,7 @@ const Title = ({
       {...rest}
     >
       {children}
-    </BaseComponent>
+    </Base>
   )
 }
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SiteWrap renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   flex={
     Array [
       true,
@@ -40,5 +40,5 @@ exports[`SiteWrap renders matching snapshot 1`] = `
       Footer
     </WithTheme(Footer)>
   </div>
-</BaseComponent>
+</Base>
 `;

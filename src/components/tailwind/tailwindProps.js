@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 const display = {
   block: PropTypes.bool,
   hidden: PropTypes.bool,
+  inline: PropTypes.bool,
   inlineBlock: PropTypes.bool,
   table: PropTypes.bool,
   tableCell: PropTypes.bool,

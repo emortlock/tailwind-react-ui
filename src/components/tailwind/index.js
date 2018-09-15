@@ -1,4 +1,3 @@
-export { default as BaseComponent } from './BaseComponent'
 export { default as getColorShade } from './getColorShade'
 export { default as getTailwindClassNames } from './getTailwindClassNames'
 export {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Row renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   className="list-reset"
   flex={
     Array [

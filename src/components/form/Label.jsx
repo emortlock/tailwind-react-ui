@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const Label = ({
   theme,
@@ -12,7 +12,7 @@ const Label = ({
   htmlFor,
   ...rest
 }) => (
-  <BaseComponent
+  <Base
     is={is}
     inlineBlock
     htmlFor={inputId || htmlFor}
@@ -22,7 +22,7 @@ const Label = ({
     {...rest}
   >
     {children}
-  </BaseComponent>
+  </Base>
 )
 
 Label.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const NavBrand = ({
   theme,
@@ -25,7 +25,7 @@ const NavBrand = ({
     : {}
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       inlineBlock
       noUnderline
@@ -38,7 +38,7 @@ const NavBrand = ({
       {...rest}
     >
       {children}
-    </BaseComponent>
+    </Base>
   )
 }
 
