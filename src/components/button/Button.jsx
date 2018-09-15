@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { BaseComponent, getColorShade } from '../tailwind'
+import { Base } from '../primitives'
+import { getColorShade } from '../tailwind'
 
 const Button = ({
   theme,
@@ -91,7 +92,7 @@ const Button = ({
   }
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       focusable
       inlineBlock
@@ -106,7 +107,7 @@ const Button = ({
       {...rest}
     >
       {children}
-    </BaseComponent>
+    </Base>
   )
 }
 

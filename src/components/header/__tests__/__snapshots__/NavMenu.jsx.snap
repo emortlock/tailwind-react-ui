@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavMenu renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   aria-expanded={true}
   aria-labelledby="undefined-menu"
   flex="grow"
@@ -28,6 +28,7 @@ exports[`NavMenu renders matching snapshot 1`] = `
   <WithTheme(List)
     className="flex-grow"
     listItemIs={[Function]}
+    reset={true}
     role="menu"
   >
     <WithTheme(NavItem)
@@ -61,5 +62,5 @@ exports[`NavMenu renders matching snapshot 1`] = `
   >
     Download
   </button>
-</BaseComponent>
+</Base>
 `;

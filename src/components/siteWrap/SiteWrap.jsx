@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 import Footer, { component as FooterComponent } from '../footer/Footer'
 import { withTheme } from '../theme'
 
@@ -20,7 +20,7 @@ const SiteWrap = ({ is, theme, children, ...rest }) => {
   })
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       flex={[true, 'col']}
       minH="screen"
@@ -43,7 +43,7 @@ const SiteWrap = ({ is, theme, children, ...rest }) => {
       >
         {footer}
       </div>
-    </BaseComponent>
+    </Base>
   )
 }
 

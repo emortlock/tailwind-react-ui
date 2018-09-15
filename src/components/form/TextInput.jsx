@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const TextInput = ({
   theme,
@@ -23,7 +23,7 @@ const TextInput = ({
   const isInvalid = field.invalid || invalid
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       className={classnames(
         'appearance-none',

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 import { getUniqueID, filterProps } from '../utils'
 import { Container } from '../container'
 
@@ -70,7 +70,7 @@ class Header extends PureComponent {
     }
 
     return (
-      <BaseComponent
+      <Base
         is={is}
         id={headerProps.id}
         bg={headerProps.style.bg}
@@ -89,7 +89,7 @@ class Header extends PureComponent {
             React.cloneElement(child, { header: headerProps }),
           )}
         </Container>
-      </BaseComponent>
+      </Base>
     )
   }
 }

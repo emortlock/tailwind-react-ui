@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Flex renders matching snapshot 1`] = `
+<Box
+  flex={
+    Array [
+      true,
+    ]
+  }
+  inline={false}
+  inlineBlock={false}
+  inlineFlex={false}
+  is="div"
+>
+  Hello World
+</Box>
+`;

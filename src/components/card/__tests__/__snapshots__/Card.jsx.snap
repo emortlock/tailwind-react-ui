@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   is="section"
   overflow="hidden"
   rounded="rounded"
 >
   Hello World!
-</BaseComponent>
+</Base>
 `;

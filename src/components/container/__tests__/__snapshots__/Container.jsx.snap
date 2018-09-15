@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container renders matching snapshot 1`] = `
-<BaseComponent
+<Base
   className="container"
   is="div"
   m={
@@ -16,5 +16,5 @@ exports[`Container renders matching snapshot 1`] = `
   }
 >
   Content
-</BaseComponent>
+</Base>
 `;

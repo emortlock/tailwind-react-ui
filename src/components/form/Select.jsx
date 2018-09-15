@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 // https://material.io/tools/icons/?style=baseline
 const ExpandMore = props => (
@@ -43,7 +43,7 @@ const Select = ({
 
   return (
     <div className={`relative mb-${theme.spacing.sm}`}>
-      <BaseComponent
+      <Base
         is={is}
         className={classnames(
           'appearance-none',
@@ -75,7 +75,7 @@ const Select = ({
             {option.label}
           </option>
         ))}
-      </BaseComponent>
+      </Base>
       <div
         className={classnames(
           'pointer-events-none',

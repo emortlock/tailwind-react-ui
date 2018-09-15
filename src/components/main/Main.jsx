@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const Main = ({ children, is, id, ...rest }) => (
-  <BaseComponent is={is} id={id} role="main" {...rest}>
+  <Base is={is} id={id} role="main" {...rest}>
     {children}
-  </BaseComponent>
+  </Base>
 )
 
 Main.propTypes = {

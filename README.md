@@ -27,7 +27,7 @@ Tailwind React UI's components have no inline/encapsulated styles (barring some 
 
 Introduces a [props API](https://emortlock.github.io/tailwind-react-ui/#usage) for Tailwind's uitlity classes that allows for extensive customisation & quick prototyping
 
-- Bring this functionality to your own components through the `withTailind` higher order component or by using the `BaseComponent` primitive to have that handled down wind
+- Bring this functionality to your own components through the `withTailind` higher order component or by using the component primitives to have that handled down wind
 
 ### Configurable Theme
 
@@ -49,15 +49,18 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 
 [PurgeCSS](https://github.com/FullHuman/purgecss) is a key tool when using TailwindCSS to strip out any of the unused utilities and to avoid any complications with this the library provides a whitelist of classes your theme will generate from components as well as a custom extractor that parses the utility class props API used by the components.
 
-
 ## Example
 
 ```jsx
 <Card border p={4}>
-  <Title is="h1" size={6} text={['blue','xxl']}>Hello World</Title>
+  <Title is="h1" size={6} text={['blue', 'xxl']}>
+    Hello World
+  </Title>
   <Row gutter>
     <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
-      <Button fullWidth bg="blue" bg-hocus="blue-dark" text="white">Foo</Button>
+      <Button fullWidth bg="blue" bg-hocus="blue-dark" text="white">
+        Foo
+      </Button>
     </Col>
     <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
       <Button

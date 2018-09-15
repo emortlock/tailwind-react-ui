@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Touchable renders matching snapshot 1`] = `
+<Base
+  className="cursor-pointer"
+  disabled={false}
+  focusable={true}
+  is="button"
+>
+  Hello World
+</Base>
+`;

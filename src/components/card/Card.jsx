@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const Card = ({ is, children, theme, ...rest }) => (
-  <BaseComponent is={is} overflow="hidden" rounded={theme.radius} {...rest}>
+  <Base is={is} overflow="hidden" rounded={theme.radius} {...rest}>
     {children}
-  </BaseComponent>
+  </Base>
 )
 
 Card.propTypes = {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 
 const NavItem = ({
   theme,
@@ -22,7 +22,7 @@ const NavItem = ({
     : {}
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       focusable
       text={!active ? style.text : style.bg}
@@ -39,7 +39,7 @@ const NavItem = ({
       {...rest}
     >
       {children}
-    </BaseComponent>
+    </Base>
   )
 }
 

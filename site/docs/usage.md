@@ -15,10 +15,10 @@ Which when output on the page would give you the following.
 
 ### Tailwind Props
 
-Each of the components make use of a shared `BaseComponent` which translates the TailwindCSS class structure into a React props api. Take a look at the example below to see how common attributes can be compiled together:
+Each of the components make use of a shared `Base` component which translates the TailwindCSS class structure into a React props api. Take a look at the example below to see how common attributes can be compiled together:
 
 ```jsx
-<BaseComponent
+<Base
   bg="blue-lightest"
   p={{ x: 4, y: 2 }}
   shadow
@@ -29,7 +29,7 @@ Each of the components make use of a shared `BaseComponent` which translates the
   rounded
 >
   Hello World
-</BaseComponent>
+</Base>
 ```
 
 #### Responsive and State Variants
@@ -37,8 +37,8 @@ Each of the components make use of a shared `BaseComponent` which translates the
 By adding a suffix to the above properties with a breakpoint or state separated with a `-` you can tie a particular prop to a variant qualifier. The below example will change colour as the screen size changes along with interacting to being hovered.
 
 ```jsx
-<BaseComponent flex justify="center">
-  <BaseComponent
+<Base flex justify="center">
+  <Base
     flex
     justify="center"
     items="center"
@@ -55,6 +55,6 @@ By adding a suffix to the above properties with a breakpoint or state separated 
     h={24}
   >
     Tailwind
-  </BaseComponent>
-</BaseComponent>
+  </Base>
+</Base>
 ```

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { BaseComponent } from '../tailwind'
+import { Base } from '../primitives'
 import { Title } from '../typography'
 import { withTransition } from '../utils'
 import { List } from '../list'
@@ -35,7 +35,7 @@ const NavMenu = ({
     : {}
 
   return (
-    <BaseComponent
+    <Base
       is={is}
       overflow="hidden"
       w="full"
@@ -62,6 +62,7 @@ const NavMenu = ({
         Site menu
       </Title>
       <List
+        reset
         className={classnames(
           'flex-grow',
           header.screen && `${header.screen}:flex ${header.screen}:mb-0`,
@@ -78,7 +79,7 @@ const NavMenu = ({
         )}
       </List>
       {React.Children.map(children, child => child.type !== NavItem && child)}
-    </BaseComponent>
+    </Base>
   )
 }
 
