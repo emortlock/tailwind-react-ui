@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { Touchable } from '../primitives'
+import { Box, Touchable } from '../primitives'
 
 // https://material.io/tools/icons/?style=baseline
 const ExpandMore = props => (
@@ -42,7 +42,7 @@ const Select = ({
   const ChevronDown = icon
 
   return (
-    <div className={`relative mb-${theme.spacing.sm}`}>
+    <Box relative m={{ b: theme.spacing.sm }}>
       <Touchable
         is={is}
         className={classnames('appearance-none', className)}
@@ -71,18 +71,17 @@ const Select = ({
           </option>
         ))}
       </Touchable>
-      <div
-        className={classnames(
-          'pointer-events-none',
-          'absolute',
-          'pin-y pin-r',
-          'flex items-center',
-          `px-${theme.spacing.sm}`,
-        )}
+      <Box
+        absolute
+        pin={['y', 'r']}
+        flex
+        items="center"
+        p={{ x: theme.spacing.sm }}
+        className="pointer-events-none"
       >
         <ChevronDown className="h-6	w-6" />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

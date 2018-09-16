@@ -34,7 +34,6 @@ const TextInput = ({
       border={!isInvalid ? true : [true, theme.brandColors.danger]}
       w="full"
       leading="tight"
-      opacity={disabled ? 50 : undefined}
       id={field.inputId || id || name}
       name={name}
       type={type}
