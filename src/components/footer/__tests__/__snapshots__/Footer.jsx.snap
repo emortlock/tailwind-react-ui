@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Footer renders matching snapshot 1`] = `
-<Base
+<Box
   bg="grey-dark"
+  inline={false}
+  inlineBlock={false}
   is="footer"
   p={
     Object {
@@ -18,5 +20,5 @@ exports[`Footer renders matching snapshot 1`] = `
   >
     © E Corp
   </WithTheme(Container)>
-</Base>
+</Box>
 `;

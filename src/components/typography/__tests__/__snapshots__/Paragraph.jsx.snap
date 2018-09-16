@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Text renders matching snapshot 1`] = `
-<Base
+exports[`Paragraph renders matching snapshot 1`] = `
+<Text
+  bold={false}
   is="p"
+  leading="normal"
+  loose={false}
   m={
     Object {
       "b": 4,
@@ -13,7 +16,8 @@ exports[`Text renders matching snapshot 1`] = `
       false,
     ]
   }
+  tight={false}
 >
   Lorem ipsum dolor sit amet
-</Base>
+</Text>
 `;

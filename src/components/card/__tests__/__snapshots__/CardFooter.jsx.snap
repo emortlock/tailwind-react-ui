@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardFooter renders matching snapshot 1`] = `
-<Base
+<Box
   flex={
     Array [
       true,
       "row-reverse",
     ]
   }
+  inline={false}
+  inlineBlock={false}
   is="div"
   items="end"
 >
@@ -15,5 +17,5 @@ exports[`CardFooter renders matching snapshot 1`] = `
     key=".0"
     rounded="none"
   />
-</Base>
+</Box>
 `;

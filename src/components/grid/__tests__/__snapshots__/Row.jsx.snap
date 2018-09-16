@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Row renders matching snapshot 1`] = `
-<Base
+<Box
   className="list-reset"
   flex={
     Array [
@@ -9,6 +9,8 @@ exports[`Row renders matching snapshot 1`] = `
       "wrap",
     ]
   }
+  inline={false}
+  inlineBlock={false}
   is="ul"
   nm={
     Object {

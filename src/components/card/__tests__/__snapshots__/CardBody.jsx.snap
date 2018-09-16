@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardBody renders matching snapshot 1`] = `
-<Base
+<Box
+  inline={false}
+  inlineBlock={false}
   is="div"
   p={4}
 >
   Hello World!
-</Base>
+</Box>
 `;

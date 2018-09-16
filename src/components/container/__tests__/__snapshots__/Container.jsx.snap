@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Container renders matching snapshot 1`] = `
-<Base
+<Box
   className="container"
+  inline={false}
+  inlineBlock={false}
   is="div"
   m={
     Object {
@@ -16,5 +18,5 @@ exports[`Container renders matching snapshot 1`] = `
   }
 >
   Content
-</Base>
+</Box>
 `;
