@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Title renders matching snapshot 1`] = `
-<Base
+<Text
+  bold={false}
   font={
     Array [
       "sans",
@@ -10,6 +11,7 @@ exports[`Title renders matching snapshot 1`] = `
   }
   is="h4"
   leading="tight"
+  loose={false}
   m={
     Object {
       "b": 4,
@@ -21,7 +23,8 @@ exports[`Title renders matching snapshot 1`] = `
       "black",
     ]
   }
+  tight={false}
 >
   Title
-</Base>
+</Text>
 `;

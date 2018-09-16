@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 import { Title } from '../typography'
 import { withTransition } from '../utils'
 import { List } from '../list'
@@ -35,7 +35,7 @@ const NavMenu = ({
     : {}
 
   return (
-    <Base
+    <Box
       is={is}
       overflow="hidden"
       w="full"
@@ -79,7 +79,7 @@ const NavMenu = ({
         )}
       </List>
       {React.Children.map(children, child => child.type !== NavItem && child)}
-    </Base>
+    </Box>
   )
 }
 

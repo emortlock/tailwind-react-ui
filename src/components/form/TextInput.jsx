@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Touchable } from '../primitives'
 
 const TextInput = ({
   theme,
@@ -23,13 +23,9 @@ const TextInput = ({
   const isInvalid = field.invalid || invalid
 
   return (
-    <Base
+    <Touchable
       is={is}
-      className={classnames(
-        'appearance-none',
-        disabled && 'pointer-events-none',
-        className,
-      )}
+      className={classnames('appearance-none', className)}
       bg="white"
       rounded={theme.radius}
       text={theme.textColors.body}
@@ -38,7 +34,6 @@ const TextInput = ({
       border={!isInvalid ? true : [true, theme.brandColors.danger]}
       w="full"
       leading="tight"
-      opacity={disabled ? 50 : undefined}
       id={field.inputId || id || name}
       name={name}
       type={type}

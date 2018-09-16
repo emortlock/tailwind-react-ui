@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Col renders matching snapshot 1`] = `
-<Base
+<Box
+  inline={false}
+  inlineBlock={false}
   is="li"
   size={
     Object {
@@ -13,5 +15,5 @@ exports[`Col renders matching snapshot 1`] = `
   w="full"
 >
   Content
-</Base>
+</Box>
 `;

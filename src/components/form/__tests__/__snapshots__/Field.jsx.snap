@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Field renders matching snapshot 1`] = `
-<Base
+<Box
   id="field-1"
+  inline={false}
+  inlineBlock={false}
   is="div"
   m={
     Object {
@@ -71,5 +73,5 @@ exports[`Field renders matching snapshot 1`] = `
   >
     Please complete
   </ErrorText>
-</Base>
+</Box>
 `;

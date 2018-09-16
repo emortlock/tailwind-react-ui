@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 import { getUniqueID, filterProps } from '../utils'
 
 class Field extends PureComponent {
@@ -35,7 +35,7 @@ class Field extends PureComponent {
     }
 
     return (
-      <Base
+      <Box
         is={is}
         id={this.id}
         m={{ b: theme.spacing.md }}
@@ -45,7 +45,7 @@ class Field extends PureComponent {
         {React.Children.map(children, child =>
           React.cloneElement(child, { field: fieldProps }),
         )}
-      </Base>
+      </Box>
     )
   }
 }

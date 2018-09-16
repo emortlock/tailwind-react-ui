@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 import { withTheme } from '../theme'
 import { getUniqueID } from '../utils'
 
@@ -17,7 +17,7 @@ class ContentBlock extends PureComponent {
     const { theme, is, children, ...rest } = this.props
 
     return (
-      <Base is={is} p={theme.spacing.md} aria-labelledby={this.id} {...rest}>
+      <Box is={is} p={theme.spacing.md} aria-labelledby={this.id} {...rest}>
         {React.Children.map(children, (child, index) => {
           if (child.type === ContentTitle) {
             return React.cloneElement(child, { content: { id: this.id } })
@@ -29,7 +29,7 @@ class ContentBlock extends PureComponent {
 
           return child
         })}
-      </Base>
+      </Box>
     )
   }
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
-import { Base } from '../primitives'
+import { Flex, Box } from '../primitives'
 import Footer, { component as FooterComponent } from '../footer/Footer'
 import { withTheme } from '../theme'
 
@@ -20,30 +19,25 @@ const SiteWrap = ({ is, theme, children, ...rest }) => {
   })
 
   return (
-    <Base
+    <Flex
       is={is}
-      flex={[true, 'col']}
+      col
       minH="screen"
       leading="normal"
       font={theme.text.family.body}
       text={[theme.text.size.body[1], theme.textColors.body]}
       {...rest}
     >
-      <div className="flex-auto flex-no-shrink">
+      <Box flex={['auto', 'no-shrink']}>
         {React.Children.map(children, child => {
           if (child === footer) return false
           return child
         })}
-      </div>
-      <div
-        className={classnames(
-          'flex-auto flex-no-shrink flex-no-grow',
-          `mt-${theme.spacing.lg}`,
-        )}
-      >
+      </Box>
+      <Box flex={['auto', 'no-shrink', 'no-grow']} m={{ t: theme.spacing.lg }}>
         {footer}
-      </div>
-    </Base>
+      </Box>
+    </Flex>
   )
 }
 

@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 
 const CardFooter = ({ is, children, ...rest }) => (
-  <Base is={is} flex={[true, 'row-reverse']} items="end" {...rest}>
+  <Box is={is} flex={[true, 'row-reverse']} items="end" {...rest}>
     {React.Children.map(children, child =>
       React.cloneElement(child, {
         rounded: 'none',
       }),
     )}
-  </Base>
+  </Box>
 )
 
 CardFooter.propTypes = {

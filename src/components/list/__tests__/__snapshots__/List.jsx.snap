@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`List renders matching snapshot 1`] = `
-<Base
+<Box
   className="list-reset"
   flex={
     Array [
@@ -9,6 +9,8 @@ exports[`List renders matching snapshot 1`] = `
       "wrap",
     ]
   }
+  inline={false}
+  inlineBlock={false}
   is="ul"
   m={
     Object {
@@ -40,5 +42,5 @@ exports[`List renders matching snapshot 1`] = `
       Three
     </span>
   </li>
-</Base>
+</Box>
 `;

@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
-import { Base } from '../primitives'
+import { Touchable } from '../primitives'
 import { getColorShade } from '../tailwind'
 
 const Button = ({
@@ -21,7 +20,6 @@ const Button = ({
   text,
   border,
   brand,
-  className,
   ...rest
 }) => {
   const props = {
@@ -92,22 +90,9 @@ const Button = ({
   }
 
   return (
-    <Base
-      is={is}
-      focusable
-      inlineBlock
-      {...props}
-      disabled={disabled}
-      aria-disabled={disabled || undefined}
-      className={classnames(
-        'select-none',
-        disabled && 'pointer-events-none',
-        className,
-      )}
-      {...rest}
-    >
+    <Touchable is={is} inlineBlock {...props} {...rest}>
       {children}
-    </Base>
+    </Touchable>
   )
 }
 
@@ -126,7 +111,6 @@ Button.propTypes = {
   bg: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   border: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  className: PropTypes.string,
 }
 
 Button.defaultProps = {
@@ -143,7 +127,6 @@ Button.defaultProps = {
   bg: undefined,
   text: undefined,
   border: undefined,
-  className: undefined,
 }
 
 export { Button as component }

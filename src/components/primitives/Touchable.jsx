@@ -42,7 +42,9 @@ class Touchable extends PureComponent {
       <Base
         is={is}
         className={classnames(
-          !disabled ? 'cursor-pointer' : 'cursor-not-allowed',
+          'select-none',
+          'cursor-pointer',
+          disabled && 'pointer-events-none',
           className,
         )}
         focusable
@@ -51,7 +53,7 @@ class Touchable extends PureComponent {
         opacity={disabled ? 50 : undefined}
         disabled={disabled}
         aria-disabled={disabled || undefined}
-        onClick={!disabled ? onTouch : undefined}
+        onClick={onTouch}
         onKeyPress={!isSemantic && !disabled ? this.handleKeyPress : undefined}
         {...rest}
       >

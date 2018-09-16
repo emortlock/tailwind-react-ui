@@ -20,44 +20,29 @@
 <Title size={1} subtitle>Subtitle 1</Title>
 ```
 
-### Text
+### Paragraph
 
-Standard inline body copy:
+Standard body copy:
 
 ```jsx
 <Text>Hello World</Text>
 ```
 
-Lead text as a `<p />` element:
-
 ```jsx
-<Text is="p" lead>
+<Text lead>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-  in culpa qui officia deserunt mollit anim id est laborum.
+  incididunt ut labore et dolore magna aliqua.
 </Text>
-```
 
-Inline font styles:
-
-```jsx
-<Text is="p">
+<Text>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua.{' '}
-  <Text bold>Ut enim ad minim veniam</Text>, quis nostrud exercitation ullamco
-  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.{' '}
-  <Text italic>Excepteur sint occaecat cupidatat non proident</Text>, sunt in
-  culpa qui officia deserunt mollit anim id est laborum.
+  incididunt ut labore et dolore magna aliqua.
 </Text>
 ```
 
 #### Brand Text
 
-Brand colour variants of `<Text />`
+Brand colour variants of `<Paragraph />`
 
 Info:
 

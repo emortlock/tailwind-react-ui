@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavBrand renders matching snapshot 1`] = `
-<Base
+<Box
   aria-level={1}
   flex={
     Array [
@@ -10,6 +10,7 @@ exports[`NavBrand renders matching snapshot 1`] = `
     ]
   }
   h={12}
+  inline={false}
   inlineBlock={true}
   is="div"
   items="center"
@@ -18,5 +19,5 @@ exports[`NavBrand renders matching snapshot 1`] = `
   text="white"
 >
   Tailwind React UI
-</Base>
+</Box>
 `;

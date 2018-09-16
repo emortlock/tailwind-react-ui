@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header renders matching snapshot 1`] = `
-<Base
+<Box
   bg="blue"
   id="header-1"
+  inline={false}
+  inlineBlock={false}
   is="header"
   p={
     Object {
@@ -41,5 +43,5 @@ exports[`Header renders matching snapshot 1`] = `
       key=".0"
     />
   </WithTheme(Container)>
-</Base>
+</Box>
 `;

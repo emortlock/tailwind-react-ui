@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavMenu renders matching snapshot 1`] = `
-<Base
+<Box
   aria-expanded={true}
   aria-labelledby="undefined-menu"
   flex="grow"
   id="undefined-nav"
+  inline={false}
+  inlineBlock={false}
   is="nav"
   items="center"
   overflow="hidden"
@@ -62,5 +64,5 @@ exports[`NavMenu renders matching snapshot 1`] = `
   >
     Download
   </button>
-</Base>
+</Box>
 `;

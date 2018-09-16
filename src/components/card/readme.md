@@ -16,10 +16,10 @@ Full example:
 
 ```jsx
 <Card border shadow-hover>
-  <img
-    className="block"
+  <Image
     src="https://placekitten.com/1280/960"
     alt="Example image"
+    aspectRatio={1280 / 960}
   />
   <CardBody>Hello World</CardBody>
   <CardFooter>

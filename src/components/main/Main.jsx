@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Base } from '../primitives'
+import { Box } from '../primitives'
 
 const Main = ({ children, is, id, ...rest }) => (
-  <Base is={is} id={id} role="main" {...rest}>
+  <Box is={is} id={id} role="main" {...rest}>
     {children}
-  </Base>
+  </Box>
 )
 
 Main.propTypes = {

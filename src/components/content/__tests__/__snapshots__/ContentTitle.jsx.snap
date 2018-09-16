@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentBlock renders matching snapshot 1`] = `
-<Base
+<Box
   aria-labelledby="content-1"
+  inline={false}
+  inlineBlock={false}
   is="section"
   p={4}
 >
@@ -14,5 +16,5 @@ exports[`ContentBlock renders matching snapshot 1`] = `
       }
     }
   />
-</Base>
+</Box>
 `;
