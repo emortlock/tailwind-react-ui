@@ -140,6 +140,8 @@ module.exports = {
             whitelist: getWhitelist({}, [
               'flex-col-reverse',
               'flex-wrap-reverse',
+              'max-w-md',
+              'sm:w-1/5',
             ]),
             paths: glob.sync([
               path.join(__dirname, 'docs/*.md'),
