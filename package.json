@@ -15,7 +15,7 @@
     "build:es": "cross-env MODULE_FORMAT=es rollup -c",
     "docs": "rimraf styleguide && styleguidist --config ./site build",
     "docs:deploy": "node ./build/deploy",
-    "start": "styleguidist --config ./site server",
+    "start": "styleguidist --config ./site server --open",
     "test": "cross-env BABEL_ENV=test jest",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "npm run lint -- --fix"
