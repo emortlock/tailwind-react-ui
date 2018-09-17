@@ -137,7 +137,10 @@ module.exports = {
       ? []
       : [
           new PurgecssPlugin({
-            whitelist: getWhitelist({}, []),
+            whitelist: getWhitelist({}, [
+              'flex-col-reverse',
+              'flex-wrap-reverse',
+            ]),
             paths: glob.sync([
               path.join(__dirname, 'docs/*.md'),
               path.join(__dirname, '../', '/src/components/**/*.md'),
