@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { Box } from '../primitives'
+import { Flex } from '../primitives'
 
 const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
   const gutterSpacing =
     gutter && (gutter === true ? theme.spacing.md : theme.spacing[gutter])
 
   return (
-    <Box
+    <Flex
       is={is}
-      flex={nowrap || [true, 'wrap']}
+      wrap={!nowrap}
       nm={
         gutter
           ? { l: gutterSpacing, b: !nowrap ? gutterSpacing : undefined }
@@ -28,7 +28,7 @@ const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
             }),
           )
         : children}
-    </Box>
+    </Flex>
   )
 }
 

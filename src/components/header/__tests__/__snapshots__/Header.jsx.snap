@@ -16,15 +16,11 @@ exports[`Header renders matching snapshot 1`] = `
   text="white"
 >
   <WithTheme(Container)
-    flex={
-      Array [
-        true,
-        "wrap",
-      ]
-    }
+    is={[Function]}
     items="center"
     justify="between"
     padding={true}
+    wrap={true}
   >
     <Component
       header={

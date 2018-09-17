@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { withTheme } from '../theme'
-import { Box } from '../primitives'
+import { Box, Flex } from '../primitives'
 import { getUniqueID, filterProps } from '../utils'
 import { Container } from '../container'
 
@@ -79,12 +79,7 @@ class Header extends PureComponent {
         role="banner"
         {...filterProps(rest, ['id'])}
       >
-        <Container
-          flex={[true, 'wrap']}
-          items="center"
-          justify="between"
-          padding
-        >
+        <Container is={Flex} wrap items="center" justify="between" padding>
           {React.Children.map(children, child =>
             React.cloneElement(child, { header: headerProps }),
           )}
