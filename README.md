@@ -51,31 +51,64 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 
 ## Example
 
+### Using Utility Components
+
 ```jsx
-<Card border p={4}>
-  <Title is="h1" size={6} text={['blue', 'xxl']}>
-    Hello World
-  </Title>
-  <Row gutter>
-    <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
-      <Button fullWidth bg="blue" bg-hocus="blue-dark" text="white">
+<Box maxW="md" m={{ x: 'auto' }}>
+  <Box border shadow>
+    <Box p={4}>
+      <Text is="h1" text={['blue', 'xxl']} m={{ b: 4 }}>
+        Hello World
+      </Text>
+    </Box>
+    <Flex items="end" wrap reverse>
+      <Touchable
+        p={{ x: 4, y: 2 }}
+        border={[true, 'transparent']}
+        bg="blue"
+        bg-hocus="blue-dark"
+        text="white"
+        w="full"
+        w-sm="1/5"
+      >
         Foo
-      </Button>
-    </Col>
-    <Col w={{ def: 'full', sm: '1/3', lg: '1/4' }}>
-      <Button
-        fullWidth
-        buttonStyle="outline"
-        border="blue"
+      </Touchable>
+      <Touchable
+        p={{ x: 4, y: 2 }}
+        border={[true, 'blue']}
         text="blue"
         text-hocus="white"
         bg-hocus="blue"
+        w="full"
+        w-sm="1/5"
       >
         Bar
-      </Button>
-    </Col>
-  </Row>
-</Card>
+      </Touchable>
+    </Flex>
+  </Box>
+</Box>
+```
+
+### Using UI Components
+
+```jsx
+<Container maxW="md">
+  <Card border shadow>
+    <CardBody>
+      <Title size={6} text="blue">
+        Hello World
+      </Title>
+    </CardBody>
+    <CardFooter wrap>
+      <FillButton brand="primary" w="full" w-sm="1/5">
+        Foo
+      </FillButton>
+      <OutlineButton brand="primary" w="full" w-sm="1/5">
+        Bar
+      </OutlineButton>
+    </CardFooter>
+  </Card>
+</Container>
 ```
 
 ## Useful Links
