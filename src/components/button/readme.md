@@ -1,4 +1,4 @@
-Fill button:
+<h3 id="fill-button"><a href="/#fill-button">Fill Button</a></h3>
 
 ```jsx
 <List inline padding>
@@ -18,7 +18,7 @@ Fill button:
 </List>
 ```
 
-Outline button:
+<h3 id="outline-button"><a href="/#outline-button">Outline Button</a></h3>
 
 ```jsx
 <List inline padding>
@@ -38,7 +38,7 @@ Outline button:
 </List>
 ```
 
-Text button:
+<h3 id="text-button"><a href="/#text-button">Text Button</a></h3>
 
 ```jsx
 <List inline padding>
@@ -56,7 +56,7 @@ Text button:
 </List>
 ```
 
-Link button:
+<h3 id="link-button"><a href="/#link-button">Link Button</a></h3>
 
 ```jsx
 <List inline padding>

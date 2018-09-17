@@ -1,6 +1,6 @@
 Makes use of the Tailwind CSS [`container plugin`](https://tailwindcss.com/docs/container).
 
-Example:
+### Example
 
 ```jsx
 <Container padding>

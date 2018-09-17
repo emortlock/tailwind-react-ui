@@ -11,7 +11,7 @@
 </Field>
 ```
 
-Disabled example:
+#### Disabled
 
 ```jsx
 <Field disabled>
@@ -20,7 +20,7 @@ Disabled example:
 </Field>
 ```
 
-Validation error example:
+#### Validation Error:
 
 ```jsx
 <Field hasError>

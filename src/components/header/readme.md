@@ -1,4 +1,4 @@
-Example:
+### Example
 
 ```jsx
 <Header>
@@ -32,7 +32,7 @@ Example:
 </Header>
 ```
 
-Custom branding example:
+### Custom Example:
 
 ```jsx
 <Header bg="purple" text="white" screen="md">

@@ -1,4 +1,8 @@
-Simple wrapper around the standard `<main />` element which adds an ID for use with an access friendly skip link. Tab onto the example below to see this behaviour in action.
+Simple wrapper around the standard `<main />` element which adds an ID for use with an access friendly skip link.
+
+### Example
+
+Tab onto the example below to see this behaviour in action.
 
 ```jsx
 <SkipLink href="#main-example" />

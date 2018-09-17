@@ -1,4 +1,4 @@
-Simple list:
+### Simple Example
 
 ```jsx
 <List padding ordered>
@@ -8,7 +8,7 @@ Simple list:
 </List>
 ```
 
-Inline list:
+### Inline
 
 ```jsx
 <List padding inline>
@@ -18,7 +18,7 @@ Inline list:
 </List>
 ```
 
-Justified list:
+### Justified
 
 ```jsx
 <List justified>
@@ -28,7 +28,7 @@ Justified list:
 </List>
 ```
 
-Full width list:
+### Full Width
 
 ```jsx
 <List fullWidth>

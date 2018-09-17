@@ -1,6 +1,6 @@
 Follows the component behaviour described on the Tailwind CSS [grid component page](https://tailwindcss.com/docs/examples/grids).
 
-Example:
+### Example
 
 ```jsx
 <Row>
@@ -37,7 +37,7 @@ Example:
 </Row>
 ```
 
-Gutters:
+### Gutters
 
 ```jsx
 <Row gutter>
@@ -94,7 +94,7 @@ Gutters:
 </Row>
 ```
 
-Responsive column widths:
+### Responsive Columns
 
 ```jsx
 <Row gutter>
@@ -119,7 +119,7 @@ Responsive column widths:
 </Row>
 ```
 
-Auto column widths:
+### Auto Sized Columns
 
 ```jsx
 <Row nowrap>

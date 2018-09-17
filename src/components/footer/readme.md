@@ -1,5 +1,7 @@
 Simple wrapper around the `<footer />` element
 
+### Example
+
 ```jsx
 <Footer>
   <Text is="p">&copy; E Corp {new Date().getFullYear()}</Text>

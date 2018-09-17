@@ -4,6 +4,8 @@ Standard card functionality made up of:
 - `<CardBody />` &mdash; padded element for main content of the card
 - `<CardFooter />` &mdash; right aligns, reverses order & squares corners of elements to have CTAs in priority tab order
 
+### Simple Example
+
 ```jsx
 <Card>
   <CardBody>
@@ -12,10 +14,10 @@ Standard card functionality made up of:
 </Card>
 ```
 
-Full example:
+### Full Example
 
 ```jsx
-<Card border shadow-hover>
+<Card border shadow maxW="sm">
   <Image
     src="https://placekitten.com/1280/960"
     alt="Example image"

@@ -22,29 +22,29 @@
 
 ### Paragraph
 
-Standard body copy:
+Standard body copy
 
 ```jsx
-<Text>Hello World</Text>
+<Paragraph>Hello World</Paragraph>
 ```
 
 ```jsx
-<Text lead>
+<Paragraph lead>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua.
-</Text>
+</Paragraph>
 
-<Text>
+<Paragraph>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua.
-</Text>
+</Paragraph>
 ```
 
-#### Brand Text
+### Brand Text
 
 Brand colour variants of `<Paragraph />`
 
-Info:
+#### Info
 
 ```jsx
 <InfoText>Simple info text</InfoText>
@@ -52,7 +52,7 @@ Info:
 <InfoText is="p" textOnly>Simple info text</InfoText>
 ```
 
-Warning
+#### Warning
 
 ```jsx
 <WarningText>Simple warning text</WarningText>
@@ -60,7 +60,7 @@ Warning
 <WarningText textOnly>Simple warning text</WarningText>
 ```
 
-Danger
+#### Danger
 
 ```jsx
 <DangerText>Simple danger text</DangerText>
