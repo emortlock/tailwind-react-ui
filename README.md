@@ -113,10 +113,8 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 
 ## Useful Links
 
-- [GitHub repository](https://github.com/emortlock/tailwind-react)
+- [GitHub](https://github.com/emortlock/tailwind-react-ui)
 
-- [Documentation](https://emortlock.github.io/tailwind-react/#documentation)
+- [Documentation](https://emortlock.github.io/tailwind-react-ui/#documentation)
 
-- [Component demos](https://emortlock.github.io/tailwind-react/#component-demos)
-
-- [Component APIs](https://emortlock.github.io/tailwind-react/#component-apis)
+- [Component demos](https://emortlock.github.io/tailwind-react-ui/#utility-components)
