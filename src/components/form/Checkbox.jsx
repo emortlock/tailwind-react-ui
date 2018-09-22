@@ -1,4 +1,6 @@
 import React from 'react'
 import OptionInput from './OptionInput'
 
-export default props => <OptionInput {...props} checkbox />
+const Checkbox = props => <OptionInput {...props} checkbox />
+
+export default Checkbox

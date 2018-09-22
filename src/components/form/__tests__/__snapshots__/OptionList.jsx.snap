@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionList renders matching snapshot 1`] = `
+<WithTheme(List)
+  m={
+    Object {
+      "b": 0,
+    }
+  }
+  reset={true}
+>
+  <Radio
+    checked={false}
+    id="undefined-yes"
+    key=".0"
+    label="Yes"
+    name="test"
+    onChange={[Function]}
+    value="yes"
+  />
+  <Radio
+    checked={false}
+    id="undefined-no"
+    key=".1"
+    label="No"
+    name="test"
+    onChange={[Function]}
+    value="no"
+  />
+  <Radio
+    checked={false}
+    id="undefined-maybe"
+    key=".2"
+    label="Maybe"
+    name="test"
+    onChange={[Function]}
+    value="maybe"
+  />
+</WithTheme(List)>
+`;

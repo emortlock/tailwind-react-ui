@@ -1,4 +1,6 @@
 import React from 'react'
 import OptionInput from './OptionInput'
 
-export default props => <OptionInput {...props} checkbox={false} />
+const Radio = props => <OptionInput {...props} checkbox={false} />
+
+export default Radio

@@ -1,4 +1,6 @@
 import React from 'react'
 import Label from './Label'
 
-export default props => <Label {...props} is="legend" optionList />
+const OptionLabel = props => <Label {...props} is="legend" optionList />
+
+export default OptionLabel
