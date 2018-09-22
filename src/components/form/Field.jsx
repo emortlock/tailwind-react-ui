@@ -61,7 +61,7 @@ Field.propTypes = {
   hasError: PropTypes.bool,
   disabled: PropTypes.bool,
   id: PropTypes.string,
-  optionList: PropTypes.string,
+  optionList: PropTypes.bool,
 }
 
 Field.defaultProps = {
