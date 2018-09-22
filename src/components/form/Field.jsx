@@ -23,6 +23,7 @@ class Field extends PureComponent {
       hasHelp,
       hasError,
       disabled,
+      optionList,
       ...rest
     } = this.props
 
@@ -30,6 +31,7 @@ class Field extends PureComponent {
       inputId: `${this.id}-input`,
       helpId: hasHelp ? `${this.id}-help` : undefined,
       errorId: hasError ? `${this.id}-error` : undefined,
+      labelId: optionList ? `${this.id}-label` : undefined,
       invalid: hasError,
       disabled,
     }
@@ -59,6 +61,7 @@ Field.propTypes = {
   hasError: PropTypes.bool,
   disabled: PropTypes.bool,
   id: PropTypes.string,
+  optionList: PropTypes.string,
 }
 
 Field.defaultProps = {
@@ -69,6 +72,7 @@ Field.defaultProps = {
   hasError: false,
   disabled: false,
   id: undefined,
+  optionList: false,
 }
 
 export { Field as component }
