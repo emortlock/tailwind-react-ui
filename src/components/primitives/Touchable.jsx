@@ -22,7 +22,7 @@ class Touchable extends PureComponent {
         (e.keyCode && (e.keyCode === 13 || e.keyCode === 32)))
     ) {
       e.preventDefault()
-      onTouch({ e })
+      onTouch(e)
     }
   }
 
