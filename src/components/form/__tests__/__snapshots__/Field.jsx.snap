@@ -21,6 +21,7 @@ exports[`Field renders matching snapshot 1`] = `
         "helpId": "field-1-help",
         "inputId": "field-1-input",
         "invalid": true,
+        "labelId": undefined,
       }
     }
     key=".0"
@@ -35,6 +36,7 @@ exports[`Field renders matching snapshot 1`] = `
         "helpId": "field-1-help",
         "inputId": "field-1-input",
         "invalid": true,
+        "labelId": undefined,
       }
     }
     is={[Function]}
@@ -51,6 +53,7 @@ exports[`Field renders matching snapshot 1`] = `
         "helpId": "field-1-help",
         "inputId": "field-1-input",
         "invalid": true,
+        "labelId": undefined,
       }
     }
     key=".2"
@@ -65,6 +68,7 @@ exports[`Field renders matching snapshot 1`] = `
         "helpId": "field-1-help",
         "inputId": "field-1-input",
         "invalid": true,
+        "labelId": undefined,
       }
     }
     is={[Function]}
