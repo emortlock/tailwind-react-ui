@@ -21,7 +21,7 @@ const Label = ({
     htmlFor={!optionList ? inputId || htmlFor : undefined}
     m={{ b: theme.spacing.sm }}
     opacity={disabled ? 50 : undefined}
-    weight="semibold"
+    weight="bold"
     {...rest}
   >
     {children}
