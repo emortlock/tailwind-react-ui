@@ -14,7 +14,7 @@ exports[`Label renders matching snapshot 1`] = `
     }
   }
   tight={false}
-  weight="semibold"
+  weight="bold"
 >
   Username
 </Text>
