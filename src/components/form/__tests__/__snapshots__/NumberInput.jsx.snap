@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberInput renders matching snapshot 1`] = `
+<Touchable
+  bg="white"
+  border={true}
+  className="appearance-none"
+  disabled={false}
+  id="username"
+  inputmode="numeric"
+  is="input"
+  leading="tight"
+  m={
+    Object {
+      "b": 2,
+    }
+  }
+  name="username"
+  p={
+    Object {
+      "x": 4,
+      "y": 2,
+    }
+  }
+  pattern="[0-9]*"
+  readOnly={false}
+  rounded="rounded"
+  text="grey-darkest"
+  w="full"
+/>
+`;

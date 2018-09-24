@@ -63,6 +63,7 @@ exports[`OptionInput renders matching snapshot 1`] = `
     />
   </Flex>
   <Box
+    font="normal"
     inline={false}
     inlineBlock={true}
     is="div"

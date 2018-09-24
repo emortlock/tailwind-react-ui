@@ -30,6 +30,15 @@
 </Field>
 ```
 
+### Number input
+
+```jsx
+<Field>
+  <Label>Username</Label>
+  <NumberInput name="number" placeholder="Card Number" />
+</Field>
+```
+
 ### Select
 
 ```jsx
@@ -100,4 +109,13 @@
     <Radio value="maybe" label="Maybe" />
   </OptionList>
 </OptionField>
+```
+
+### TextArea
+
+```jsx
+<Field>
+  <Label>Comments</Label>
+  <TextArea name="comments" />
+</Field>
 ```
