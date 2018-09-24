@@ -121,7 +121,12 @@ class OptionInput extends PureComponent {
               />
             ))}
         </Flex>
-        <Box inlineBlock visuallyHidden={hideLabel} leading="tight">
+        <Box
+          inlineBlock
+          visuallyHidden={hideLabel}
+          leading="tight"
+          font="normal"
+        >
           {label}
         </Box>
       </Touchable>
