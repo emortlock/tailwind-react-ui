@@ -21,7 +21,7 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "engines": {
-    "node": "^8.11.3",
+    "node": ">=8.11.3",
     "npm": ">=5.0.0"
   },
   "jest": {
