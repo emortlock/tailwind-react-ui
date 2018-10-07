@@ -136,24 +136,24 @@ module.exports = {
     plugins: isDev
       ? []
       : [
-          new PurgecssPlugin({
-            whitelist: getWhitelist({}, [
-              'flex-col-reverse',
-              'flex-wrap-reverse',
-              'max-w-md',
-              'sm:w-1/5',
-            ]),
-            paths: glob.sync([
-              path.join(__dirname, 'docs/*.md'),
-              path.join(__dirname, '../', '/src/components/**/*.md'),
-            ]),
-            extractors: [
-              {
-                extractor: TailwindReactExtractor,
-                extensions: ['md'],
-              },
-            ],
-          }),
+          // new PurgecssPlugin({
+          //   whitelist: getWhitelist({}, [
+          //     'flex-col-reverse',
+          //     'flex-wrap-reverse',
+          //     'max-w-md',
+          //     'sm:w-1/5',
+          //   ]),
+          //   paths: glob.sync([
+          //     path.join(__dirname, 'docs/*.md'),
+          //     path.join(__dirname, '../', '/src/components/**/*.md'),
+          //   ]),
+          //   extractors: [
+          //     {
+          //       extractor: TailwindReactExtractor,
+          //       extensions: ['md'],
+          //     },
+          //   ],
+          // }),
           new MiniCssExtractPlugin({
             filename: 'main.[contenthash].css',
           }),
