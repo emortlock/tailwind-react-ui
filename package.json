@@ -118,7 +118,7 @@
     "rollup-plugin-babel": "^4.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "style-loader": "^0.23.0",
-    "tailwindcss": "^0.6.4",
+    "tailwindcss": "^0.7.1",
     "webpack": "^4.16.5"
   },
   "author": "Ed Mortlock",
