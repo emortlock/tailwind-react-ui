@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { Touchable } from '../primitives'
@@ -10,7 +9,6 @@ const TextInput = ({
   is,
   field,
   children,
-  className,
   id,
   name,
   type,
@@ -25,7 +23,7 @@ const TextInput = ({
   return (
     <Touchable
       is={is}
-      className={classnames('appearance-none', className)}
+      appearance="none"
       bg="white"
       rounded={theme.radius}
       text={theme.textColors.body}
@@ -55,7 +53,6 @@ TextInput.propTypes = {
     disabled: PropTypes.bool,
   }),
   children: PropTypes.node,
-  className: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -68,7 +65,6 @@ TextInput.defaultProps = {
   is: 'input',
   field: {},
   children: undefined,
-  className: undefined,
   id: undefined,
   type: 'text',
   disabled: false,

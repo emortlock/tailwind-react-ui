@@ -2,7 +2,7 @@
 
 exports[`Base renders matching snapshot 1`] = `
 <div
-  className=""
+  className="focus:shadow-outline"
 >
   Hello World
 </div>

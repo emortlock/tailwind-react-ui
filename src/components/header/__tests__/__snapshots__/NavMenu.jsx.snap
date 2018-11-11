@@ -28,7 +28,7 @@ exports[`NavMenu renders matching snapshot 1`] = `
     Site menu
   </WithTheme(Title)>
   <WithTheme(List)
-    className="flex-grow"
+    flex="grow"
     listItemIs={[Function]}
     reset={true}
     role="menu"

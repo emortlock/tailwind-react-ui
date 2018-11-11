@@ -1,4 +1,5 @@
 export default {
+  prefix: '',
   radius: 'rounded',
   spacing: {
     zero: 0,

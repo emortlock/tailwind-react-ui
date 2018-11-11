@@ -1,22 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Box } from '../primitives'
 import { FillButton } from '../button'
 
 const SkipLink = ({ children, href, ...rest }) => (
-  <span className="visually-hidden-focusable">
+  <Box visuallyHiddenFocusable>
     <FillButton
-      // eslint-disable-next-line jsx-a11y/anchor-has-content
-      is={props => <a href={href} {...props} />}
+      is="a"
       bg="white"
       text="black"
       absolute
       rounded="none"
+      href={href}
       {...rest}
     >
       {children || 'Skip to main content'}
     </FillButton>
-  </span>
+  </Box>
 )
 
 SkipLink.propTypes = {

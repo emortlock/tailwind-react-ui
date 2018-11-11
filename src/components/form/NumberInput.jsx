@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { Touchable } from '../primitives'
@@ -10,7 +9,6 @@ const NumberInput = ({
   is,
   field,
   children,
-  className,
   id,
   name,
   disabled,
@@ -24,9 +22,9 @@ const NumberInput = ({
   return (
     <Touchable
       is={is}
-      inputmode="numeric"
+      inputMode="numeric"
       pattern="[0-9]*"
-      className={classnames('appearance-none', className)}
+      appearance="none"
       bg="white"
       rounded={theme.radius}
       text={theme.textColors.body}
@@ -55,7 +53,6 @@ NumberInput.propTypes = {
     disabled: PropTypes.bool,
   }),
   children: PropTypes.node,
-  className: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
@@ -67,7 +64,6 @@ NumberInput.defaultProps = {
   is: 'input',
   field: {},
   children: undefined,
-  className: undefined,
   id: undefined,
   disabled: false,
   readOnly: false,

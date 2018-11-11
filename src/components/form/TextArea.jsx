@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { Touchable } from '../primitives'
@@ -10,7 +9,6 @@ const TextArea = ({
   is,
   field,
   children,
-  className,
   id,
   name,
   disabled,
@@ -24,7 +22,7 @@ const TextArea = ({
   return (
     <Touchable
       is={is}
-      className={classnames('appearance-none', className)}
+      appearance="none"
       bg="white"
       rounded={theme.radius}
       text={theme.textColors.body}
@@ -53,7 +51,6 @@ TextArea.propTypes = {
     disabled: PropTypes.bool,
   }),
   children: PropTypes.node,
-  className: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
@@ -65,7 +62,6 @@ TextArea.defaultProps = {
   is: 'textarea',
   field: {},
   children: undefined,
-  className: undefined,
   id: undefined,
   disabled: false,
   readOnly: false,
