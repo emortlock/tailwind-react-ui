@@ -1,14 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Box } from '../primitives'
 import { Button } from '../button'
 import { withTheme } from '../theme'
 
 const Bar = () => (
-  <span
-    className="border-b inline-block"
-    style={{ borderColor: 'currentColor' }}
-  />
+  <Box inlineBlock border="b" style={{ borderColor: 'currentColor' }} />
 )
 
 const NavToggle = ({
@@ -46,11 +44,17 @@ const NavToggle = ({
       {...rest}
     >
       {children || (
-        <span className="flex flex-col items-stretch justify-around h-full p-3">
+        <Box
+          flex={[true, 'col']}
+          items="stretch"
+          justify="around"
+          h="full"
+          p={3}
+        >
           <Bar />
           <Bar />
           <Bar />
-        </span>
+        </Box>
       )}
     </Button>
   )

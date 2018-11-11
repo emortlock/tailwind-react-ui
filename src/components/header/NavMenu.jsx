@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { Box } from '../primitives'
@@ -27,12 +26,20 @@ const NavMenu = ({
   }
   const headingId = `${header.id}-menu`
 
-  const responsive = header.screen
-    ? {
-        [`w-${header.screen}`]: 'auto',
-        [`flex-${header.screen}`]: true,
-      }
-    : {}
+  const responsive = {
+    nav: header.screen
+      ? {
+          [`w-${header.screen}`]: 'auto',
+          [`flex-${header.screen}`]: true,
+        }
+      : {},
+    menu: header.screen
+      ? {
+          [`flex-${header.screen}`]: true,
+          [`m-${header.screen}`]: { b: 0 },
+        }
+      : {},
+  }
 
   return (
     <Box
@@ -55,7 +62,7 @@ const NavMenu = ({
       aria-labelledby={headingId}
       aria-expanded={header.collapsable ? header.open : undefined}
       role="navigation"
-      {...responsive}
+      {...responsive.nav}
       {...rest}
     >
       <Title level={2} id={headingId} visuallyHidden>
@@ -63,12 +70,10 @@ const NavMenu = ({
       </Title>
       <List
         reset
-        className={classnames(
-          'flex-grow',
-          header.screen && `${header.screen}:flex ${header.screen}:mb-0`,
-        )}
+        flex="grow"
         role="menu"
         listItemIs={NavItemWrapper}
+        {...responsive.menu}
         {...list}
       >
         {React.Children.map(

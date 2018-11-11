@@ -161,11 +161,18 @@ const sizing = {
 const misc = {
   opacity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   shadow: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  listReset: PropTypes.bool,
+  outline: PropTypes.string,
+  appearance: PropTypes.string,
+  select: PropTypes.string,
+  pointerEvents: PropTypes.string,
+  fill: PropTypes.string,
 }
 
 const plugins = {
   visuallyHidden: PropTypes.bool,
   visuallyHiddenFocusable: PropTypes.bool,
+  container: PropTypes.bool,
 }
 
 export const propTypes = {

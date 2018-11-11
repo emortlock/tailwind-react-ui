@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { Base } from '..'
+import { component as Base } from '../Base'
 
 const setup = (testProps = {}) => {
   const props = Object.assign({}, testProps)

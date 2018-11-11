@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import Base from './Base'
 
@@ -27,26 +26,15 @@ class Touchable extends PureComponent {
   }
 
   render() {
-    const {
-      is,
-      children,
-      className,
-      tabIndex,
-      disabled,
-      onTouch,
-      ...rest
-    } = this.props
+    const { is, children, tabIndex, disabled, onTouch, ...rest } = this.props
     const isSemantic = focusableElements.includes(is)
 
     return (
       <Base
         is={is}
-        className={classnames(
-          'select-none',
-          'cursor-pointer',
-          disabled && 'pointer-events-none',
-          className,
-        )}
+        select="none"
+        cursor="pointer"
+        pointerEvents={disabled ? 'none' : undefined}
         focusable
         role={!isSemantic ? 'button' : undefined}
         tabIndex={tabIndex || (!isSemantic && !disabled ? 0 : undefined)}
@@ -67,7 +55,6 @@ Touchable.propTypes = {
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   disabled: PropTypes.bool,
-  className: PropTypes.string,
   tabIndex: PropTypes.number,
   onTouch: PropTypes.func,
 }
@@ -76,7 +63,6 @@ Touchable.defaultProps = {
   is: 'button',
   children: undefined,
   disabled: false,
-  className: undefined,
   tabIndex: undefined,
   onTouch: undefined,
 }

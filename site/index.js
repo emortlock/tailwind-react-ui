@@ -38,7 +38,7 @@ module.exports = {
       ],
     },
     {
-      name: 'Utility Components',
+      name: 'Component Primitives',
       components: ['./src/components/primitives/*.jsx'],
     },
     {

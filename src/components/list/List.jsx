@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { Box } from '../primitives'
 import { withTheme } from '../theme'
@@ -9,7 +8,6 @@ const List = ({
   theme,
   is,
   children,
-  className,
   padding,
   reset,
   inline,
@@ -18,45 +16,42 @@ const List = ({
   ordered,
   listItemIs,
   ...rest
-}) => {
-  const ListItem = listItemIs
-
-  return (
-    <Box
-      is={ordered ? 'ol' : is}
-      m={{ b: theme.spacing.md }}
-      flex={justified || fullWidth || (inline ? [true, 'wrap'] : undefined)}
-      justify={justified ? 'between' : undefined}
-      className={classnames(
-        (reset || inline || justified || fullWidth) && 'list-reset',
-        className,
-      )}
-      {...rest}
-    >
-      {React.Children.map(
-        children,
-        child =>
-          child && (
-            <ListItem
-              className={classnames(
-                padding && !justified && !fullWidth && `mb-${theme.spacing.sm}`,
-                inline && `mr-${theme.spacing.sm}`,
-                fullWidth && 'flex-grow',
-              )}
-            >
-              {child}
-            </ListItem>
-          ),
-      )}
-    </Box>
-  )
-}
+}) => (
+  <Box
+    is={ordered ? 'ol' : is}
+    m={{ b: theme.spacing.md }}
+    flex={
+      justified ||
+      fullWidth ||
+      (inline ? [true, 'wrap', ...rest.flex] : rest.flex)
+    }
+    justify={justified ? 'between' : undefined}
+    listReset={reset || inline || justified || fullWidth}
+    {...rest}
+  >
+    {React.Children.map(
+      children,
+      child =>
+        child && (
+          <Box
+            is={listItemIs}
+            m={{
+              b: padding && !justified && !fullWidth && theme.spacing.sm,
+              r: inline && theme.spacing.sm,
+            }}
+            flex={fullWidth ? 'grow' : undefined}
+          >
+            {child}
+          </Box>
+        ),
+    )}
+  </Box>
+)
 
 List.propTypes = {
   theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
-  className: PropTypes.string,
   padding: PropTypes.bool,
   reset: PropTypes.bool,
   inline: PropTypes.bool,
@@ -73,7 +68,6 @@ List.propTypes = {
 List.defaultProps = {
   is: 'ul',
   children: undefined,
-  className: undefined,
   padding: false,
   reset: false,
   inline: false,

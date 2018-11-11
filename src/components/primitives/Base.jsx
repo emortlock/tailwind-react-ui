@@ -2,18 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+import { withTheme } from '../theme'
 import { filterProps } from '../utils'
 import { getTailwindClassNames, tailwindProps, propTypes } from '../tailwind'
 
-const Base = ({ is, children, className, focusable, innerRef, ...rest }) => {
+const Base = ({
+  theme,
+  is,
+  children,
+  className,
+  focusable,
+  innerRef,
+  ...rest
+}) => {
   const Component = is
 
   return (
     <Component
       {...filterProps(rest, tailwindProps)}
       className={classnames(
-        focusable && 'focus:outline-none focus:shadow-outline',
-        getTailwindClassNames(rest),
+        getTailwindClassNames(
+          {
+            ...rest,
+            'outine-focus': 'none',
+            'shadow-focus': 'outline',
+          },
+          { prefix: theme.prefix },
+        ),
         className,
       )}
       ref={innerRef}
@@ -24,6 +39,7 @@ const Base = ({ is, children, className, focusable, innerRef, ...rest }) => {
 }
 
 Base.propTypes = {
+  theme: PropTypes.shape({}).isRequired,
   is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
   children: PropTypes.node,
   className: PropTypes.string,
@@ -38,4 +54,5 @@ Base.defaultProps = {
   innerRef: undefined,
 }
 
-export default Base
+export { Base as component }
+export default withTheme(Base)

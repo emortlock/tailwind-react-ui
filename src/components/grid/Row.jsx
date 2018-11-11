@@ -17,7 +17,7 @@ const Row = ({ is, children, nowrap, gutter, theme, ...rest }) => {
           ? { l: gutterSpacing, b: !nowrap ? gutterSpacing : undefined }
           : undefined
       }
-      className="list-reset"
+      listReset
       {...rest}
     >
       {gutter

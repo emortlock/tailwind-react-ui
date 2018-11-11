@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 
 import { withTheme } from '../theme'
 import { Box, Touchable } from '../primitives'
@@ -24,7 +23,6 @@ const Select = ({
   is,
   field,
   children,
-  className,
   id,
   name,
   type,
@@ -39,13 +37,11 @@ const Select = ({
   const describedBy = [field.errorId, field.helpId].filter(by => by)
   const isInvalid = field.invalid || invalid
 
-  const ChevronDown = icon
-
   return (
     <Box relative m={{ b: theme.spacing.sm }}>
       <Touchable
         is={is}
-        className={classnames('appearance-none', className)}
+        appearance="none"
         bg="white"
         rounded={theme.radius}
         text={theme.textColors.body}
@@ -77,9 +73,9 @@ const Select = ({
         flex
         items="center"
         p={{ x: theme.spacing.sm }}
-        className="pointer-events-none"
+        pointerEvents="none"
       >
-        <ChevronDown className="h-6	w-6" />
+        <Box is={icon} h={6} w={6} />
       </Box>
     </Box>
   )
@@ -94,7 +90,6 @@ Select.propTypes = {
     disabled: PropTypes.bool,
   }),
   children: PropTypes.node,
-  className: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
@@ -119,7 +114,6 @@ Select.defaultProps = {
   is: 'select',
   field: {},
   children: undefined,
-  className: undefined,
   id: undefined,
   type: 'text',
   disabled: false,

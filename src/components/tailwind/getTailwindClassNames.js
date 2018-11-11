@@ -6,7 +6,7 @@ import tailwindProps, { propVariants } from './tailwindProps'
 
 const hasUpperCase = str => str.toLowerCase() !== str
 
-export default (props, { ignore = [] } = {}) =>
+export default (props, { ignore = [], prefix } = {}) =>
   !!props &&
   Object.keys(props).reduce((twClasses, key) => {
     if (
@@ -30,16 +30,16 @@ export default (props, { ignore = [] } = {}) =>
       if (variant === 'hocus') {
         return [
           ...twClasses,
-          tailwindPropToClassName(`hover:${type}`, props[key]),
-          tailwindPropToClassName(`focus:${type}`, props[key]),
+          tailwindPropToClassName(`hover:${type}`, props[key], prefix),
+          tailwindPropToClassName(`focus:${type}`, props[key], prefix),
         ]
       }
 
       return [
         ...twClasses,
-        tailwindPropToClassName(`${variant}:${type}`, props[key]),
+        tailwindPropToClassName(`${variant}:${type}`, props[key], prefix),
       ]
     }
 
-    return [...twClasses, tailwindPropToClassName(type, props[key])]
+    return [...twClasses, tailwindPropToClassName(type, props[key], prefix)]
   }, [])

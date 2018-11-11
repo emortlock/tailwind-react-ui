@@ -8,9 +8,9 @@ Simple wrapper around the `<footer />` element
   <Text size="sm">
     Cookies are used by our fictional third party partners to track your
     browsing habits, DNA and thoughts. View our{' '}
-    <a href="#footer" className="text-white hover:text-black">
+    <Text is="a" href="#footer" text="white" text-hover="purple-dark">
       privacy policy
-    </a>{' '}
+    </Text>{' '}
     to attempt to manage your preferences.
   </Text>
 </Footer>
