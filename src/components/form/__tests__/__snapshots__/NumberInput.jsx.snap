@@ -2,12 +2,12 @@
 
 exports[`NumberInput renders matching snapshot 1`] = `
 <Touchable
+  appearance="none"
   bg="white"
   border={true}
-  className="appearance-none"
   disabled={false}
   id="username"
-  inputmode="numeric"
+  inputMode="numeric"
   is="input"
   leading="tight"
   m={

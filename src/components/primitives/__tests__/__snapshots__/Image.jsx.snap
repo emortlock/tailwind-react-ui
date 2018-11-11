@@ -19,7 +19,7 @@ exports[`Image renders matching snapshot 1`] = `
       }
     }
   />
-  <Base
+  <WithTheme(Base)
     absolute={true}
     is="img"
     pin={true}

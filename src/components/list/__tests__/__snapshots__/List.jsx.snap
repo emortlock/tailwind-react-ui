@@ -2,45 +2,70 @@
 
 exports[`List renders matching snapshot 1`] = `
 <Box
-  className="list-reset"
   flex={
     Array [
       true,
       "wrap",
+      undefined,
     ]
   }
   inline={false}
   inlineBlock={false}
   is="ul"
+  listReset={true}
   m={
     Object {
       "b": 4,
     }
   }
 >
-  <li
-    className="mr-2"
+  <Box
+    inline={false}
+    inlineBlock={false}
+    is="li"
     key=".0"
+    m={
+      Object {
+        "b": false,
+        "r": 2,
+      }
+    }
   >
     <span>
       One
     </span>
-  </li>
-  <li
-    className="mr-2"
+  </Box>
+  <Box
+    inline={false}
+    inlineBlock={false}
+    is="li"
     key=".1"
+    m={
+      Object {
+        "b": false,
+        "r": 2,
+      }
+    }
   >
     <span>
       Two
     </span>
-  </li>
-  <li
-    className="mr-2"
+  </Box>
+  <Box
+    inline={false}
+    inlineBlock={false}
+    is="li"
     key=".2"
+    m={
+      Object {
+        "b": false,
+        "r": 2,
+      }
+    }
   >
     <span>
       Three
     </span>
-  </li>
+  </Box>
 </Box>
 `;

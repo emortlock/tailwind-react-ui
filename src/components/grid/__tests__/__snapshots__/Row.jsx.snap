@@ -2,11 +2,11 @@
 
 exports[`Row renders matching snapshot 1`] = `
 <Flex
-  className="list-reset"
   col={false}
   inline={false}
   inlineFlex={false}
   is="ul"
+  listReset={true}
   nm={
     Object {
       "b": 4,

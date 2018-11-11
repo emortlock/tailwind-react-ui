@@ -1,17 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SkipLink renders matching snapshot 1`] = `
-<span
-  className="visually-hidden-focusable"
+<Box
+  inline={false}
+  inlineBlock={false}
+  is="div"
+  visuallyHiddenFocusable={true}
 >
   <FillButton
     absolute={true}
     bg="white"
-    is={[Function]}
+    href="#main"
+    is="a"
     rounded="none"
     text="black"
   >
     Skip to main content
   </FillButton>
-</span>
+</Box>
 `;

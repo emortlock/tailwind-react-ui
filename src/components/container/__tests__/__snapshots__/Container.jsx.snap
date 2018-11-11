@@ -2,7 +2,7 @@
 
 exports[`Container renders matching snapshot 1`] = `
 <Box
-  className="container"
+  container={true}
   inline={false}
   inlineBlock={false}
   is="div"
