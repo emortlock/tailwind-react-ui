@@ -6,7 +6,7 @@
 
 - Can supply `brandColors` or `surfaceColors` from `theme` to apply background color and relevent text color
 
-### Changes to styleguide site
+### Styleguide site improvements ([#66](https://github.com/emortlock/tailwind-react-ui/pull/66))
 
 - Attached examples to component rather than top level module so they live alongside prop definitions
 - Added 'transparent effect' background to preview windows so background colours provided are more clear
