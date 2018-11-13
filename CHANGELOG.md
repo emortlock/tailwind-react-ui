@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+---
+
+## v0.8.1
+
 ### Added `surface` prop to `Card` ([#65](https://github.com/emortlock/tailwind-react-ui/pull/65))
 
 - Can supply `brandColors` or `surfaceColors` from `theme` to apply background color and relevent text color
@@ -10,6 +14,8 @@
 
 - Attached examples to component rather than top level module so they live alongside prop definitions
 - Added 'transparent effect' background to preview windows so background colours provided are more clear
+
+---
 
 ## v0.8.0
 
