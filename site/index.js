@@ -1,11 +1,11 @@
 const fs = require('fs')
 const path = require('path')
-const glob = require('glob-all')
-const PurgecssPlugin = require('purgecss-webpack-plugin')
+// const glob = require('glob-all')
+// const PurgecssPlugin = require('purgecss-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { version } = require('../package.json')
-const { getWhitelist, TailwindReactExtractor } = require('../tools')
+// const { getWhitelist, TailwindReactExtractor } = require('../tools')
 
 const isDev = process.env.NODE_ENV === 'development'
 const components = fs.readdirSync(
@@ -52,21 +52,21 @@ module.exports = {
             'readme.md',
           )
 
-          return (
-            fs.existsSync(readme) && {
-              name: `${component.charAt(0).toUpperCase()}${component.substring(
-                1,
-              )}`,
-              content: path.resolve(
-                __dirname,
-                '../src/components',
-                component,
-                'readme.md',
-              ),
-              components: [`./src/components/${component}/[A-Z]*.jsx`],
-              usageMode: 'expand',
-            }
-          )
+          return {
+            name: `${component.charAt(0).toUpperCase()}${component.substring(
+              1,
+            )}`,
+            content: fs.existsSync(readme)
+              ? path.resolve(
+                  __dirname,
+                  '../src/components',
+                  component,
+                  'readme.md',
+                )
+              : undefined,
+            components: [`./src/components/${component}/[A-Z]*.jsx`],
+            usageMode: 'expand',
+          }
         })
         .filter(section => !!section),
     },
@@ -98,6 +98,18 @@ module.exports = {
         overflow: 'scroll',
       },
     },
+    Playground: {
+      preview: {
+        position: 'relative',
+        display: 'block',
+        padding: '0',
+        border: 'none',
+        borderRadius: '0',
+      },
+    },
+  },
+  styleguideComponents: {
+    Wrapper: path.resolve(__dirname, './components/Wrapper.jsx'),
   },
   require: [
     '@babel/polyfill',

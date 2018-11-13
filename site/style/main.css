@@ -3,4 +3,27 @@
 /*! purgecss end ignore */
 
 @tailwind components;
+
+.bg-checkerboard {
+  background-color: #fff;
+  background-image: linear-gradient(
+      45deg,
+      #f6f6f6 25%,
+      transparent 25%,
+      transparent 75%,
+      #f6f6f6 75%,
+      #f6f6f6
+    ),
+    linear-gradient(
+      45deg,
+      #f6f6f6 25%,
+      transparent 25%,
+      transparent 75%,
+      #f6f6f6 75%,
+      #f6f6f6
+    );
+  background-position: 0 0, 16px 16px;
+  background-size: 32px 32px;
+}
+
 @tailwind utilities;
