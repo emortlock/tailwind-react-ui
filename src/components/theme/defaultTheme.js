@@ -44,7 +44,13 @@ export default {
       danger: 'white',
       warning: 'black',
       info: 'black',
+      dark: 'white',
     },
+  },
+  surfaceColors: {
+    default: 'white',
+    dark: 'grey-darker',
+    light: 'grey-lightest',
   },
   highlightOffset: 1,
   accentSize: 4,

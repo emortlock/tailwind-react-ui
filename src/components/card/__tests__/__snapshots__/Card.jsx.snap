@@ -2,6 +2,7 @@
 
 exports[`Card renders matching snapshot 1`] = `
 <Box
+  bg="white"
   inline={false}
   inlineBlock={false}
   is="section"

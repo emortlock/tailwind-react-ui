@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added `surface` prop to `Card` ([#65](https://github.com/emortlock/tailwind-react-ui/pull/65))
+
+- Can supply `brandColors` or `surfaceColors` from `theme` to apply background color and relevent text color
+
 ## v0.8.0
 
 ### Added support for `prefix` as part of theme ([#60](https://github.com/emortlock/tailwind-react-ui/pull/60))

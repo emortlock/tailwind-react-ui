@@ -55,7 +55,7 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 
 ```jsx
 <Box maxW="md" m={{ x: 'auto' }}>
-  <Box border shadow>
+  <Box border shadow bg="white">
     <Box p={4}>
       <Text is="h1" text={['blue', 'xxl']} m={{ b: 4 }}>
         Hello World
