@@ -10,16 +10,17 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "scripts": {
-    "build": "rimraf dist components plugins tools && npm run build:es && npm run build:cjs",
     "build:cjs": "cross-env MODULE_FORMAT=cjs rollup -c",
     "build:es": "cross-env MODULE_FORMAT=es rollup -c",
+    "build": "rimraf dist components plugins tools && npm run build:es && npm run build:cjs",
     "commit": "commit",
-    "docs": "rimraf styleguide && styleguidist --config ./site build",
     "docs:deploy": "node ./build/deploy",
-    "start": "styleguidist --config ./site server --open",
-    "test": "cross-env BABEL_ENV=test jest",
+    "docs": "rimraf styleguide && styleguidist --config ./site build",
+    "lint:fix": "npm run lint -- --fix",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "lint:fix": "npm run lint -- --fix"
+    "release": "standard-version",
+    "start": "styleguidist --config ./site server --open",
+    "test": "cross-env BABEL_ENV=test jest"
   },
   "engines": {
     "node": ">=8.11.3",
@@ -127,6 +128,7 @@
     "rollup": "^0.67.1",
     "rollup-plugin-babel": "^4.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
+    "standard-version": "^4.4.0",
     "style-loader": "^0.23.0",
     "tailwindcss": "^0.6.4",
     "webpack": "^4.16.5"
