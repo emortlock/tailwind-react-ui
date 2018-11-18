@@ -61,6 +61,11 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*",
@@ -107,6 +112,7 @@
     "eslint-plugin-react": "^7.10.0",
     "gh-pages": "^2.0.0",
     "glob-all": "^3.1.0",
+    "husky": "^1.1.4",
     "jest": "^23.4.1",
     "mini-css-extract-plugin": "^0.4.2",
     "postcss": "^7.0.2",
