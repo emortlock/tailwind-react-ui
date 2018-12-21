@@ -97,7 +97,7 @@
     "babel-plugin-add-react-displayname": "0.0.5",
     "commitlint": "^7.2.1",
     "cross-env": "^5.2.0",
-    "css-loader": "^1.0.0",
+    "css-loader": "^2.0.2",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.2.2",
