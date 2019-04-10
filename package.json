@@ -114,7 +114,7 @@
     "glob-all": "^3.1.0",
     "husky": "^1.1.4",
     "jest": "^23.4.1",
-    "mini-css-extract-plugin": "^0.5.0",
+    "mini-css-extract-plugin": "^0.6.0",
     "postcss": "^7.0.2",
     "postcss-clean": "^1.1.0",
     "postcss-loader": "^3.0.0",
