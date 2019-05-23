@@ -107,7 +107,7 @@
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
-    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.10.0",
     "gh-pages": "^2.0.0",
