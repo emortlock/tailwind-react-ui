@@ -95,7 +95,7 @@
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
     "babel-plugin-add-react-displayname": "0.0.5",
-    "commitlint": "^7.2.1",
+    "commitlint": "^8.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "enzyme": "^3.6.0",
