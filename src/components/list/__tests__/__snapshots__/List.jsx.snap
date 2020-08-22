@@ -12,7 +12,6 @@ exports[`List renders matching snapshot 1`] = `
   inline={false}
   inlineBlock={false}
   is="ul"
-  listReset={true}
   m={
     Object {
       "b": 4,

@@ -1,6 +1,6 @@
 # Tailwind React UI
 
-[![CircleCI](https://circleci.com/gh/emortlock/tailwind-react-ui.svg?style=svg)](https://circleci.com/gh/emortlock/tailwind-react-ui) [![Greenkeeper badge](https://badges.greenkeeper.io/emortlock/tailwind-react-ui.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/emortlock/tailwind-react-ui.svg?style=svg)](https://circleci.com/gh/emortlock/tailwind-react-ui)
 
 ---
 

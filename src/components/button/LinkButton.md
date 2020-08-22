@@ -10,6 +10,6 @@
 
   <LinkButton brand="info">Info</LinkButton>
 
-  <LinkButton text="purple">Custom</LinkButton>
+  <LinkButton text="purple-400">Custom</LinkButton>
 </List>
 ```

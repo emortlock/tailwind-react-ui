@@ -45,17 +45,19 @@ const colorPrefixes = [
 ]
 
 const colorSuffixes = [
-  'darkest',
-  'darker',
-  'dark',
-  '',
-  'light',
-  'lighter',
-  'lightest',
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900',
 ]
 
 export default (projectTheme = {}) => {
-  const theme = merge(defaultTheme, projectTheme)
+  const theme = merge({}, defaultTheme, projectTheme)
 
   return [
     theme.radius,

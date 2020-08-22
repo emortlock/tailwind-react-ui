@@ -25,11 +25,14 @@ const overflow = {
 const position = {
   absolute: PropTypes.bool,
   fixed: PropTypes.bool,
-  pin: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.oneOf(['t', 'r', 'b', 'l', 'y', 'x', 'none']),
-    PropTypes.array,
+  inset: PropTypes.oneOfType([
+    PropTypes.oneOf(['0', 'y-0', 'x-0', 'auto']),
+    PropTypes.number,
   ]),
+  top: PropTypes.number,
+  bottom: PropTypes.number,
+  left: PropTypes.number,
+  right: PropTypes.number,
   relative: PropTypes.bool,
   static: PropTypes.bool,
 }
@@ -51,7 +54,7 @@ const typography = {
   lowercase: PropTypes.bool,
   normalCase: PropTypes.bool,
   noUnderline: PropTypes.bool,
-  roman: PropTypes.bool,
+  notItalic: PropTypes.bool,
   truncate: PropTypes.bool,
   underline: PropTypes.bool,
   uppercase: PropTypes.bool,
@@ -104,8 +107,8 @@ const flexValues = [
   'none',
   'grow',
   'shrink',
-  'no-grow',
-  'no-shrink',
+  'grow-0',
+  'shrink-0',
 ]
 
 const flexAlignment = ['start', 'center', 'end']
@@ -161,7 +164,7 @@ const sizing = {
 const misc = {
   opacity: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   shadow: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  listReset: PropTypes.bool,
+  list: PropTypes.oneOf(['none', 'list', 'decimal']),
   outline: PropTypes.string,
   appearance: PropTypes.string,
   select: PropTypes.string,

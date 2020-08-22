@@ -28,7 +28,6 @@ const NavBrand = ({
     <Box
       is={is}
       inlineBlock
-      noUnderline
       flex={[true, 'no-shrink']}
       items="center"
       h={12}

@@ -29,7 +29,7 @@
     <NavItem is="a" href="#header">
       Blog
     </NavItem>
-    <OutlineButton border="white" text="white" text-hocus="blue">
+    <OutlineButton border="white" text="white" text-hocus="blue-400">
       Download
     </OutlineButton>
   </NavMenu>
@@ -39,7 +39,7 @@
 ### Custom Example:
 
 ```jsx
-<Header bg="purple" text="white" screen="md">
+<Header bg="purple-400" text="white" screen="md">
   <NavBrand is="a" href="#header" font="semibold" text={['white', 'xl']}>
     <Box
       is="svg"
@@ -67,7 +67,7 @@
     <NavItem is="a" href="#header">
       Blog
     </NavItem>
-    <OutlineButton border="white" text="white" text-hocus="blue">
+    <OutlineButton border="white" text="white" text-hocus="blue-400">
       Download
     </OutlineButton>
   </NavMenu>

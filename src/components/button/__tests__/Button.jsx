@@ -20,7 +20,7 @@ describe('Button', () => {
   it('renders matching snapshot', () => {
     const { wrapper } = setup({
       buttonStyle: 'fill',
-      bg: 'blue',
+      bg: 'blue-400',
       text: 'white',
     })
 

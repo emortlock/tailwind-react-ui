@@ -2,7 +2,7 @@
 
 exports[`Footer renders matching snapshot 1`] = `
 <Box
-  bg="grey-dark"
+  bg="gray-500"
   inline={false}
   inlineBlock={false}
   is="footer"

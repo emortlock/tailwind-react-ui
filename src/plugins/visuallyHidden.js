@@ -1,4 +1,4 @@
-export default ({ variants = ['responsive'] } = {}) => ({ addUtilities }) => {
+module.exports = ({ variants = ['responsive'] } = {}) => ({ addUtilities }) => {
   addUtilities(
     {
       '.visually-hidden, .visually-hidden-focusable': {

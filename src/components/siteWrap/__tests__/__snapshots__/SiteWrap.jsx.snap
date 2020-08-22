@@ -13,7 +13,7 @@ exports[`SiteWrap renders matching snapshot 1`] = `
   text={
     Array [
       "base",
-      "grey-darkest",
+      "gray-900",
     ]
   }
   wrap={false}

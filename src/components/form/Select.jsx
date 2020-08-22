@@ -69,7 +69,8 @@ const Select = ({
       </Touchable>
       <Box
         absolute
-        pin={['y', 'r']}
+        inset="y-0"
+        right={0}
         flex
         items="center"
         p={{ x: theme.spacing.sm }}

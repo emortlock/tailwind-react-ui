@@ -10,6 +10,6 @@
 
   <TextButton brand="info">Info</TextButton>
 
-  <TextButton text="purple">Custom</TextButton>
+  <TextButton text="purple-400">Custom</TextButton>
 </List>
 ```

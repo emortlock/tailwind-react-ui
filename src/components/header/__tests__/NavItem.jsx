@@ -6,7 +6,10 @@ import { defaultTheme } from '../../theme'
 
 const setup = (testProps = {}) => {
   const props = Object.assign(
-    { theme: defaultTheme, header: { style: { bg: 'blue', text: 'white' } } },
+    {
+      theme: defaultTheme,
+      header: { style: { bg: 'blue-400', text: 'white' } },
+    },
     testProps,
   )
 

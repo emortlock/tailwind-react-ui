@@ -9,7 +9,7 @@ Displays a placeholder whilst loading, use the `aspectRatio`, `bg` & `text` prop
   // src="https://placekitten.com/355/200"
   alt="Example image that fails to load"
   w={64}
-  bg="blue-dark"
+  bg="blue-500"
   text="white"
   aspectRatio={16 / 9}
 />
@@ -23,7 +23,7 @@ You can pass `children` to the component in order to have content overlay the im
     p={2}
     text={['center', 'white']}
     flex={1}
-    bg="blue"
+    bg="blue-400"
     style={{ backgroundColor: 'rgba(52,144,220,0.75)' }}
   >
     Hello

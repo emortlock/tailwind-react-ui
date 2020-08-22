@@ -17,7 +17,7 @@ const setup = (testProps = {}) => {
 
 describe('Header', () => {
   it('renders matching snapshot', () => {
-    const { wrapper } = setup({ bg: 'blue', text: 'white' })
+    const { wrapper } = setup({ bg: 'blue-400', text: 'white' })
 
     expect(wrapper).toMatchSnapshot()
   })

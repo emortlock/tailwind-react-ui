@@ -9,7 +9,7 @@ exports[`Image renders matching snapshot 1`] = `
   w="full"
 >
   <Box
-    bg="grey-light"
+    bg="gray-light"
     inline={false}
     inlineBlock={false}
     is="div"
@@ -21,8 +21,8 @@ exports[`Image renders matching snapshot 1`] = `
   />
   <WithTheme(Base)
     absolute={true}
+    inset={0}
     is="img"
-    pin={true}
     src="/static/assets/tubgirl.gif"
     w="full"
   />

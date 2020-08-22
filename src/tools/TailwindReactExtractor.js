@@ -103,8 +103,8 @@ export default class TailwindReactExtractor {
 
                 if (prop === 'bg') {
                   className.push(
-                    `hover:${prop}-${getColorShade(baseColor, 'lightest')}`,
-                    `focus:${prop}-${getColorShade(baseColor, 'lightest')}`,
+                    `hover:${prop}-${getColorShade(baseColor, '100')}`,
+                    `focus:${prop}-${getColorShade(baseColor, '100')}`,
                   )
                 }
               }

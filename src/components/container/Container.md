@@ -4,6 +4,6 @@ Makes use of the Tailwind CSS [`container plugin`](https://tailwindcss.com/docs/
 
 ```jsx
 <Container padding>
-  <Card bg="grey" h={12} rounded="none" />
+  <Card bg="gray-400" h={12} rounded="none" />
 </Container>
 ```

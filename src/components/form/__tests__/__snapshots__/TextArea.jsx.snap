@@ -23,7 +23,7 @@ exports[`TextArea renders matching snapshot 1`] = `
   }
   readOnly={false}
   rounded="rounded"
-  text="grey-darkest"
+  text="gray-900"
   w="full"
 />
 `;

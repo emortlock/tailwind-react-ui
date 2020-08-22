@@ -1,7 +1,7 @@
 ### Simple Example
 
 ```jsx
-<List padding ordered>
+<List padding ordered list>
   <Text>One</Text>
   <Text>Two</Text>
   <Text>Three</Text>
@@ -32,13 +32,13 @@
 
 ```jsx
 <List fullWidth>
-  <Text text="center" p={2} bg="grey-lighter" block>
+  <Text text="center" p={2} bg="gray-200" block>
     One
   </Text>
-  <Text text="center" p={2} bg="grey-light" block>
+  <Text text="center" p={2} bg="gray-300" block>
     Two
   </Text>
-  <Text text="center" p={2} bg="grey-lighter" block>
+  <Text text="center" p={2} bg="gray-200" block>
     Three
   </Text>
 </List>

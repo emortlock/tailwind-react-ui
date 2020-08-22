@@ -10,7 +10,7 @@
 
   <FillButton brand="info">Info</FillButton>
 
-  <FillButton bg="purple" text="white">
+  <FillButton bg="purple-400" text="white">
     Custom
   </FillButton>
 </List>

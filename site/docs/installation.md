@@ -15,10 +15,7 @@ const plugins = require('tailwind-react-ui/plugins')
 
 module.exports = {
   // ...project config
-  plugins: [
-    require('tailwindcss/plugins/container')({}),
-    ...Object.keys(plugins).map(name => plugins[name]()),
-  ],
+  plugins: [...Object.keys(plugins).map(name => plugins[name]())],
 }
 ```
 

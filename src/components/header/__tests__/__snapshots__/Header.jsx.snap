@@ -2,7 +2,7 @@
 
 exports[`Header renders matching snapshot 1`] = `
 <Box
-  bg="blue"
+  bg="blue-400"
   id="header-1"
   inline={false}
   inlineBlock={false}
@@ -31,7 +31,7 @@ exports[`Header renders matching snapshot 1`] = `
           "open": false,
           "screen": "lg",
           "style": Object {
-            "bg": "blue",
+            "bg": "blue-400",
             "text": "white",
           },
         }

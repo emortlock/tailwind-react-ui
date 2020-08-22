@@ -42,7 +42,7 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-const plugins = require('../../plugins')
+const plugins = require('../../src/plugins')
 
 let colors = {
   transparent: 'transparent',
@@ -131,6 +131,10 @@ let colors = {
 }
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
+
   /*
   |-----------------------------------------------------------------------------
   | Colors                                  https://tailwindcss.com/docs/colors
@@ -897,13 +901,7 @@ module.exports = {
   |
   */
 
-  plugins: [
-    require('tailwindcss/plugins/container')({
-      // center: true,
-      // padding: '1rem',
-    }),
-    ...Object.keys(plugins).map(name => plugins[name]()),
-  ],
+  plugins: [...Object.keys(plugins).map(name => plugins[name]())],
 
   /*
   |-----------------------------------------------------------------------------

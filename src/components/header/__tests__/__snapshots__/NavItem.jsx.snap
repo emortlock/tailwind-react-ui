@@ -12,7 +12,6 @@ exports[`NavItem renders matching snapshot 1`] = `
       "t": 2,
     }
   }
-  noUnderline={true}
   p={
     Object {
       "x": 4,
@@ -21,7 +20,7 @@ exports[`NavItem renders matching snapshot 1`] = `
   }
   rounded="rounded"
   text="white"
-  text-hocus="blue"
+  text-hocus="blue-400"
 >
   Link
 </Touchable>

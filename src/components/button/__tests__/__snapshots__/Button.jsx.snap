@@ -2,8 +2,8 @@
 
 exports[`Button renders matching snapshot 1`] = `
 <Touchable
-  bg="blue"
-  bg-hocus="blue-dark"
+  bg="blue-400"
+  bg-hocus="blue-500"
   border={
     Array [
       true,
@@ -14,7 +14,6 @@ exports[`Button renders matching snapshot 1`] = `
   inlineBlock={true}
   is="button"
   leading="tight"
-  noUnderline={true}
   p={
     Object {
       "x": 4,

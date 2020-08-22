@@ -19,10 +19,10 @@ Each of the components make use of a shared `Base` component which translates th
 
 ```jsx
 <Base
-  bg="blue-lightest"
+  bg="blue-100"
   p={{ x: 4, y: 2 }}
   shadow
-  text={['xl', 'blue-dark', 'center']}
+  text={['xl', 'blue-500', 'center']}
   font="bold"
   w="1/2"
   m={{ x: 'auto' }}
@@ -42,13 +42,13 @@ By adding a suffix to the above properties with a breakpoint or state separated 
     flex
     justify="center"
     items="center"
-    bg="purple"
-    bg-sm="green"
-    bg-md="blue"
-    bg-lg="red"
-    bg-xl="orange"
+    bg="purple-400"
+    bg-sm="green-400"
+    bg-md="blue-400"
+    bg-lg="red-400"
+    bg-xl="orange-400"
     text="white"
-    text-md="yellow"
+    text-md="yellow-400"
     rounded="full"
     shadow-hover="lg"
     w={24}

@@ -25,7 +25,7 @@ exports[`NumberInput renders matching snapshot 1`] = `
   pattern="[0-9]*"
   readOnly={false}
   rounded="rounded"
-  text="grey-darkest"
+  text="gray-900"
   w="full"
 />
 `;

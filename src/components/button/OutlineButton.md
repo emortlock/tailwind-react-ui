@@ -10,7 +10,7 @@
 
   <OutlineButton brand="info">Info</OutlineButton>
 
-  <OutlineButton border="purple" text="white">
+  <OutlineButton border="purple-400" text="white">
     Custom
   </OutlineButton>
 </List>

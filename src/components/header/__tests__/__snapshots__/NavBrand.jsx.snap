@@ -14,7 +14,6 @@ exports[`NavBrand renders matching snapshot 1`] = `
   inlineBlock={true}
   is="div"
   items="center"
-  noUnderline={true}
   role="heading"
   text="white"
 >

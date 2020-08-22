@@ -1,1 +1,5 @@
-export { default as visuallyHidden } from './visuallyHidden'
+const visuallyHidden = require('./visuallyHidden')
+
+module.exports = {
+  visuallyHidden,
+}

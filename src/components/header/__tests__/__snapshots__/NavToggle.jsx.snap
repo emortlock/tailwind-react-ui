@@ -11,7 +11,7 @@ exports[`NavToggle renders matching snapshot 1`] = `
   onClick={[Function]}
   p={0}
   text="white"
-  text-hocus="blue"
+  text-hocus="blue-400"
   w={12}
 >
   <Box

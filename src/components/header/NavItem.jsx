@@ -32,7 +32,6 @@ const NavItem = ({
       p={{ x: theme.spacing.md, y: theme.spacing.sm }}
       m={{ t: theme.spacing.sm }}
       rounded={theme.radius}
-      noUnderline
       block
       aria-current={active ? 'page' : undefined}
       {...responsive}

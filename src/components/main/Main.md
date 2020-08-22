@@ -6,7 +6,7 @@ Tab onto the example below to see this behaviour in action.
 
 ```jsx
 <SkipLink href="#main-example" />
-<Card h={64} bg="grey-dark" text="white" flex items="center" justify="center" rounded="none">
+<Card h={64} bg="gray-500" text="white" flex items="center" justify="center" rounded="none">
   Some interceding content, e.g. a header / navigation
 </Card>
 <Main id="main-example" p={4} border rounded="b">

@@ -30,7 +30,7 @@ exports[`OptionInput renders matching snapshot 1`] = `
     border={
       Array [
         true,
-        "blue",
+        "blue-400",
       ]
     }
     col={false}
@@ -53,7 +53,7 @@ exports[`OptionInput renders matching snapshot 1`] = `
     wrapReverse={false}
   >
     <Box
-      bg="blue"
+      bg="blue-400"
       h={2}
       inline={false}
       inlineBlock={true}

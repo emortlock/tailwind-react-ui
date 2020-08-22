@@ -22,18 +22,12 @@ Which would change the default blue colouring on the button to instead use the `
 <TailwindThemeProvider
   theme={{
     brandColors: {
-      primary: 'red',
+      primary: 'red-400',
     },
   }}
 >
   <FillButton brand="primary">Red button</FillButton>
 </TailwindThemeProvider>
-```
-
-<!-- Reset theme -->
-
-```jsx noeditor
-<TailwindThemeProvider theme={{ brandColors: { primary: 'blue' } }} />
 ```
 
 ### Default theme

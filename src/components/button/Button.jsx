@@ -27,7 +27,6 @@ const Button = ({
     leading: 'tight',
     p: { x: theme.spacing.md, y: theme.spacing.sm },
     rounded: theme.radius,
-    noUnderline: true,
   }
 
   if (large) {
@@ -56,12 +55,11 @@ const Button = ({
       props.text = brand ? theme.brandColors[brand] : text
       props['bg-hocus'] = `${getColorShade(
         brand ? theme.brandColors[brand] : text,
-        'lightest',
+        '100',
       )}`
       break
     case 'link':
       props.rounded = undefined
-      props.noUnderline = undefined
       props.leading = 'normal'
       props.p = 0
       props.underline = true

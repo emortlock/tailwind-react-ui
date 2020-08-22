@@ -6,7 +6,7 @@ import defaultTheme from './defaultTheme'
 import TailwindTheme from './TailwindTheme'
 
 const TailwindThemeProvider = ({ theme, children }) => {
-  const mergedTheme = merge(defaultTheme, theme)
+  const mergedTheme = merge({}, defaultTheme, theme)
 
   return (
     <TailwindTheme.Provider value={mergedTheme}>
