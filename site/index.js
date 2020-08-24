@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { version } = require('../package.json')
 const { getPaths, TailwindReactExtractor } = require('../tools')
 
-// const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development'
 
 const components = fs.readdirSync(
   path.resolve(__dirname, '..', 'src/components'),
@@ -94,16 +94,18 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                publicPath: '../',
-              },
-            },
-            'css-loader',
-            'postcss-loader',
-          ],
+          use: isDev
+            ? ['style-loader', 'postcss-loader']
+            : [
+                {
+                  loader: MiniCssExtractPlugin.loader,
+                  options: {
+                    publicPath: '../',
+                  },
+                },
+                'css-loader',
+                'postcss-loader',
+              ],
         },
         {
           test: /\.md$/,
@@ -112,27 +114,29 @@ module.exports = {
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'main.[contenthash].css',
-      }),
-      new PurgecssPlugin({
-        whitelist: [],
-        paths: glob.sync([
-          path.join(__dirname, 'components/*.jsx'),
-          path.join(__dirname, 'docs/*.md'),
-          path.join(__dirname, '../README.md'),
-          ...getPaths(),
-          ...components.map(component =>
-            path.join(__dirname, '..', `src/components/${component}/*.md`),
-          ),
-        ]),
-        extractors: [
-          {
-            extractor: TailwindReactExtractor,
-            extensions: ['md', 'jsx'],
-          },
-        ],
-      }),
-    ],
+      !isDev &&
+        new MiniCssExtractPlugin({
+          filename: 'main.[contenthash].css',
+        }),
+      !isDev &&
+        new PurgecssPlugin({
+          whitelist: [],
+          paths: glob.sync([
+            path.join(__dirname, 'components/*.jsx'),
+            path.join(__dirname, 'docs/*.md'),
+            path.join(__dirname, '../README.md'),
+            ...getPaths(),
+            ...components.map(component =>
+              path.join(__dirname, '..', `src/components/${component}/*.md`),
+            ),
+          ]),
+          extractors: [
+            {
+              extractor: TailwindReactExtractor,
+              extensions: ['md', 'jsx'],
+            },
+          ],
+        }),
+    ].filter(Boolean),
   },
 }

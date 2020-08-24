@@ -1,4 +1,7 @@
+import debug from 'debug'
 import { tailwindProps, propVariants, getColorShade } from '../utils'
+
+const log = debug('tailwind-react:extractor')
 
 const propRegex = {
   /** Detects `<Box select="none" />` */
@@ -32,6 +35,8 @@ export default class TailwindReactExtractor {
   static extract(content) {
     let classNames = []
 
+    log('Starting extract')
+
     tailwindProps.forEach(prop => {
       try {
         let matches = []
@@ -42,20 +47,21 @@ export default class TailwindReactExtractor {
         matches = matches.concat(singleValueMatches)
 
         if (singleValueMatches.length)
-          console.debug('singleValueMatches', singleValueMatches)
+          log('  - single prop value matches:', singleValueMatches)
 
         // Boolean
         const booleanMatches = content.match(propRegex.booleanValue(prop)) || []
         matches = matches.concat(booleanMatches)
 
-        if (booleanMatches.length)
-          console.debug('booleanMatches', booleanMatches)
+        if (booleanMatches.length) {
+          log('  - boolean prop value matches:', booleanMatches)
+        }
 
         // Objects
         let objMatches = content.match(propRegex.objectValue(prop)) || []
 
         if (objMatches.length) {
-          console.debug('objMatches', objMatches)
+          log('  - object prop value matches', objMatches)
 
           objMatches = objMatches.reduce(
             (array, match) => [
@@ -85,7 +91,7 @@ export default class TailwindReactExtractor {
           content.match(propRegex.conditionalValue(prop)) || []
 
         if (conditionalMatches.length) {
-          console.debug('conditionalMatches', conditionalMatches)
+          log('  - conditional prop value matches:', conditionalMatches)
 
           conditionalMatches.forEach(propAndValue => {
             const propName = propAndValue.match(/[A-Za-z]+(?==)/g)[0]
@@ -119,7 +125,7 @@ export default class TailwindReactExtractor {
         const arrayMatches = content.match(propRegex.arrayValue(prop)) || []
 
         if (arrayMatches.length) {
-          console.debug('arrayMatches', arrayMatches)
+          log('  - array prop value matches:', arrayMatches)
 
           arrayMatches.forEach(propAndValue => {
             const propName = propAndValue.match(/[A-Za-z]+(?==)/g)[0]
@@ -207,24 +213,29 @@ export default class TailwindReactExtractor {
             }, []),
         )
       } catch (err) {
-        console.error(err)
+        throw err
       }
     })
 
     // Manual classNames check
     const classNameMatches = content.match(propRegex.className) || []
-    classNameMatches.forEach(className => {
-      classNames = classNames.concat(
-        className.replace('className=', '').match(/[\w-/:]+(?<!:)/g) || [],
-      )
-    })
+
+    if (classNameMatches.length) {
+      log('  - className prop value matches:', classNameMatches)
+
+      classNameMatches.forEach(className => {
+        classNames = classNames.concat(
+          className.replace('className=', '').match(/[\w-/:]+(?<!:)/g) || [],
+        )
+      })
+    }
 
     classNames = classNames.filter(
       (className, index, array) => array.indexOf(className) === index,
     )
 
     if (classNames.length) {
-      console.info(classNames)
+      log('Finished and found:', classNames)
     }
 
     return classNames
