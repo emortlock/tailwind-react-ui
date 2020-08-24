@@ -2,15 +2,20 @@ Once installed you can import the components and use them as you would any other
 
 ```jsx static
 import React from 'react'
-import { FillButton } from 'tailwind-react-ui'
+import { Touchable } from 'tailwind-react-ui'
 
-const MyButton = () => <FillButton brand="primary">Submit</FillButton>
+const MyButton = () =>
+  <Touchable rounded bg="blue-400" p={{ x: 4, y: 2 }} text="white">
+    Submit
+  </FillButton>
 ```
 
 Which when output on the page would give you the following.
 
 ```jsx
-<FillButton brand="primary">Submit</FillButton>
+<Touchable rounded bg="blue-400" p={{ x: 4, y: 2 }} text="white">
+  Submit
+</Touchable>
 ```
 
 ### Tailwind Props

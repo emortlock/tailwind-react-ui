@@ -19,7 +19,7 @@
     "lint:fix": "npm run lint -- --fix",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "release": "standard-version",
-    "start": "styleguidist --config ./site server --open",
+    "start": "cross-env IGNORE_LIB=true npm run build:cjs && styleguidist --config ./site server --open",
     "test": "cross-env BABEL_ENV=test jest"
   },
   "engines": {
@@ -126,6 +126,7 @@
     "rimraf": "^2.6.2",
     "rollup": "^0.67.1",
     "rollup-plugin-babel": "^4.0.0",
+    "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^3.3.0",
     "standard-version": "^9.0.0",
     "style-loader": "^0.23.0",

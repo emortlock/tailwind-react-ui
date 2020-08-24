@@ -1,30 +1,31 @@
-/* eslint-disable no-useless-escape */
-import {
-  tailwindProps,
-  propVariants,
-  getColorShade,
-} from '../components/tailwind'
+import { tailwindProps, propVariants, getColorShade } from '../utils'
 
-export const classRegex = /[A-Za-z0-9-_:\/]+/g
-
-// TODO: Array values
 const propRegex = {
+  /** Detects `<Box select="none" />` */
   singleValue: prop =>
     new RegExp(
-      `[ \n\r\t]${prop}(?:-[A-Za-z]+)?=["'{}][A-Za-z0-9-_:\/]+["'}]`,
+      `${prop}(?:-[A-Za-z]+)?=[\`"'{\\s]+[\\w\\/\\-]+\\s*[\`"'}]+`,
       'g',
     ),
-  booleanValue: prop =>
-    new RegExp(`[ \n\r\t]${prop}(?:-[A-Za-z]+)?(?:[ \n\r]|>)`, 'g'),
-  objectValue: prop =>
+  /** Detects `<Box flex />` */
+  booleanValue: prop => new RegExp(`\\s${prop}(?:-[A-Za-z]+)?(?:\\s+|>)`, 'g'),
+  /** Detects `<Box cursor={disabled ? 'default' : 'pointer'} />` & `<Box cursor={disabled || 'pointer'} />` */
+  conditionalValue: prop =>
     new RegExp(
-      `[ \n\r\t]${prop}(?:-[A-Za-z]+)?={{ ?[A-Za-z0-9-_:\/ '",]+ ?}}`,
+      `${prop}(?:-[A-Za-z]+)?={[\\w\\s\\?!:"'\`]+(?:\\?|\\|)+[\\w\\s\\?!:"'\`]+}`,
       'g',
     ),
+  /** Detects `<Box m={{ x: 'auto' }} />` */
+  objectValue: prop =>
+    new RegExp(`${prop}(?:-[A-Za-z]+)?={{\\s*[\\w\\s:\\-\\/'"\`,]+\\s*}}`, 'g'),
+  /** Detects `<Box flex={flex={[true, wrap && 'wrap', col ? 'col' : 'row']} />` */
+  arrayValue: prop => new RegExp(`${prop}(?:-[A-Za-z]+)?=?={\\[[^\\]]+]`, 'g'),
+  className: /className=[`"'{\s]+[\w\s/-]+\s*[`"'}]+/g,
 }
 
 const transformations = {
-  'w-auto': 'flex-1',
+  'w-auto': ['flex-1'],
+  focusable: ['focus:outline-none', 'focus:shadow-outline'],
 }
 
 export default class TailwindReactExtractor {
@@ -32,40 +33,115 @@ export default class TailwindReactExtractor {
     let classNames = []
 
     tailwindProps.forEach(prop => {
-      let matches = [
-        ...(content.match(propRegex.singleValue(prop)) || []),
-        ...(content.match(propRegex.booleanValue(prop)) || []),
-      ]
+      try {
+        let matches = []
 
-      let objMatches = content.match(propRegex.objectValue(prop)) || []
+        // Single Value
+        const singleValueMatches =
+          content.match(propRegex.singleValue(prop)) || []
+        matches = matches.concat(singleValueMatches)
 
-      if (objMatches.length) {
-        objMatches = objMatches.reduce(
-          (array, match) => [
-            ...array,
-            ...match
-              .replace(/\s/g, '')
-              .replace(`${prop}=`, '')
-              .replace(/[{}'"]/g, '')
-              .split(',')
-              .map(objProp => {
-                const classFragments = objProp.split(':')
-                const key = classFragments[0]
-                return key.length === 1
-                  ? `${prop}${key}-${classFragments[1]}`
-                  : `${prop}${key === 'def' ? '' : `-${classFragments[0]}`}-${
-                      classFragments[1]
-                    }`
-              }),
-          ],
-          [],
-        )
-        matches = matches.concat(objMatches)
-      }
+        if (singleValueMatches.length)
+          console.debug('singleValueMatches', singleValueMatches)
 
-      classNames = classNames
-        .concat(
+        // Boolean
+        const booleanMatches = content.match(propRegex.booleanValue(prop)) || []
+        matches = matches.concat(booleanMatches)
+
+        if (booleanMatches.length)
+          console.debug('booleanMatches', booleanMatches)
+
+        // Objects
+        let objMatches = content.match(propRegex.objectValue(prop)) || []
+
+        if (objMatches.length) {
+          console.debug('objMatches', objMatches)
+
+          objMatches = objMatches.reduce(
+            (array, match) => [
+              ...array,
+              ...match
+                .replace(/\s/g, '')
+                .replace(`${prop}=`, '')
+                .replace(/[{}'"]/g, '')
+                .split(',')
+                .map(objProp => {
+                  const classFragments = objProp.split(':')
+                  const key = classFragments[0]
+                  return key.length === 1
+                    ? `${prop}${key}-${classFragments[1]}`
+                    : `${prop}${key === 'def' ? '' : `-${classFragments[0]}`}-${
+                        classFragments[1]
+                      }`
+                }),
+            ],
+            [],
+          )
+          matches = matches.concat(objMatches)
+        }
+
+        // Conditionals
+        const conditionalMatches =
+          content.match(propRegex.conditionalValue(prop)) || []
+
+        if (conditionalMatches.length) {
+          console.debug('conditionalMatches', conditionalMatches)
+
+          conditionalMatches.forEach(propAndValue => {
+            const propName = propAndValue.match(/[A-Za-z]+(?==)/g)[0]
+            let conditionalValues = propAndValue.match(/{.+(?=}\s*)/g) || []
+
+            if (!conditionalValues[0]) {
+              matches = matches.push(propName)
+              return
+            }
+
+            if (conditionalValues[0].indexOf('?') === -1) {
+              conditionalValues = conditionalValues[0]
+                .replace(/`'"/, '')
+                .split(/\s+\|\|\s+/)
+            } else {
+              conditionalValues = conditionalValues[0]
+                .replace(/{[a-zA-Z]+\s+\?\s+/, '')
+                .split(/\s+:\s+/)
+            }
+
+            matches = matches.concat([
+              propName, // Insert prop name on its own for `<Box flex={!isFixed} />`
+              ...conditionalValues.map(
+                value => `${propName}-${value.replace(/["']/g, '')}`, // TODO: filter `opacity-undefined` & similar?
+              ),
+            ])
+          })
+        }
+
+        // Arrays
+        const arrayMatches = content.match(propRegex.arrayValue(prop)) || []
+
+        if (arrayMatches.length) {
+          console.debug('arrayMatches', arrayMatches)
+
+          arrayMatches.forEach(propAndValue => {
+            const propName = propAndValue.match(/[A-Za-z]+(?==)/g)[0]
+            const arrayValues = propAndValue.replace(propName, '')
+
+            matches = matches.concat([
+              propName,
+              ...(arrayValues.match(/[\w-]+/g) || []).map(
+                value => `${propName}-${value}`,
+              ),
+            ])
+          })
+        }
+
+        // Format matches found
+        classNames = classNames.concat(
           matches
+            // Remove defaults
+            .filter(
+              (className, index, array) => array.indexOf(className) === index,
+            )
+            // Remove any special characters, e.g. string wrappers
             .map(match =>
               match
                 .replace(/[\s"'{}>]/g, '')
@@ -73,10 +149,11 @@ export default class TailwindReactExtractor {
                 .replace(/[A-Z]/g, '-$&')
                 .toLowerCase(),
             )
+            // Add variant classes
             .reduce((classes, match) => {
               let className = [match]
               propVariants.forEach(variant => {
-                if (match.includes(variant)) {
+                if (match.includes(`-${variant}`)) {
                   className = match.replace(`-${variant}`, '')
                   className =
                     variant === 'hocus'
@@ -110,23 +187,46 @@ export default class TailwindReactExtractor {
               }
 
               return [...classes, ...className]
+            }, [])
+            // Transform helper props into underlying tailwind class
+            .reduce((classes, match) => {
+              if (match.indexOf(':') !== -1) {
+                const classFragments = match.split(':')
+
+                return [
+                  ...classes,
+                  ...(transformations[classFragments[1]]
+                    ? `${classFragments[0]}:${
+                        transformations[classFragments[1]]
+                      }`
+                    : [match]),
+                ]
+              }
+
+              return [...classes, ...(transformations[match] || [match])]
             }, []),
         )
-        .map(className => {
-          if (className.indexOf(':') !== -1) {
-            const classFragments = className.split(':')
-
-            return transformations[classFragments[1]]
-              ? `${classFragments[0]}:${transformations[classFragments[1]]}`
-              : className
-          }
-
-          return transformations[className] || className
-        })
+      } catch (err) {
+        console.error(err)
+      }
     })
 
-    return [...classNames, ...(content.match(classRegex) || [])].filter(
+    // Manual classNames check
+    const classNameMatches = content.match(propRegex.className) || []
+    classNameMatches.forEach(className => {
+      classNames = classNames.concat(
+        className.replace('className=', '').match(/[\w-/:]+(?<!:)/g) || [],
+      )
+    })
+
+    classNames = classNames.filter(
       (className, index, array) => array.indexOf(className) === index,
     )
+
+    if (classNames.length) {
+      console.info(classNames)
+    }
+
+    return classNames
   }
 }

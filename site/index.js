@@ -1,13 +1,14 @@
 const fs = require('fs')
 const path = require('path')
-// const glob = require('glob-all')
-// const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob-all')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { version } = require('../package.json')
-// const { getWhitelist, TailwindReactExtractor } = require('../tools')
+const { getPaths, TailwindReactExtractor } = require('../tools')
 
-const isDev = process.env.NODE_ENV === 'development'
+// const isDev = process.env.NODE_ENV === 'development'
+
 const components = fs.readdirSync(
   path.resolve(__dirname, '..', 'src/components'),
 )
@@ -31,44 +32,11 @@ module.exports = {
           name: 'Usage',
           content: './site/docs/usage.md',
         },
-        {
-          name: 'Theming',
-          content: './site/docs/theming.md',
-        },
       ],
     },
     {
-      name: 'Component Primitives',
-      components: ['./src/components/primitives/*.jsx'],
-    },
-    {
-      name: 'UI Components',
-      sections: components
-        .map(component => {
-          const readme = path.resolve(
-            __dirname,
-            '../src/components',
-            component,
-            'readme.md',
-          )
-
-          return {
-            name: `${component.charAt(0).toUpperCase()}${component.substring(
-              1,
-            )}`,
-            content: fs.existsSync(readme)
-              ? path.resolve(
-                  __dirname,
-                  '../src/components',
-                  component,
-                  'readme.md',
-                )
-              : undefined,
-            components: [`./src/components/${component}/[A-Z]*.jsx`],
-            usageMode: 'expand',
-          }
-        })
-        .filter(section => !!section),
+      name: 'Components',
+      components: ['./src/components/**/*.jsx'],
     },
     {
       name: 'Contributing',
@@ -126,18 +94,16 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: isDev
-            ? ['style-loader', 'postcss-loader']
-            : [
-                {
-                  loader: MiniCssExtractPlugin.loader,
-                  options: {
-                    publicPath: '../',
-                  },
-                },
-                'css-loader',
-                'postcss-loader',
-              ],
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '../',
+              },
+            },
+            'css-loader',
+            'postcss-loader',
+          ],
         },
         {
           test: /\.md$/,
@@ -145,30 +111,28 @@ module.exports = {
         },
       ],
     },
-    plugins: isDev
-      ? []
-      : [
-          // new PurgecssPlugin({
-          //   whitelist: getWhitelist({}, [
-          //     'flex-col-reverse',
-          //     'flex-wrap-reverse',
-          //     'max-w-md',
-          //     'sm:w-1/5',
-          //   ]),
-          //   paths: glob.sync([
-          //     path.join(__dirname, 'docs/*.md'),
-          //     path.join(__dirname, '../', '/src/components/**/*.md'),
-          //   ]),
-          //   extractors: [
-          //     {
-          //       extractor: TailwindReactExtractor,
-          //       extensions: ['md'],
-          //     },
-          //   ],
-          // }),
-          new MiniCssExtractPlugin({
-            filename: 'main.[contenthash].css',
-          }),
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'main.[contenthash].css',
+      }),
+      new PurgecssPlugin({
+        whitelist: [],
+        paths: glob.sync([
+          path.join(__dirname, 'components/*.jsx'),
+          path.join(__dirname, 'docs/*.md'),
+          path.join(__dirname, '../README.md'),
+          ...getPaths(),
+          ...components.map(component =>
+            path.join(__dirname, '..', `src/components/${component}/*.md`),
+          ),
+        ]),
+        extractors: [
+          {
+            extractor: TailwindReactExtractor,
+            extensions: ['md', 'jsx'],
+          },
         ],
+      }),
+    ],
   },
 }

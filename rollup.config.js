@@ -1,9 +1,10 @@
 import babel from 'rollup-plugin-babel'
 import resolve from 'rollup-plugin-node-resolve'
+import json from 'rollup-plugin-json'
 
 import { dependencies, peerDependencies } from './package.json'
 
-const { MODULE_FORMAT } = process.env
+const { MODULE_FORMAT, IGNORE_LIB } = process.env
 
 const suffix = MODULE_FORMAT === 'cjs' ? '.cjs' : ''
 
@@ -20,6 +21,8 @@ const createConfig = (input, outputFile) => ({
   },
   external: module => {
     let isExternal = /node_module/.test(module)
+
+    if (['path', 'fs'].includes(module)) return true
 
     if (!isExternal) {
       externalDeps.forEach(dep => {
@@ -38,10 +41,17 @@ const createConfig = (input, outputFile) => ({
     babel({
       exclude: 'node_modules/**',
     }),
+    json(),
   ],
 })
 
-const config = [createConfig('./src/index.js', `dist/index${suffix}.js`)]
+const config = [
+  IGNORE_LIB !== 'true' &&
+    createConfig(
+      './src/components/primitives/index.js',
+      `dist/index${suffix}.js`,
+    ),
+]
 
 if (MODULE_FORMAT === 'cjs') {
   config.push(
@@ -50,4 +60,4 @@ if (MODULE_FORMAT === 'cjs') {
   )
 }
 
-export default config
+export default config.filter(Boolean)
