@@ -28,8 +28,8 @@ const Text = ({
   return (
     <Base
       is={is}
-      font={fontValue.filter(value => !!value)}
-      text={textValue.filter(value => !!value)}
+      font={fontValue.filter((value) => !!value)}
+      text={textValue.filter((value) => !!value)}
       leading={leadingValue}
       {...rest}
     >

@@ -4,7 +4,7 @@ import paramCase from 'param-case'
 import tailwindPropToClassName from './tailwindPropToClassName'
 import tailwindProps, { propVariants } from './tailwindProps'
 
-const hasUpperCase = str => str.toLowerCase() !== str
+const hasUpperCase = (str) => str.toLowerCase() !== str
 
 export default (props, { ignore = [], prefix } = {}) =>
   !!props &&

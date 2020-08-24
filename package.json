@@ -58,11 +58,6 @@
     },
     "testURL": "http://localhost"
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
@@ -87,6 +82,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@commitlint/config-conventional": "^7.1.2",
+    "@mortlock/prettier-config": "^1.1.0",
     "autoprefixer": "^9.1.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.0",
@@ -101,12 +97,12 @@
     "enzyme-to-json": "^3.2.2",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "^3.0.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.10.0",
     "gh-pages": "^2.0.0",
     "glob-all": "^3.2.1",
@@ -116,7 +112,7 @@
     "postcss": "^7.0.2",
     "postcss-clean": "^1.1.0",
     "postcss-loader": "^3.0.0",
-    "prettier": "^1.13.7",
+    "prettier": "^2.1.0",
     "purgecss-webpack-plugin": "^1.2.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

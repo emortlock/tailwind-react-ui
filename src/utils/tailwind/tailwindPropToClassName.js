@@ -1,6 +1,6 @@
-const getArray = value => (Array.isArray(value) ? value : [value])
+const getArray = (value) => (Array.isArray(value) ? value : [value])
 
-const splitProp = prop => {
+const splitProp = (prop) => {
   const utility = prop.substring(prop.indexOf(':') + 1)
 
   return prop.indexOf(':') !== -1
@@ -25,7 +25,7 @@ export default (prop, values, prefix) => {
   }
 
   if (propType === 'object' && !Array.isArray(values)) {
-    return Object.keys(values).map(key =>
+    return Object.keys(values).map((key) =>
       createClassName({
         prefix,
         utility: `${utility}${key}`,
@@ -36,7 +36,7 @@ export default (prop, values, prefix) => {
   }
 
   return getArray(values)
-    .map(value => {
+    .map((value) => {
       if (value === false || typeof value === 'undefined') {
         return ''
       }
@@ -52,6 +52,6 @@ export default (prop, values, prefix) => {
         value: utility !== value ? value : undefined,
       })
     })
-    .filter(value => !!value)
+    .filter((value) => !!value)
     .join(' ')
 }

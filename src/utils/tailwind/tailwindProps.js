@@ -213,7 +213,7 @@ export default [
   ...propVariants.reduce(
     (variantProps, variant) => [
       ...variantProps,
-      ...Object.keys(propTypes).map(prop => `${prop}-${variant}`),
+      ...Object.keys(propTypes).map((prop) => `${prop}-${variant}`),
     ],
     [],
   ),

@@ -5,30 +5,32 @@ const log = debug('tailwind-react:extractor')
 
 const propRegex = {
   /** Detects `<Box select="none" />` */
-  singleValue: prop =>
+  singleValue: (prop) =>
     new RegExp(
       `${prop}(?:-[A-Za-z]+)?=[\`"'{\\s]+[\\w\\/\\-]+\\s*[\`"'}]+`,
       'g',
     ),
   /** Detects `<Box flex />` */
-  booleanValue: prop => new RegExp(`\\s${prop}(?:-[A-Za-z]+)?(?:\\s+|>)`, 'g'),
+  booleanValue: (prop) =>
+    new RegExp(`\\s${prop}(?:-[A-Za-z]+)?(?:\\s+|>)`, 'g'),
   /** Detects `<Box cursor={disabled ? 'default' : 'pointer'} />` & `<Box cursor={disabled || 'pointer'} />` */
-  conditionalValue: prop =>
+  conditionalValue: (prop) =>
     new RegExp(
       `${prop}(?:-[A-Za-z]+)?={[\\w\\s\\?!:"'\`]+(?:\\?|\\|)+[\\w\\s\\?!:"'\`]+}`,
       'g',
     ),
   /** Detects `<Box m={{ x: 'auto' }} />` */
-  objectValue: prop =>
+  objectValue: (prop) =>
     new RegExp(`${prop}(?:-[A-Za-z]+)?={{\\s*[\\w\\s:\\-\\/'"\`,]+\\s*}}`, 'g'),
   /** Detects `<Box flex={flex={[true, wrap && 'wrap', col ? 'col' : 'row']} />` */
-  arrayValue: prop => new RegExp(`${prop}(?:-[A-Za-z]+)?=?={\\[[^\\]]+]`, 'g'),
+  arrayValue: (prop) =>
+    new RegExp(`${prop}(?:-[A-Za-z]+)?=?={\\[[^\\]]+]`, 'g'),
   className: /className=[`"'{\s]+[\w\s/-]+\s*[`"'}]+/g,
 }
 
 const transformations = {
   'w-auto': ['flex-1'],
-  focusable: ['focus:outline-none', 'focus:shadow-outline'],
+  'focusable': ['focus:outline-none', 'focus:shadow-outline'],
 }
 
 export default class TailwindReactExtractor {
@@ -37,7 +39,7 @@ export default class TailwindReactExtractor {
 
     log('Starting extract')
 
-    tailwindProps.forEach(prop => {
+    tailwindProps.forEach((prop) => {
       try {
         let matches = []
 
@@ -71,7 +73,7 @@ export default class TailwindReactExtractor {
                 .replace(`${prop}=`, '')
                 .replace(/[{}'"]/g, '')
                 .split(',')
-                .map(objProp => {
+                .map((objProp) => {
                   const classFragments = objProp.split(':')
                   const key = classFragments[0]
                   return key.length === 1
@@ -93,7 +95,7 @@ export default class TailwindReactExtractor {
         if (conditionalMatches.length) {
           log('  - conditional prop value matches:', conditionalMatches)
 
-          conditionalMatches.forEach(propAndValue => {
+          conditionalMatches.forEach((propAndValue) => {
             const propName = propAndValue.match(/[A-Za-z]+(?==)/g)[0]
             let conditionalValues = propAndValue.match(/{.+(?=}\s*)/g) || []
 
@@ -115,7 +117,7 @@ export default class TailwindReactExtractor {
             matches = matches.concat([
               propName, // Insert prop name on its own for `<Box flex={!isFixed} />`
               ...conditionalValues.map(
-                value => `${propName}-${value.replace(/["']/g, '')}`, // TODO: filter `opacity-undefined` & similar?
+                (value) => `${propName}-${value.replace(/["']/g, '')}`, // TODO: filter `opacity-undefined` & similar?
               ),
             ])
           })
@@ -127,14 +129,14 @@ export default class TailwindReactExtractor {
         if (arrayMatches.length) {
           log('  - array prop value matches:', arrayMatches)
 
-          arrayMatches.forEach(propAndValue => {
+          arrayMatches.forEach((propAndValue) => {
             const propName = propAndValue.match(/[A-Za-z]+(?==)/g)[0]
             const arrayValues = propAndValue.replace(propName, '')
 
             matches = matches.concat([
               propName,
               ...(arrayValues.match(/[\w-]+/g) || []).map(
-                value => `${propName}-${value}`,
+                (value) => `${propName}-${value}`,
               ),
             ])
           })
@@ -148,7 +150,7 @@ export default class TailwindReactExtractor {
               (className, index, array) => array.indexOf(className) === index,
             )
             // Remove any special characters, e.g. string wrappers
-            .map(match =>
+            .map((match) =>
               match
                 .replace(/[\s"'{}>]/g, '')
                 .replace('=', '-')
@@ -158,7 +160,7 @@ export default class TailwindReactExtractor {
             // Add variant classes
             .reduce((classes, match) => {
               let className = [match]
-              propVariants.forEach(variant => {
+              propVariants.forEach((variant) => {
                 if (match.includes(`-${variant}`)) {
                   className = match.replace(`-${variant}`, '')
                   className =
@@ -223,7 +225,7 @@ export default class TailwindReactExtractor {
     if (classNameMatches.length) {
       log('  - className prop value matches:', classNameMatches)
 
-      classNameMatches.forEach(className => {
+      classNameMatches.forEach((className) => {
         classNames = classNames.concat(
           className.replace('className=', '').match(/[\w-/:]+(?<!:)/g) || [],
         )
