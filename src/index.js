@@ -5,6 +5,4 @@ export * from './components/Image'
 export * from './components/Text'
 export * from './components/Touchable'
 
-export * from './hoc/withTailwind'
-
 export * from './utils'
