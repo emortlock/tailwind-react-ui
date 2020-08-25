@@ -1,10 +1,9 @@
-import { terser } from 'rollup-plugin-terser'
-import babel from 'rollup-plugin-babel'
-import json from 'rollup-plugin-json'
-import replace from 'rollup-plugin-replace'
-import resolve from 'rollup-plugin-node-resolve'
-import sourceMaps from 'rollup-plugin-sourcemaps'
+import babel from '@rollup/plugin-babel'
 import typescript from '@rollup/plugin-typescript'
+import json from '@rollup/plugin-json'
+import replace from '@rollup/plugin-replace'
+import resolve from '@rollup/plugin-node-resolve'
+import { terser } from 'rollup-plugin-terser'
 
 import { name } from './package.json'
 
@@ -64,13 +63,19 @@ export function createRollupConfig({ isMain, input, outputDir, format, env }) {
           }
         },
       },
+      replace({
+        __BUILD_ENV__: JSON.stringify(env),
+      }),
       typescript(),
       babel({
         exclude: /node_modules/,
+        extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts', '.tsx'],
+        babelHelpers: 'runtime',
+        inputSourceMap: true,
         plugins: [
+          require.resolve('@babel/plugin-transform-runtime'),
           require.resolve('babel-plugin-annotate-pure-calls'),
-          require.resolve('babel-plugin-dev-expression'),
-          format !== 'cjs' && [
+          format === 'esm' && [
             require.resolve('babel-plugin-transform-rename-import'),
             {
               replacements: [{ original: 'lodash', replacement: 'lodash-es' }],
@@ -78,10 +83,6 @@ export function createRollupConfig({ isMain, input, outputDir, format, env }) {
           ],
         ].filter(Boolean),
       }),
-      replace({
-        'process.env.NODE_ENV': JSON.stringify(env),
-      }),
-      sourceMaps(),
       !isDev &&
         terser({
           output: { comments: false },

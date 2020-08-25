@@ -90,21 +90,7 @@ module.exports = {
       rules: [
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          use: {
-            loader: 'babel-loader?cacheDirectory',
-            options: {
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    loose: true,
-                    modules: false,
-                    targets: '>2%',
-                  },
-                ],
-              ],
-            },
-          },
+          use: 'babel-loader?cacheDirectory',
           exclude: /node_modules/,
         },
         {
