@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders matching snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="relative w-full"
+  >
+    <div
+      class=""
+      style="padding-bottom: 100%;"
+    />
+    <img
+      class="absolute inset-0 w-full"
+      src="/static/assets/tubgirl.gif"
+    />
+  </div>
+</DocumentFragment>
+`;
