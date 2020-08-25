@@ -1,24 +1,28 @@
+import type { ReactButtonProps, HTMLButtonProps } from '../../types'
+import type { BaseProps } from '../Base'
+
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 
 import { Base } from '../Base'
 
 const focusableElements = ['input', 'select', 'textarea', 'button', 'a']
 
-class Touchable extends PureComponent {
-  constructor(props) {
+interface TouchableProps extends BaseProps, ReactButtonProps {
+  onTouch?: (e: React.MouseEvent | React.KeyboardEvent) => void
+}
+
+class Touchable extends PureComponent<TouchableProps> {
+  constructor(props: TouchableProps) {
     super(props)
 
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
-  handleKeyPress(e) {
+  handleKeyPress(e: React.KeyboardEvent) {
     const { onTouch } = this.props
     if (
       onTouch &&
-      ((e.key &&
-        (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar')) ||
-        (e.keyCode && (e.keyCode === 13 || e.keyCode === 32)))
+      (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar')
     ) {
       e.preventDefault()
       onTouch(e)
@@ -26,12 +30,20 @@ class Touchable extends PureComponent {
   }
 
   render() {
-    const { is, children, tabIndex, disabled, onTouch, ...rest } = this.props
-    const isSemantic = focusableElements.includes(is)
+    const {
+      as = 'button',
+      children,
+      tabIndex,
+      disabled = false,
+      onTouch,
+      ...rest
+    } = this.props
+
+    const isSemantic = typeof as === 'string' && focusableElements.includes(as)
 
     return (
-      <Base
-        is={is}
+      <Base<HTMLButtonElement, HTMLButtonProps>
+        as={as}
         select="none"
         cursor={disabled ? 'default' : 'pointer'}
         pointerEvents={disabled ? 'none' : undefined}
@@ -49,22 +61,6 @@ class Touchable extends PureComponent {
       </Base>
     )
   }
-}
-
-Touchable.propTypes = {
-  is: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),
-  children: PropTypes.node,
-  disabled: PropTypes.bool,
-  tabIndex: PropTypes.number,
-  onTouch: PropTypes.func,
-}
-
-Touchable.defaultProps = {
-  is: 'button',
-  children: undefined,
-  disabled: false,
-  tabIndex: undefined,
-  onTouch: undefined,
 }
 
 export default Touchable

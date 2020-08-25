@@ -1,4 +1,11 @@
-export default ({ variants = ['responsive'] } = {}) => ({ addUtilities }) => {
+export default ({ variants = ['responsive'] } = {}) => ({
+  addUtilities,
+}: {
+  addUtilities: (
+    css: Record<string, any>,
+    options: { variants: string[] },
+  ) => void
+}) => {
   addUtilities(
     {
       '.visually-hidden, .visually-hidden-focusable': {

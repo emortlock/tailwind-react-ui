@@ -1,63 +1,146 @@
+import { terser } from 'rollup-plugin-terser'
 import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
 import json from 'rollup-plugin-json'
+import replace from 'rollup-plugin-replace'
+import resolve from 'rollup-plugin-node-resolve'
+import sourceMaps from 'rollup-plugin-sourcemaps'
+import typescript from '@rollup/plugin-typescript'
 
-import { dependencies, peerDependencies } from './package.json'
+import { name } from './package.json'
 
-const { MODULE_FORMAT, IGNORE_LIB } = process.env
+const { IGNORE_LIB } = process.env
 
-const suffix = MODULE_FORMAT === 'cjs' ? '.cjs' : ''
+const shebang = {}
 
-const externalDeps = [
-  ...Object.keys(dependencies),
-  ...Object.keys(peerDependencies),
-]
+export function createRollupConfig({ isMain, input, outputDir, format, env }) {
+  const isDev = env === 'development'
 
-const createConfig = (input, outputFile) => ({
-  input,
-  output: {
-    file: outputFile,
-    format: MODULE_FORMAT,
-  },
-  external: module => {
-    let isExternal = /node_module/.test(module)
+  return {
+    // Tell Rollup the entry point to the package
+    input,
+    // Tell Rollup which packages to ignore
+    external: (id) => !id.startsWith('.') && !id.startsWith('/'),
+    // Establish Rollup output
+    output: {
+      // Set filenames of the consumer's package
+      file: [
+        `${outputDir}/index`,
+        isMain && format !== 'esm' && format,
+        isMain && isDev && 'dev',
+        'js',
+      ]
+        .filter(Boolean)
+        .join('.'),
+      // Pass through the file format
+      format,
+      // Do not let Rollup call Object.freeze() on namespace import objects
+      // (i.e. import * as namespaceImportObject from...) that are accessed dynamically.
+      freeze: false,
+      // Do not let Rollup add a `__esModule: true` property when generating exports for non-ESM formats.
+      esModule: false,
+      // Rollup has treeshaking by default, but we can optimize it further...
+      name,
+      sourcemap: true,
+      globals: { 'react': 'React', 'react-native': 'ReactNative' },
+      exports: 'named',
+    },
+    plugins: [
+      resolve({
+        mainFields: ['module', 'main', 'browser'],
+      }),
+      json(),
+      {
+        // Custom plugin that removes shebang from code
+        // See: https://github.com/Rich-Harris/buble/pull/165
+        transform(code) {
+          const reg = /^#!(.*)/
+          const match = code.match(reg)
 
-    if (['path', 'fs'].includes(module)) return true
+          shebang[name] = match ? `#!${match[1]}` : ''
 
-    if (!isExternal) {
-      externalDeps.forEach(dep => {
-        if (new RegExp(`^${dep}`).test(module)) {
-          isExternal = true
-        }
-      })
-    }
-
-    return isExternal
-  },
-  plugins: [
-    resolve({
-      extensions: ['.js', '.jsx'],
-    }),
-    babel({
-      exclude: 'node_modules/**',
-    }),
-    json(),
-  ],
-})
-
-const config = [
-  IGNORE_LIB !== 'true' &&
-    createConfig(
-      './src/components/primitives/index.js',
-      `dist/index${suffix}.js`,
-    ),
-]
-
-if (MODULE_FORMAT === 'cjs') {
-  config.push(
-    createConfig('./src/plugins/index.js', `plugins/index.js`),
-    createConfig('./src/tools/index.js', `tools/index.js`),
-  )
+          return {
+            code: code.replace(reg, ''),
+            map: null,
+          }
+        },
+      },
+      typescript(),
+      babel({
+        exclude: /node_modules/,
+        plugins: [
+          require.resolve('babel-plugin-annotate-pure-calls'),
+          require.resolve('babel-plugin-dev-expression'),
+          format !== 'cjs' && [
+            require.resolve('babel-plugin-transform-rename-import'),
+            {
+              replacements: [{ original: 'lodash', replacement: 'lodash-es' }],
+            },
+          ],
+        ].filter(Boolean),
+      }),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify(env),
+      }),
+      sourceMaps(),
+      !isDev &&
+        terser({
+          output: { comments: false },
+          compress: {
+            keep_infinity: true,
+            pure_getters: true,
+            collapse_vars: false,
+          },
+          ecma: 5,
+          toplevel: format === 'cjs',
+          warnings: true,
+        }),
+    ],
+  }
 }
 
-export default config.filter(Boolean)
+const defaultFormats = ['esm', 'cjs']
+const defaultEnvironments = ['development', 'production']
+
+const entryPoints = [
+  IGNORE_LIB !== 'true' && {
+    input: './src/index.ts',
+    outputDir: 'dist',
+    formats: defaultFormats,
+    environments: defaultEnvironments,
+    isMain: true,
+  },
+  {
+    input: './src/plugins/index.ts',
+    outputDir: 'plugins',
+    formats: ['cjs'],
+    environments: ['development'],
+  },
+  {
+    input: './src/tools/index.ts',
+    outputDir: 'tools',
+    formats: ['cjs'],
+    environments: ['development'],
+  },
+]
+
+export default entryPoints.filter(Boolean).reduce(
+  (entryPointConfigs, { input, outputDir, formats, environments, isMain }) => [
+    ...entryPointConfigs,
+    ...formats.reduce(
+      (config, format) => [
+        ...config,
+        ...environments.map((env) =>
+          createRollupConfig({
+            input,
+            outputDir,
+            format,
+            env,
+            isMain,
+          }),
+        ),
+      ],
+      [],
+    ),
+  ],
+  [],
+)

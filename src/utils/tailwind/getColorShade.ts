@@ -1,6 +1,6 @@
 const shades = ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 
-export default (color, offset = 1) => {
+export default (color: string, offset = 1) => {
   if (!color) {
     return false
   }

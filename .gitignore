@@ -72,5 +72,8 @@ stats
 # Idea directory
 .idea
 
+# Bundle cache
+.cache
+
 # Styleguide
 styleguide

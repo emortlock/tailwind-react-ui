@@ -52,39 +52,42 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 ## Example
 
 ```jsx
-<Box maxW="md" m={{ x: 'auto' }}>
-  <Box border shadow bg="white">
-    <Box p={4}>
-      <Text is="h1" text={['blue-400', '2xl']} m={{ b: 4 }}>
-        Hello World
-      </Text>
+import { Box, Flex, Touchable, Text } from 'tailwind-react-ui'
+;<>
+  <Box maxW="md" m={{ x: 'auto' }}>
+    <Box border shadow bg="white">
+      <Box p={4}>
+        <Text as="h1" text={['blue-400', '2xl']} m={{ b: 4 }}>
+          Hello World
+        </Text>
+      </Box>
+      <Flex items="end" wrap reverse>
+        <Touchable
+          p={{ x: 4, y: 2 }}
+          border={[true, 'transparent']}
+          bg="blue-400"
+          bg-hocus="blue-500"
+          text="white"
+          w="full"
+          w-sm="1/5"
+        >
+          Bar
+        </Touchable>
+        <Touchable
+          p={{ x: 4, y: 2 }}
+          border={[true, 'blue-400']}
+          text="blue-400"
+          text-hocus="white"
+          bg-hocus="blue-500"
+          w="full"
+          w-sm="1/5"
+        >
+          Foo
+        </Touchable>
+      </Flex>
     </Box>
-    <Flex items="end" wrap reverse>
-      <Touchable
-        p={{ x: 4, y: 2 }}
-        border={[true, 'transparent']}
-        bg="blue-400"
-        bg-hocus="blue-500"
-        text="white"
-        w="full"
-        w-sm="1/5"
-      >
-        Bar
-      </Touchable>
-      <Touchable
-        p={{ x: 4, y: 2 }}
-        border={[true, 'blue-400']}
-        text="blue-400"
-        text-hocus="white"
-        bg-hocus="blue-500"
-        w="full"
-        w-sm="1/5"
-      >
-        Foo
-      </Touchable>
-    </Flex>
   </Box>
-</Box>
+</>
 ```
 
 ## Useful Links

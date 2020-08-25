@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Wrapper = ({ children }) => (
+const Wrapper: React.FC = ({ children }) => (
   <div className="bg-checkerboard border overflow-auto">
     <div className="p-4">{children}</div>
   </div>

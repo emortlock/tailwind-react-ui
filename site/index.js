@@ -5,7 +5,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { version } = require('../package.json')
-const { getPaths, TailwindReactExtractor } = require('../tools')
+const { getPaths, purgeFromTailwindReact } = require('../tools')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -16,6 +16,10 @@ const components = fs.readdirSync(
 module.exports = {
   title: `Tailwind React UI`,
   version,
+  // eslint-disable-next-line global-require
+  propsParser: require('react-docgen-typescript').withCustomConfig(
+    './tsconfig.json',
+  ).parse,
   sections: [
     {
       name: '',
@@ -32,21 +36,21 @@ module.exports = {
           name: 'Usage',
           content: './site/docs/usage.md',
         },
+        {
+          name: 'Contributing',
+          content: './site/docs/contributing.md',
+        },
       ],
     },
     {
       name: 'Components',
-      components: ['./src/components/**/*.jsx'],
-    },
-    {
-      name: 'Contributing',
-      content: './site/docs/contributing.md',
+      components: ['./src/components/**/*.tsx'],
     },
   ],
   skipComponentsWithoutExample: true,
   getExampleFilename(componentPath) {
-    if (path.extname(componentPath) === '.jsx') {
-      const componentMdPath = componentPath.replace('.jsx', '.md')
+    if (path.extname(componentPath) === '.tsx') {
+      const componentMdPath = componentPath.replace('.tsx', '.md')
       if (fs.existsSync(componentMdPath)) return componentMdPath
       return path.resolve(__dirname, 'defaultReadme.md')
     }
@@ -54,10 +58,10 @@ module.exports = {
     return path.resolve(path.dirname(componentPath), 'readme.md')
   },
   getComponentPathLine(componentPath) {
-    if (!componentPath.endsWith('.jsx')) {
+    if (!componentPath.endsWith('.tsx')) {
       return componentPath
     }
-    const name = path.basename(componentPath, '.jsx')
+    const name = path.basename(componentPath, '.tsx')
     return `import { ${name} } from 'tailwind-react-ui'`
   },
   styles: {
@@ -77,20 +81,36 @@ module.exports = {
     },
   },
   styleguideComponents: {
-    Wrapper: path.resolve(__dirname, './components/Wrapper.jsx'),
+    Wrapper: path.resolve(__dirname, './components/Wrapper'),
   },
-  require: [
-    '@babel/polyfill',
-    './site/style/main.css',
-    './site/addComponents.js',
-  ],
+  require: ['@babel/polyfill', './site/style/main.css'],
   webpackConfig: {
+    devtool: isDev && 'inline-source-map',
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
+          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          use: {
+            loader: 'babel-loader?cacheDirectory',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    loose: true,
+                    modules: false,
+                    targets: '>2%',
+                  },
+                ],
+              ],
+            },
+          },
           exclude: /node_modules/,
-          loader: 'babel-loader?cacheDirectory',
+        },
+        {
+          test: /\.tsx?$/,
+          use: require.resolve('ts-loader'),
+          exclude: /node_modules/,
         },
         {
           test: /\.css$/,
@@ -122,21 +142,39 @@ module.exports = {
         new PurgecssPlugin({
           whitelist: [],
           paths: glob.sync([
-            path.join(__dirname, 'components/*.jsx'),
+            path.join(__dirname, 'components/*.tsx'),
             path.join(__dirname, 'docs/*.md'),
             path.join(__dirname, '../README.md'),
             ...getPaths(),
-            ...components.map(component =>
+            ...components.map((component) =>
               path.join(__dirname, '..', `src/components/${component}/*.md`),
             ),
           ]),
           extractors: [
             {
-              extractor: TailwindReactExtractor,
-              extensions: ['md', 'jsx'],
+              extractor: purgeFromTailwindReact,
+              extensions: ['md', 'tsx'],
             },
           ],
         }),
     ].filter(Boolean),
+    resolve: {
+      extensions: [
+        'web.mjs',
+        'mjs',
+        'web.js',
+        'js',
+        'web.ts',
+        'ts',
+        'web.tsx',
+        'tsx',
+        'json',
+        'web.jsx',
+        'jsx',
+      ],
+    },
+  },
+  moduleAliases: {
+    'tailwind-react-ui': path.resolve(__dirname, '..', './src/'),
   },
 }
