@@ -8,5 +8,5 @@ const components = fs.readdirSync(path.resolve(basePath, 'src/components'))
 
 export default () =>
   components.map((component) =>
-    path.join(basePath, `src/components/${component}/*.jsx`),
+    path.join(basePath, `src/components/${component}/*.tsx`),
   )
