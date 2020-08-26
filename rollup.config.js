@@ -7,11 +7,18 @@ import { terser } from 'rollup-plugin-terser'
 
 import { name } from './package.json'
 
-const { IGNORE_LIB } = process.env
+const { TOOLS_ONLY, NODE_ENV } = process.env
 
 const shebang = {}
 
-export function createRollupConfig({ isMain, input, outputDir, format, env }) {
+export function createRollupConfig({
+  input,
+  outputDir,
+  outputSuffix = '',
+  format,
+  noMinify = false,
+} = {}) {
+  const env = NODE_ENV || 'production'
   const isDev = env === 'development'
 
   return {
@@ -22,12 +29,7 @@ export function createRollupConfig({ isMain, input, outputDir, format, env }) {
     // Establish Rollup output
     output: {
       // Set filenames of the consumer's package
-      file: [
-        `${outputDir}/index`,
-        isMain && format !== 'esm' && format,
-        isMain && isDev && 'dev',
-        'js',
-      ]
+      file: [`${outputDir}/index`, outputSuffix, 'js']
         .filter(Boolean)
         .join('.'),
       // Pass through the file format
@@ -74,7 +76,7 @@ export function createRollupConfig({ isMain, input, outputDir, format, env }) {
         inputSourceMap: true,
         plugins: [
           require.resolve('@babel/plugin-transform-runtime'),
-          require.resolve('babel-plugin-annotate-pure-calls'),
+          !noMinify && require.resolve('babel-plugin-annotate-pure-calls'),
           format === 'esm' && [
             require.resolve('babel-plugin-transform-rename-import'),
             {
@@ -83,7 +85,8 @@ export function createRollupConfig({ isMain, input, outputDir, format, env }) {
           ],
         ].filter(Boolean),
       }),
-      !isDev &&
+      !noMinify &&
+        !isDev &&
         terser({
           output: { comments: false },
           compress: {
@@ -95,50 +98,43 @@ export function createRollupConfig({ isMain, input, outputDir, format, env }) {
           toplevel: format === 'cjs',
           warnings: true,
         }),
-    ],
+    ].filter(Boolean),
   }
 }
 
-const defaultFormats = ['esm', 'cjs']
-const defaultEnvironments = ['development', 'production']
-
 const entryPoints = [
-  IGNORE_LIB !== 'true' && {
+  TOOLS_ONLY !== 'true' && {
     input: './src/index.ts',
     outputDir: 'dist',
-    formats: defaultFormats,
-    environments: defaultEnvironments,
-    isMain: true,
+    outputs: ['esm', 'cjs'],
   },
   {
     input: './src/plugins/index.ts',
     outputDir: 'plugins',
-    formats: ['cjs'],
-    environments: ['development'],
+    outputs: ['cjs'],
+    noMinify: true,
   },
   {
     input: './src/tools/index.ts',
     outputDir: 'tools',
-    formats: ['cjs'],
-    environments: ['development'],
+    outputs: ['cjs'],
+    noMinify: true,
   },
 ]
 
 export default entryPoints.filter(Boolean).reduce(
-  (entryPointConfigs, { input, outputDir, formats, environments, isMain }) => [
+  (entryPointConfigs, { input, outputDir, outputs, noMinify }) => [
     ...entryPointConfigs,
-    ...formats.reduce(
-      (config, format) => [
+    ...outputs.reduce(
+      (config, format, formatIdx) => [
         ...config,
-        ...environments.map((env) =>
-          createRollupConfig({
-            input,
-            outputDir,
-            format,
-            env,
-            isMain,
-          }),
-        ),
+        createRollupConfig({
+          input,
+          outputDir,
+          format,
+          outputSuffix: format.length > 1 && formatIdx > 0 ? format : '',
+          noMinify,
+        }),
       ],
       [],
     ),
