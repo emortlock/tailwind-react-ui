@@ -65,8 +65,6 @@ const typography = {
     'pre-line',
     'pre-wrap',
   ]),
-  // TODO: Account for <Text /> helper props in purge
-  size: PropTypes.string,
 }
 
 const backgrounds = {
@@ -206,17 +204,31 @@ export const propTypes = {
   ...plugins,
 }
 
+/**
+ * Custom Tailwind `variant:` classes that customise when a style is applied
+ * TODO: Should handle custom breakpoints
+ */
 export const propVariants = ['hover', 'focus', 'hocus', 'sm', 'md', 'lg', 'xl']
+
+/**
+ *  Custom QoL props that don't follow the normal transformation conventions
+ */
+export const helperPropsMap = {
+  'w-auto': ['flex-1'],
+  'focusable': ['focus:outline-none', 'focus:shadow-outline'],
+  'size': ['text'],
+  'color': ['text'],
+  'weight': ['font'],
+  'bold': ['font-bold'],
+}
 
 export default [
   ...Object.keys(propTypes),
   ...propVariants.reduce(
-    // TODO: Fix
-    // @ts-ignore
     (variantProps, variant) => [
       ...variantProps,
       ...Object.keys(propTypes).map((prop) => `${prop}-${variant}`),
     ],
-    [],
+    [] as string[],
   ),
 ]

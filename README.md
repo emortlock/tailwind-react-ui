@@ -78,7 +78,7 @@ import { Box, Flex, Touchable, Text } from 'tailwind-react-ui'
           border={[true, 'blue-400']}
           text="blue-400"
           text-hocus="white"
-          bg-hocus="blue-500"
+          bg-hocus="blue-100"
           w="full"
           w-sm="1/5"
         >

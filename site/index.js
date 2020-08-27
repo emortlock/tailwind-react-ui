@@ -128,13 +128,13 @@ module.exports = {
         new PurgecssPlugin({
           whitelist: [],
           paths: glob.sync([
+            path.join(__dirname, '../README.md'),
             path.join(__dirname, 'components/*.tsx'),
             path.join(__dirname, 'docs/*.md'),
-            path.join(__dirname, '../README.md'),
-            ...getPaths(),
             ...components.map((component) =>
               path.join(__dirname, '..', `src/components/${component}/*.md`),
             ),
+            ...getPaths(),
           ]),
           extractors: [
             {

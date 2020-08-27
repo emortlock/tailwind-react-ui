@@ -1,11 +1,11 @@
 ```jsx
 import { Text } from 'tailwind-react-ui'
 ;<>
-  <Text as="h3" size="3xl" bold>
+  <Text as="h3" size="3xl" bold leading="tight">
     Lorem Ipsum
   </Text>
   <Text>
-    <Text as="span" color="purple-dark" size="lg">
+    <Text as="span" color="purple-500" size="lg">
       Lorem ipsum dolor sit amet
     </Text>
     , consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et

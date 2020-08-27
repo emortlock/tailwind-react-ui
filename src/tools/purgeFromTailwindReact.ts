@@ -1,5 +1,5 @@
 import debug from 'debug'
-import { tailwindProps, propVariants } from '../utils'
+import { tailwindProps, propVariants, helperPropsMap } from '../utils'
 
 const log = debug('tailwind-react:extractor')
 
@@ -24,13 +24,14 @@ const propRegex = {
     new RegExp(`${prop}(?:-[A-Za-z]+)?={{\\s*[\\w\\s:\\-\\/'"\`,]+\\s*}}`, 'g'),
   /** Detects `<Box flex={flex={[true, wrap && 'wrap', col ? 'col' : 'row']} />` */
   arrayValue: (prop: string) =>
-    new RegExp(`${prop}(?:-[A-Za-z]+)?=?={\\[[^\\]]+]`, 'g'),
+    new RegExp(`${prop}(?:-[A-Za-z]+)?={\\s*\\[[^\\]]+]`, 'g'),
   className: /className=[`"'{\s]+[\w\s/-]+\s*[`"'}]+/g,
 }
 
-const transformations = {
-  'w-auto': ['flex-1'],
-  'focusable': ['focus:outline-none', 'focus:shadow-outline'],
+const searchTerms = [...tailwindProps, ...Object.keys(helperPropsMap)]
+
+const transformations: Record<string, string[]> = {
+  ...helperPropsMap,
 }
 
 export default (content: string) => {
@@ -38,7 +39,7 @@ export default (content: string) => {
 
   log('Starting extract')
 
-  tailwindProps.forEach((prop) => {
+  searchTerms.forEach((prop) => {
     try {
       let matches: string[] = []
 
@@ -150,13 +151,7 @@ export default (content: string) => {
             (className, index, array) => array.indexOf(className) === index,
           )
           // Remove any special characters, e.g. string wrappers
-          .map((match) =>
-            match
-              .replace(/[\s"'{}>]/g, '')
-              .replace('=', '-')
-              .replace(/[A-Z]/g, '-$&')
-              .toLowerCase(),
-          )
+          .map((match) => match.replace(/[\s"'{}>]/g, ''))
           // Add variant classes
           .reduce((classes, match) => {
             let className = [match]
@@ -175,30 +170,45 @@ export default (content: string) => {
           }, [] as string[])
           // Transform helper props into underlying tailwind class
           .reduce((classes, match) => {
+            let transformation = transformations[match]
+            if (transformation) {
+              return [...classes, ...transformation]
+            }
+
+            let propName = match
+
             if (match.indexOf(':') !== -1) {
               const classFragments = match.split(':')
+              propName = classFragments[1]
+            }
 
+            transformation = transformations[propName]
+            if (transformation) {
               return [
                 ...classes,
-                ...(transformations[
-                  classFragments[1] as keyof typeof transformations
-                ]
-                  ? `${classFragments[0]}:${
-                      transformations[
-                        classFragments[1] as keyof typeof transformations
-                      ]
-                    }`
-                  : [match]),
+                ...transformation.map((t) => match.replace(propName, t)),
               ]
             }
 
-            return [
-              ...classes,
-              ...(transformations[match as keyof typeof transformations] || [
-                match,
-              ]),
-            ]
-          }, [] as string[]),
+            if (match.indexOf('=') !== -1) {
+              const classFragments = match.split('=')
+              propName = classFragments[0]
+            }
+
+            transformation = transformations[propName]
+            if (transformation) {
+              return [
+                ...classes,
+                ...transformation.map((t) => match.replace(propName, t)),
+              ]
+            }
+
+            return [...classes, match]
+          }, [] as string[])
+          // Apply final transformations to mimic tailwind class naming conventions
+          .map((match) =>
+            match.replace('=', '-').replace(/[A-Z]/g, '-$&').toLowerCase(),
+          ),
       )
     } catch (err) {
       throw err
