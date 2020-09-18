@@ -19,15 +19,18 @@ const MyApp = () => (
 Which would change the default blue colouring on the button to instead use the `.bg-red` class.
 
 ```jsx
-<TailwindThemeProvider
-  theme={{
-    brandColors: {
-      primary: 'red-400',
-    },
-  }}
->
-  <FillButton brand="primary">Red button</FillButton>
-</TailwindThemeProvider>
+import { TailwindThemeProvider, FillButton } from 'tailwind-react-ui'
+;<>
+  <TailwindThemeProvider
+    theme={{
+      brandColors: {
+        primary: 'red-400',
+      },
+    }}
+  >
+    <FillButton brand="primary">Red button</FillButton>
+  </TailwindThemeProvider>
+</>
 ```
 
 ### Default theme
@@ -37,7 +40,10 @@ Obviously there's a fair bit more customisation on offer than just a button colo
 See below for the default values used by components:
 
 ```jsx noeditor
-<Card is="code" border h={64} overflow="scroll" className="block">
-  <CardBody is="pre">{JSON.stringify(defaultTheme, null, 1)}</CardBody>
-</Card>
+import { Card, CardBody, defaultTheme } from 'tailwind-react-ui'
+;<>
+  <Card is="code" border h={64} overflow="scroll" className="block">
+    <CardBody is="pre">{JSON.stringify(defaultTheme, null, 1)}</CardBody>
+  </Card>
+</>
 ```

@@ -54,61 +54,75 @@ Tailwind React UI's suite of components are highly composable allowing for a lar
 ### Using Utility Components
 
 ```jsx
-<Box maxW="md" m={{ x: 'auto' }}>
-  <Box border shadow bg="white">
-    <Box p={4}>
-      <Text is="h1" text={['blue', 'xxl']} m={{ b: 4 }}>
-        Hello World
-      </Text>
+import { Box, Flex, Text, Touchable } from 'tailwind-react-primitives'
+;<>
+  <Box maxW="md" m={{ x: 'auto' }}>
+    <Box border shadow bg="white">
+      <Box p={4}>
+        <Text is="h1" text={['blue', 'xxl']} m={{ b: 4 }}>
+          Hello World
+        </Text>
+      </Box>
+      <Flex items="end" wrap reverse>
+        <Touchable
+          p={{ x: 4, y: 2 }}
+          border={[true, 'transparent']}
+          bg="blue"
+          bg-hocus="blue-dark"
+          text="white"
+          w="full"
+          w-sm="1/5"
+        >
+          Foo
+        </Touchable>
+        <Touchable
+          p={{ x: 4, y: 2 }}
+          border={[true, 'blue']}
+          text="blue"
+          text-hocus="white"
+          bg-hocus="blue"
+          w="full"
+          w-sm="1/5"
+        >
+          Bar
+        </Touchable>
+      </Flex>
     </Box>
-    <Flex items="end" wrap reverse>
-      <Touchable
-        p={{ x: 4, y: 2 }}
-        border={[true, 'transparent']}
-        bg="blue"
-        bg-hocus="blue-dark"
-        text="white"
-        w="full"
-        w-sm="1/5"
-      >
-        Foo
-      </Touchable>
-      <Touchable
-        p={{ x: 4, y: 2 }}
-        border={[true, 'blue']}
-        text="blue"
-        text-hocus="white"
-        bg-hocus="blue"
-        w="full"
-        w-sm="1/5"
-      >
-        Bar
-      </Touchable>
-    </Flex>
   </Box>
-</Box>
+</>
 ```
 
 ### Using UI Components
 
 ```jsx
-<Container maxW="md">
-  <Card border shadow>
-    <CardBody>
-      <Title size={6} text="blue">
-        Hello World
-      </Title>
-    </CardBody>
-    <CardFooter wrap>
-      <FillButton brand="primary" w="full" w-sm="1/5">
-        Foo
-      </FillButton>
-      <OutlineButton brand="primary" w="full" w-sm="1/5">
-        Bar
-      </OutlineButton>
-    </CardFooter>
-  </Card>
-</Container>
+import {
+  Container,
+  Card,
+  CardBody,
+  CardFooter,
+  Title,
+  FillButton,
+  OutlineButton,
+} from 'tailwind-react-ui'
+;<>
+  <Container maxW="md">
+    <Card border shadow>
+      <CardBody>
+        <Title size={6} text="blue">
+          Hello World
+        </Title>
+      </CardBody>
+      <CardFooter wrap>
+        <FillButton brand="primary" w="full" w-sm="1/5">
+          Foo
+        </FillButton>
+        <OutlineButton brand="primary" w="full" w-sm="1/5">
+          Bar
+        </OutlineButton>
+      </CardFooter>
+    </Card>
+  </Container>
+</>
 ```
 
 ## Useful Links
