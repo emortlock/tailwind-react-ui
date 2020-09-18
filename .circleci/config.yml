@@ -5,24 +5,17 @@ version: 2
 defaults: &defaults
   working_directory: ~/tailwind-react-ui
   docker:
-    - image: circleci/node:stretch
-
-setupGit: &setupGit
-  run: |
-    git config user.email "$GH_EMAIL" &&
-    git config user.name "$GH_USERNAME"
+    - image: circleci/node:lts
 
 jobs:
-  build:
+  install:
     <<: *defaults
     steps:
       - checkout
 
-      # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-{{ checksum "package-lock.json" }}
             - v1-dependencies-
 
       - run:
@@ -32,7 +25,17 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+
+      - persist_to_workspace:
+          root: ~/tailwind-react-ui
+          paths: .
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tailwind-react-ui
 
       - run:
           name: Lint code
@@ -41,6 +44,12 @@ jobs:
       - run:
           name: Run unit tests
           command: npm test
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tailwind-react-ui
 
       - run:
           name: Run build
@@ -51,14 +60,14 @@ jobs:
           command: npm run docs
 
       - persist_to_workspace:
-          root: ./
+          root: ~/tailwind-react-ui
           paths: .
 
-  deploy-and-publish:
+  publish:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ./
+          at: ~/tailwind-react-ui
 
       - run:
           name: Deploy to GitHub
@@ -66,52 +75,32 @@ jobs:
 
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/tailwind-react-ui/.npmrc
 
       - run:
           name: Publish package
           command: npm publish
 
-  greenkeeperUpdateLockFile:
-    <<: *defaults
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
-      - run:
-          name: Update package-lock.json
-          command: npm install
-
-      - <<: *setupGit
-
-      - run:
-          name: Commit lockfile if changed
-          command: |
-            if ! git diff-index --quiet HEAD --; then
-              git add package-lock.json &&
-              git commit -m "chore(package): update lockfile [skip ci]" &&
-              export URL=$(echo $CIRCLE_REPOSITORY_URL | cut -c 4- | tr : /) &&
-              git push https://${GH_TOKEN}${URL} $CIRCLE_BRANCH --quiet
-            fi
-
 workflows:
   version: 2
 
-  build-and-deploy:
+  ci:
     jobs:
-      - build:
+      - install:
           filters:
             tags:
               only: /^v.*/
-      - greenkeeperUpdateLockFile:
+      - test:
+          requires:
+            - install
+      - build:
+          requires:
+            - install
           filters:
-            branches:
-              only: /^greenkeeper\/.*/
-      - deploy-and-publish:
+            tags:
+              only: /^v.*/
+      - publish:
+          context: npm
           requires:
             - build
           filters:

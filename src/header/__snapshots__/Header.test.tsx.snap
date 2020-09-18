@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders matching snapshot 1`] = `
+<DocumentFragment>
+  <header
+    class="bg-blue-400 text-white py-4"
+    id="neader-1"
+    role="banner"
+  >
+    <div
+      class="flex flex-wrap mx-auto px-4 container items-center justify-between"
+    >
+      Content
+    </div>
+  </header>
+</DocumentFragment>
+`;

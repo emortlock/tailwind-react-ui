@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Article renders matching snapshot 1`] = `
-<WithTheme(ContentBlock)
-  is="article"
->
-  Lorem ipsum...
-</WithTheme(ContentBlock)>
-`;

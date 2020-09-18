@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List renders matching snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="mb-4 flex flex-wrap"
+  >
+    <li
+      class="mb mr-2"
+    >
+      <span>
+        One
+      </span>
+    </li>
+    <li
+      class="mb mr-2"
+    >
+      <span>
+        Two
+      </span>
+    </li>
+    <li
+      class="mb mr-2"
+    >
+      <span>
+        Three
+      </span>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

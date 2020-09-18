@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main renders matching snapshot 1`] = `
+<DocumentFragment>
+  <main
+    class=""
+    id="main"
+    role="main"
+  >
+    Lorem ipsum
+  </main>
+</DocumentFragment>
+`;

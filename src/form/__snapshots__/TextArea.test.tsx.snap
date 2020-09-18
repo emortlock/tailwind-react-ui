@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea renders matching snapshot 1`] = `
+<DocumentFragment>
+  <textarea
+    class="select-none cursor-pointer appearance-none bg-white rounded text-gray-900 px-4 py-2 mb-2 border w-full leading-tight focus:outline-none focus:shadow-outline"
+    id="username"
+    name="username"
+  />
+</DocumentFragment>
+`;

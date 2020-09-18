@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paragraph renders matching snapshot 1`] = `
+<DocumentFragment>
+  <p
+    class="leading-normal mb-4"
+  >
+    Lorem ipsum dolor sit amet
+  </p>
+</DocumentFragment>
+`;

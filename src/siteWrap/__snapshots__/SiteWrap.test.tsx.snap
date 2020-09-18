@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SiteWrap renders matching snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col min-h-screen leading-normal font-sans text-base text-gray-900"
+  >
+    <div
+      class="flex-auto flex-shrink-0"
+    >
+      <header
+        class="bg-blue-400 text-white py-4"
+        id="neader-1"
+        role="banner"
+      >
+        <div
+          class="flex flex-wrap mx-auto px-4 container items-center justify-between"
+        >
+          Header
+        </div>
+      </header>
+      <p>
+        Body
+      </p>
+    </div>
+    <div
+      class="flex-auto flex-shrink-0 flex-grow-0 mt-8"
+    >
+      <footer
+        class="pt-8 pb-12 bg-gray-500 text-white"
+        role="contentinfo"
+      >
+        <div
+          class="mx-auto px-4 container"
+        >
+          Footer
+        </div>
+      </footer>
+    </div>
+  </div>
+</DocumentFragment>
+`;

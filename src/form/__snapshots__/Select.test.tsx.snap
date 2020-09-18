@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput renders matching snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="relative mb-2"
+  >
+    <select
+      class="select-none cursor-pointer appearance-none bg-white rounded text-gray-900 pl-4 pr-8 py-2 border w-full leading-tight focus:outline-none focus:shadow-outline"
+      id="username"
+      name="username"
+    >
+      <option
+        value=""
+      >
+        Please select
+      </option>
+      <option
+        value="one"
+      >
+        single
+      </option>
+      <option
+        value="two"
+      >
+        double
+      </option>
+    </select>
+    <div
+      class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+    >
+      <svg
+        class="h-6 w-6"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

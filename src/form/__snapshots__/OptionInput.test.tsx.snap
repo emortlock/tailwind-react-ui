@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionInput renders matching snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="font-bold leading-normal inline-block mb-2 select-none cursor-pointer flex items-center focus:outline-none focus:shadow-outline"
+    role="button"
+    tabindex="0"
+  >
+    <input
+      checked=""
+      class="visually-hidden"
+      name="test"
+      tabindex="-1"
+      type="radio"
+      value="test-1"
+    />
+    <span
+      class="inline-block flex items-center justify-center rounded-full h-4 w-4 border border-blue-400 mr-2"
+    >
+      <span
+        class="inline-block rounded-full h-2 w-2 bg-blue-400"
+      />
+    </span>
+    <span
+      class="inline-block leading-tight font-normal"
+    >
+      Test?
+    </span>
+  </label>
+</DocumentFragment>
+`;

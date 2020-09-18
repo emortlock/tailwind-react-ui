@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem renders matching snapshot 1`] = `
+<DocumentFragment>
+  <a
+    class="select-none cursor-pointer text-white hover:bg-white focus:bg-white hover:text-blue-400 focus:text-blue-400 px-4 py-2 mt-2 rounded block focus:outline-none focus:shadow-outline"
+    href="#test"
+    role="button"
+    tabindex="0"
+  >
+    Link
+  </a>
+</DocumentFragment>
+`;
