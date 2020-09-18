@@ -2,21 +2,21 @@ import type { TitleProps } from '../typography'
 
 import React from 'react'
 
-import { RawTitle as Title } from '../typography'
+import { Title } from '../typography'
 
-export interface ContentTitleProps<E extends HTMLElement = HTMLHeadingElement>
-  extends Omit<TitleProps<E>, 'content'> {
+export interface ContentTitleProps
+  extends Omit<TitleProps, 'content' | 'theme'> {
   content?: {
     id?: string
   }
   visuallyHidden?: boolean
 }
 
-export const RawContentTitle = <E extends HTMLElement = HTMLHeadingElement>({
+export const RawContentTitle = ({
   content: { id = undefined } = {},
   visuallyHidden,
   ...rest
-}: ContentTitleProps<E>) => (
+}: ContentTitleProps) => (
   <Title id={id} visuallyHidden={visuallyHidden} {...rest} />
 )
 
