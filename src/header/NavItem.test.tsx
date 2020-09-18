@@ -30,6 +30,7 @@ describe('NavItem', () => {
     // eslint-disable-next-line
     const [{ asFragment }] = setup({
       as: (props: React.HTMLProps<HTMLAnchorElement>) => (
+        // eslint-disable-next-line jsx-a11y/anchor-has-content
         <a {...props} href="#test" />
       ),
     })

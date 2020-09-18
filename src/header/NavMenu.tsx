@@ -68,6 +68,8 @@ export const RawNavMenu = <E extends HTMLElement = HTMLDivElement>({
   }
 
   return (
+    // TODO: Double check screen reader behaviour
+    // eslint-disable-next-line jsx-a11y/role-supports-aria-props
     <Box<E>
       as={as}
       overflow="hidden"
@@ -86,8 +88,8 @@ export const RawNavMenu = <E extends HTMLElement = HTMLDivElement>({
       }
       id={`${header.id}-nav`}
       aria-labelledby={headingId}
-      aria-expanded={header.isCollapsable ? header.isOpen : undefined}
       role="navigation"
+      aria-expanded={header.isCollapsable ? header.isOpen : undefined}
       {...responsive.nav}
       {...rest}
     >
