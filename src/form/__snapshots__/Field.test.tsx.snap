@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field renders matching snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="mb-4 max-w-sm"
+    id="field-1"
+  >
+    <label
+      class="font-bold leading-normal inline-block mb-2"
+      for="field-1-input"
+    >
+      Password
+    </label>
+    <p
+      class="text-gray-900 leading-normal mb-2 rounded-r bg-teal-100 border-l-4 border-teal-400 px-4 py-2"
+      id="field-1-help"
+    >
+      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+    </p>
+    <button
+      aria-describedby="field-1-error field-1-help"
+      aria-invalid="true"
+      class="select-none cursor-pointer appearance-none bg-white rounded text-gray-900 px-4 py-2 mb-2 border border-red-400 w-full leading-tight focus:outline-none focus:shadow-outline"
+      id="field-1-input"
+      name="password"
+      type="password"
+    />
+    <p
+      aria-live="assertive"
+      class="text-base text-gray-900 leading-normal mb-2 rounded-r bg-red-100 border-l-4 border-red-400 px-4 py-2"
+      id="field-1-error"
+    >
+      Please complete
+    </p>
+  </div>
+</DocumentFragment>
+`;

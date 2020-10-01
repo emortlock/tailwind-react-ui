@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu renders matching snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    aria-expanded="true"
+    aria-labelledby="undefined-menu"
+    class="overflow-hidden w-full flex-grow items-center"
+    id="undefined-nav"
+    role="navigation"
+    style="transition: max-height 500ms; max-height: 100vh;"
+  >
+    <h1
+      class="font-sans font-bold text-3xl text-black leading-tight mb-4 visually-hidden"
+      id="undefined-menu"
+    >
+      Site menu
+    </h1>
+    <ul
+      class="mb-4 flex-grow"
+      role="menu"
+    >
+      <li
+        class="mb mr"
+        role="none"
+      >
+        <button
+          class="select-none cursor-pointer hover:bg-white focus:bg-white hover:text-blue-400 focus:text-blue-400 px-4 py-2 mt-2 rounded block focus:outline-none focus:shadow-outline"
+          role="menuitem"
+        >
+          About
+        </button>
+      </li>
+      <li
+        class="mb mr"
+        role="none"
+      >
+        <button
+          class="select-none cursor-pointer hover:bg-white focus:bg-white hover:text-blue-400 focus:text-blue-400 px-4 py-2 mt-2 rounded block focus:outline-none focus:shadow-outline"
+          role="menuitem"
+        >
+          Blog
+        </button>
+      </li>
+    </ul>
+    <button
+      type="button"
+    >
+      Download
+    </button>
+  </nav>
+</DocumentFragment>
+`;

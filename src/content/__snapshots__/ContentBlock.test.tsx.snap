@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBlock renders matching snapshot 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="content-1"
+    class="p-4"
+  >
+    Lorem ipsum...
+  </section>
+</DocumentFragment>
+`;

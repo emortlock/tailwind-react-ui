@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLink renders matching snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="visually-hidden-focusable"
+  >
+    <a
+      class="select-none cursor-pointer inline-block border border-transparent leading-tight px-4 py-2 rounded-none bg-white text-black hover:bg-gray-100 focus:bg-gray-100 absolute focus:outline-none focus:shadow-outline"
+      href="#main"
+      role="button"
+    >
+      Skip to main content
+    </a>
+  </div>
+</DocumentFragment>
+`;

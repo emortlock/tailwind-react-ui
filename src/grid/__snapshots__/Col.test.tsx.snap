@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Col renders matching snapshot 1`] = `
+<DocumentFragment>
+  <li
+    class="w-full"
+  >
+    Content
+  </li>
+</DocumentFragment>
+`;

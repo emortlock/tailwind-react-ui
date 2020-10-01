@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBrand renders matching snapshot 1`] = `
+<DocumentFragment>
+  <span
+    aria-level="1"
+    class="inline-block flex flex-shrink-0 items-center h-12 text-white"
+    role="heading"
+  >
+    Tailwind React UI
+  </span>
+</DocumentFragment>
+`;

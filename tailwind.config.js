@@ -1,4 +1,4 @@
-const plugins = require('./src/plugins')
+const plugins = require('./plugins')
 
 module.exports = {
   future: {

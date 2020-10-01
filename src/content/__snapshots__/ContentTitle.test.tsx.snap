@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBlock renders matching snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="font-sans font-bold text-3xl text-black leading-tight mb-4"
+  >
+    Title
+  </h1>
+</DocumentFragment>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row renders matching snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="flex flex-wrap nml-4 nmb-4"
+  />
+</DocumentFragment>
+`;

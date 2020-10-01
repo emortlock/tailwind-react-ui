@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders matching snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="select-none cursor-pointer inline-block border border-transparent leading-tight px-4 py-2 rounded bg-blue-400 text-white hover:bg-blue-500 focus:bg-blue-500 focus:outline-none focus:shadow-outline"
+    type="button"
+  >
+    Submit
+  </button>
+</DocumentFragment>
+`;

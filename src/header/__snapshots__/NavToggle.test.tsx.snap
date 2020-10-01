@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavToggle renders matching snapshot 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="undefined-nav"
+    aria-haspopup="true"
+    aria-label="Open menu"
+    class="select-none cursor-pointer inline-block border border-transparent leading-tight p-0 rounded text-white hover:bg-white focus:bg-white w-12 h-12 block hover:text-blue-400 focus:text-blue-400 focus:outline-none focus:shadow-outline"
+    type="button"
+  >
+    <div
+      class="flex flex-col items-stretch justify-around h-full p-3"
+    >
+      <span
+        class="inline-block border-b"
+        style="border-color: currentcolor;"
+      />
+      <span
+        class="inline-block border-b"
+        style="border-color: currentcolor;"
+      />
+      <span
+        class="inline-block border-b"
+        style="border-color: currentcolor;"
+      />
+    </div>
+  </button>
+</DocumentFragment>
+`;

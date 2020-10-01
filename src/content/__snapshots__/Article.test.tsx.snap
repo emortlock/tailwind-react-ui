@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article renders matching snapshot 1`] = `
+<DocumentFragment>
+  <article
+    aria-labelledby="content-1"
+    class="p-4"
+  >
+    Lorem ipsum...
+  </article>
+</DocumentFragment>
+`;

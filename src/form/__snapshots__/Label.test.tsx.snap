@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders matching snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="font-bold leading-normal inline-block mb-2"
+    for="input"
+  >
+    Username
+  </label>
+</DocumentFragment>
+`;
