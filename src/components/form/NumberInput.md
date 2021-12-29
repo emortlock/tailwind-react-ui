@@ -1,6 +1,6 @@
 ```jsx
 <Field>
-  <Label>Username</Label>
+  <Label>Card Number</Label>
   <NumberInput name="number" placeholder="Card Number" />
 </Field>
 ```
